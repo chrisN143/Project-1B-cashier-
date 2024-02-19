@@ -11,14 +11,20 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
-    // protected $fillable = [
-    //     'code',
-    //     'price',
-    //     'name'
-    // ];
-    public function imageUrl()
+    protected $guarded = ['id', ''];
+    protected $fillable = [
+        'code',
+        'price',
+        'store_id',
+        'name',
+        'image',
+        'description',
+    ];
+    public function store(){
+
+    }
+    public function getImage()
     {
-        return Storage::url('uploads/' . $this->image);
+        return Storage::url('images/' . $this->image);
     }
 }
