@@ -5,7 +5,10 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\StoreController;
+use App\Http\Controllers\TransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -78,7 +81,20 @@ Route::group(['middleware' => 'auth'], function () {
 
     /* Product */
     Route::controller(ProductController::class)->prefix('product')->name('product.')->group(function () {
+        Route:: get('/', 'index')->name('index');
+        Route::get('/detail', 'detail')->name('detail');
+    });
+    Route::controller(StoreController::class)->prefix('store')->name('store.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/detail', 'detail')->name('detail');
+    });
+    Route::controller(TransactionController::class)->prefix('transaction')->name('transaction.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/detail', 'detail')->name('detail');
+    });
+    Route::controller(MenuController::class)->prefix('menu')->name('menu.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/detail', 'detail')->name('detail');
     });
 });
+
