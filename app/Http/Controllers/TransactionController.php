@@ -21,7 +21,7 @@ class TransactionController extends Controller
         confirmDelete($title_delete, $text);
 
         return view(
-            'app.Transaction.index',
+            'app.transaction.index',
             compact(
                 'title',
                 'header',
