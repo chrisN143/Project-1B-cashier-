@@ -4,15 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class StoreController extends Controller
+class MenuController extends Controller
 {
     public function index()
     {
         /* Header Setting */
-        $title = "Store";
-        $header = "Store List";
-        $main_breadcrumb = "Store";
-        $main_breadcrumb_link = route('store.index');
+        $title = "Menu";
+        $header = "Menu List";
+        $main_breadcrumb = "Menu";
+        $main_breadcrumb_link = route('menu.index');
         $breadcrumb = null;
 
         // Confirm Delete Alert
@@ -21,7 +21,7 @@ class StoreController extends Controller
         confirmDelete($title_delete, $text);
 
         return view(
-            'app.store.index',
+            'app.menu.index',
             compact(
                 'title',
                 'header',
@@ -35,16 +35,16 @@ class StoreController extends Controller
     public function detail(Request $request)
     {
         /* Header Setting */
-        $title = "Store";
-        $header = "Store Create";
-        $main_breadcrumb = "Store";
-        $main_breadcrumb_link = route('store.detail');
+        $title = "Menu";
+        $header = "Menu Create";
+        $main_breadcrumb = "Menu";
+        $main_breadcrumb_link = route('menu.detail');
         $breadcrumb = null;
 
         $id = $request->id;
 
         return view(
-            'app.store.detail',
+            'app.menu.detail',
             compact(
                 'id',
                 'title',
