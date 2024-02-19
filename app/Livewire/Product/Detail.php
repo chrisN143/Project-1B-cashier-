@@ -4,14 +4,26 @@ namespace App\Livewire\Product;
 
 use App\Models\Product;
 use Livewire\Component;
+use Livewire\Attributes\Rule;
+use Livewire\WithFileUploads;
 
 class Detail extends Component
 {
-    public $objId;
+    use WithFileUploads;
 
+    public $objId;
+    public $oldImage;
+
+    #[Rule('required')]
     public $name;
+    #[Rule('required')]
     public $price;
-    public $number;
+    #[Rule('required')]
+    public $code;
+    #[Rule('nullable|sometimes|image')]
+    public $image;
+    #[Rule('required')]
+    public $description;
 
     public function mount()
     {
@@ -19,27 +31,27 @@ class Detail extends Component
             $product = Product::find($this->objId);
             $this->name = $product->name;
             $this->price = $product->price;
-            $this->number = $product->number;
+            $this->code = $product->code;
+            $this->oldImage = $product->imageUrl;
+            $this->description = $product->description;
         }
     }
 
     public function store()
     {
+        $validated = $this->validate();
+
+        if ($this->image) {
+            $validated['image'] = $this->image->store('uploads', 'public');
+        }
+
         if ($this->objId) {
             //Update
             $product = Product::find($this->objId);
-            $product->update([
-                'name' => $this->name,
-                'price' => $this->price,
-                'number' => $this->number,
-            ]);
+            $product->update($validated);
         } else {
-            //Create 
-            Product::create([
-                'name' => $this->name,
-                'price' => $this->price,
-                'number' => $this->number,
-            ]);
+            //Create
+            Product::create($validated);
         }
 
         return redirect()->route('product.index');

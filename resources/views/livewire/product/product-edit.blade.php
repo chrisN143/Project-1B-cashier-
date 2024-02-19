@@ -17,7 +17,7 @@
             <input type="file" class="form-control" wire:model='image'>
         </div>
         @if ($image)
-            <img src="{{ $image->temporaryUrl() }}">
+            <img src="{{ asset('storage/' . $image) }}">
         @endif
         <div class="form-group">
             <label>Deskripsi</label>
