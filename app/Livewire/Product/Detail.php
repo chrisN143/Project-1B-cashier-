@@ -12,7 +12,6 @@ class Detail extends Component
     use WithFileUploads;
 
     public $objId;
-    public $oldImage;
 
     #[Rule('required')]
     public $name;
@@ -32,7 +31,6 @@ class Detail extends Component
             $this->name = $product->name;
             $this->price = $product->price;
             $this->code = $product->code;
-            $this->oldImage = $product->imageUrl;
             $this->description = $product->description;
         }
     }

@@ -17,7 +17,12 @@
             <input type="file" class="form-control" wire:model='image'>
         </div>
         @if ($image)
+            <p>{{ $this->image }}</p>
             <img src="{{ $image->temporaryUrl() }}">
+        @else
+            {{-- {{ $image->temporaryUrl() }} --}}
+            <img src="{{ asset('storage/' . $image) }}">
+            <p>{{ $image }}</p>
         @endif
         <div class="form-group">
             <label>Deskripsi</label>

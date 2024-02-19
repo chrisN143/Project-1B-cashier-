@@ -16,8 +16,11 @@
             <label>Gambar Produk</label>
             <input type="file" class="form-control" wire:model='image'>
         </div>
-        @if ($image)
+        @if ($this->image != null)
+            {{-- asset('storage/' . $image) --}}
             <img src="{{ asset('storage/' . $image) }}">
+        @else
+            <img src="{{ $image->temporaryUrl() }}" alt="">
         @endif
         <div class="form-group">
             <label>Deskripsi</label>
