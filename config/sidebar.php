@@ -36,7 +36,7 @@ return [
                 ],
                 [
                     'text' => 'Transaction',
-                    'url'  => 'payment',
+                    'url'  => 'transaction',
                     'role' => 'All',
                 ],
             ],

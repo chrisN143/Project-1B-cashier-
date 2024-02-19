@@ -81,7 +81,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     /* Product */
     Route::controller(ProductController::class)->prefix('product')->name('product.')->group(function () {
-        Route::get('/', 'index')->name('index');
+        Route:: get('/', 'index')->name('index');
         Route::get('/detail', 'detail')->name('detail');
     });
     Route::controller(StoreController::class)->prefix('store')->name('store.')->group(function () {
@@ -97,5 +97,4 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/detail', 'detail')->name('detail');
     });
 });
-
 
