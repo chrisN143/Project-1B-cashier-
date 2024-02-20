@@ -32,7 +32,6 @@
 @endsection
 
 @section('content')
-    
     <div class="row g-5 gx-xl-10 mb-5 mb-xl-10 ">
         <!--begin::Col-->
         <div class="col-md-3">
@@ -47,11 +46,12 @@
                         <span class="fs-2hx fw-bold text-light lh-1 ls-n2">{{ $total_user }}</span>
                         <span class="text-light fw-semibold fs-6">Created At</span>
                         <!--end::Amount-->
-                        
+
                         <!--begin::Subtitle-->
                         <!--end::Subtitle-->
                     </div>
-                    <span class="float-right display-5 bg-opacity-25"><i class="fa-solid fa-cart-shopping fs-1 text-light"></i></span>
+                    <span class="float-right display-5 bg-opacity-25"><i
+                            class="fa-solid fa-cart-shopping fs-1 text-light"></i></span>
                     <!--end::Title-->
                 </div>
                 <!--end::Header-->
@@ -75,7 +75,8 @@
                         <!--begin::Subtitle-->
                         <!--end::Subtitle-->
                     </div>
-                    <span class="float-right display-5 bg-opacity-25"><i class="fa-solid fa-cart-shopping fs-1 text-light"></i></span>
+                    <span class="float-right display-5 bg-opacity-25"><i
+                            class="fa-solid fa-cart-shopping fs-1 text-light"></i></span>
                     <!--end::Title-->
                 </div>
                 <!--end::Header-->
@@ -92,7 +93,7 @@
                     <!--begin::Title-->
                     <div class="card-title d-flex flex-column">
                         <!--begin::Amount-->
-                        <span class="text-light  fw-semibold fs-2">Permissions</span>
+                        <span class="text-light  fw-semibold fs-3">Permissions</span>
                         <span class="fs-2hx fw-bold text-light lh-1 ls-n2">{{ $total_permission }}</span>
                         <span class="text-light fw-semibold fs-6">Created At</span>
                         <!--end::Amount-->
@@ -100,7 +101,8 @@
                         <!--begin::Subtitle-->
                         <!--end::Subtitle-->
                     </div>
-                    <span class="float-right display-5 bg-opacity-25"><i class="fa-solid fa-cart-shopping fs-1 text-light"></i></span>
+                    <span class="float-right display-5 bg-opacity-25"><i
+                            class="fa-solid fa-cart-shopping fs-1 text-light"></i></span>
                     <!--end::Title-->
                 </div>
                 <!--end::Header-->
@@ -117,7 +119,7 @@
                     <!--begin::Title-->
                     <div class="card-title d-flex flex-column">
                         <!--begin::Amount-->
-                        <span class="text-light  fw-semibold fs-2">Permissions</span>
+                        <span class="text-light  fw-semibold fs-3">Permissions</span>
                         <span class="fs-2hx fw-bold text-light lh-1 ls-n2">{{ $total_permission }}</span>
                         <span class="text-light fw-semibold fs-6">Created At</span>
                         <!--end::Amount-->
@@ -125,7 +127,8 @@
                         <!--begin::Subtitle-->
                         <!--end::Subtitle-->
                     </div>
-                    <span class="float-right display-5 bg-opacity-25"><i class="fa-solid fa-cart-shopping fs-1 text-light"></i></span>
+                    <span class="float-right display-5 bg-opacity-25"><i
+                            class="fa-solid fa-cart-shopping fs-1 text-light"></i></span>
                     <!--end::Title-->
                 </div>
                 <!--end::Header-->
