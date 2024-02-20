@@ -1,10 +1,5 @@
 @extends('layouts.app')
 
-@section('after_css')
-    <link rel="stylesheet"
-        href="{{ asset('assets/templates/metronic/dist/assets/plugins/custom/datatables/datatables.bundle.css') }}">
-@endsection
-
 @section('content_header')
     <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3 ">
         <!--begin::Title-->
@@ -39,31 +34,8 @@
 
 @section('content')
     <div class="card">
-        <!--begin::Card header-->
-        <div class="card-header border-0 pt-6">
-            <!--begin::Card title-->
-            <!--begin::Card toolbar-->
-            <div class="card-toolbar">
-                <!--begin::Toolbar-->
-                <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
-                    <!--begin::Add user-->
-                    <a href="{{ route('product.detail') }}" class="btn btn-primary"> <i
-                            class="ki-duotone ki-plus fs-2"></i>Create Product</a>
-                    <!--end::Add user-->
-                </div>
-                <!--end::Toolbar-->
-            </div>
-            <!--end::Card toolbar-->
-        </div>
-        <!--end::Card header-->
-
-        <!--begin::Card body-->
         <div class="card-body py-4">
-            <!--begin::Table-->
-            <div id="kt_table_users_wrapper">
-                @livewire('product.itemsdatatable')
-            </div>
-            <!--end::Table-->
+            @livewire('transaction.detail', ['objId' => $id])
         </div>
     </div>
 @endsection

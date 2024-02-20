@@ -47,8 +47,8 @@
                 <!--begin::Toolbar-->
                 <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
                     <!--begin::Add user-->
-                    <a href="{{ route('product.detail') }}" class="btn btn-primary"> <i
-                            class="ki-duotone ki-plus fs-2"></i>Create Product</a>
+                    <a href="{{ route('transaction.detail') }}" class="btn btn-primary"> <i
+                            class="ki-duotone ki-plus fs-2"></i>Create Payment method</a>
                     <!--end::Add user-->
                 </div>
                 <!--end::Toolbar-->
@@ -61,7 +61,7 @@
         <div class="card-body py-4">
             <!--begin::Table-->
             <div id="kt_table_users_wrapper">
-                @livewire('product.itemsdatatable')
+                @livewire('transaction.index')
             </div>
             <!--end::Table-->
         </div>
