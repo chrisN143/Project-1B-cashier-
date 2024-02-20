@@ -61,7 +61,7 @@
         <div class="card-body py-4">
             <!--begin::Table-->
             <div id="kt_table_users_wrapper">
-                @livewire('product.datatable')
+                @livewire('product.itemsdatatable')
             </div>
             <!--end::Table-->
         </div>

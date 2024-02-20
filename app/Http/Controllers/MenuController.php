@@ -55,4 +55,27 @@ class MenuController extends Controller
             )
         );
     }
+    public function menu(Request $request)
+    {
+        /* Header Setting */
+        $title = "Menu";
+        $header = "Menu Create";
+        $main_breadcrumb = "Menu";
+        $main_breadcrumb_link = route('menu.cart');
+        $breadcrumb = null;
+
+        $id = $request->id;
+
+        return view(
+            'app.menu.cart',
+            compact(
+                'id',
+                'title',
+                'header',
+                'main_breadcrumb',
+                'main_breadcrumb_link',
+                'breadcrumb'
+            )
+        );
+    }
 }
