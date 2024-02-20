@@ -8,6 +8,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\StoreController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\TransactionController;
 
 /*
@@ -81,7 +83,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     /* Product */
     Route::controller(ProductController::class)->prefix('product')->name('product.')->group(function () {
-        Route:: get('/', 'index')->name('index');
+        Route::get('/', 'index')->name('index');
         Route::get('/detail', 'detail')->name('detail');
     });
     Route::controller(StoreController::class)->prefix('store')->name('store.')->group(function () {
@@ -94,9 +96,19 @@ Route::group(['middleware' => 'auth'], function () {
     });
     Route::controller(MenuController::class)->prefix('menu')->name('menu.')->group(function () {
         Route::get('/', 'index')->name('index');
-        Route::get('/detail', 'detail')->name('detail');
-        Route::get('/detail/cart', 'cart')->name('cart');
+        Route::get('/detail', 'detail')->name('detail')                                                      ;
+        Route::get('/detail/cart', 'cart')->name('cart')                                                     ;
     });
-  
+
+    Route::controller(OrderController::class)->prefix('order')->name('order.')->group(function () {
+        Route::get('/', 'index')->name('index')                                                     ;
+        Route::get('/detail', 'detail')->name('detail')                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ;
+    });
+
+    Route::controller(LaporanController::class)->prefix('laporan')->name('laporan.')->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/detail', 'detail')->name('detail');
+    });
+
 });
 
