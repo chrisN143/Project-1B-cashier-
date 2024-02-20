@@ -97,5 +97,6 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/detail', 'detail')->name('detail');
         Route::get('/detail/cart', 'cart')->name('cart');
     });
+  
 });
 
