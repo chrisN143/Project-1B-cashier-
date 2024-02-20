@@ -95,6 +95,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::controller(MenuController::class)->prefix('menu')->name('menu.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/detail', 'detail')->name('detail');
+        Route::get('/detail/cart', 'cart')->name('cart');
     });
 });
 
