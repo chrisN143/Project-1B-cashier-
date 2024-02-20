@@ -35,7 +35,7 @@
                 <option value="{{ $st->id }}"{{ $objId ? 'selected' : '' }}>{{ $st->store_name }}</option>
             @endforeach
         </select>
-        @error('store_id')
+        @error('storeId')
             <span class="text-danger font-italic">{{ $message }}</span>
         @enderror
     </div>

@@ -25,6 +25,7 @@ class Detail extends Component
     public $name;
     #[Rule('required')]
     public $price;
+    #[Rule('required')]
     public $store_id;
 
     #[Rule('nullable|sometimes|image|max:6140')]
