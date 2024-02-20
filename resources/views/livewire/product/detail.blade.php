@@ -28,7 +28,7 @@
     @endif
     <div class="mb-3">
         <label for="category" class="form-label shadow-sm">Category</label>
-        <select class="form-select" name="store_id" wire:model="store_id">
+        <select class="form-select" name="storeId" wire:model="store_id">
             @foreach ($store as $st)
                 @if (old('store_id') == $st->id)
                     <option value="{{ $st->id }}" selected>{{ $st->store_name }}</option>
@@ -37,7 +37,7 @@
                 @endif
             @endforeach
         </select>
-        @error('store_id')
+        @error('storeId')
             <span class="text-danger font-italic">{{ $message }}</span>
         @enderror
     </div>

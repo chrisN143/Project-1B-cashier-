@@ -50,16 +50,15 @@
                     <li><a class="dropdown-item" href="#">Another action</a></li>
                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
-                <button type="button" class="btn btn-secondary mx-2"><i class="fa-solid fa-cart-shopping" style="width: 18px"></i></button>
+                <a href="{{ route('menu.cart') }}"><button class="btn btn-secondary mx-2"><i  class="fa-solid fa-cart-shopping" style="width: 18px"></i></button></a>
             </div>
         </div>
-
-                <div class="col-md-3">
+        <div class="col-md-3">
             <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <button class="btn btn-outline-secondary" type="submit">Search</button>
             </form>
-            </div>
+        </div>
     </div>
 </div>
 

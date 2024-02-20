@@ -55,7 +55,7 @@ class MenuController extends Controller
             )
         );
     }
-    public function menu(Request $request)
+    public function cart(Request $request)
     {
         /* Header Setting */
         $title = "Menu";
@@ -63,7 +63,6 @@ class MenuController extends Controller
         $main_breadcrumb = "Menu";
         $main_breadcrumb_link = route('menu.cart');
         $breadcrumb = null;
-
         $id = $request->id;
 
         return view(
