@@ -27,7 +27,7 @@ class Detail extends Component
     public $price;
     public $store_id;
 
-    #[Rule('nullable|sometimes|image')]
+    #[Rule('nullable|sometimes|image|max:6140')]
     public $image;
     #[Rule('required')]
     public $description;
@@ -47,6 +47,8 @@ class Detail extends Component
 
     public function store()
     {
+        $this->validate();
+
         if ($this->image != null) {
             $this->validate();
             $this->image->store('images', 'public');

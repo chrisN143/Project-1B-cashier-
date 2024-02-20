@@ -4,7 +4,6 @@
             <thead>
                 <tr class="text-start text-muted fw-bold fs-7 text-uppercase gs-0">
                     <th class="min-w-25px sorting" style="width: 25px;">No</th>
-                    <th class="min-w-125px sorting" style="width: 125px;">Nomor</th>
                     <th class="min-w-125px sorting" style="width: 125px;">
                         Nama</th>
     
