@@ -38,58 +38,62 @@
 @endsection
 
 @section('content')
-<div class="container">
-   <div class="row justify-content-between">
-        <div class="col-md-3">
-            <div class="dropdown">
-                <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-                    Category
-                </a>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                </ul>
-                <a href="{{ route('menu.cart') }}"><button class="btn btn-secondary mx-2"><i  class="fa-solid fa-cart-shopping" style="width: 18px"></i></button></a>
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-md-3">
+                <div class="dropdown">
+                    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                        data-bs-toggle="dropdown" aria-expanded="false">
+                        Category
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                    <a href="{{ route('menu.cart') }}"><button class="btn btn-secondary mx-2"><i
+                                class="fa-solid fa-cart-shopping" style="width: 18px"></i>(0)</button></a>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                </form>
             </div>
         </div>
-        <div class="col-md-3">
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-secondary" type="submit">Search</button>
-            </form>
-        </div>
     </div>
-</div>
 
-{{-- Card  --}}
-<div class="container" >
-    <div class="row justify-content-center" style="display: flex">
-      @foreach($product as $item )
-       <div class="col-md-3 m-3">
-          <div class="card" >
-             {{-- @if ($post->image) --}}
-                 <img src="{{-- asset('storage/'.$post->image) --}}" class="img-fluid rounded" alt="{{-- $post->category->name --}}">
-             {{-- @else --}}
-             <img src="https://source.unsplash.com/300x200?{{-- $post->category->name --}}" class="card-img-top" alt="{{-- $post->category->name --}}">
-             {{-- @endif --}}
-                <div class="card-body text-center">
-                   <h5 class="card-title">{{-- $post->title --}}</h5>
-                   <p>
-                        <small class="text-body-secondary">
-                        By. <a href="{{-- /blog?author=$post->author->username --}}" class="text-decoration-none">{{-- $post->author->name --}}</a> {{-- $post->created_at->diffForHumans() --}}
-                        </small>
-                   </p>
+    {{-- Card  --}}
+    <div class="container">
+        <div class="row justify-content-center" style="display: flex">
+            @foreach ($product as $item)
+                <div class="col-md-3 m-1">
+                    <div class="card">
+                        {{-- @if ($post->image) --}}
+                        <img src="{{-- asset('storage/'.$post->image) --}}" class="img-fluid rounded" alt="{{-- $post->category->name --}}">
+                        {{-- @else --}}
+                        <img src="https://source.unsplash.com/300x200?{{-- $post->category->name --}}" class="card-img-top"
+                            alt="{{-- $post->category->name --}}">
+                        {{-- @endif --}}
+                        <div class="card-body text-center">
+                            <h5 class="card-title">{{ $item->store->store_name }}</h5>
+                            <p>
+                                <small class="text-body-secondary">
+                                    By. <a href="{{-- /blog?author=$post->author->username --}}"
+                                        class="text-decoration-none">{{-- $post->author->name --}}</a> {{-- $post->created_at->diffForHumans() --}}
+                                </small>
+                            </p>
 
-                      <p class="card-text">{{-- $post->excerpt --}}</p>
-                      <a href="{{-- /posts/$post->slug --}}"  class="btn btn-info text-white">Read more</a>
+                            <p class="card-text">{{-- $post->excerpt --}}</p>
+                            <a href="{{-- /posts/$post->slug --}}" class="btn btn-info btn-sm text-white">Add</a>
+                        </div>
+                    </div>
                 </div>
-          </div>
-       </div>
-       @endforeach
+            @endforeach
 
 
 
-    {{-- </div> --}}
- </div>
-@endsection
+            {{-- </div> --}}
+        </div>
+    @endsection
