@@ -47,13 +47,13 @@ class Detail extends Component
 
     public function store()
     {
-        $this->validate();
-
+        
         if ($this->image != null) {
             $this->validate();
             $this->image->store('images', 'public');
         }
-
+        
+        $this->validate();
         if ($this->objId) {
             //Update
             $product = Product::find($this->objId);
