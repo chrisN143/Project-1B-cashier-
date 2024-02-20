@@ -101,6 +101,10 @@
             </div>
             <!--end::Card widget 7-->
         </div>
-        <!--end::Col-->
     </div>
+
+    <!--end::Col-->
+    </div>
+
+
 @endsection
