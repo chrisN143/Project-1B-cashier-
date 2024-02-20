@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
+
 
 class MenuController extends Controller
 {
@@ -14,7 +16,7 @@ class MenuController extends Controller
         $main_breadcrumb = "Menu";
         $main_breadcrumb_link = route('menu.index');
         $breadcrumb = null;
-
+$product = Product::all();
         // Confirm Delete Alert
         $title_delete = 'Delete Data!';
         $text = "Are you sure?";
@@ -27,7 +29,8 @@ class MenuController extends Controller
                 'header',
                 'main_breadcrumb',
                 'main_breadcrumb_link',
-                'breadcrumb'
+                'breadcrumb',
+                'product'
             )
         );
     }

@@ -7,13 +7,14 @@
             <span class="text-danger font-italic">{{ $message }}</span>
         @enderror
     </div>
-    <div class='form-group' wire:ignore>
-        <label>Harga</label>
-        <input type='text' class='form-control' id="price" wire:model='price'>
+    <div class="input-group has-validation mt-3">
+        <span class="input-group-text" id="inputGroupPrepend">Rp.</span>
+        <input type='text' class='form-control' placeholder="Price" id="price" wire:model='price'>
         @error('price')
             <span class="text-danger font-italic">{{ $message }}</span>
         @enderror
     </div>
+
     <div class="form-group">
         <label>Gambar Produk</label>
         <input type="file" class="form-control" name="image" wire:model='image'>
@@ -28,13 +29,10 @@
     @endif
     <div class="mb-3">
         <label for="category" class="form-label shadow-sm">Category</label>
-        <select class="form-select" name="storeId" wire:model="store_id">
+        <select class="form-select" name="store_id" wire:model="store_id">
+            <option value="" hidden selected></option>
             @foreach ($store as $st)
-                @if (old('store_id') == $st->id)
-                    <option value="{{ $st->id }}" selected>{{ $st->store_name }}</option>
-                @else
-                    <option value="{{ $st->id }}">{{ $st->store_name }}</option>
-                @endif
+                <option value="{{ $st->id }}"{{ $objId ? 'selected' : '' }}>{{ $st->store_name }}</option>
             @endforeach
         </select>
         @error('storeId')

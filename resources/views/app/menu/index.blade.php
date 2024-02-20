@@ -65,7 +65,7 @@
 {{-- Card  --}}
 <div class="container" >
     <div class="row justify-content-center" style="display: flex">
-      {{-- @foreach($posts->skip(1) as $post ) --}}
+      @foreach($product as $item )
        <div class="col-md-3 m-3">
           <div class="card" >
              {{-- @if ($post->image) --}}
@@ -86,94 +86,9 @@
                 </div>
           </div>
        </div>
-       {{-- @endforeach --}}
-    {{-- <div class="row"> --}}
-      {{-- @foreach($posts->skip(1) as $post ) --}}
-       <div class="col-md-3 m-3">
-         <div class="card shadow">
-             {{-- @if ($post->image) --}}
-                 <img src="{{-- asset('storage/'.$post->image) --}}" class="img-fluid rounded" alt="{{-- $post->category->name --}}">
-             {{-- @else --}}
-             <img src="https://source.unsplash.com/300x200?{{-- $post->category->name --}}" class="card-img-top" alt="{{-- $post->category->name --}}">
-             {{-- @endif --}}
-                <div class="card-body text-center">
-                   <h5 class="card-title">{{-- $post->title --}}</h5>
-                   <p>
-                        <small class="text-body-secondary">
-                        By. <a href="{{-- /blog?author=$post->author->username --}}" class="text-decoration-none">{{-- $post->author->name --}}</a> {{-- $post->created_at->diffForHumans() --}}
-                        </small>
-                   </p>
-                      <p class="card-text">{{-- $post->excerpt --}}</p>
-                      <a href="{{-- /posts/$post->slug --}}"  class="btn btn-info text-white">Read more</a>
-                </div>
-          </div>
-       </div>
-       {{-- @endforeach --}}
-    {{-- </div> --}}
-    {{-- <div class="row"> --}}
-      {{-- @foreach($posts->skip(1) as $post ) --}}
-       <div class="col-md-3 m-3">
-         <div class="card shadow">
-             {{-- @if ($post->image) --}}
-                 <img src="{{-- asset('storage/'.$post->image) --}}" class="img-fluid rounded" alt="{{-- $post->category->name --}}">
-             {{-- @else --}}
-             <img src="https://source.unsplash.com/300x200?{{-- $post->category->name --}}" class="card-img-top" alt="{{-- $post->category->name --}}">
-             {{-- @endif --}}
-                <div class="card-body text-center">
-                   <h5 class="card-title">{{-- $post->title --}}</h5>
-                   <p>
-                        <small class="text-body-secondary">
-                        By. <a href="{{-- /blog?author=$post->author->username --}}" class="text-decoration-none">{{-- $post->author->name --}}</a> {{-- $post->created_at->diffForHumans() --}}
-                        </small>
-                   </p>
+       @endforeach
 
-                      <p class="card-text">{{-- $post->excerpt --}}</p>
-                      <a href="{{-- /posts/$post->slug --}}"  class="btn btn-info text-white">Read more</a>
-                </div>
-          </div>
-       </div>
-       <div class="col-md-3 m-3">
-          <div class="card shadow">
-             {{-- @if ($post->image) --}}
-                 <img src="{{-- asset('storage/'.$post->image) --}}" class="img-fluid rounded" alt="{{-- $post->category->name --}}">
-             {{-- @else --}}
-             <img src="https://source.unsplash.com/300x200?{{-- $post->category->name --}}" class="card-img-top" alt="{{-- $post->category->name --}}">
-             {{-- @endif --}}
-                <div class="card-body text-center">
-                   <h5 class="card-title">{{-- $post->title --}}</h5>
-                   <p>
-                        <small class="text-body-secondary">
-                        By. <a href="{{-- /blog?author=$post->author->username --}}" class="text-decoration-none">{{-- $post->author->name --}}</a> {{-- $post->created_at->diffForHumans() --}}
-                        </small>
-                   </p>
 
-                      <p class="card-text">{{-- $post->excerpt --}}</p>
-                      <a href="{{-- /posts/$post->slug --}}"  class="btn btn-info text-white">Read more</a>
-                </div>
-          </div>
-       </div>
-       <div class="col-md-3  m-3">
-          <div class="card shadow" >
-             {{-- @if ($post->image) --}}
-                 <img src="{{-- asset('storage/'.$post->image) --}}" class="img-fluid rounded" alt="{{-- $post->category->name --}}">
-             {{-- @else --}}
-             <img src="https://source.unsplash.com/300x200?{{-- $post->category->name --}}" class="card-img-top" alt="{{-- $post->category->name --}}">
-             {{-- @endif --}}
-                <div class="card-body text-center">
-                   <h5 class="card-title">{{-- $post->title --}}</h5>
-                   <p>
-                        <small class="text-body-secondary">
-                        By. <a href="{{-- /blog?author=$post->author->username --}}" class="text-decoration-none">{{-- $post->author->name --}}</a> {{-- $post->created_at->diffForHumans() --}}
-                        </small>
-                   </p>
-
-                      <p class="card-text">{{-- $post->excerpt --}}</p>
-                      <a href="{{-- /posts/$post->slug --}}"  class="btn btn-info text-white">Read more</a>
-                </div>
-          </div>
-       </div>
-       {{-- @endforeach --}}
-    </div>
 
     {{-- </div> --}}
  </div>
