@@ -16,14 +16,12 @@
                     <tr>
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $item['payment_method'] }}</td>
-                
                         <td>
                             <a class='btn btn-primary' href="{{ route('transaction.detail', ['id' => $item['id']]) }}">
                                 Edit
                             </a>
                             <button class='btn btn-danger' wire:click='destroy({{ $item['id'] }})' 
-                                wire:confirm="Are you sure you want to delete this post?"
->
+                                wire:confirm="Are you sure?">
                                 Hapus
                             </button>
                         </td>
