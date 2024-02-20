@@ -30,12 +30,9 @@
     <div class="mb-3">
         <label for="category" class="form-label shadow-sm">Category</label>
         <select class="form-select" name="store_id" wire:model="store_id">
+            <option value="" hidden selected></option>
             @foreach ($store as $st)
-                @if (old('store_id') == $st->id)
-                    <option value="{{ $st->id }}" selected>{{ $st->store_name }}</option>
-                @else
-                    <option value="{{ $st->id }}">{{ $st->store_name }}</option>
-                @endif
+                <option value="{{ $st->id }}"{{ $objId ? 'selected' : '' }}>{{ $st->store_name }}</option>
             @endforeach
         </select>
         @error('store_id')
