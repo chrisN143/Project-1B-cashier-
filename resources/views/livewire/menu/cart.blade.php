@@ -48,25 +48,15 @@
                     <div class="col-md-3 col-5 my-auto">
                         <div class="quantity">
                             <div class="input-group">
-                                <span class="btn btn1"><i class="fa fa-minus"></i></span>
-                                <input type="text" value="1" class="input-quantity" style="    border: 1px solid #000;
-
-                                margin-right: 3px;
-                            
-                                font-size: 10px;
-                            
-                                width: 40%;
-                            
-                                outline: none;
-                            
-                                text-align: center;">
-                                <span class="btn btn1"><i class="fa fa-plus"></i></span>
+                                <span class="btn btn1" wire:click="incrementQuantity"><i class="fa fa-minus"></i></span>
+                                <input type="text" wire:model="inputQuantity" value="{{ $this->inputQuantity }}" class="input-quantity">
+                                <span class="btn btn1" wire:click="decrementQuantity"><i class="fa fa-plus"></i></span>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-2 col-5 my-auto">
                         <div class="remove">
-                            <a href="" class="btn btn-danger btn-sm">
+                            <a href="" wire class="btn btn-danger btn-sm">
                                 <i class="fa fa-trash"></i>
                             </a>
                         </div>
@@ -75,5 +65,21 @@
                 </div>
             </div>
         </div>
+        <div class="row justify-content-end">
+
+            <div class="col-md-4 my-4">
+                <div class="shadow bg-white p-3">
+                    <h4>Total:
+                        <span>Rp. </span>
+                    </h4>
+                    <hr>
+                    <a href="" class="btn btn-warning">Checkout</a>
+                    {{-- @if ($totalprice != 0)
+                    @else
+                        <a href="{{ route('checkout.index') }}" class="btn btn-warning disabled">Checkout</a>
+                    @endif --}}
+                </div>
+            </div>
+        </div>  
     </div>
 </div>
