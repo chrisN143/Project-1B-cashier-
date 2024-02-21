@@ -16,7 +16,7 @@ class MenuController extends Controller
         $main_breadcrumb = "Menu";
         $main_breadcrumb_link = route('menu.index');
         $breadcrumb = null;
-$product = Product::all();
+        $product = Product::all();
         // Confirm Delete Alert
         $title_delete = 'Delete Data!';
         $text = "Are you sure?";
@@ -70,6 +70,28 @@ $product = Product::all();
 
         return view(
             'app.menu.cart',
+            compact(
+                'id',
+                'title',
+                'header',
+                'main_breadcrumb',
+                'main_breadcrumb_link',
+                'breadcrumb'
+            )
+        );
+    }
+    public function checkout()
+    {
+        /* Header Setting */
+        $title = "Check Out";
+        $header = "Check Out Create";
+        $main_breadcrumb = "Check Out";
+        $main_breadcrumb_link = route('menu.checkout');
+        $breadcrumb = null;
+        $id = $request->id;
+
+        return view(
+            'app.menu.checkout',
             compact(
                 'id',
                 'title',
