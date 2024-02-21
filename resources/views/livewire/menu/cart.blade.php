@@ -22,7 +22,9 @@
                 <div class="row shadow border rounded p-3">
                     <div class="col-md-5 my-auto">
                         <a href="">
-                            <label for=""class="product-name capitalize">
+                            <label for=""class="product-name capitalize
+
+                            ">
                                 <img src="" alt="">
                                 bapak kw
                             </label>
