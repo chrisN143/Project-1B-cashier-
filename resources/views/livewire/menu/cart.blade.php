@@ -22,6 +22,11 @@
                 <div class="row shadow border rounded p-3">
                     <div class="col-md-4 my-auto">
                         <a href="">
+<<<<<<< HEAD
+                            <label for=""class="product-name capitalize
+
+                            ">
+=======
                             <label for="" class="product-name capitalize" style=" font-size: 16px;
 
                             font-weight: 600;
@@ -35,6 +40,7 @@
                             overflow: hidden;
                         
                             cursor: pointer;">
+>>>>>>> origin/main
                                 <img src="" alt="">
                                 xbox
                             </label>
