@@ -20,13 +20,29 @@
 
                 @endforeach --}}
                 <div class="row shadow border rounded p-3">
-                    <div class="col-md-5 my-auto">
+                    <div class="col-md-4 my-auto">
                         <a href="">
+<<<<<<< HEAD
                             <label for=""class="product-name capitalize
 
                             ">
+=======
+                            <label for="" class="product-name capitalize" style=" font-size: 16px;
+
+                            font-weight: 600;
+                        
+                            width: 100%;
+                        
+                            white-space: nowrap;
+                        
+                            text-overflow: ellipsis;
+                        
+                            overflow: hidden;
+                        
+                            cursor: pointer;">
+>>>>>>> origin/main
                                 <img src="" alt="">
-                                bapak kw
+                                xbox
                             </label>
                         </a>
                     </div>
@@ -35,11 +51,21 @@
                             Rp. 20jt
                         </label>
                     </div>
-                    <div class="col-md-3 col-7 my-auto">
+                    <div class="col-md-3 col-5 my-auto">
                         <div class="quantity">
                             <div class="input-group">
                                 <span class="btn btn1"><i class="fa fa-minus"></i></span>
-                                <input type="text" value="1" class="input-quantity">
+                                <input type="text" value="1" class="input-quantity" style="    border: 1px solid #000;
+
+                                margin-right: 3px;
+                            
+                                font-size: 10px;
+                            
+                                width: 40%;
+                            
+                                outline: none;
+                            
+                                text-align: center;">
                                 <span class="btn btn1"><i class="fa fa-plus"></i></span>
                             </div>
                         </div>

@@ -10,5 +10,8 @@ class Store extends Model
     use HasFactory;
 
     protected $fillable = ['store_name'];
+    public function product(){
+        return $this->hasMany(Product::class);
+    }
 
 }
