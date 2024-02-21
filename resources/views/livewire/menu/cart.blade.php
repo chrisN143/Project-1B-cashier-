@@ -1,22 +1,15 @@
-{{-- <div class="card p-3">
-    <div class="card">
-        <div class="row justify-content-between shadow">
-              <div class="col-lg-3">
-                  <h5 class="text-center">Nama Produk</h5>
-              </div>
-              <div class="col-lg-3 my-2">
-                  <button class="btn btn-danger">remove</button>
-              </div>
-        </div>
-    </div>
-</div> --}}
-
-
-<div class="py-3 py-md-5 bg-light">
+<div class="py-2 py-md-3 bg-light">
     <div class="container">
         <div class="shopping-cart">
             <div class="cart-item">
-                {{-- @foreach ( as )
+                @php
+                    $total = 0;
+                @endphp
+                @foreach ($carts as $cart)
+                    <div class="row shadow border rounded p-3 my-3">
+                        <div class="col-md-4 my-auto">
+                            <a href="">
+                                <label for=""class="product-name capitalize
 
                 @endforeach --}}
                 <div class="row shadow border rounded p-3">
@@ -63,9 +56,45 @@
                                 <i class="fa fa-trash"></i>
                             </a>
                         </div>
-                    </div>
+                        <div class="col-md-2 my-auto">
+                            <label for="" class="price">
+                                Rp. {{ $cart->product->price }}
 
-                </div>
+                            </label>
+                            @php
+                                $total += $cart->product->price;
+                            @endphp {{-- for total the price --}}
+                        </div>
+                        <div class="col-md-3 col-5 my-auto">
+                            <div class="quantity">
+                                <div class="input-group">
+                                    <span class="btn btn1"><i class="fa fa-minus"></i></span>
+                                    <input type="text" value="{{ $cart->quantity }}" class="input-quantity"
+                                        style="    border: 1px solid #000;
+
+                                margin-right: 3px;
+
+                                font-size: 10px;
+
+                                width: 40%;
+
+                                outline: none;
+
+                                text-align: center;">
+                                    <span class="btn btn1"><i class="fa fa-plus"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-5 my-auto">
+                            <div class="remove">
+                                <button wire:click.live.debounce.150ms="destroy({{ $cart->id }})" class="btn btn-danger btn-sm">
+                                    <i class="fa fa-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                @endforeach
             </div>
         </div>
         <div class="row justify-content-end">
