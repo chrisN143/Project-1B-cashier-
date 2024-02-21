@@ -11,7 +11,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id', ''];
+    protected $guarded = ['id'];
     protected $fillable = [
         'code',
         'price',
@@ -20,9 +20,10 @@ class Product extends Model
         'image',
         'description',
     ];
-    public function store(){
-
+    public function store()
+    {
     }
+
     public function getImage()
     {
         return Storage::url('images/' . $this->image);
