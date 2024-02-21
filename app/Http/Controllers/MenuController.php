@@ -95,7 +95,7 @@ class MenuController extends Controller
             'app.menu.checkout',
             compact(
     
-                'title',
+                  'title',
                 'header',
                 'main_breadcrumb',
                 'main_breadcrumb_link',
