@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Store;
-use App\Models\Cart;
 
+use App\Models\Cart;
+use App\Models\Transaction;
 
 class MenuController extends Controller
 {
@@ -90,6 +91,7 @@ class MenuController extends Controller
         $main_breadcrumb = "Check Out";
         $main_breadcrumb_link = route('menu.checkout');
         $breadcrumb = null;
+        $payment = Transaction::all();
 
 
         return view(
@@ -100,7 +102,8 @@ class MenuController extends Controller
                 'header',
                 'main_breadcrumb',
                 'main_breadcrumb_link',
-                'breadcrumb'
+                'breadcrumb',
+                'payment'
             )
         );
     }

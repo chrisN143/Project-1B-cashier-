@@ -19,13 +19,10 @@ class Product extends Model
         'image',
         'description',
     ];
+  
     public function store()
     {
         return $this->belongsTo(Store::class);
-    }
-    public function cart(){
-        return $this->hasMany(Cart::class);
-
     }
     public function getImage()
     {

@@ -11,49 +11,10 @@
                             <a href="">
                                 <label for=""class="product-name capitalize
 
-                @endforeach --}}
-                <div class="row shadow border rounded p-3">
-                    <div class="col-md-4 my-auto">
-                        <a href="">
-                            <label for="" class="product-name capitalize" style=" font-size: 16px;
-
-                            font-weight: 600;
-
-                            width: 100%;
-
-                            white-space: nowrap;
-
-                            text-overflow: ellipsis;
-
-                            overflow: hidden;
-
-                            cursor: pointer;">
-                            <label for=""class="product-name capitalize
-
-                            ">
-                                <img src="" alt="">
-                                xbox
-                            </label>
-                        </a>
-                    </div>
-                    <div class="col-md-2 my-auto">
-                        <label for="" class="price">
-                            Rp. 20jt
-                        </label>
-                    </div>
-                    <div class="col-md-3 col-5 my-auto">
-                        <div class="quantity">
-                            <div class="input-group">
-                                <span class="btn btn1" wire:click="incrementQuantity"><i class="fa fa-minus"></i></span>
-                                <input type="text" wire:model="inputQuantity" value="{{ $this->inputQuantity }}" class="input-quantity">
-                                <span class="btn btn1" wire:click="decrementQuantity"><i class="fa fa-plus"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-5 my-auto">
-                        <div class="remove">
-                            <a href="" wire class="btn btn-danger btn-sm">
-                                <i class="fa fa-trash"></i>
+                                ">
+                                    <img src="" alt="">
+                                    {{ $cart->product->name }}
+                                </label>
                             </a>
                         </div>
                         <div class="col-md-2 my-auto">
@@ -80,7 +41,7 @@
 
                                 outline: none;
 
-                                text-align: center;">
+                                text-align: center;" readonly disabled>
                                     <span class="btn btn1"><i class="fa fa-plus"></i></span>
                                 </div>
                             </div>
@@ -101,9 +62,8 @@
 
             <div class="col-md-5 my-4">
                 <div class="shadow bg-white p-3">
-                    <h4>Total :
-                        <br>
-                        <span>Rp. </span>
+                    <h4>Total:
+                        <span>Rp. {{ $total }}</span>
                     </h4>
                     <hr>
                     <a href="{{ route('menu.checkout') }}" class="checkout-button shadow">Checkout</a>
