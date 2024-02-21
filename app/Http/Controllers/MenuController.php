@@ -95,6 +95,7 @@ class MenuController extends Controller
 
 
         return view(
+            // compact berfungsi untuk melempar function ke checkout.blae.php
             'app.menu.checkout',
             compact(
 

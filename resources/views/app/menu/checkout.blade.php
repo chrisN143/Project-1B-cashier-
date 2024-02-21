@@ -161,7 +161,7 @@
 
             <div class="mt-3">
                 <select class="form-select" name="payment_id" wire:model="payment_id">
-                    <option value="" hidden selected>Category</option>
+                    <option value="" hidden selected>Payment</option>
                     @foreach ($payment as $st)
                         <option value="{{ $st->id }}">{{ $st->payment_method }}</option>
                     @endforeach
