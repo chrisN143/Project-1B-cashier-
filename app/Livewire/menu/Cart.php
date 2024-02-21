@@ -1,26 +1,28 @@
 <?php
 
 namespace App\Livewire\menu;
+use Livewire\WithPagination;
 
+use App\Models\Cart as CartUser;
 use Livewire\Component;
 
 class Cart extends Component
 {
-    public $inputQuantity = 1;
-    public function decrementQuantity()
-    {
-        if ($this->inputQuantity < 10) {
+    use WithPagination;
+    public $carts;
 
-            return $this->inputQuantity++;
-        }
-    }
-    public function incrementQuantity()
+    public function mount()
     {
-        if ($this->inputQuantity > 1) {
-
-            return $this->inputQuantity--;
-        }
+        $this->carts = CartUser::where('user_id', auth()->id())->get();
     }
+
+    public function destroy($id)
+    {
+        $cartUser = CartUser::where('id', $id);
+        $cartUser->delete();
+        $this->resetPage();
+    }
+
     public function render()
     {
         return view('livewire.menu.cart');
