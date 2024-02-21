@@ -68,7 +68,7 @@
 
             // additional number interval options (e.g.)
             min: -100,
-            max: 10000000000
+            max: 10000000
         });
     </script>
 </div>
