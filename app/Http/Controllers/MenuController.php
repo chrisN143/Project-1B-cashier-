@@ -8,6 +8,7 @@ use App\Models\Product;
 
 class MenuController extends Controller
 {
+
     public function index()
     {
         /* Header Setting */
@@ -88,12 +89,11 @@ class MenuController extends Controller
         $main_breadcrumb = "Check Out";
         $main_breadcrumb_link = route('menu.checkout');
         $breadcrumb = null;
-        $id = $request->id;
 
         return view(
             'app.menu.checkout',
             compact(
-                'id',
+
                 'title',
                 'header',
                 'main_breadcrumb',

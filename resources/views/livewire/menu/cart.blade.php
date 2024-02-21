@@ -25,15 +25,15 @@
                             <label for="" class="product-name capitalize" style=" font-size: 16px;
 
                             font-weight: 600;
-                        
+
                             width: 100%;
-                        
+
                             white-space: nowrap;
-                        
+
                             text-overflow: ellipsis;
-                        
+
                             overflow: hidden;
-                        
+
                             cursor: pointer;">
                                 <img src="" alt="">
                                 xbox
@@ -48,19 +48,19 @@
                     <div class="col-md-3 col-5 my-auto">
                         <div class="quantity">
                             <div class="input-group">
-                                <span class="btn btn1"><i class="fa fa-minus"></i></span>
-                                <input type="text" value="1" class="input-quantity" style="    border: 1px solid #000;
+                                <span class="btn btn1" ><i class="fa fa-minus"></i></span>
+                                <input type="text" value="1 " class="input-quantity" style="border: 1px solid #000;
 
                                 margin-right: 3px;
-                            
+
                                 font-size: 10px;
-                            
+
                                 width: 40%;
-                            
+
                                 outline: none;
-                            
+
                                 text-align: center;">
-                                <span class="btn btn1"><i class="fa fa-plus"></i></span>
+                                <span class="btn btn1" ><i class="fa fa-plus"></i></span>
                             </div>
                         </div>
                     </div>
@@ -71,7 +71,10 @@
                             </a>
                         </div>
                     </div>
+                  
+                 </div>
 
+                    </div>
                 </div>
             </div>
         </div>
