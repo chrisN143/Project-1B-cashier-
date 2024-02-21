@@ -73,7 +73,7 @@
                         <span>Rp. </span>
                     </h4>
                     <hr>
-                    <a href="" class="btn btn-warning">Checkout</a>
+                    <a href="{{ route('menu.checkout') }}" class="btn btn-warning">Checkout</a>
                     {{-- @if ($totalprice != 0)
                     @else
                         <a href="{{ route('checkout.index') }}" class="btn btn-warning disabled">Checkout</a>
