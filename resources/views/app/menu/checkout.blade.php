@@ -159,6 +159,7 @@
 
             <h6>Payment Method</h6>
 
+
             <div class="mt-3">
                 <select class="form-select" name="payment_id" wire:model="payment_id">
                     <option value="" hidden selected>Payment</option>

@@ -138,90 +138,112 @@
     </div>
 
     <!--end::Col-->
-    </div>
-
     <!DOCTYPE html>
     <html lang="en">
 
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Complex Chart UI</title>
-        <!-- Include Chart.js -->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <title>Responsive Table</title>
         <style>
-            canvas {
-                -moz-user-select: none;
-                -webkit-user-select: none;
-                -ms-user-select: none;
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                border: 1px solid #ddd;
+                /* Menambahkan border untuk keseluruhan tabel */
+            }
+
+            th,
+            td {
+                padding: 8px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+
+            th {
+                background-color: #f2f2f2;
+            }
+
+            tbody tr:nth-child(even) {
+                background-color: #000000;
+                /* Warna latar belakang untuk baris-genap */
+            }
+
+            tbody tr:hover {
+                background-color: #ddd;
+                /* Warna latar belakang saat baris dihover */
+            }
+
+            /* Style khusus untuk tombol */
+            table button {
+                border: none;
+                background: none;
+                cursor: pointer;
+                padding: 0;
+
+            }
+
+            @media screen and (max-width: 600px) {
+                table {
+                    border: 0;
+                }
+
+                table caption {
+                    font-size: 1.3em;
+                }
+
+                table thead {
+                    display: none;
+                }
+
+                table tr {
+                    border-bottom: 3px solid #ddd;
+                    display: block;
+                    margin-bottom: 10px;
+                }
+
+                table td {
+                    border-bottom: none;
+                    display: block;
+                    text-align: right;
+                }
+
+                table td::before {
+                    content: attr(data-label);
+                    float: left;
+                    font-weight: bold;
+                }
             }
         </style>
     </head>
 
     <body>
-        <div style="width: 800px; height: 400px; margin: 0 auto;">
-            <canvas id="myChart"></canvas>
-        </div>
-        <script>
-            // Data untuk chart
-            const data = {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                datasets: [{
-                    label: 'Sales',
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1,
-                    data: [100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650]
-                }, {
-                    label: 'Expenses',
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderColor: 'rgba(255,99,132,1)',
-                    borderWidth: 1,
-                    data: [80, 120, 170, 220, 270, 320, 370, 420, 470, 520, 570, 620]
-                }]
-            };
 
-            // Konfigurasi untuk chart
-            const config = {
-                type: 'line',
-                data: data,
-                options: {
-                    responsive: true,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: 'Sales and Expenses Over Time'
-                        },
-                        tooltip: {
-                            mode: 'index',
-                            intersect: false
-                        }
-                    },
-                    scales: {
-                        x: {
-                            display: true,
-                            title: {
-                                display: true,
-                                text: 'Month'
-                            }
-                        },
-                        y: {
-                            display: true,
-                            title: {
-                                display: true,
-                                text: 'Value'
-                            }
-                        }
-                    }
-                }
-            };
+        <table>
+            <caption>Order Information</caption>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>No Customer</th>
+                    <th>Total Harga</th>
+                    <th>Tipe Pembayaran</th>
+                    <th>Tanggal Order</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td data-label="No">1</td>
+                    <td data-label="No Customer">12345</td>
+                    <td data-label="Total Harga">$100</td>
+                    <td data-label="Tipe Pembayaran">Credit Card</td>
+                    <td data-label="Tanggal Order">2024-02-22</td>
+                    <td data-label="Action"><button class="btn btn-primary">Details</button></td>
+                </tr>
+                <!-- You can add more rows here -->
+            </tbody>
+        </table>
 
-            // Inisialisasi chart
-            var myChart = new Chart(
-                document.getElementById('myChart'),
-                config
-            );
-        </script>
     </body>
 
     </html>
