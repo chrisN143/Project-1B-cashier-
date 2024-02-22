@@ -232,7 +232,6 @@
 
             <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
             <style>
-
                 table {
                     width: 100%;
                     border-collapse: collapse;
@@ -275,10 +274,11 @@
 
         <body>
 
-            <div class="col-md-3">
+            <div class="col-md-2 py-3">
                 <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="No Customer" aria-label="Search" id="searchInput">
-                  
+                    <input class="form-control me-2" type="search" placeholder="No Customer" aria-label="Search"
+                        id="searchInput">
+
                 </form>
             </div>
             <table>
@@ -290,7 +290,7 @@
                         <td data-label="Total Harga">Total Harga: $100</td>
                         <td data-label="Tipe Pembayaran">Tipe Pembayaran: Credit Card</td>
                         <td data-label="Tanggal Order">Tanggal Order: 2024-02-22</td>
-                        <td data-label="Action"><button class="btn btn-primary">Details</button></td>
+                        <td data-label="Action"><button class="btn btn-primary">Detail</button></td>
                     </tr>
                     <tr>
                         <td data-label="No">No: 2</td>
@@ -298,7 +298,7 @@
                         <td data-label="Total Harga">Total Harga: $120</td>
                         <td data-label="Tipe Pembayaran">Tipe Pembayaran: Credit Card</td>
                         <td data-label="Tanggal Order">Tanggal Order: 2024-02-22</td>
-                        <td data-label="Action"><button class="btn btn-primary">Details</button></td>
+                        <td data-label="Action"><button class="btn btn-primary">Detail</button></td>
                     </tr>
 
                 </tbody>
