@@ -1,18 +1,42 @@
 <div class="row shadow border rounded p-3">
     <div class="col-md-4 my-auto">
         <h6>Check Out</h6>
+        @if (session('error'))
+            <div class="alert alert-success" role="alert">
+                {{ session('error') }}
+            </div>
+        @endif
     </div>
-    <div class="py-1 py-md-5 bg-light">
-        <h6>Total price : Rp. {{ $totalprice }}</h6>
+    <div class="py-1 py-md-3 bg-light">
+        <h6 class="mb-3">Total price : Rp. {{ $totalprice }}</h6>
         {{-- ke satu --}}
         <div class="container">
             <div class="shopping-cart">
+                <div class="cart-header">
+                    <div class="row justify-content-center">
+                        <div class="col-md-4">
+                            <h4>Products</h4>
+                        </div>
+                        <div class="col-md-2">
+                            <h4>Price</h4>
+
+                        </div>
+                        <div class="col-md-2">
+                            <h4>Quantity</h4>
+
+                        </div>
+                        <div class="col-md-3">
+                            <h4>Total</h4>
+
+                        </div>
+                    </div>
+                </div>
                 <div class="cart-item">
                     @php
                         $total = 0;
                     @endphp
                     @foreach ($carts as $cart)
-                        <div class="row shadow border rounded p-2 my-3">
+                        <div class="row shadow border rounded p-2 my-3 justify-content-center">
                             <div class="col-md-4 my-auto">
                                 <a href="">
                                     <label for=""class="product-name capitalize
@@ -48,14 +72,7 @@
                                     $total += $cart->product->price * $cart->quantity;
                                 @endphp
                             </div>
-                            <div class="col-md-1 col-5 my-auto">
-                                <div class="remove">
-                                    <button wire:loading.attr="disabled" wire:click="destroy({{ $cart->id }})"
-                                        class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                </div>
-                            </div>
+
 
                         </div>
                     @endforeach
@@ -68,16 +85,10 @@
         <div>
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="Nama Customer" aria-label="Nama Customer" wire:model="customerName">
+                    <input type="text" class="form-control" placeholder="Nama Customer" aria-label="Nama Customer"
+                        wire:model="customerName">
                 </div>
-                <div class="col">
-                    <select class="form-select" aria-label="Default select example">
-                        <option selected>Discount %</option>
-                        <option value="1">10%</option>
-                        <option value="2">50%</option>
-                        <option value="3">75%</option>
-                    </select>
-                </div>
+
             </div>
 
         </div>

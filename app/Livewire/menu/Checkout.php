@@ -3,40 +3,57 @@
 namespace App\Livewire\Menu;
 
 use App\Models\Cart;
+use App\Models\Order;
+use App\Models\OrderItems;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Illuminate\Support\Str;
+use Livewire\Attributes\Rule;
 
 class Checkout extends Component
 {
     public $carts, $totalprice = 0;
-    public $customername;
+    #[Rule('required')]
+    public $customerName;
     public $email;
-    public $phonenumber;
-    public $pincode;
-    public $address;
+    // public $phonenumber;
     public $payment_mode = '';
     public $payment_id = '';
 
     public function Order()
     {
         $this->validate();
-        $order = orders::create([
+        $order = Order::create([
             'user_id' => auth()->user()->id,
-            'tracking_no' => 'Order-' . Str::random(10),
-            'costumername' => $this->customername,
-            'phonenumber' => str_replace("-", "", $this->phonenumber),
+            'customer_name' => $this->customerName,
             'status_message' => 'in progress',
-            'payment_mode' => $this->payment_mode,
-            'payment_id'
+            'payment_method' => $this->payment_mode,
+            'payment_id' => 1
         ]);
         foreach ($this->carts as $Item) {
-            $orderitems = orderItems::create([
+            $orderitems = OrderItems::create([
                 'order_id' => $order->id,
                 'product_id' => $Item->product_id,
-                'price' => $Item->product->price
+                'product_price' => $Item->product->price,
+                'product_name' => $Item->product->name,
+                'product_image' => $Item->product->image
             ]);
         }
         return $order;
+    }
+    public function codOrder()
+    {
+        $this->payment_mode = 'COD';
+        $codOrder = $this->Order();
+        if ($codOrder) {
+            Cart::where('user_id', Auth::id())->delete();
+            session()->flash('status', 'Orders Placed Succesfully');
+            return redirect()->route('menu.index');
+        } else {
+            session()->flash('error', 'Something Was Wrong');
+
+            return redirect()->route('menu.checkout');
+        }
     }
     public function mount()
     {
@@ -49,6 +66,8 @@ class Checkout extends Component
     }
     public function render()
     {
+        $this->customerName = auth()->user()->name;
+
         return view('livewire.menu.checkout');
     }
 }

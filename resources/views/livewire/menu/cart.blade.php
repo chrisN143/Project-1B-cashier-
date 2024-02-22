@@ -10,7 +10,31 @@
         </div>
     @endif
     <div class="container">
+
         <div class="shopping-cart">
+            <div class="cart-header">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h4>Products</h4>
+                    </div>
+                    <div class="col-md-2">
+                        <h4>Price</h4>
+
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Quantity</h4>
+
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Total</h4>
+
+                    </div>
+                    <div class="col-md-1">
+                        <h4>Aksi</h4>
+
+                    </div>
+                </div>
+            </div>
             <div class="cart-item">
                 @php
                     $total = 0;
