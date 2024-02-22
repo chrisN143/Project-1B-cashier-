@@ -19,7 +19,7 @@ class Product extends Model
         'image',
         'description',
     ];
-  
+
     public function store()
     {
 
@@ -28,7 +28,10 @@ class Product extends Model
 
     public function cart(){
         return $this->hasMany(Cart::class);
+
+
     }
+
 
     public function getImage()
     {

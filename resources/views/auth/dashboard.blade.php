@@ -138,7 +138,6 @@
     </div>
 
     <!--end::Col-->
-    </div>
 
     <!DOCTYPE html>
     <html lang="en">
@@ -146,83 +145,189 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Complex Chart UI</title>
-        <!-- Include Chart.js -->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <title>Responsive Table</title>
+        <!-- Tambahkan jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <style>
-            canvas {
-                -moz-user-select: none;
-                -webkit-user-select: none;
-                -ms-user-select: none;
+            /* Gaya tambahan untuk membuat tabel responsif */
+            @media screen and (max-width: 600px) {
+                table {
+                    border: 0;
+                    overflow-x: auto;
+                    display: block;
+                    width: 100%;
+                }
+
+                table caption {
+                    font-size: 1.3em;
+                }
+
+                table thead {
+                    display: none;
+                }
+
+                table tbody tr {
+                    display: block;
+                    border: 1px solid #ddd;
+                    margin-bottom: 10px;
+                }
+
+                table tbody td {
+                    display: block;
+                    text-align: left;
+                }
+
+                table td::before {
+                    content: attr(data-label);
+                    float: left;
+                    font-weight: bold;
+                    margin-right: 5px;
+                }
+            }
+
+            /* Gaya tabel utama */
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                border: 1px solid #ddd;
+            }
+
+            th,
+            td {
+                padding: 8px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+
+            th {
+                background-color: #f2f2f2;
+            }
+
+            tbody tr:nth-child(even) {
+                background-color: #d2d2d2;
+            }
+
+            tbody tr:hover {
+                background-color: #ffffff;
+            }
+
+            /* Style khusus untuk tombol */
+            table button {
+                border: none;
+                background: none;
+                cursor: pointer;
+                padding: 0;
             }
         </style>
     </head>
 
     <body>
-        <div style="width: 800px; height: 400px; margin: 0 auto;">
-            <canvas id="myChart"></canvas>
-        </div>
-        <script>
-            // Data untuk chart
-            const data = {
-                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-                datasets: [{
-                    label: 'Sales',
-                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                    borderColor: 'rgba(54, 162, 235, 1)',
-                    borderWidth: 1,
-                    data: [100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650]
-                }, {
-                    label: 'Expenses',
-                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                    borderColor: 'rgba(255,99,132,1)',
-                    borderWidth: 1,
-                    data: [80, 120, 170, 220, 270, 320, 370, 420, 470, 520, 570, 620]
-                }]
-            };
+        <!DOCTYPE html>
+        <html lang="en">
 
-            // Konfigurasi untuk chart
-            const config = {
-                type: 'line',
-                data: data,
-                options: {
-                    responsive: true,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: 'Sales and Expenses Over Time'
-                        },
-                        tooltip: {
-                            mode: 'index',
-                            intersect: false
-                        }
-                    },
-                    scales: {
-                        x: {
-                            display: true,
-                            title: {
-                                display: true,
-                                text: 'Month'
-                            }
-                        },
-                        y: {
-                            display: true,
-                            title: {
-                                display: true,
-                                text: 'Value'
-                            }
-                        }
-                    }
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <style>
+
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    border: 1px solid #ddd;
                 }
-            };
 
-            // Inisialisasi chart
-            var myChart = new Chart(
-                document.getElementById('myChart'),
-                config
-            );
-        </script>
-    </body>
+                th,
+                td {
+                    padding: 8px;
+                    text-align: left;
+                    border-bottom: 1px solid #ddd;
+                }
 
-    </html>
-@endsection
+                th {
+                    background-color: #f2f2f2;
+                }
+
+                tbody tr:nth-child(even) {
+                    background-color: #d2d2d2;
+                }
+
+                tbody tr:hover {
+                    background-color: #ffffff;
+                }
+
+                /* Style khusus untuk tombol */
+                table button {
+                    border: none;
+                    background: none;
+                    cursor: pointer;
+                    padding: 0;
+                }
+
+                .pagination {
+                    display: flex;
+                    justify-content: flex-end;
+                }
+            </style>
+        </head>
+
+        <body>
+
+            <div class="col-md-3">
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="No Customer" aria-label="Search" id="searchInput">
+                  
+                </form>
+            </div>
+            <table>
+                <caption>Order Information</caption>
+                <tbody>
+                    <tr>
+                        <td data-label="No">No: 1</td>
+                        <td data-label="No Customer">No Customer: 1234</td>
+                        <td data-label="Total Harga">Total Harga: $100</td>
+                        <td data-label="Tipe Pembayaran">Tipe Pembayaran: Credit Card</td>
+                        <td data-label="Tanggal Order">Tanggal Order: 2024-02-22</td>
+                        <td data-label="Action"><button class="btn btn-primary">Details</button></td>
+                    </tr>
+                    <tr>
+                        <td data-label="No">No: 2</td>
+                        <td data-label="No Customer">No Customer: 5555</td>
+                        <td data-label="Total Harga">Total Harga: $120</td>
+                        <td data-label="Tipe Pembayaran">Tipe Pembayaran: Credit Card</td>
+                        <td data-label="Tanggal Order">Tanggal Order: 2024-02-22</td>
+                        <td data-label="Action"><button class="btn btn-primary">Details</button></td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </nav>
+
+
+            <script>
+                $(document).ready(function() {
+                    $("#searchInput").on("keyup", function() {
+                        var value = $(this).val().toLowerCase();
+                        $("table tbody tr").each(function() {
+                            var customerNo = $(this).find("[data-label='No Customer']").text()
+                                .toLowerCase();
+                            $(this).toggle(customerNo.indexOf(value) > -1);
+                        });
+                    });
+                });
+            </script>
+
+        </body>
+
+        </html>
+    @endsection

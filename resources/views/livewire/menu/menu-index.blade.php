@@ -74,7 +74,7 @@
                 </div>
             @empty
                 <div>
-                    <h1 class="text-center">Kosongggggg!!!!!!!!</h1>
+                    <h1 class="text-center">Halaman ini kosong!</h1>
                 </div>
             @endforelse
             {{-- </div> --}}
