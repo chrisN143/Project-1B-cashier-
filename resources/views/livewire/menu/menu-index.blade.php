@@ -53,7 +53,7 @@
                             <div class="d-flex mx-3">
                                 @if ($this->inputquantity >= 0)
                                     <input type="number" wire:model.live="inputquantity"
-                                        value="{{ $this->inputquantity }}" class="form-control me-3"
+                                        value="{{ $this->inputquantity }}" min="1" class="form-control me-3"
                                         style="width:60px;">
                                     <button wire:click="add({{ $item->id }})"
                                         class="btn btn-info btn-sm text-white">
