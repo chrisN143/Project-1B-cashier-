@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Order;
+
 
 class OrderController extends Controller
 {
@@ -14,6 +16,7 @@ class OrderController extends Controller
         $main_breadcrumb = "Orders";
         $main_breadcrumb_link = route('orders.index');
         $breadcrumb = null;
+        $orders = Order::all();
 
         // Confirm Delete Alert
         $title_delete = 'Delete Data!';
@@ -27,7 +30,8 @@ class OrderController extends Controller
                 'header',
                 'main_breadcrumb',
                 'main_breadcrumb_link',
-                'breadcrumb'
+                'breadcrumb',
+                'orders'
             )
         );
     }
@@ -40,6 +44,7 @@ class OrderController extends Controller
         $main_breadcrumb = "Orders detail";
         $main_breadcrumb_link = route('orders.detail');
         $breadcrumb = null;
+        $orders = Order::all();
 
         $id = $request->id;
 
@@ -51,7 +56,8 @@ class OrderController extends Controller
                 'header',
                 'main_breadcrumb',
                 'main_breadcrumb_link',
-                'breadcrumb'
+                'breadcrumb',
+                'orders'
             )
         );
     }

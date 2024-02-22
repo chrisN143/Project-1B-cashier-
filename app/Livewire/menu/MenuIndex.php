@@ -27,6 +27,7 @@ class MenuIndex extends Component
             'product_id' => $id
         ]);
     }
+    
 
     public function mount()
     {
