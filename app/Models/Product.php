@@ -28,8 +28,10 @@ class Product extends Model
 
     public function cart(){
         return $this->hasMany(Cart::class);
+
+
     }
-    
+
     public function getImage()
     {
         return Storage::url('images/' . $this->image);
