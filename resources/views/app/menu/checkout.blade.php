@@ -68,7 +68,7 @@
                             cursor: pointer;">
                                         <label for=""class="product-name capitalize
 
-                                                                    ">
+                                                                        ">
                                             <img src="{{ asset('assets/image/apple.jpg') }}" alt="Image" width="100"
                                                 height="50">
 
@@ -115,7 +115,7 @@
                             cursor: pointer;">
                                         <label for=""class="product-name capitalize
 
-                                                                    ">
+                                                                        ">
                                             <img src="{{ asset('assets/image/apple.jpg') }}" alt="Image" width="100"
                                                 height="50">
 
@@ -166,7 +166,7 @@
                         <option value="{{ $st->id }}">{{ $st->payment_method }}</option>
                     @endforeach
                 </select>
-                @error('storeId')
+                @error('paymentId')
                     <span class="text-danger font-italic">{{ $message }}</span>
                 @enderror
             </div>
