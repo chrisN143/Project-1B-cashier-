@@ -19,10 +19,9 @@
                     <div class="row shadow border rounded p-3 my-3">
                         <div class="col-md-3 my-auto">
                             <a href="">
-                                <label for=""class="product-name capitalize
-
-                                ">
-                                    <img src="" alt="">
+                                <label for=""class="product-name capitalize">
+                                    <img src="{{ asset('storage/images/' . $cart->product->image) }}" alt=""
+                                        width="90px" class="rounded">
                                     {{ $cart->product->name }}
                                 </label>
                             </a>
@@ -32,7 +31,7 @@
                                 Rp. {{ $cart->product->price }}
 
                             </label>
-                          {{-- for total the price --}}
+                            {{-- for total the price --}}
                         </div>
                         <div class="col-md-3 col-5 my-auto">
                             <div class="quantity">
@@ -53,8 +52,8 @@
                                 Rp. {{ $cart->product->price * $cart->quantity }}
                             </label>
                             @php
-                            $total += $cart->product->price * $cart->quantity;
-                        @endphp 
+                                $total += $cart->product->price * $cart->quantity;
+                            @endphp
                         </div>
                         <div class="col-md-1 col-5 my-auto">
                             <div class="remove">
