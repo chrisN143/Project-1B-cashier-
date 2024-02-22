@@ -15,7 +15,11 @@ class TableOrder extends Component
         $this->orders = Order::All();
     }
 
-    
+    public function show()
+    {
+        
+    }
+
 
     public function render()
     {
