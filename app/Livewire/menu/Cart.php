@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Livewire\menu;
+
 use Livewire\WithPagination;
 
 use App\Models\Cart as CartUser;
@@ -18,11 +19,36 @@ class Cart extends Component
 
     public function destroy($id)
     {
-        $cartUser = CartUser::where('id', $id);
-        $cartUser->delete();
-        $this->resetPage();
+        $cartData = CartUser::where('id', $id)->where('user_id', auth()->user()->id)->first();
+        if ($cartData) {
+            $cartData->delete();
+            session()->flash('status', 'Cart Item Removed Succesfully!');
+        } else {
+            session()->flash('error', 'Something wrong!');
+        }
+        // $this->resetPage();  
+    }
+    public function decrementQuantity($id)
+    {
+        $cartData = CartUser::where('id', $id)->where('user_id', auth()->user()->id)->first();
+        if ($cartData) {
+            $cartData->decrement('quantity');
+            session()->flash('status', 'Quantity Updated!');
+        } else {
+            session()->flash('error', 'Something wrong!');
+        }
     }
 
+    public function incrementQuantity($id)
+    {
+        $cartData = CartUser::where('id', $id)->where('user_id', auth()->user()->id)->first();
+        if ($cartData) {
+            $cartData->increment('quantity');
+            session()->flash('status', 'Quantity Updated!');
+        } else {
+            session()->flash('error', 'Something wrong!');
+        }
+    }
     public function render()
     {
         return view('livewire.menu.cart');

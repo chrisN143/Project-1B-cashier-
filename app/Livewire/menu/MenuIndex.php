@@ -9,6 +9,7 @@ use Livewire\Component;
 use App\Models\Product;
 use App\Models\Store;
 use App\Models\Cart;
+use Illuminate\Support\Facades\Auth;
 
 class MenuIndex extends Component
 {
@@ -17,15 +18,34 @@ class MenuIndex extends Component
     public $stores;
     public $product;
     public $carts;
-    public $inputquantity = 0;
+    public $inputquantity = 1;
+    public $cartUser;
+    // protected
 
     public function add($id)
     {
-        Cart::create([
-            'user_id' => auth()->id(),
-            'quantity' => $this->inputquantity,
-            'product_id' => $id
-        ]);
+        if (Auth::check()) {
+            if (Product::where('id', $id)->exists()) {
+                if (Cart::where('user_id', auth()->user()->id)->where('product_id', $id)->exists()) {
+                    session()->flash('status', 'Product already added');
+                } else {
+                    Cart::create([
+                        'user_id' => auth()->user()->id,
+                        'quantity' => $this->inputquantity,
+                        'product_id' => $id
+                    ]);
+                    session()->flash('status', 'Product added to cart!');
+                }
+            }
+        }
+    }
+    public function cartCount()
+    {
+        if (Auth::check()) {
+            return $this->cartUser = Cart::where('user_id', auth()->user()->id)->count();
+        } else {
+            return $this->cartUser = 0;
+        }
     }
 
     public function mount()
@@ -39,6 +59,9 @@ class MenuIndex extends Component
 
     public function render()
     {
-        return view('livewire.menu.menu-index');
+        $this->cartUser = $this->cartCount();
+        return view('livewire.menu.menu-index', [
+            'cartUser' => $this->cartUser
+        ]);
     }
 }
