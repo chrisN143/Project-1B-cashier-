@@ -1,27 +1,29 @@
 <div class="card">
     <div class="card-header border-0 pt-6">
-                <table class="table">
-                    <thead>
+                <table class="table table-row-dashed ">
+                    <thead class="text-gray-600 fw-semibold">
                       <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Payment method</th>
-                        <th scope="col">Created at</th>
-                        <th scope="col">Action</th>
+                        <th class="min-w-125px sorting" style="width: 125px;" scope="col">NAME</th>
+                        <th class="min-w-125px sorting" style="width: 125px;" scope="col">STATUS</th>
+                        <th class="min-w-125px sorting" style="width: 125px;" scope="col">CREATED AT</th>
+                        <th class="min-w-125px sorting" style="width: 125px;" scope="col">ACTION</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody >
                     @foreach ($orders as $order)
                     <tr>
-                      <th>{{ $order->customer_name }}</th>
-                      <td>{{ $order->status_message }}</td>
-                      <td>{{ $order->created_at }}</td>
-                      <td><button wire:click="show" type="button" class="btn btn-outline-dark"><i class="fa-solid fa-eye"></i></button></td>
+                      <th class="my-2">{{ $order->customer_name }}</th>
+                      <td class="my-2">{{ $order->status_message }}</td>
+                      <td class="my-2">{{ $order->created_at }}</td>
+                      <td>
+                        <a href="">
+                            <a href="{{ url('orders/'. $order->id) }}" wire:click="show"  class="btn btn-dark btn-sm"><i class="fa-solid fa-eye "></i></a>
+                            <button wire:click="edit"  class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square"></i></button>
+                        </a>
+                    </td>
                     </tr>
                     @endforeach
                     </tbody>
-                  </table>
-            </div>
-        </div>
+                </table>
     </div>
 </div>
