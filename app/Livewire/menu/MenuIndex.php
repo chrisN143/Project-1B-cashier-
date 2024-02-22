@@ -18,7 +18,7 @@ class MenuIndex extends Component
     public $stores;
     public $product;
     public $carts;
-    public $inputquantity = 1;
+    private $inputquantity = 1;
     public $cartUser;
     // protected
 
