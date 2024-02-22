@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Store;
-use App\Models\Cart;
 
+use App\Models\Cart;
+use App\Models\Transaction;
 
 class MenuController extends Controller
 {
+
     public function index()
     {
         /* Header Setting */
@@ -89,17 +91,20 @@ class MenuController extends Controller
         $main_breadcrumb = "Check Out";
         $main_breadcrumb_link = route('menu.checkout');
         $breadcrumb = null;
+        $payment = Transaction::all();
 
 
         return view(
+            // compact berfungsi untuk melempar function ke checkout.blae.php
             'app.menu.checkout',
             compact(
-    
-                  'title',
+
+                'title',
                 'header',
                 'main_breadcrumb',
                 'main_breadcrumb_link',
-                'breadcrumb'
+                'breadcrumb',
+                'payment'
             )
         );
     }

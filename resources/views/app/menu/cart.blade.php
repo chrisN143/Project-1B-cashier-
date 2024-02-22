@@ -80,6 +80,23 @@
             outline: none;
             text-align: center;
         }
+
+        .checkout-button {
+            background-color: #ffd504;
+            color: rgb(23, 6, 6);
+            font-weight: 500;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 30px;
+            text-decoration: none;
+          
+        }
+
+        .checkout-button:hover {
+            background-color: #3adc63;
+        }
     </style>
 @endsection
 

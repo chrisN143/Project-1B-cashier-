@@ -93,7 +93,7 @@
                     <!--begin::Title-->
                     <div class="card-title d-flex flex-column">
                         <!--begin::Amount-->
-                        <span class="text-light  fw-semibold fs-3">Permissions</span>
+                        <span class="text-light  fw-semibold fs-4">Permissions</span>
                         <span class="fs-2hx fw-bold text-light lh-1 ls-n2">{{ $total_permission }}</span>
                         <span class="text-light fw-semibold fs-6">Created At</span>
                         <!--end::Amount-->
@@ -119,7 +119,7 @@
                     <!--begin::Title-->
                     <div class="card-title d-flex flex-column">
                         <!--begin::Amount-->
-                        <span class="text-light  fw-semibold fs-3">Permissions</span>
+                        <span class="text-light  fw-semibold fs-4">Permissions</span>
                         <span class="fs-2hx fw-bold text-light lh-1 ls-n2">{{ $total_permission }}</span>
                         <span class="text-light fw-semibold fs-6">Created At</span>
                         <!--end::Amount-->
@@ -135,6 +135,94 @@
             </div>
             <!--end::Card widget 7-->
         </div>
-        <!--end::Col-->
     </div>
+
+    <!--end::Col-->
+    </div>
+
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Complex Chart UI</title>
+        <!-- Include Chart.js -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <style>
+            canvas {
+                -moz-user-select: none;
+                -webkit-user-select: none;
+                -ms-user-select: none;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div style="width: 800px; height: 400px; margin: 0 auto;">
+            <canvas id="myChart"></canvas>
+        </div>
+        <script>
+            // Data untuk chart
+            const data = {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Sales',
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+                    data: [100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650]
+                }, {
+                    label: 'Expenses',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255,99,132,1)',
+                    borderWidth: 1,
+                    data: [80, 120, 170, 220, 270, 320, 370, 420, 470, 520, 570, 620]
+                }]
+            };
+
+            // Konfigurasi untuk chart
+            const config = {
+                type: 'line',
+                data: data,
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Sales and Expenses Over Time'
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Month'
+                            }
+                        },
+                        y: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: 'Value'
+                            }
+                        }
+                    }
+                }
+            };
+
+            // Inisialisasi chart
+            var myChart = new Chart(
+                document.getElementById('myChart'),
+                config
+            );
+        </script>
+    </body>
+
+    </html>
 @endsection
