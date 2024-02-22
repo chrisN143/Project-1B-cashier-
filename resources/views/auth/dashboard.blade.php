@@ -138,6 +138,7 @@
     </div>
 
     <!--end::Col-->
+
     <!DOCTYPE html>
     <html lang="en">
 
@@ -145,12 +146,50 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Responsive Table</title>
+        <!-- Tambahkan jQuery -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <style>
+            /* Gaya tambahan untuk membuat tabel responsif */
+            @media screen and (max-width: 600px) {
+                table {
+                    border: 0;
+                    overflow-x: auto;
+                    display: block;
+                    width: 100%;
+                }
+
+                table caption {
+                    font-size: 1.3em;
+                }
+
+                table thead {
+                    display: none;
+                }
+
+                table tbody tr {
+                    display: block;
+                    border: 1px solid #ddd;
+                    margin-bottom: 10px;
+                }
+
+                table tbody td {
+                    display: block;
+                    text-align: left;
+                }
+
+                table td::before {
+                    content: attr(data-label);
+                    float: left;
+                    font-weight: bold;
+                    margin-right: 5px;
+                }
+            }
+
+            /* Gaya tabel utama */
             table {
                 width: 100%;
                 border-collapse: collapse;
                 border: 1px solid #ddd;
-                /* Menambahkan border untuk keseluruhan tabel */
             }
 
             th,
@@ -165,13 +204,11 @@
             }
 
             tbody tr:nth-child(even) {
-                background-color: #000000;
-                /* Warna latar belakang untuk baris-genap */
+                background-color: #d2d2d2;
             }
 
             tbody tr:hover {
-                background-color: #ddd;
-                /* Warna latar belakang saat baris dihover */
+                background-color: #ffffff;
             }
 
             /* Style khusus untuk tombol */
@@ -180,71 +217,102 @@
                 background: none;
                 cursor: pointer;
                 padding: 0;
-
-            }
-
-            @media screen and (max-width: 600px) {
-                table {
-                    border: 0;
-                }
-
-                table caption {
-                    font-size: 1.3em;
-                }
-
-                table thead {
-                    display: none;
-                }
-
-                table tr {
-                    border-bottom: 3px solid #ddd;
-                    display: block;
-                    margin-bottom: 10px;
-                }
-
-                table td {
-                    border-bottom: none;
-                    display: block;
-                    text-align: right;
-                }
-
-                table td::before {
-                    content: attr(data-label);
-                    float: left;
-                    font-weight: bold;
-                }
             }
         </style>
     </head>
 
     <body>
+       <!DOCTYPE html>
+<html lang="en">
 
-        <table>
-            <caption>Order Information</caption>
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>No Customer</th>
-                    <th>Total Harga</th>
-                    <th>Tipe Pembayaran</th>
-                    <th>Tanggal Order</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td data-label="No">1</td>
-                    <td data-label="No Customer">12345</td>
-                    <td data-label="Total Harga">$100</td>
-                    <td data-label="Tipe Pembayaran">Credit Card</td>
-                    <td data-label="Tanggal Order">2024-02-22</td>
-                    <td data-label="Action"><button class="btn btn-primary">Details</button></td>
-                </tr>
-                <!-- You can add more rows here -->
-            </tbody>
-        </table>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Table</title>
+    <!-- Tambahkan jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        /* Gaya tabel utama */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+        }
 
-    </body>
+        th,
+        td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
 
-    </html>
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #d2d2d2;
+        }
+
+        tbody tr:hover {
+            background-color: #ffffff;
+        }
+
+        /* Style khusus untuk tombol */
+        table button {
+            border: none;
+            background: none;
+            cursor: pointer;
+            padding: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div>
+        <!-- Input pencarian -->
+        <input class="" type="text" id="searchInput" placeholder="Search...">
+    </div>
+
+    <table>
+        <caption>Order Information</caption>
+        <tbody>
+            <tr>
+                <td data-label="No">No: 1</td>
+                <td data-label="No Customer">No Customer: 1234</td>
+                <td data-label="Total Harga">Total Harga: $100</td>
+                <td data-label="Tipe Pembayaran">Tipe Pembayaran: Credit Card</td>
+                <td data-label="Tanggal Order">Tanggal Order: 2024-02-22</td>
+                <td data-label="Action"><button class="btn btn-primary">Details</button></td>
+            </tr>
+            <tr>
+                <td data-label="No">No: 2</td>
+                <td data-label="No Customer">No Customer: 5555</td>
+                <td data-label="Total Harga">Total Harga: $120</td>
+                <td data-label="Tipe Pembayaran">Tipe Pembayaran: Credit Card</td>
+                <td data-label="Tanggal Order">Tanggal Order: 2024-02-22</td>
+                <td data-label="Action"><button class="btn btn-primary">Details</button></td>
+            </tr>
+            <!-- You can add more rows here -->
+        </tbody>
+    </table>
+
+    <!-- Skrip JavaScript untuk fitur pencarian -->
+    <script>
+        $(document).ready(function () {
+            $("#searchInput").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("table tbody tr").each(function () {
+                    var customerNo = $(this).find("[data-label='No Customer']").text().toLowerCase();
+                    $(this).toggle(customerNo.indexOf(value) > -1);
+                });
+            });
+        });
+    </script>
+
+</body>
+
+</html>
+
 @endsection
