@@ -9,10 +9,10 @@ class OrderController extends Controller
     public function index()
     {
         /* Header Setting */
-        $title = "Order";
-        $header = "Order List";
-        $main_breadcrumb = "Order";
-        $main_breadcrumb_link = route('order.index');
+        $title = "Orders";
+        $header = "Orders List";
+        $main_breadcrumb = "Orders";
+        $main_breadcrumb_link = route('orders.index');
         $breadcrumb = null;
 
         // Confirm Delete Alert
@@ -35,16 +35,16 @@ class OrderController extends Controller
     public function detail(Request $request)
     {
         /* Header Setting */
-        $title = "Order";
-        $header = "Order detail";
-        $main_breadcrumb = "Order detail";
-        $main_breadcrumb_link = route('order.detail');
+        $title = "Orders";
+        $header = "Orders detail";
+        $main_breadcrumb = "Orders detail";
+        $main_breadcrumb_link = route('orders.detail');
         $breadcrumb = null;
 
         $id = $request->id;
 
         return view(
-            'app.Order.detail',
+            'app.order.detail',
             compact(
                 'id',
                 'title',

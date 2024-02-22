@@ -38,5 +38,18 @@
 @endsection
 
 @section('content')
-    @livewire('order.table-order')
+    <div class="card">
+        <!--begin::Card header-->
+
+        <!--end::Card header-->
+
+        <!--begin::Card body-->
+        <div class="card-body py-4">
+            <!--begin::Table-->
+            <div id="kt_table_users_wrapper">
+                @livewire('Livewire.Order.Index')
+            </div>
+            <!--end::Table-->
+        </div>
+    </div>
 @endsection

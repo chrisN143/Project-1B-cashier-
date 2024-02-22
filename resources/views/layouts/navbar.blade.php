@@ -28,7 +28,8 @@
                     <!--begin:Menu item-->
                     <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-placement="bottom-start"
                         class="menu-item here show menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
-                        <!--begin:Menu link--><span class="menu-link"><span class="menu-title">Project - 1B</span><span class="menu-arrow d-lg-none"></span></span>
+                        <!--begin:Menu link--><span class="menu-link"><span class="menu-title">Project - 1B</span><span
+                                class="menu-arrow d-lg-none"></span></span>
                         <!--end:Menu link-->
                     </div>
                     <!--end:Menu item-->
@@ -90,8 +91,7 @@
 
                         <!--begin::Menu item-->
                         <div class="menu-item px-3 my-0">
-                            <a href="#" class="menu-link px-3 py-2" data-kt-element="mode"
-                                data-kt-value="system">
+                            <a href="#" class="menu-link px-3 py-2" data-kt-element="mode" data-kt-value="system">
                                 <span class="menu-icon" data-kt-element="icon">
                                     <i class="ki-duotone ki-screen fs-2"><span class="path1"></span><span
                                             class="path2"></span><span class="path3"></span><span
@@ -115,7 +115,7 @@
                     <div class="cursor-pointer symbol symbol-35px"
                         data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent"
                         data-kt-menu-placement="bottom-end">
-                        <img src="{{ asset('assets/images/user.png') }}" class="rounded-3" alt="user" />
+                        <img src="{{ asset('assets/image/user.png') }}" class="rounded-3" alt="user" />
                     </div>
 
                     <!--begin::User account menu-->
@@ -126,7 +126,7 @@
                             <div class="menu-content d-flex align-items-center px-3">
                                 <!--begin::Avatar-->
                                 <div class="symbol symbol-50px me-5">
-                                    <img alt="Logo" src="{{ asset('assets/images/user.png') }}" />
+                                    <img alt="Logo" src="{{ asset('assets/image/user.png') }}" />
                                 </div>
                                 <!--end::Avatar-->
 
@@ -134,7 +134,7 @@
                                 <div class="d-flex flex-column">
                                     <div class="fw-bold d-flex align-items-center fs-5">
                                         {{ Auth::user()->name }} <span
-                                            class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">{{ Auth::user()->getRoleNames()->first()? Auth::user()->getRoleNames()->first(): '' }}</span>
+                                            class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">{{ Auth::user()->getRoleNames()->first() ? Auth::user()->getRoleNames()->first() : '' }}</span>
                                     </div>
 
                                     <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">
@@ -158,6 +158,7 @@
                         <!--end::Menu item-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-5">
+
                             <a href="" class="menu-link px-5"
                                 onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">

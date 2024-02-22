@@ -41,7 +41,7 @@
 
                                 outline: none;
 
-                                text-align: center;">
+                                text-align: center;" readonly disabled>
                                     <span class="btn btn1"><i class="fa fa-plus"></i></span>
                                 </div>
                             </div>
@@ -60,20 +60,20 @@
         </div>
         <div class="row justify-content-end">
 
-            <div class="col-md-4 my-4">
+            <div class="col-md-5 my-4">
                 <div class="shadow bg-white p-3">
                     <h4>Total:
                         <span>Rp. {{ $total }}</span>
                     </h4>
                     <hr>
-                    <a href="{{ route('menu.checkout') }}" class="btn btn-warning">Checkout</a>
+                    <a href="{{ route('menu.checkout') }}" class="checkout-button shadow">Checkout</a>
                     {{-- @if ($totalprice != 0)
                     @else
                         <a href="{{ route('checkout.index') }}" class="btn btn-warning disabled">Checkout</a>
                     @endif --}}
                 </div>
+
             </div>
         </div>
-
     </div>
 </div>
