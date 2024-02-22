@@ -222,97 +222,112 @@
     </head>
 
     <body>
-       <!DOCTYPE html>
-<html lang="en">
+        <!DOCTYPE html>
+        <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Table</title>
-    <!-- Tambahkan jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <style>
-        /* Gaya tabel utama */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            border: 1px solid #ddd;
-        }
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        th,
-        td {
-            padding: 8px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
 
-        th {
-            background-color: #f2f2f2;
-        }
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <style>
 
-        tbody tr:nth-child(even) {
-            background-color: #d2d2d2;
-        }
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    border: 1px solid #ddd;
+                }
 
-        tbody tr:hover {
-            background-color: #ffffff;
-        }
+                th,
+                td {
+                    padding: 8px;
+                    text-align: left;
+                    border-bottom: 1px solid #ddd;
+                }
 
-        /* Style khusus untuk tombol */
-        table button {
-            border: none;
-            background: none;
-            cursor: pointer;
-            padding: 0;
-        }
-    </style>
-</head>
+                th {
+                    background-color: #f2f2f2;
+                }
 
-<body>
+                tbody tr:nth-child(even) {
+                    background-color: #d2d2d2;
+                }
 
-    <div>
-        <!-- Input pencarian -->
-        <input class="" type="text" id="searchInput" placeholder="Search...">
-    </div>
+                tbody tr:hover {
+                    background-color: #ffffff;
+                }
 
-    <table>
-        <caption>Order Information</caption>
-        <tbody>
-            <tr>
-                <td data-label="No">No: 1</td>
-                <td data-label="No Customer">No Customer: 1234</td>
-                <td data-label="Total Harga">Total Harga: $100</td>
-                <td data-label="Tipe Pembayaran">Tipe Pembayaran: Credit Card</td>
-                <td data-label="Tanggal Order">Tanggal Order: 2024-02-22</td>
-                <td data-label="Action"><button class="btn btn-primary">Details</button></td>
-            </tr>
-            <tr>
-                <td data-label="No">No: 2</td>
-                <td data-label="No Customer">No Customer: 5555</td>
-                <td data-label="Total Harga">Total Harga: $120</td>
-                <td data-label="Tipe Pembayaran">Tipe Pembayaran: Credit Card</td>
-                <td data-label="Tanggal Order">Tanggal Order: 2024-02-22</td>
-                <td data-label="Action"><button class="btn btn-primary">Details</button></td>
-            </tr>
-            <!-- You can add more rows here -->
-        </tbody>
-    </table>
+                /* Style khusus untuk tombol */
+                table button {
+                    border: none;
+                    background: none;
+                    cursor: pointer;
+                    padding: 0;
+                }
 
-    <!-- Skrip JavaScript untuk fitur pencarian -->
-    <script>
-        $(document).ready(function () {
-            $("#searchInput").on("keyup", function () {
-                var value = $(this).val().toLowerCase();
-                $("table tbody tr").each(function () {
-                    var customerNo = $(this).find("[data-label='No Customer']").text().toLowerCase();
-                    $(this).toggle(customerNo.indexOf(value) > -1);
+                .pagination {
+                    display: flex;
+                    justify-content: flex-end;
+                }
+            </style>
+        </head>
+
+        <body>
+
+            <div class="col-md-3">
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="No Customer" aria-label="Search" id="searchInput">
+                  
+                </form>
+            </div>
+            <table>
+                <caption>Order Information</caption>
+                <tbody>
+                    <tr>
+                        <td data-label="No">No: 1</td>
+                        <td data-label="No Customer">No Customer: 1234</td>
+                        <td data-label="Total Harga">Total Harga: $100</td>
+                        <td data-label="Tipe Pembayaran">Tipe Pembayaran: Credit Card</td>
+                        <td data-label="Tanggal Order">Tanggal Order: 2024-02-22</td>
+                        <td data-label="Action"><button class="btn btn-primary">Details</button></td>
+                    </tr>
+                    <tr>
+                        <td data-label="No">No: 2</td>
+                        <td data-label="No Customer">No Customer: 5555</td>
+                        <td data-label="Total Harga">Total Harga: $120</td>
+                        <td data-label="Tipe Pembayaran">Tipe Pembayaran: Credit Card</td>
+                        <td data-label="Tanggal Order">Tanggal Order: 2024-02-22</td>
+                        <td data-label="Action"><button class="btn btn-primary">Details</button></td>
+                    </tr>
+
+                </tbody>
+            </table>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </nav>
+
+
+            <script>
+                $(document).ready(function() {
+                    $("#searchInput").on("keyup", function() {
+                        var value = $(this).val().toLowerCase();
+                        $("table tbody tr").each(function() {
+                            var customerNo = $(this).find("[data-label='No Customer']").text()
+                                .toLowerCase();
+                            $(this).toggle(customerNo.indexOf(value) > -1);
+                        });
+                    });
                 });
-            });
-        });
-    </script>
+            </script>
 
-</body>
+        </body>
 
-</html>
-
-@endsection
+        </html>
+    @endsection
