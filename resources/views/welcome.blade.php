@@ -11,7 +11,7 @@
     <link rel="icon" href="{{ asset('assets/images/logo.png') }}" />
     <!--begin::Fonts(mandatory for all pages)-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
-    <!--end::Fonts-->
+    <!--end::Fonts--> 
     <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
     <link href="{{ asset('assets/templates/metronic/dist/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet"
         type="text/css" />

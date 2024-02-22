@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
@@ -13,15 +12,23 @@ class Product extends Model
 
     protected $guarded = ['id'];
     protected $fillable = [
+        'store_id',
         'code',
         'price',
-        'store_id',
         'name',
         'image',
         'description',
     ];
     public function store()
     {
+<<<<<<< HEAD
+=======
+        return $this->belongsTo(Store::class);
+    }
+    public function cart(){
+        return $this->hasMany(Cart::class);
+
+>>>>>>> origin/main
     }
 
     public function getImage()

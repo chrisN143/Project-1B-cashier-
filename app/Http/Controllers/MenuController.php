@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\Store;
+use App\Models\Cart;
+
 
 class MenuController extends Controller
 {
@@ -27,7 +31,7 @@ class MenuController extends Controller
                 'header',
                 'main_breadcrumb',
                 'main_breadcrumb_link',
-                'breadcrumb'
+                'breadcrumb',
             )
         );
     }
@@ -55,7 +59,7 @@ class MenuController extends Controller
             )
         );
     }
-    public function menu(Request $request)
+    public function cart(Request $request)
     {
         /* Header Setting */
         $title = "Menu";
@@ -63,13 +67,34 @@ class MenuController extends Controller
         $main_breadcrumb = "Menu";
         $main_breadcrumb_link = route('menu.cart');
         $breadcrumb = null;
-
         $id = $request->id;
 
         return view(
             'app.menu.cart',
             compact(
                 'id',
+                'title',
+                'header',
+                'main_breadcrumb',
+                'main_breadcrumb_link',
+                'breadcrumb'
+            )
+        );
+    }
+    public function checkout()
+    {
+        /* Header Setting */
+        $title = "Check Out";
+        $header = "Check Out Create";
+        $main_breadcrumb = "Check Out";
+        $main_breadcrumb_link = route('menu.checkout');
+        $breadcrumb = null;
+
+
+        return view(
+            'app.menu.checkout',
+            compact(
+    
                 'title',
                 'header',
                 'main_breadcrumb',

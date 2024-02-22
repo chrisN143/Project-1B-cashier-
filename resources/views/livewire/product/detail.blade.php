@@ -1,8 +1,7 @@
 <div>
     {{-- <form action="POST" enctype="multipart/form-data" wire:submit='store'> --}}
     <div class='form-group'>
-        <label>Nama</label>
-        <input type='text' class='form-control' id="name" name="name" wire:model='name'>
+        <input type='text' class='form-control' placeholder="Product Name" id="name" name="name" wire:model='name'>
         @error('name')
             <span class="text-danger font-italic">{{ $message }}</span>
         @enderror
@@ -15,8 +14,7 @@
         @enderror
     </div>
 
-    <div class="form-group">
-        <label>Gambar Produk</label>
+    <div class="input-group mt-3">
         <input type="file" class="form-control" name="image" wire:model='image'>
         @error('image')
             <span class="text-danger font-italic">{{ $message }}</span>
@@ -27,29 +25,26 @@
     @elseif($oldImage)
         <img src="{{ $oldImage }}" class="w-50 h-20 d-block my-2 rounded">
     @endif
-    <div class="mb-3">
-        <label for="category" class="form-label shadow-sm">Category</label>
+    <div class="mt-3">
         <select class="form-select" name="store_id" wire:model="store_id">
+            <option value="" hidden selected>Category</option>
             @foreach ($store as $st)
-                @if (old('store_id') == $st->id)
-                    <option value="{{ $st->id }}" selected>{{ $st->store_name }}</option>
-                @else
-                    <option value="{{ $st->id }}">{{ $st->store_name }}</option>
-                @endif
+                <option value="{{ $st->id }}"{{ $objId ? 'selected' : '' }}>{{ $st->store_name }}</option>
             @endforeach
         </select>
-        @error('store_id')
+        @error('storeId')
             <span class="text-danger font-italic">{{ $message }}</span>
         @enderror
     </div>
-    <div class="form-group mb-3">
-        <label>Deskripsi</label>
-        <textarea class="form-control" placeholder="Leave a comment here" wire:model='description' style="height: 100px"></textarea>
+    <div class="form-group mt-3">
+        {{-- <label>Deskripsi</label> --}}
+        <textarea class="form-control" placeholder="Add your description product" wire:model='description'
+            style="height: 100px"></textarea>
         @error('description')
             <span class="text-danger font-italic">{{ $message }}</span>
         @enderror
     </div>
-    <button class='btn btn-primary' wire:click='store'>
+    <button class='btn btn-primary' wire:click='store' class="mt-3">
         {{ $objId ? 'Update' : 'Create' }}
         <div class="spinner-border text-light" style="width: 15px;  height:15px;" role="status" wire:loading>
             <span class="visually-hidden">Loading...</span>
@@ -72,7 +67,7 @@
             mapToRadix: ['.'], // symbols to process as radix
 
             // additional number interval options (e.g.)
-            min: -10000,
+            min: -100,
             max: 10000000
         });
     </script>

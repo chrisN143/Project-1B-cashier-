@@ -32,23 +32,26 @@
 @endsection
 
 @section('content')
-    <div class="row g-5 gx-xl-10 mb-5 mb-xl-10">
+    <div class="row g-5 gx-xl-10 mb-5 mb-xl-10 ">
         <!--begin::Col-->
-        <div class="col-md-4 col-lg-4 col-xl-4 col-xxl-3 mb-md-5 mb-xl-10">
+        <div class="col-md-3">
             <!--begin::Card widget 7-->
-            <div class="card card-flush">
+            <div class="card card-flush bg-primary bg-gradient">
                 <!--begin::Header-->
-                <div class="card-header pt-5">
+                <div class="card-header py-4">
                     <!--begin::Title-->
-                    <div class="card-title d-flex flex-column">
+                    <div class="card-title d-flex flex-column ">
                         <!--begin::Amount-->
-                        <span class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">{{ $total_user }}</span>
+                        <span class="text-light fw-semibold fs-2">Users</span>
+                        <span class="fs-2hx fw-bold text-light lh-1 ls-n2">{{ $total_user }}</span>
+                        <span class="text-light fw-semibold fs-6">Created At</span>
                         <!--end::Amount-->
 
                         <!--begin::Subtitle-->
-                        <span class="text-gray-500 pt-1 fw-semibold fs-6">Users</span>
                         <!--end::Subtitle-->
                     </div>
+                    <span class="float-right display-5 bg-opacity-25"><i
+                            class="fa-solid fa-cart-shopping fs-1 text-light"></i></span>
                     <!--end::Title-->
                 </div>
                 <!--end::Header-->
@@ -57,21 +60,23 @@
         </div>
         <!--end::Col-->
         <!--begin::Col-->
-        <div class="col-md-4 col-lg-4 col-xl-4 col-xxl-3 mb-md-5 mb-xl-10">
+        <div class="col-md-3">
             <!--begin::Card widget 7-->
-            <div class="card card-flush">
+            <div class="card card-flush bg-warning bg-gradient">
                 <!--begin::Header-->
-                <div class="card-header pt-5">
+                <div class="card-header py-4">
                     <!--begin::Title-->
                     <div class="card-title d-flex flex-column">
                         <!--begin::Amount-->
-                        <span class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">{{ $total_role }}</span>
+                        <span class="text-light fw-semibold fs-2">Roles</span>
+                        <span class="fs-2hx fw-bold text-light me-2 lh-1 ls-n2">{{ $total_role }}</span>
+                        <span class="text-light fw-semibold fs-6">Created At</span>
                         <!--end::Amount-->
-
                         <!--begin::Subtitle-->
-                        <span class="text-gray-500 pt-1 fw-semibold fs-6">Roles</span>
                         <!--end::Subtitle-->
                     </div>
+                    <span class="float-right display-5 bg-opacity-25"><i
+                            class="fa-solid fa-cart-shopping fs-1 text-light"></i></span>
                     <!--end::Title-->
                 </div>
                 <!--end::Header-->
@@ -80,21 +85,50 @@
         </div>
         <!--end::Col-->
         <!--begin::Col-->
-        <div class="col-md-4 col-lg-4 col-xl-4 col-xxl-3 mb-md-5 mb-xl-10">
+        <div class="col-md-3">
             <!--begin::Card widget 7-->
-            <div class="card card-flush">
+            <div class="card card-flush bg-success bg-gradient">
                 <!--begin::Header-->
-                <div class="card-header pt-5">
+                <div class="card-header py-4">
                     <!--begin::Title-->
                     <div class="card-title d-flex flex-column">
                         <!--begin::Amount-->
-                        <span class="fs-2hx fw-bold text-gray-900 me-2 lh-1 ls-n2">{{ $total_permission }}</span>
+                        <span class="text-light  fw-semibold fs-3">Permissions</span>
+                        <span class="fs-2hx fw-bold text-light lh-1 ls-n2">{{ $total_permission }}</span>
+                        <span class="text-light fw-semibold fs-6">Created At</span>
                         <!--end::Amount-->
 
                         <!--begin::Subtitle-->
-                        <span class="text-gray-500 pt-1 fw-semibold fs-6">Permissions</span>
                         <!--end::Subtitle-->
                     </div>
+                    <span class="float-right display-5 bg-opacity-25"><i
+                            class="fa-solid fa-cart-shopping fs-1 text-light"></i></span>
+                    <!--end::Title-->
+                </div>
+                <!--end::Header-->
+            </div>
+            <!--end::Card widget 7-->
+        </div>
+        <!--end::Col-->
+        <!--begin::Col-->
+        <div class="col-md-3">
+            <!--begin::Card widget 7-->
+            <div class="card card-flush bg-danger bg-gradient">
+                <!--begin::Header-->
+                <div class="card-header py-4">
+                    <!--begin::Title-->
+                    <div class="card-title d-flex flex-column">
+                        <!--begin::Amount-->
+                        <span class="text-light  fw-semibold fs-3">Permissions</span>
+                        <span class="fs-2hx fw-bold text-light lh-1 ls-n2">{{ $total_permission }}</span>
+                        <span class="text-light fw-semibold fs-6">Created At</span>
+                        <!--end::Amount-->
+
+                        <!--begin::Subtitle-->
+                        <!--end::Subtitle-->
+                    </div>
+                    <span class="float-right display-5 bg-opacity-25"><i
+                            class="fa-solid fa-cart-shopping fs-1 text-light"></i></span>
                     <!--end::Title-->
                 </div>
                 <!--end::Header-->
