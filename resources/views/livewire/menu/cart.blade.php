@@ -1,18 +1,51 @@
 <div class="py-2 py-md-3 bg-light">
+    @if (session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
+        </div>
+    @endif
+    @if (session('error'))
+        <div class="alert alert-success" role="alert">
+            {{ session('error') }}
+        </div>
+    @endif
     <div class="container">
+
         <div class="shopping-cart">
+            <div class="cart-header">
+                <div class="row">
+                    <div class="col-md-3">
+                        <h4>Products</h4>
+                    </div>
+                    <div class="col-md-2">
+                        <h4>Price</h4>
+
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Quantity</h4>
+
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Total</h4>
+
+                    </div>
+                    <div class="col-md-1">
+                        <h4>Aksi</h4>
+
+                    </div>
+                </div>
+            </div>
             <div class="cart-item">
                 @php
                     $total = 0;
                 @endphp
-                @foreach ($carts as $cart)
+                @forelse ($carts as $cart)
                     <div class="row shadow border rounded p-3 my-3">
-                        <div class="col-md-4 my-auto">
+                        <div class="col-md-3 my-auto">
                             <a href="">
-                                <label for=""class="product-name capitalize
-
-                                ">
-                                    <img src="" alt="">
+                                <label for=""class="product-name capitalize">
+                                    <img src="{{ asset('storage/images/' . $cart->product->image) }}" alt=""
+                                        width="90px" class="rounded">
                                     {{ $cart->product->name }}
                                 </label>
                             </a>
@@ -22,40 +55,43 @@
                                 Rp. {{ $cart->product->price }}
 
                             </label>
-                            @php
-                                $total += $cart->product->price;
-                            @endphp {{-- for total the price --}}
+                            {{-- for total the price --}}
                         </div>
                         <div class="col-md-3 col-5 my-auto">
                             <div class="quantity">
                                 <div class="input-group">
-                                    <span class="btn btn1"><i class="fa fa-minus"></i></span>
-                                    <input type="text" value="{{ $cart->quantity }}" class="input-quantity"
-                                        style="    border: 1px solid #000;
-
-                                margin-right: 3px;
-
-                                font-size: 10px;
-
-                                width: 40%;
-
-                                outline: none;
-
-                                text-align: center;" readonly disabled>
-                                    <span class="btn btn1"><i class="fa fa-plus"></i></span>
+                                    <button class="btn btn1" wire:loading.attr="disabled"
+                                        wire:click="decrementQuantity({{ $cart->id }})"><i
+                                            class="fa fa-minus"></i></button>
+                                    <input type="text" value="{{ $cart->quantity }}" class="input-quantity" readonly
+                                        disabled>
+                                    <button class="btn btn1" wire:loading.attr="disabled"
+                                        wire:click="incrementQuantity({{ $cart->id }})"><i
+                                            class="fa fa-plus"></i></button>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-2 col-5 my-auto">
+                        <div class="col-md-3 my-auto">
+                            <label for="" class="price">
+                                Rp. {{ $cart->product->price * $cart->quantity }}
+                            </label>
+                            @php
+                                $total += $cart->product->price * $cart->quantity;
+                            @endphp
+                        </div>
+                        <div class="col-md-1 col-5 my-auto">
                             <div class="remove">
-                                <button wire:click.live.debounce.150ms="destroy({{ $cart->id }})" class="btn btn-danger btn-sm">
+                                <button wire:loading.attr="disabled" wire:click="destroy({{ $cart->id }})"
+                                    class="btn btn-danger btn-sm">
                                     <i class="fa fa-trash"></i>
                                 </button>
                             </div>
                         </div>
 
                     </div>
-                @endforeach
+                @empty
+                    <h1>No cart Avaiable</h1>
+                @endforelse
             </div>
         </div>
         <div class="row justify-content-end">
@@ -66,11 +102,11 @@
                         <span>Rp. {{ $total }}</span>
                     </h4>
                     <hr>
-                    <a href="{{ route('menu.checkout') }}" class="checkout-button shadow">Checkout</a>
-                    {{-- @if ($totalprice != 0)
+                    @if ($total != 0)
+                        <a href="{{ route('menu.checkout') }}" class="checkout-button shadow">Checkout</a>
                     @else
-                        <a href="{{ route('checkout.index') }}" class="btn btn-warning disabled">Checkout</a>
-                    @endif --}}
+                        <a href="{{ route('menu.checkout') }}" class="btn btn-warning disabled">Checkout</a>
+                    @endif
                 </div>
 
             </div>

@@ -101,7 +101,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/detail/cart/checkout', 'checkout')->name('checkout');
     });
 
-    Route::controller(OrderController::class)->prefix('order')->name('order.')->group(function () {
+    Route::controller(OrderController::class)->prefix('orders')->name('orders.')->group(function () {
         Route::get('/', 'index')->name('index')                                                     ;
         Route::get('/detail', 'detail')->name('detail')                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ;
     });

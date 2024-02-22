@@ -47,7 +47,7 @@
         <div class="card-body py-4">
             <!--begin::Table-->
             <div id="kt_table_users_wrapper">
-                @livewire('Livewire.Order.Index')
+                @livewire('order.index')
             </div>
             <!--end::Table-->
         </div>

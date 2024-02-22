@@ -1,4 +1,9 @@
 <div>
+    @if (session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
+        </div>
+    @endif
     <div class="container my-3">
         <div class="row justify-content-between">
             <div class="col-md-3">
@@ -15,7 +20,7 @@
 
                     <a href="{{ route('menu.cart') }}"><button class="btn btn-secondary mx-2"><i
                                 class="fa-solid fa-cart-shopping"
-                                style="width: 18px"></i>({{ count($carts) }})</button></a>
+                                style="width: 18px"></i>({{ $cartUser }})</button></a>
                 </div>
             </div>
             <div class="col-md-3">
@@ -30,7 +35,7 @@
     {{-- Card  --}}
     <div class="container">
         <div class="row justify-content-center" style="display: flex">
-            @foreach ($product as $item)
+            @forelse ($product as $item)
                 <div class="col-md-3 m-1">
                     <div class="card">
                         <img src="{{ asset('storage/images/' . $item->image) }}" class="img-fluid rounded"
@@ -46,16 +51,21 @@
                             <h6>Price : Rp. {{ $item->price }}</h6>
                             </p>
                             <div class="d-flex mx-3">
-                                <input type="number" wire:model="inputquantity" value="{{ $this->inputquantity }}" class="form-control me-3" style="width:60px;">
+                                
+                                <input type="number" wire:model="inputquantity" value="{{ $this->inputquantity }}"
+                                    class="form-control me-3" style="width:60px;">
                                 <button wire:click="add({{ $item->id }})" class="btn btn-info btn-sm text-white">
                                     Add
-                            
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @empty
+                <div>
+                    <h1 class="text-center">Kosongggggg!!!!!!!!</h1>
+                </div>
+            @endforelse
             {{-- </div> --}}
         </div>
     </div>

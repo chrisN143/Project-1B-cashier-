@@ -65,7 +65,7 @@ class MenuController extends Controller
     {
         /* Header Setting */
         $title = "Menu";
-        $header = "Menu Create";
+        $header = "Menu Cart";
         $main_breadcrumb = "Menu";
         $main_breadcrumb_link = route('menu.cart');
         $breadcrumb = null;

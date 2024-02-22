@@ -44,7 +44,7 @@
             <span class="text-danger font-italic">{{ $message }}</span>
         @enderror
     </div>
-    <button class='btn btn-primary' wire:click='store' class="mt-3">
+    <button class='btn btn-primary mt-3' wire:click='store'>
         {{ $objId ? 'Update' : 'Create' }}
         <div class="spinner-border text-light" style="width: 15px;  height:15px;" role="status" wire:loading>
             <span class="visually-hidden">Loading...</span>

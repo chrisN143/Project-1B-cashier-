@@ -3,6 +3,24 @@
 @section('after_css')
     <link rel="stylesheet"
         href="{{ asset('assets/templates/metronic/dist/assets/plugins/custom/datatables/datatables.bundle.css') }}">
+    <style>
+        .checkout-button {
+            background-color: #c0bfbf;
+            color: rgb(0, 0, 0);
+            font-weight: 500;
+            border: none;
+            padding: 15px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 50px;
+            text-decoration: none;
+
+        }
+
+        .checkout-button:hover {
+            background-color: #3adc63;
+        }
+    </style>
 @endsection
 
 @section('content_header')
@@ -68,7 +86,7 @@
                             cursor: pointer;">
                                         <label for=""class="product-name capitalize
 
-                                                                        ">
+                                                                    ">
                                             <img src="{{ asset('assets/image/apple.jpg') }}" alt="Image" width="100"
                                                 height="50">
 
@@ -115,7 +133,7 @@
                             cursor: pointer;">
                                         <label for=""class="product-name capitalize
 
-                                                                        ">
+                                                                    ">
                                             <img src="{{ asset('assets/image/apple.jpg') }}" alt="Image" width="100"
                                                 height="50">
 
@@ -159,7 +177,6 @@
 
             <h6>Payment Method</h6>
 
-
             <div class="mt-3">
                 <select class="form-select" name="payment_id" wire:model="payment_id">
                     <option value="" hidden selected>Payment</option>
@@ -167,7 +184,7 @@
                         <option value="{{ $st->id }}">{{ $st->payment_method }}</option>
                     @endforeach
                 </select>
-                @error('paymentId')
+                @error('storeId')
                     <span class="text-danger font-italic">{{ $message }}</span>
                 @enderror
             </div>
