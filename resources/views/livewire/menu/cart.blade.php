@@ -27,7 +27,6 @@
                     </div>
                     <div class="col-md-3">
                         <h4>Total</h4>
-
                     </div>
                     <div class="col-md-1">
                         <h4>Aksi</h4>
@@ -35,7 +34,7 @@
                     </div>
                 </div>
             </div>
-            <div class="cart-item">
+            <div class="cart-item" wire:poll.visible.50ms>
                 @php
                     $total = 0;
                 @endphp
@@ -94,8 +93,12 @@
                 @endforelse
             </div>
         </div>
-        <div class="row justify-content-end">
-
+        <div class="row justify-content-between">
+            <div class="col-md-2 mt-5">
+                <div class="bg-white p-3 mt-4">
+                    <a href="{{ route('menu.index') }}"><button class="btn btn-warning btn-sm"><i class="bi bi-box-arrow-right"></i></button></a>
+                </div>
+            </div>
             <div class="col-md-5 my-4">
                 <div class="shadow bg-white p-3">
                     <h4>Total:
