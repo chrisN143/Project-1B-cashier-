@@ -22,8 +22,7 @@ class MenuIndex extends Component
     public $cartUser;
     // protected
 
-    public function add($id)
-    {
+    public function add($id) {
         if (Auth::check()) {
             if (Product::where('id', $id)->exists()) {
                 if (Cart::where('user_id', auth()->user()->id)->where('product_id', $id)->exists()) {

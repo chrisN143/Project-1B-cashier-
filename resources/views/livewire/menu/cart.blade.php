@@ -63,8 +63,8 @@
                                     <button class="btn btn1" wire:loading.attr="disabled"
                                         wire:click="decrementQuantity({{ $cart->id }})"><i
                                             class="fa fa-minus"></i></button>
-                                    <input type="text" value="{{ $cart->quantity }}" class="input-quantity" readonly
-                                        disabled>
+                                    <input type="text" value="{{ $cart->quantity }}" 
+                                        class="input-quantity" readonly disabled>
                                     <button class="btn btn1" wire:loading.attr="disabled"
                                         wire:click="incrementQuantity({{ $cart->id }})"><i
                                             class="fa fa-plus"></i></button>

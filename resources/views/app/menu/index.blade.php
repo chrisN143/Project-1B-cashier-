@@ -3,6 +3,34 @@
 @section('after_css')
     <link rel="stylesheet"
         href="{{ asset('assets/templates/metronic/dist/assets/plugins/custom/datatables/datatables.bundle.css') }}">
+    <style>
+        .btn1 {
+            border: 1px solid;
+
+            border-radius: 0px;
+
+            font-size: 2px;
+        }
+
+        .btn1:hover {
+            background-color: #2874f0;
+
+            color: #fff;
+        }
+
+        .input-quantity {
+            border: 1px solid #000;
+
+            /* margin-right: 3px; */
+
+            font-size: 10px;
+
+            width: 10%;
+
+            outline: none;
+            text-align: center;
+        }
+    </style>
 @endsection
 
 @section('content_header')
