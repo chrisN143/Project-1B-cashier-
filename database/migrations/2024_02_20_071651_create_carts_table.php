@@ -16,7 +16,7 @@ return new class extends Migration
             // $table->foreignId("payment_id");
             $table->foreignId("user_id");
             $table->foreignId("product_id");
-            $table->integer("quantity");
+            $table->unsignedInteger("quantity");
             $table->timestamps();
         });
     }
