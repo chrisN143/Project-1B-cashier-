@@ -24,17 +24,19 @@ class MenuIndex extends Component
 
     public function add($id)
     {
-        if (Auth::check()) {
-            if (Product::where('id', $id)->exists()) {
-                if (Cart::where('user_id', auth()->user()->id)->where('product_id', $id)->exists()) {
-                    session()->flash('status', 'Product already added');
-                } else {
-                    Cart::create([
-                        'user_id' => auth()->user()->id,
-                        'quantity' => $this->inputquantity,
-                        'product_id' => $id
-                    ]);
-                    session()->flash('status', 'Product added to cart!');
+        if ($this->inputquantity >= 0) {
+            if (Auth::check()) {
+                if (Product::where('id', $id)->exists()) {
+                    if (Cart::where('user_id', auth()->user()->id)->where('product_id', $id)->exists()) {
+                        session()->flash('status', 'Product already added');
+                    } else {
+                        Cart::create([
+                            'user_id' => auth()->user()->id,
+                            'quantity' => $this->inputquantity,
+                            'product_id' => $id
+                        ]);
+                        session()->flash('status', 'Product added to cart!');
+                    }
                 }
             }
         }
