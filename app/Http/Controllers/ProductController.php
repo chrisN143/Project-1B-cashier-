@@ -46,7 +46,7 @@ class ProductController extends Controller
         $title = "Product";
         $header = "Product Create";
         $main_breadcrumb = "Product";
-        $main_breadcrumb_link = route('product.index');
+        $main_breadcrumb_link = route('product.detail');
         $breadcrumb = null;
 
         $id = $request->id;

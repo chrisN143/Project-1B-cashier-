@@ -49,6 +49,7 @@ class MenuIndex extends Component
             return $this->cartUser = 0;
         }
     }
+    
 
     public function mount()
     {

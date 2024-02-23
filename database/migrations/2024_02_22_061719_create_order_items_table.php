@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId("product_id");
             $table->string("product_name");
             $table->string("product_price");
-            $table->string("product_image");
+            $table->string("product_image")->nullable();
             $table->timestamps();
         });
     }
