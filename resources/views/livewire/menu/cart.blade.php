@@ -35,7 +35,7 @@
                     </div>
                 </div>
             </div>
-            <div class="cart-item">
+            <div class="cart-item" wire:poll.visible.50ms>
                 @php
                     $total = 0;
                 @endphp
