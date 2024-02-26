@@ -24,11 +24,43 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <form class="d-flex" onsubmit="searchItems(event)">
+                    <input id="searchInput" class="form-control me-2" type="search" placeholder="Search"
+                        aria-label="Search">
                     <button class="btn btn-outline-secondary" type="submit">Search</button>
                 </form>
             </div>
+
+            <div id="searchResults"></div>
+            <script>
+                function searchItems(event) {
+                    event.preventDefault(); // Prevent form submission
+
+                    // Get the search query
+                    var searchQuery = document.getElementById('searchInput').value.toLowerCase();
+
+                    // Get all card titles
+                    var cardTitles = document.querySelectorAll('.card-title');
+
+                    // Loop through each card title and check if it matches the search query
+                    var results = [];
+                    cardTitles.forEach(function(title) {
+                        var itemTitle = title.textContent.toLowerCase();
+                        if (itemTitle.includes(searchQuery)) {
+                            // If the title matches, add the entire card to the results array
+                            results.push(title.closest('.card-body').parentNode.outerHTML);
+                        }
+                    });
+
+                    // Display the search results
+                    var searchResultsContainer = document.getElementById('searchResults');
+                    if (results.length > 0) {
+                        searchResultsContainer.innerHTML = results.join('');
+                    } else {
+                        searchResultsContainer.innerHTML = '<h5 class="text-center"><i>No results found</i></h5>';
+                    }
+                }
+            </script>
         </div>
     </div>
 
