@@ -58,20 +58,7 @@ class MenuIndex extends Component
     }
 
 
-    public function increment()
-    {
-        // if ($this->inputquantity > 0) {
-            # code...
-            return $this->inputquantity++;
-        // }
-    }
-    public function decrement()
-    {
-        // if ($this->inputquantity > 0) {
-            # code...
-            return $this->inputquantity--;
-        // }
-    }
+
     public function mount()
     {
         $this->stores = Store::All();

@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Livewire\Order;
+
 use App\Models\Order;
 
-
+use Hashids\Hashids;
 use Livewire\Component;
 
 class TableOrder extends Component
@@ -17,12 +18,15 @@ class TableOrder extends Component
 
     public function show()
     {
-        
     }
 
 
     public function render()
     {
-        return view('livewire.order.table-order');
+        $hash = new Hashids();
+
+        return view('livewire.order.table-order', [
+            'hash' => $hash
+        ]);
     }
 }

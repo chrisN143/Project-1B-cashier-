@@ -57,6 +57,7 @@ class Checkout extends Component
         $this->validate();
         // $payment = 
         $order = Order::create([
+            'order_code'=> 'Order-' . Str::random(10),
             'user_id' => auth()->user()->id,
             'customer_name' => $this->customerName,
             'status_message' => 'in progress',

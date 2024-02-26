@@ -58,27 +58,23 @@
                             <h6>Price : Rp. {{ $item->price }}</h6>
                             </p>
                             <div class="d-flex mx-3">
-                                {{-- @if ($this->inputquantity > 0) --}}
-                                {{-- <input type="number" wire:model.live="inputquantity"
-                                        value="{{ $this->inputquantity }}" min="1" class="form-control me-3"
-                                        style="width:60px;"> --}}
-                                <div class="wrapper me-2">
-                                    <span wire:click="decrement" class="minus">-</span>
-                                    <span class="num">{{ $this->inputquantity }}</span>
-                                    <span wire:click="increment" class="plus">+</span>
-                                </div>
-                                <button wire:click="add({{ $item->id }})" class="btn btn-info btn-sm text-white">
-                                    Add
-                                </button>
-                                {{-- @else
+                                @if ($this->inputquantity > 0)
                                     <input type="number" wire:model.live="inputquantity"
-                                        value="{{ $this->inputquantity }}" min="1" class="form-control me-3"
+                                        value="{{ $this->inputquantity }}"  class="form-control me-3"
                                         style="width:60px;">
                                     <button wire:click="add({{ $item->id }})"
                                         class="btn btn-info btn-sm text-white">
                                         Add
                                     </button>
-                                @endif --}}
+                                @else
+                                    <input type="number" wire:model.live="inputquantity"
+                                        value="{{ $this->inputquantity  }}" min="1" class="form-control me-3"
+                                        style="width:60px;">
+                                    <button wire:click="add({{ $item->id }})"
+                                        class="btn btn-info btn-sm text-white">
+                                        Add
+                                    </button>
+                                @endif
                             </div>
                         </div>
                     </div>

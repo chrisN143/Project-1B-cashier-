@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Hashids\Hashids;
 use Illuminate\Http\Request;
 use App\Models\Order;
 
@@ -17,7 +17,7 @@ class OrderController extends Controller
         $main_breadcrumb_link = route('orders.index');
         $breadcrumb = null;
         $orders = Order::all();
-
+$hash = new Hashids();
         // Confirm Delete Alert
         $title_delete = 'Delete Data!';
         $text = "Are you sure?";
@@ -31,7 +31,8 @@ class OrderController extends Controller
                 'main_breadcrumb',
                 'main_breadcrumb_link',
                 'breadcrumb',
-                'orders'
+                'orders',
+                'hash'
             )
         );
     }

@@ -105,13 +105,17 @@
     </div>
 
     <!--end::Col-->
-
-    <div class="col-md-2 py-3">
-        <form class="d-flex">
+    <div class="row py-3">
+        <div class="col-md-2">
+            <input class="form-control" type="date" wire:model='date' name="" id="">
+        </div>
+        <div class="col-md-2">
+            {{-- <form class="d-flex"> --}}
             <input class="form-control me-2" type="search" placeholder="No Customer" aria-label="Search"
                 id="searchInput">
 
-        </form>
+            {{-- </form> --}}
+        </div>
     </div>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
@@ -136,18 +140,26 @@
                     @foreach ($order as $index => $item)
                         <tr>
                             <td data-label="No">{{ $index + 1 }}</td>
-                            <td data-label="No Customer">{{ $item->customername }}</td>
-                            <td data-label="Total Harga">{{ $item->totalprice }}</td>
-                            <td data-label="Tipe Pembayaran">{{ $item->payment }}</td>
-                            <td data-label="Tanggal Order">Tanggal Order: 2024-02-22</td>
-                            <td data-label="Action"><button class="btn btn-primary">Detail</button></td>
+                            <td data-label="No Customer">{{ $item->customer_name }}</td>
+                            <td data-label="Total Harga">{{ $item->total_price }}</td>
+                            <td data-label="Tipe Pembayaran">{{ $item->payment_method }}</td>
+                            <td data-label="Tanggal Order">{{ $item->created_at->diffForHumans() }}</td>
+                            <td data-label="Action"><a href="{{ url('laporan/'. $hash->encodeHex($item->id)) }}" class="btn btn-primary">Detail</a></td>
                         </tr>
                     @endforeach
 
 
                 </tbody>
             </table>
-
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                </ul>
+            </nav>
         </div>
         <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
             tabindex="0">
