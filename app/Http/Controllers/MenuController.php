@@ -12,8 +12,22 @@ use App\Models\Transaction;
 class MenuController extends Controller
 {
 
+
+
     public function index()
     {
+        $title = '';
+        if(request('storeName')) {
+            $storename = Store::firstWhere('store_name',request('storeName'));
+            $title = ' in ' . $store->store_name;
+        }
+
+    return  view('app.menu.index',[
+        "title" => "All Posts",
+        "active" => 'posts',
+        "posts" => Store::latest()->Filter(request(['search', 'storeName']) )->paginate(7)->withquerystring(),
+    ]);
+
         /* Header Setting */
         $title = "Menu";
         $header = "Menu List";
