@@ -121,16 +121,16 @@
                             <input type="text" class="form-control" placeholder="Nama Customer"
                                 aria-label="Nama Customer" wire:model="customerName">
                             <hr>
-                            <select class="form-select" name="store_id" wire:model="store_id">
+                            <select class="form-select" name="payment_id" wire:model="payment_id">
                                 <option value="" hidden selected>Choose your Payment Method</option>
                                 @foreach ($payment as $method)
-                                    <option value="{{ $method->id }}">
+                                    <option value="{{ $method->payment_method }}">
                                         {{ $method->payment_method }}</option>
                                 @endforeach
-                                @error('store_id')
-                                    <p class="text-danger">{{ $message }}</p>
-                                @enderror
                             </select>
+                            @error('payment_id')
+                                <p class="text-danger">{{ $message }}</p>
+                            @enderror
                         @else
                             <input type="text" class="form-control" placeholder="Nama Customer"
                                 aria-label="Nama Customer" disabled>
@@ -155,9 +155,16 @@
                         <hr>
                         <div class="">
                             @if ($total != 0)
-                                <a wire:click='Order' class="btn btn-warning shadow">Checkout</a>
+                                <button wire:click='Order'
+                                    class="btn btn-warning shadow">Checkout
+                                    <div class="spinner-border text-light" style="width: 15px;  height:15px;"
+                                        role="status" wire:loading>
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </button>
                             @else
-                                <a href="{{ route('menu.checkout') }}" class="btn btn-warning disabled">Checkout</a>
+                                <button class="btn btn-warning disabled">Checkout
+                                </button>
                             @endif
                         </div>
                     </div>

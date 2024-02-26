@@ -18,7 +18,7 @@
                       <td>
                         <a href="">
                             <a href="{{ url('orders/'. $order->id) }}" wire:click="show"  class="btn btn-dark btn-sm"><i class="fa-solid fa-eye "></i></a>
-                            <button wire:click="edit"  class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square"></i></button>
+                            {{-- <button wire:click="edit"  class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square"></i></button> --}}
                         </a>
                     </td>
                     </tr>

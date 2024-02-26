@@ -18,9 +18,7 @@ class Checkout extends Component
     #[Rule('required')]
     public $customerName;
     public $email;
-    // public $phonenumber;
-    public $payment_mode = '';
-    public $payment_id = '';
+    public $payment_id;
 
     public function decrementQuantity($id)
     {
@@ -63,7 +61,7 @@ class Checkout extends Component
             'customer_name' => $this->customerName,
             'status_message' => 'in progress',
             'total_price' => $this->totalprice,
-            'payment_id' => $this->payment,
+            'payment_method' => $this->payment_id,
         ]);
         foreach ($this->carts as $Item) {
             $orderitems = OrderItems::create([
@@ -74,7 +72,18 @@ class Checkout extends Component
                 'product_image' => $Item->product->image
             ]);
         }
-        return $order;
+        session()->flash('status', 'Orders Has Make!');
+        
+        if ($order) {
+            Cart::where('user_id', Auth::id())->delete();
+            session()->flash('status', 'Orders Placed Succesfully');
+            return redirect()->route('menu.index');
+        } else {
+            session()->flash('error', 'Something Was Wrong');
+
+            return redirect()->route('menu.checkout');
+        }
+     
     }
 
     public function mount()

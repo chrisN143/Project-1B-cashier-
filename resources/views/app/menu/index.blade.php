@@ -30,6 +30,45 @@
             outline: none;
             text-align: center;
         }
+
+        .wrapper {
+            height: 35px;
+            min-width: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .wrapper span {
+            width: 100%;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .wrapper span.num {
+            font-size: 13px;
+            border-right: 2px solid rgba(0, 0, 0, 0.2);
+            border-left: 2px solid rgba(0, 0, 0, 0.2);
+            pointer-events: none;
+        }
+
+        .wrapper span.minus:hover {
+            background-color: #2874f0;
+
+            color: #fff;
+        }
+
+        .wrapper span.plus:hover {
+            background-color: #2874f0;
+
+            color: #fff;
+        }
     </style>
 @endsection
 

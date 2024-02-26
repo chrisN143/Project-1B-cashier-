@@ -28,7 +28,7 @@ class MenuIndex extends Component
 
     public function add($id)
     {
-        if ($this->inputquantity >= 0) {
+        if ($this->inputquantity > 0) {
             if (Auth::check()) {
                 if (Product::where('id', $id)->exists()) {
                     if (Cart::where('user_id', auth()->user()->id)->where('product_id', $id)->exists()) {
@@ -43,6 +43,9 @@ class MenuIndex extends Component
                     }
                 }
             }
+        }else {
+            session()->flash('error', 'Product can not be lower than 0!');
+
         }
     }
     public function cartCount()
@@ -55,6 +58,20 @@ class MenuIndex extends Component
     }
 
 
+    public function increment()
+    {
+        // if ($this->inputquantity > 0) {
+            # code...
+            return $this->inputquantity++;
+        // }
+    }
+    public function decrement()
+    {
+        // if ($this->inputquantity > 0) {
+            # code...
+            return $this->inputquantity--;
+        // }
+    }
     public function mount()
     {
         $this->stores = Store::All();
