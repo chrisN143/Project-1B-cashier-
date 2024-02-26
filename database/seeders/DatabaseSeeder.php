@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\Product;
 use App\Models\Store;
+use App\Models\Transaction;
 use Illuminate\Database\Seeder;
 use Stringable;
 use Illuminate\Support\Str;
@@ -39,6 +40,18 @@ class DatabaseSeeder extends Seeder
         Store::create([
             'store_name' => 'Makanan',
         ]);
+        Transaction::create([
+            'payment_method' => 'OVO',
+        ]);
+        Transaction::create([
+            'payment_method' => 'Cash',
+        ]);
+        Transaction::create([
+            'payment_method' => 'BCA',
+        ]);
+        Transaction::create([
+            'payment_method' => 'GoPay',
+        ]);
         Product::create([
 
             'code' => 'Product-' . Str::random(10),
@@ -58,6 +71,22 @@ class DatabaseSeeder extends Seeder
         Product::create([
 
             'code' => 'Product-' . Str::random(10),
+            'name' => 'Kulkas',
+            'Price' => '2729000',
+            'store_id' => '1',
+            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias error enim voluptates tenetur delectus ducimus quia!'
+        ]);
+        Product::create([
+
+            'code' => 'Product-' . Str::random(10),
+            'name' => 'Bakso',
+            'Price' => '1999000',
+            'store_id' => '4',
+            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias error enim voluptates tenetur delectus ducimus quia!'
+        ]);
+        Product::create([
+
+            'code' => 'Product-' . Str::random(10),
             'name' => 'Xbox Gamepad',
             'Price' => '169000',
             'store_id' => '2',
@@ -69,6 +98,22 @@ class DatabaseSeeder extends Seeder
             'name' => 'Ayam Goreng',
             'Price' => '999000',
             'store_id' => '4',
+            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias error enim voluptates tenetur delectus ducimus quia!'
+        ]);
+        Product::create([
+
+            'code' => 'Product-' . Str::random(10),
+            'name' => 'MI Smart Band',
+            'Price' => '599000',
+            'store_id' => '3',
+            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias error enim voluptates tenetur delectus ducimus quia!'
+        ]);
+        Product::create([
+
+            'code' => 'Product-' . Str::random(10),
+            'name' => 'Banana Smart Watch',
+            'Price' => '3699000',
+            'store_id' => '3',
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias error enim voluptates tenetur delectus ducimus quia!'
         ]);
     }

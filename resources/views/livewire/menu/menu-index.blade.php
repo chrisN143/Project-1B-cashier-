@@ -12,22 +12,24 @@
                         data-bs-toggle="dropdown" aria-expanded="false">
                         Category
                     </a>
+
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         @foreach ($stores as $store)
-                            <li class="dropdown-item" href="#"><a href="">{{ $store->store_name }}</a></li>
+                            <li class="dropdown-item" href="#"><a class="link-underline link-underline-opacity-0"
+                                    href="{{ url('/menu?store=' . $store->store_name) }}">{{ $store->store_name }}</a>
+                            </li>
                         @endforeach
                     </ul>
 
-                    <a href="{{ route('menu.cart') }}"><button class="btn btn-secondary mx-2"><i
+                    <a href="{{ route('menu.checkout') }}"><button class="btn btn-secondary mx-2"><i
                                 class="fa-solid fa-cart-shopping"
                                 style="width: 18px"></i>({{ $cartUser }})</button></a>
                 </div>
             </div>
             <div class="col-md-3">
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-secondary" type="submit">Search</button>
-                </form>
+                <input class="form-control me-2" wire:model.live="search" type="text" placeholder="Search"
+                    aria-label="Search">
+                {{-- <button class="btn btn-outline-secondary" type="submit">Search</button> --}}
             </div>
         </div>
     </div>
@@ -35,8 +37,8 @@
     {{-- Card  --}}
     <div class="container">
         <div class="row justify-content-center" style="display: flex">
-            @forelse ($product as $item)
-                <div class="col-md-3 m-1">
+            @forelse ($products as $item)
+                <div class="col-md-3 m-2">
                     <div class="card">
                         <img src="{{ asset('storage/images/' . $item->image) }}" class="img-fluid rounded"
                             alt="{{-- $post->category->name --}}">
@@ -77,6 +79,7 @@
                     <h1 class="text-center">Halaman ini kosong!</h1>
                 </div>
             @endforelse
+            {{ $products->links() }}
             {{-- </div> --}}
         </div>
     </div>

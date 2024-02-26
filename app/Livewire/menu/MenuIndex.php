@@ -3,7 +3,7 @@
 namespace App\Livewire\Menu;
 
 use Livewire\Attributes\Reactive;
-
+use Livewire\Attributes\Url;
 use Livewire\WithPagination;
 use Livewire\Component;
 use App\Models\Product;
@@ -13,27 +13,34 @@ use Illuminate\Support\Facades\Auth;
 
 class MenuIndex extends Component
 {
+    use WithPagination;
+    #[Url()]
+    protected $queryString = ['search' => ['except' => '']];
 
+    public $search = '';
 
     public $stores;
-    public $product;
+    // public $product;
     public $carts;
     private $inputquantity = 1;
     public $cartUser;
     // protected
 
-    public function add($id) {
-        if (Auth::check()) {
-            if (Product::where('id', $id)->exists()) {
-                if (Cart::where('user_id', auth()->user()->id)->where('product_id', $id)->exists()) {
-                    session()->flash('status', 'Product already added');
-                } else {
-                    Cart::create([
-                        'user_id' => auth()->user()->id,
-                        'quantity' => $this->inputquantity,
-                        'product_id' => $id
-                    ]);
-                    session()->flash('status', 'Product added to cart!');
+    public function add($id)
+    {
+        if ($this->inputquantity >= 0) {
+            if (Auth::check()) {
+                if (Product::where('id', $id)->exists()) {
+                    if (Cart::where('user_id', auth()->user()->id)->where('product_id', $id)->exists()) {
+                        session()->flash('status', 'Product already added');
+                    } else {
+                        Cart::create([
+                            'user_id' => auth()->user()->id,
+                            'quantity' => $this->inputquantity,
+                            'product_id' => $id
+                        ]);
+                        session()->flash('status', 'Product added to cart!');
+                    }
                 }
             }
         }
@@ -47,11 +54,12 @@ class MenuIndex extends Component
         }
     }
 
+
     public function mount()
     {
         $this->stores = Store::All();
-        $this->product = Product::All();
         $this->carts = Cart::where('user_id', auth()->id())->get();
+        $this->search = request()->query('search', $this->search);
     }
 
 
@@ -59,8 +67,13 @@ class MenuIndex extends Component
     public function render()
     {
         $this->cartUser = $this->cartCount();
+
+        // if (strlen($this->search) > 2) {
+            $products =  $this->search === null ? Product::latest()->paginate(6) : Product::latest()->where('name', 'like', '%' . $this->search . '%')->paginate(6);
+        // }
         return view('livewire.menu.menu-index', [
-            'cartUser' => $this->cartUser
+            'cartUser' => $this->cartUser,
+            'products' => $products
         ]);
     }
 }

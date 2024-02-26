@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string("status_message");
             $table->string("customer_name");
             $table->foreignId("payment_id");
-            $table->string("payment_method");
+            // $table->string("payment_method");
+            $table->integer("total_price");
             $table->timestamps();
         });
     }
