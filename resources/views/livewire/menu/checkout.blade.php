@@ -20,22 +20,22 @@
             <div class="shopping-cart">
                 <div class="cart-header">
                     <div class="row">
-                        <div class="col-lg-3 col-cart-header">
+                        <div class="col-lg-3 col-cart-header offset-md-1">
                             <h4>Products</h4>
                         </div>
-                        <div class="col-lg-2 col-cart-header">
+                        <div class="col-lg-2 col-cart-header offset-md-1">
                             <h4>Price</h4>
 
                         </div>
-                        <div class="col-lg-3 col-cart-header">
+                        <div class="col-lg-3 col-cart-header offset-md-1">
                             <h4>Quantity</h4>
 
                         </div>
-                        <div class="col-lg-3 col-md-1">
+                        <div class="col-lg-3 offset-md-1">
                             <h4>Total</h4>
 
                         </div>
-                        <div class="col-lg-1 ">
+                        <div class="col-lg-1 offset-md-1">
                             <h4>Aksi</h4>
 
                         </div>
