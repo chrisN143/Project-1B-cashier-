@@ -32,7 +32,13 @@ class MenuIndex extends Component
             if (Auth::check()) {
                 if (Product::where('id', $id)->exists()) {
                     if (Cart::where('user_id', auth()->user()->id)->where('product_id', $id)->exists()) {
-                        session()->flash('status', 'Product already added');
+                        $cart = Cart::find($id);
+                        $cart->update([
+                            'user_id' => auth()->user()->id,
+                            'quantity' => $this->inputquantity + 1,
+                            'product_id' => $id
+                        ]);
+                        session()->flash('status', 'Product already updated');
                     } else {
                         Cart::create([
                             'user_id' => auth()->user()->id,
@@ -43,9 +49,8 @@ class MenuIndex extends Component
                     }
                 }
             }
-        }else {
+        } else {
             session()->flash('error', 'Product can not be lower than 0!');
-
         }
     }
     public function cartCount()
@@ -73,7 +78,7 @@ class MenuIndex extends Component
         $this->cartUser = $this->cartCount();
 
         // if (strlen($this->search) > 2) {
-            $products =  $this->search === null ? Product::latest()->paginate(6) : Product::latest()->where('name', 'like', '%' . $this->search . '%')->paginate(6);
+        $products =  $this->search === null ? Product::latest()->paginate(6) : Product::latest()->where('name', 'like', '%' . $this->search . '%')->paginate(6);
         // }
         return view('livewire.menu.menu-index', [
             'cartUser' => $this->cartUser,

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Models\Order;
+use App\Models\Product;
 class LaporanController extends Controller
 
 {
@@ -33,27 +34,27 @@ class LaporanController extends Controller
         );
     }
 
-    public function detail(Request $request)
+    public function detail($laporanId)
     {
         /* Header Setting */
         $title = "Laporan";
-        $header = "Laporan Create";
-        $main_breadcrumb = "Laporan";
-        $main_breadcrumb_link = route('laporan.detail');
+        $header = "Laporan detail";
+        $main_breadcrumb = "Laporan detail";
+        $main_breadcrumb_link = url('laporan/' . $reportId); //$orderId didapatkan dari codingan {{$order->id}} pada table-order.blade.php
         $breadcrumb = null;
-
-        $id = $request->id;
-
-        return view(
-            'app.laporan.detail',
-            compact(
-                'id',
+        $report = Order::where('order_code', $reportId)->first();
+        if ($report) {
+            return view(
+                'app.laporan.detail',
+                compact(
                 'title',
                 'header',
                 'main_breadcrumb',
                 'main_breadcrumb_link',
-                'breadcrumb'
+                'breadcrumb',
+                'laporan',
             )
-        );
+            );
+        }
     }
 }

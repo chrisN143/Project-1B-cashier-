@@ -4,6 +4,7 @@
     <link rel="stylesheet"
         href="{{ asset('assets/templates/metronic/dist/assets/plugins/custom/datatables/datatables.bundle.css') }}">
     <style>
+        
         .shopping-cart.cart-header {
             padding: 10px;
         }
@@ -133,7 +134,13 @@
 @endsection
 
 @section('content')
-    <div class="card p-3">
+<div class="container">
+    <div class="row mx-auto flex">
         @livewire('menu.cart')
-    </div>
+
+        @livewire('menu.checkout')
+
+        </div>
+</div>
+
 @endsection

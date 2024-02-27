@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Hashids\Hashids;
 use Illuminate\Http\Request;
 use App\Models\Order;
@@ -16,8 +17,8 @@ class OrderController extends Controller
         $main_breadcrumb = "Orders";
         $main_breadcrumb_link = route('orders.index');
         $breadcrumb = null;
-        $orders = Order::all();
-$hash = new Hashids();
+        $orders = Order::latest()->where('user_id', auth()->user()->id);
+        $hash = new Hashids();
         // Confirm Delete Alert
         $title_delete = 'Delete Data!';
         $text = "Are you sure?";
@@ -43,15 +44,13 @@ $hash = new Hashids();
         $title = "Orders";
         $header = "Orders detail";
         $main_breadcrumb = "Orders detail";
-        $main_breadcrumb_link =url('orders/'. $orderId) ; //$orderId didapatkan dari codingan {{$order->id}} pada table-order.blade.php
+        $main_breadcrumb_link = url('orders/' . $orderId); //$orderId didapatkan dari codingan {{$order->id}} pada table-order.blade.php
         $breadcrumb = null;
-        $order = Order::where('user_id', auth()->user()->id)->where('id', $orderId)->first();
-
-
-        return view(
-            'app.order.detail',
-            compact(
-
+        $order = Order::where('order_code', $orderId)->first();
+        if ($order) {
+            return view(
+                'app.order.detail',
+                compact(
                 'title',
                 'header',
                 'main_breadcrumb',
@@ -60,5 +59,8 @@ $hash = new Hashids();
                 'order',
             )
         );
+    } else {
+        return redirect('/orders')->with('message', 'Order Id not Found');
+    }
     }
 }
