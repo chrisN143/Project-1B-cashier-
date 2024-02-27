@@ -47,6 +47,7 @@ $hash = new Hashids();
         $breadcrumb = null;
         $order = Order::where('user_id', auth()->user()->id)->where('id', $orderId)->first();
 
+
         return view(
             'app.order.detail',
             compact(
@@ -56,7 +57,7 @@ $hash = new Hashids();
                 'main_breadcrumb',
                 'main_breadcrumb_link',
                 'breadcrumb',
-                'order'
+                'order',
             )
         );
     }
