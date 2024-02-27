@@ -20,22 +20,22 @@
             <div class="shopping-cart">
                 <div class="cart-header">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-lg-3 col-cart-header">
                             <h4>Products</h4>
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-lg-2 col-cart-header">
                             <h4>Price</h4>
 
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-lg-3 col-cart-header">
                             <h4>Quantity</h4>
 
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-lg-3 col-md-1">
                             <h4>Total</h4>
 
                         </div>
-                        <div class="col-md-1">
+                        <div class="col-lg-1 ">
                             <h4>Aksi</h4>
 
                         </div>
@@ -155,8 +155,7 @@
                         <hr>
                         <div class="">
                             @if ($total != 0)
-                                <button wire:click='Order'
-                                    class="btn btn-warning shadow">Checkout
+                                <button wire:click='Order' class="btn btn-warning shadow">Checkout
                                     <div class="spinner-border text-light" style="width: 15px;  height:15px;"
                                         role="status" wire:loading>
                                         <span class="visually-hidden">Loading...</span>
