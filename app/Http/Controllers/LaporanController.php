@@ -32,4 +32,28 @@ class LaporanController extends Controller
             )
         );
     }
+
+    public function detail(Request $request)
+    {
+        /* Header Setting */
+        $title = "Laporan";
+        $header = "Laporan Create";
+        $main_breadcrumb = "Laporan";
+        $main_breadcrumb_link = route('laporan.detail');
+        $breadcrumb = null;
+
+        $id = $request->id;
+
+        return view(
+            'app.laporan.detail',
+            compact(
+                'id',
+                'title',
+                'header',
+                'main_breadcrumb',
+                'main_breadcrumb_link',
+                'breadcrumb'
+            )
+        );
+    }
 }

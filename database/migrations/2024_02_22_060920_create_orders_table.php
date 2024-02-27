@@ -14,10 +14,12 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId("user_id");
-            $table->string("tab");
+            $table->string("order_code");
+            $table->string("status_message");
             $table->string("customer_name");
-            $table->foreignId("payment_id");
+            // $table->foreignId("payment_id");
             $table->string("payment_method");
+            $table->integer("total_price");
             $table->timestamps();
         });
     }

@@ -101,7 +101,7 @@ class MenuController extends Controller
     {
         /* Header Setting */
         $title = "Check Out";
-        $header = "Check Out Create";
+        $header = "Check Out List";
         $main_breadcrumb = "Check Out";
         $main_breadcrumb_link = route('menu.checkout');
         $breadcrumb = null;

@@ -31,11 +31,11 @@ class Cart extends Component
     public function decrementQuantity($id)
     {
         $cartData = CartUser::where('id', $id)->where('user_id', auth()->user()->id)->first();
-        if ($cartData) {
+        if ($cartData && $cartData->quantity > 0) {
             $cartData->decrement('quantity');
             session()->flash('status', 'Quantity Updated!');
         } else {
-            session()->flash('error', 'Something wrong!');
+            session()->flash('error', 'Something wrong! Product quantity can\'t goes below 1');
         }
     }
 

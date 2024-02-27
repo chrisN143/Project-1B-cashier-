@@ -17,7 +17,7 @@
                       <td class="my-2">{{ $order->created_at }}</td>
                       <td>
                         <a href="">
-                            <a href="{{ url('orders/'. $order->id) }}" wire:click="show"  class="btn btn-dark btn-sm"><i class="fa-solid fa-eye "></i></a>
+                            <a href="{{ url('orders/'. $hash->encodeHex($order->id)) }}" wire:click="show"  class="btn btn-dark btn-sm"><i class="fa-solid fa-eye "></i></a>
                             {{-- <button wire:click="edit"  class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square"></i></button> --}}
                         </a>
                     </td>

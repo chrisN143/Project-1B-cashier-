@@ -56,5 +56,5 @@
 @endsection
 
 @section('content')
-@livewire('menu.checkout')
+    @livewire('menu.checkout')
 @endsection
