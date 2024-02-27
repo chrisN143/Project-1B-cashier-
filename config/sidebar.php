@@ -13,7 +13,7 @@ return [
             'text' => 'Dashboard',
             'url'  => 'dashboard',
             'icon' => 'ki-duotone ki-element-11 fs-2',
-            'role' => 'Admin',
+            'role' => 'All',
         ],
         [
             'header' => 'Pages',
