@@ -20,6 +20,110 @@
         .checkout-button:hover {
             background-color: #3adc63;
         }
+        .shopping-cart.cart-header {
+    padding: 10px;
+}
+
+.shopping-cart>.cart-header>.row>.col-cart-header h4 {
+
+    font-size: 10px;
+    margin-bottom: 0px;
+}
+
+.shopping-cart.cart-item a {
+    text-decoration: none;
+}
+
+.shopping-cart.cart-item {
+    background-color: #fff;
+
+    box-shadow: 0 0.125rem 0.25rem rgb(0 0 0/ 8%);
+
+    padding: 10px 10px;
+
+    margin-top: 10px;
+}
+
+.shopping-cart .cart-item .product-name {
+    font-size: 16px;
+
+    font-weight: 600;
+    text-transform: capitalize;
+
+    width: 100%;
+
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
+
+    overflow: hidden;
+
+    cursor: pointer;
+}
+
+.shopping-cart .cart-item .price {
+    font-size: 16px;
+
+    font-weight: 600;
+
+    padding: 4px 2px;
+}
+
+.shopping-cart .btn1 {
+    border: 1px solid;
+
+    margin-right: 3px;
+
+    border-radius: 0px;
+
+    font-size: 10px;
+}
+
+.shopping-cart .btn1:hover {
+    background-color: #2874f0;
+
+    color: #fff;
+}
+
+.shopping-cart .input-quantity {
+    border: 1px solid #000;
+
+    margin-right: 3px;
+
+    font-size: 10px;
+
+    width: 40%;
+
+    outline: none;
+
+    text-align: center;
+}
+@media only screen and (max-width: 600px) {
+    .shopping-cart>.cart-header>.row>.col-cart-header h4 {
+        font-size: 10px;
+        margin-bottom: 0px;
+    }
+    .shopping-cart .btn1:hover {
+    background-color: #2874f0;
+
+    color: #fff;
+}
+
+.shopping-cart .input-quantity {
+    border: 1px solid #000;
+
+    margin-right: 3px;
+
+    font-size: 10px;
+
+    width: 30%;
+
+    outline: none;
+
+    text-align: center;
+}
+}
+
     </style>
 @endsection
 
