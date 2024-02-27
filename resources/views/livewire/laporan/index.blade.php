@@ -86,7 +86,7 @@
                     <!--begin::Title-->
                     <div class="card-title d-flex flex-column">
                         <!--begin::Amount-->
-                        <span class="text-light  fw-semibold fs-4">Permissions</span>
+                        <span class="text-light  fw-semibold fs-4">Incomme</span>
                         <span class="fs-2hx fw-bold text-light lh-1 ls-n2"></span>
                         <span class="text-light fw-semibold fs-6">Created At</span>
                         <!--end::Amount-->
