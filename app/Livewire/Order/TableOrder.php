@@ -5,15 +5,15 @@ namespace App\Livewire\Order;
 use App\Models\Order;
 
 use Hashids\Hashids;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class TableOrder extends Component
 {
-    public $orders;
+    // public $orders;
 
     public function mount()
     {
-        $this->orders = Order::All();
     }
 
     public function show()
@@ -24,9 +24,11 @@ class TableOrder extends Component
     public function render()
     {
         $hash = new Hashids();
+        $orders = Order::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(5);
 
         return view('livewire.order.table-order', [
-            'hash' => $hash
+            'hash' => $hash,
+            'orders' => $orders
         ]);
     }
 }

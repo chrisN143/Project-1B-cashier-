@@ -17,8 +17,9 @@ class Checkout extends Component
     public $payment;
     #[Rule('required')]
     public $customerName;
-    public $email;
+    #[Rule('required')]
     public $payment_id;
+    public $email;
 
     public function decrementQuantity($id)
     {

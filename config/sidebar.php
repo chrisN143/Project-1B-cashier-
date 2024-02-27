@@ -13,31 +13,31 @@ return [
             'text' => 'Dashboard',
             'url'  => 'dashboard',
             'icon' => 'ki-duotone ki-element-11 fs-2',
-            'role' => 'All',
+            'role' => 'Admin',
         ],
         [
             'header' => 'Pages',
-            'role'   => 'All'
+            'role'   => 'Admin'
         ],
         [
             'text' => 'Master Data',
             'icon' => 'ki-duotone ki-abstract-28 fs-2',
-            'role' => 'All',
+            'role' => 'Admin',
             'submenu' => [
                 [
                     'text' => 'Product',
                     'url'  => 'product',
-                    'role' => 'All',
+                    'role' => 'Admin',
                 ],
                 [
                     'text' => 'Store',
                     'url'  => 'store',
-                    'role' => 'All',
+                    'role' => 'Admin',
                 ],
                 [
                     'text' => 'Transaction',
                     'url'  => 'transaction',
-                    'role' => 'All',
+                    'role' => 'Admin',
                 ],
             ],
         ],
@@ -64,22 +64,28 @@ return [
             ],
         ],
         [
-            'text' => 'Menu',
-            'url'  => 'menu',
-            'icon' => 'ki-duotone ki-element-11 fs-2',
+            'text' => 'Purchesing',
+            'icon' => 'ki-duotone ki-abstract-28 fs-2',
             'role' => 'All',
+            'submenu' => [
+                [
+                    'text' => 'Menu',
+                    'url'  => 'menu',
+                    'role' => 'All',
+                ],
+                [
+                    'text' => 'Orders',
+                    'url'  => 'orders',
+                    'role' => 'All',
+                ],
+            ],
         ],
-        [
-            'text' => 'Orders',
-            'url'  => 'orders',
-            'icon' => 'ki-duotone ki-element-11 fs-2',
-            'role' => 'All',
-        ],
+
         [
             'text' => 'Laporan',
             'url'  => 'laporan',
             'icon' => 'ki-duotone ki-element-11 fs-2',
-            'role' => 'All',
+            'role' => 'Admin',
         ],
     ],
 ];
