@@ -22,7 +22,7 @@ class MenuIndex extends Component
     public $stores;
     // public $product;
     public $carts;
-    private $inputquantity = 1;
+    private $inputquantity;
     public $cartUser;
     // protected
 
@@ -32,13 +32,7 @@ class MenuIndex extends Component
             if (Auth::check()) {
                 if (Product::where('id', $id)->exists()) {
                     if (Cart::where('user_id', auth()->user()->id)->where('product_id', $id)->exists()) {
-                        $cart = Cart::find($id);
-                        $cart->update([
-                            'user_id' => auth()->user()->id,
-                            'quantity' => $this->inputquantity + 1,
-                            'product_id' => $id
-                        ]);
-                        session()->flash('status', 'Product already updated');
+                        session()->flash('status', 'Product already added');
                     } else {
                         Cart::create([
                             'user_id' => auth()->user()->id,
