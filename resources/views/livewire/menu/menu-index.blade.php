@@ -25,7 +25,7 @@
                                     href="{{ url('/menu?store=' . $store->store_name) }}">{{ $store->store_name }}</a>
                             </li>
                         @endforeach
-                    </ul>
+                    </ul> 
 
                     <a href="{{ route('menu.checkout') }}"><button class="btn btn-secondary mx-2"><i
                                 class="fa-solid fa-cart-shopping"

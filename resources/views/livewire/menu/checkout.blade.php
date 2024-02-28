@@ -16,11 +16,77 @@
         {{-- <h6 class="mb-3">Total price : Rp. {{ $totalprice }}</h6> --}}
         {{-- ke satu --}}
         <div class="container">
+            <div class="card p-4">
+                {{-- <div class="card-header border-0 pt-6"> --}}
+                <table class="table table-row-dashed">
+                    <thead class="text-gray-600 fw-semibold">
+                        <tr>
+                            <th class="min-w-100px sorting" style="width: 100px;" scope="col">Products</th>
+                            <th class="min-w-40px sorting" style="width: 40px;" scope="col">Price</th>
+                            <th class="min-w-100px sorting text-center" style="width: 100px;" scope="col">Quantity
+                            </th>
+                            <th class="min-w-50px sorting" style="width: 50px;" scope="col">Total</th>
+                            <th class="min-w-100px sorting" style="width: 100px;" scope="col">ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php
+                            $total = 0;
+                        @endphp
+                        @forelse ($carts as $cart)
+                            <tr>
+                                <th class="my-2">{{ $cart->product->name }}</th>
+                                <td class="my-2">Rp. {{ $cart->product->price }}</td>
+                                <td class="my-2">
+                                    @if ($cart->quantity > 0)
+                                        <div class="input-group">
+                                            <button class="btn btn1" wire:loading.attr="disabled"
+                                                wire:click="decrementQuantity({{ $cart->id }})"><i
+                                                    class="fa fa-minus"></i></button>
+                                            <input type="number" value="{{ $cart->quantity }}"
+                                                class="text-center input-quantity" readonly disabled>
+                                            <button class="btn btn1" wire:loading.attr="disabled"
+                                                wire:click="incrementQuantity({{ $cart->id }})"><i
+                                                    class="fa fa-plus"></i></button>
+                                        </div>
+                                    @else
+                                        <div class="input-group">
+                                            <button class="btn btn1" wire:loading.attr="disabled"
+                                                wire:click="decrementQuantity({{ $cart->id }})"><i
+                                                    class="fa fa-minus"></i></button>
+                                            <input type="number" value="{{ $cart->quantity = 1 }}"
+                                                class="input-quantity" readonly disabled>
+                                            <button class="btn btn1" wire:loading.attr="disabled"
+                                                wire:click="incrementQuantity({{ $cart->id }})"><i
+                                                    class="fa fa-plus"></i></button>
+                                        </div>
+                                    @endif
+                                </td>
+                                <td class="my-2">
+                                    Rp. {{ $cart->product->price * $cart->quantity }}
 
-            <div class="shopping-cart">
+                                </td>
+                                @php
+                                    $total += $cart->product->price * $cart->quantity;
+                                @endphp
+                                <td>
+                                    <button wire:loading.attr="disabled" wire:click="destroy({{ $cart->id }})"
+                                        class="btn btn-danger btn-sm">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        @empty
+                            <h1 class="text-center">No cart Avaiable!!!</h1>
+                        @endforelse
+                    </tbody>
+                </table>
+                {{-- </div> --}}
+            </div>
+            {{-- <div class="shopping-cart">
                 <div class="cart-header">
                     <div class="row">
-                        <div class="col-lg-1 ">
+                        <div class="col-lg-1">
                             <h5>Products</h5>
                         </div>
                         <div class="col-lg-1">
@@ -61,7 +127,7 @@
                                     Rp. {{ $cart->product->price }}
 
                                 </label>
-                                {{-- for total the price --}}
+                                 for total the price 
                             </div>
                             <div class="col-md-3 my-auto">
                                 <div class="quantity">
@@ -112,7 +178,7 @@
                         <h1 class="text-center">No cart Avaiable!!!</h1>
                     @endforelse
                 </div>
-            </div>
+            </div> --}}
             <div class="row justify-content-center">
 
                 <div class="col-md-7 my-4">

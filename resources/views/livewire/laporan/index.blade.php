@@ -87,15 +87,14 @@
                     <div class="card-title d-flex flex-column">
                         <!--begin::Amount-->
                         <span class="text-light  fw-semibold fs-4">Incomme</span>
-                        <span class="fs-2hx fw-bold text-light lh-1 ls-n2"></span>
+                        <h4 class=" text-light lh-1 ls-n2">Rp.{{ $totalprice }}</h4>
                         <span class="text-light fw-semibold fs-6">Created At</span>
                         <!--end::Amount-->
 
                         <!--begin::Subtitle-->
                         <!--end::Subtitle-->
                     </div>
-                    <span class="float-right display-5 bg-opacity-25"><i
-                            class="fa-solid fa-cart-shopping fs-1 text-light"></i></span>
+                    <span class="float-right display-5 bg-opacity-25"><i class="fa-solid fa-dollar-sign fs-1 text-light"></i></span>
                     <!--end::Title-->
                 </div>
                 <!--end::Header-->
@@ -144,7 +143,8 @@
                             <td data-label="Total Harga">{{ $item->total_price }}</td>
                             <td data-label="Tipe Pembayaran">{{ $item->payment_method }}</td>
                             <td data-label="Tanggal Order">{{ $item->created_at->diffForHumans() }}</td>
-                            <td data-label="Action"><a href="{{ url('laporan/'. $hash->encodeHex($item->id)) }}" class="btn btn-primary">Detail</a></td>
+                            <td data-label="Action"><a href="{{ url('laporan/' . $hash->encodeHex($item->id)) }}"
+                                    class="btn btn-primary">Detail</a></td>
                         </tr>
                     @endforeach
 
