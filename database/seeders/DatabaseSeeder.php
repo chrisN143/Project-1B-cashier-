@@ -55,6 +55,7 @@ class DatabaseSeeder extends Seeder
         Product::create([
 
             'code' => 'Product-' . Str::random(10),
+            'stok' => '20',
             'name' => 'Headphone',
             'Price' => '129000',
             'store_id' => '3',
@@ -64,6 +65,7 @@ class DatabaseSeeder extends Seeder
 
             'code' => 'Product-' . Str::random(10),
             'name' => 'Black Mechanical Keyboard',
+            'stok' => '20',
             'Price' => '279000',
             'store_id' => '2',
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias error enim voluptates tenetur delectus ducimus quia!'
@@ -72,6 +74,7 @@ class DatabaseSeeder extends Seeder
 
             'code' => 'Product-' . Str::random(10),
             'name' => 'Kulkas',
+            'stok' => '20',
             'Price' => '2729000',
             'store_id' => '1',
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias error enim voluptates tenetur delectus ducimus quia!'
@@ -80,6 +83,7 @@ class DatabaseSeeder extends Seeder
 
             'code' => 'Product-' . Str::random(10),
             'name' => 'Bakso',
+            'stok' => '20',
             'Price' => '1999000',
             'store_id' => '4',
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias error enim voluptates tenetur delectus ducimus quia!'
@@ -89,6 +93,8 @@ class DatabaseSeeder extends Seeder
             'code' => 'Product-' . Str::random(10),
             'name' => 'Xbox Gamepad',
             'Price' => '169000',
+            'stok' => '20',
+            
             'store_id' => '2',
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias error enim voluptates tenetur delectus ducimus quia!'
         ]);
@@ -97,6 +103,8 @@ class DatabaseSeeder extends Seeder
             'code' => 'Product-' . Str::random(10),
             'name' => 'Ayam Goreng',
             'Price' => '999000',
+            'stok' => '20',
+
             'store_id' => '4',
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias error enim voluptates tenetur delectus ducimus quia!'
         ]);
@@ -105,6 +113,8 @@ class DatabaseSeeder extends Seeder
             'code' => 'Product-' . Str::random(10),
             'name' => 'MI Smart Band',
             'Price' => '599000',
+            'stok' => '20',
+
             'store_id' => '3',
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias error enim voluptates tenetur delectus ducimus quia!'
         ]);
@@ -113,6 +123,7 @@ class DatabaseSeeder extends Seeder
             'code' => 'Product-' . Str::random(10),
             'name' => 'Banana Smart Watch',
             'Price' => '3699000',
+            'stok' => '20',
             'store_id' => '3',
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias error enim voluptates tenetur delectus ducimus quia!'
         ]);
