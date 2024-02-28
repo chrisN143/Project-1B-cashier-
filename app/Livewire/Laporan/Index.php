@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Laporan;
 
+use Livewire\WithPagination;
+
 use App\Models\Order;
 use Livewire\Component;
 use Hashids\Hashids;
@@ -9,8 +11,19 @@ use Illuminate\Support\Facades\Auth;
 
 class Index extends Component
 {
+    use WithPagination;
+    public $start_date;
+    public $end_date;
     public $orders;
+    public $ordersCount;
     public $totalprice;
+    public function filter()
+    {
+
+
+        $order = Order::whereDate('created_at', '>=', $this->start_date)->whereDate('created_at', '<=', $this->end_date)->paginate(10);
+        return $order;
+    }
     public function mount()
     {
         $this->totalprice = 0;
@@ -22,8 +35,10 @@ class Index extends Component
     }
     public function render()
     {
+        $this->ordersCount = Order::all()->count();
+
         $hash = new Hashids();
-        $order = Order::all();
+        $order = Order::latest()->paginate(10);
         return view('livewire.laporan.index', [
             'order' => $order,
             'hash' => $hash

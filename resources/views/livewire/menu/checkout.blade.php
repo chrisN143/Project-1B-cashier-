@@ -18,8 +18,8 @@
         <div class="container">
             <div class="card p-4">
                 {{-- <div class="card-header border-0 pt-6"> --}}
-                <table class="table table-row-dashed">
-                    <thead class="text-gray-600 fw-semibold">
+                <table>
+                    {{-- <thead class="text-gray-600 fw-semibold">
                         <tr>
                             <th class="min-w-100px sorting" style="width: 100px;" scope="col">Products</th>
                             <th class="min-w-40px sorting" style="width: 40px;" scope="col">Price</th>
@@ -28,16 +28,16 @@
                             <th class="min-w-50px sorting" style="width: 50px;" scope="col">Total</th>
                             <th class="min-w-100px sorting" style="width: 100px;" scope="col">ACTION</th>
                         </tr>
-                    </thead>
-                    <tbody>
+                    </thead> --}}
+                    <tbody wire:poll.3s>
                         @php
                             $total = 0;
                         @endphp
                         @forelse ($carts as $cart)
                             <tr>
-                                <th class="my-2">{{ $cart->product->name }}</th>
-                                <td class="my-2">Rp. {{ $cart->product->price }}</td>
-                                <td class="my-2">
+                                <td data-label="No Customer">{{ $cart->product->name }}</td>
+                                <td data-label="Total Harga">Rp. {{ $cart->product->price }}</td>
+                                <td data-label="Tipe Pembayaran">
                                     @if ($cart->quantity > 0)
                                         <div class="input-group">
                                             <button class="btn btn1" wire:loading.attr="disabled"
@@ -54,7 +54,46 @@
                                             <button class="btn btn1" wire:loading.attr="disabled"
                                                 wire:click="decrementQuantity({{ $cart->id }})"><i
                                                     class="fa fa-minus"></i></button>
-                                            <input type="number" value="{{ $cart->quantity = 1 }}"
+                                            <input type="number" value="{{ $cart->quantity }}" class="input-quantity"
+                                                readonly disabled>
+                                            <button class="btn btn1" wire:loading.attr="disabled"
+                                                wire:click="incrementQuantity({{ $cart->id }})"><i
+                                                    class="fa fa-plus"></i></button>
+                                        </div>
+                                    @endif
+                                </td>
+                                <td data-label="Tanggal Order"> Rp. {{ $cart->product->price * $cart->quantity }}</td>
+                                @php
+                                    $total += $cart->product->price * $cart->quantity;
+                                @endphp
+                                <td data-label="Action">
+                                    <button wire:loading.attr="disabled" wire:click="destroy({{ $cart->id }})"
+                                        class="btn btn-danger btn-sm">
+                                        <i class="fa fa-trash"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            {{-- <tr>
+                                <th class="my-2">{{ $cart->product->name }}</th>
+                                <td class="my-2">Rp. {{ $cart->product->price }}</td>
+                                     Rp. {{ $cart->product->price * $cart->quantity }} <td class="my-2">
+                                    @if ($cart->quantity > 0)
+                                        <div class="input-group">
+                                            <button class="btn btn1" wire:loading.attr="disabled"
+                                                wire:click="decrementQuantity({{ $cart->id }})"><i
+                                                    class="fa fa-minus"></i></button>
+                                            <input type="number" value="{{ $cart->quantity }}"
+                                                class="text-center input-quantity" readonly disabled>
+                                            <button class="btn btn1" wire:loading.attr="disabled"
+                                                wire:click="incrementQuantity({{ $cart->id }})"><i
+                                                    class="fa fa-plus"></i></button>
+                                        </div>
+                                    @else
+                                        <div class="input-group">
+                                            <button class="btn btn1" wire:loading.attr="disabled"
+                                                wire:click="decrementQuantity({{ $cart->id }})"><i
+                                                    class="fa fa-minus"></i></button>
+                                            <input type="number" value="{{ $cart->quantity }}"
                                                 class="input-quantity" readonly disabled>
                                             <button class="btn btn1" wire:loading.attr="disabled"
                                                 wire:click="incrementQuantity({{ $cart->id }})"><i
@@ -75,7 +114,7 @@
                                         <i class="fa fa-trash"></i>
                                     </button>
                                 </td>
-                            </tr>
+                            </tr> --}}
                         @empty
                             <h1 class="text-center">No cart Avaiable!!!</h1>
                         @endforelse

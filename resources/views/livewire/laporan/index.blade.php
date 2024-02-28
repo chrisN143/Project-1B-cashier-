@@ -9,8 +9,8 @@
                     <!--begin::Title-->
                     <div class="card-title d-flex flex-column ">
                         <!--begin::Amount-->
-                        <span class="text-light fw-semibold fs-2">Users</span>
-                        <span class="fs-2hx fw-bold text-light lh-1 ls-n2"></span>
+                        <span class="text-light fw-semibold fs-2">All orders</span>
+                        <span class="fs-2 text-light lh-1 ls-n2">{{ $this->ordersCount }}</span>
                         <span class="text-light fw-semibold fs-6">Created At</span>
                         <!--end::Amount-->
 
@@ -18,7 +18,7 @@
                         <!--end::Subtitle-->
                     </div>
                     <span class="float-right display-5 bg-opacity-25"><i
-                            class="fa-solid fa-cart-shopping fs-1 text-light"></i></span>
+                            class="fa-solid fa-list fs-1 text-light"></i></span>
                     <!--end::Title-->
                 </div>
                 <!--end::Header-->
@@ -94,7 +94,8 @@
                         <!--begin::Subtitle-->
                         <!--end::Subtitle-->
                     </div>
-                    <span class="float-right display-5 bg-opacity-25"><i class="fa-solid fa-dollar-sign fs-1 text-light"></i></span>
+                    <span class="float-right display-5 bg-opacity-25"><i
+                            class="fa-solid fa-dollar-sign fs-1 text-light"></i></span>
                     <!--end::Title-->
                 </div>
                 <!--end::Header-->
@@ -106,7 +107,13 @@
     <!--end::Col-->
     <div class="row py-3">
         <div class="col-md-2">
-            <input class="form-control" type="date" wire:model='date' name="" id="">
+            <input class="form-control" type="date" wire:model='start_date'>
+        </div>
+        <div class="col-md-2">
+            <input class="form-control" type="date" wire:model='end_date'>
+        </div>
+        <div class="col-md-1">
+            <button type="submit"wire:click="filter">Filter</button>
         </div>
         <div class="col-md-2">
             {{-- <form class="d-flex"> --}}
@@ -137,6 +144,7 @@
                 <caption>Order Information</caption>
                 <tbody>
                     @foreach ($order as $index => $item)
+
                         <tr>
                             <td data-label="No">{{ $index + 1 }}</td>
                             <td data-label="No Customer">{{ $item->customer_name }}</td>
@@ -153,15 +161,7 @@
 
                 </tbody>
             </table>
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                    <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-            </nav>
+            {{ $order->links() }}
         </div>
         <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
             tabindex="0">
