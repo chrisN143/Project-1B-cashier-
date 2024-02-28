@@ -93,7 +93,7 @@
 
         .shopping-cart>.cart-header>.row>.col-cart-header h4 {
 
-            font-size: 10px;
+            font-size: 5px;
             margin-bottom: 0px;
         }
 
@@ -112,7 +112,7 @@
         }
 
         .shopping-cart .cart-item .product-name {
-            font-size: 16px;
+            font-size: 14px;
 
             font-weight: 600;
             text-transform: capitalize;
@@ -129,14 +129,14 @@
         }
 
         .shopping-cart .cart-item .price {
-            font-size: 16px;
+            font-size: 12px;
 
             font-weight: 600;
 
             padding: 4px 2px;
         }
 
-        .shopping-cart .btn1 {
+        .btn1 {
             border: 1px solid;
 
             margin-right: 3px;
@@ -146,13 +146,13 @@
             font-size: 10px;
         }
 
-        .shopping-cart .btn1:hover {
+        .btn1:hover {
             background-color: #2874f0;
 
             color: #fff;
         }
 
-        .shopping-cart .input-quantity {
+        .input-quantity {
             border: 1px solid #000;
 
             margin-right: 3px;
@@ -202,11 +202,7 @@
 
 @section('content')
     <div class="container">
-
-
+        @livewire('menu.checkout')
         @livewire('menu.menu-index')
-
-
     </div>
-    {{-- @livewire('menu.menu-index') --}}
 @endsection
