@@ -51,18 +51,16 @@ class OrderController extends Controller
             return view(
                 'app.order.detail',
                 compact(
-
-                    'title',
-                    'header',
-                    'main_breadcrumb',
-                    'main_breadcrumb_link',
-                    'breadcrumb',
-                    'order'
-                )
-
-            );
-        } else {
-            return redirect('/orders')->with('message', 'Order Id not Found');
-        }
+                'title',
+                'header',
+                'main_breadcrumb',
+                'main_breadcrumb_link',
+                'breadcrumb',
+                'order',
+            )
+        );
+    } else {
+        return redirect('/orders')->with('message', 'Order Id not Found');
+    }
     }
 }

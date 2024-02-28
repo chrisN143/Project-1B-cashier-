@@ -44,7 +44,7 @@ class LaporanController extends Controller
         $order = Order::where('order_code', $reportId)->first();
         if ($order) {
             return view(
-                'app.order.detail',
+                'app.laporan.detail',
                 compact(
 
                     'title',
@@ -57,7 +57,7 @@ class LaporanController extends Controller
 
             );
         } else {
-            return redirect('/orders')->with('message', 'Order Id not Found');
+            return redirect('/laporan')->with('message', 'Order Id not Found');
         }
     }
 }

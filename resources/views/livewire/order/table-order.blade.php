@@ -1,11 +1,12 @@
-@if (session('message'))
+
+<div class="card">
+    @if (session('message'))
     <div class="alert alert-success" role="alert">
         {{ session('message') }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
     </div>
 @endif
-<div class="card">
     <div class="card-header border-0 pt-6">
         <table class="table table-row-dashed ">
             <thead class="text-gray-600 fw-semibold">

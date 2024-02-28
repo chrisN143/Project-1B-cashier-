@@ -21,9 +21,7 @@
 
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         @foreach ($stores as $store)
-                            <li class="dropdown-item" href="#"><a class="link-underline link-underline-opacity-0"
-                                    href="{{ url('/menu?store=' . $store->store_name) }}">{{ $store->store_name }}</a>
-                            </li>
+                            <li class="dropdown-item" href="#"><a href="" class="text-decoration-none">{{ $store->store_name }}</a></li>
                         @endforeach
                     </ul> 
 
