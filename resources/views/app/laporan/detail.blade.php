@@ -62,9 +62,6 @@
                                     <h6>Payment Mode : {{ $order->payment_mode }}</h6>
                                     <h6 class="border p-2 text-success">
                                         Order status : <span class="text-Uppercase">{{ $order->status_message }}</span>
-                                        <a class='btn btn-prima                                                                                                                          ry'>
-                                            <i class="fa-solid fa-pen-to-square"></i>
-                                        </a>
                                     </h6>
                                 </div>
                                 <div class="col-md-8">
