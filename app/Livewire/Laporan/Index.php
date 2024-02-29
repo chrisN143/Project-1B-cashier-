@@ -19,11 +19,9 @@ class Index extends Component
     public $totalprice;
     public function filter()
     {
-
-
-        $order = Order::whereDate('created_at', '>=', $this->start_date)
-            ->whereDate('created_at', '<=', $this->end_date)->paginate(10);
-        return $order;
+        // Order where created at between start date and end date then paginate 10 of them
+        $order = Order::where('created_at', 'between', $this->start_date, 'and', $this->end_date)->paginate(10);
+        return dd($order);
     }
     public function mount()
     {
