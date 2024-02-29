@@ -34,7 +34,8 @@
                                                 wire:click="decrementQuantity({{ $cart->id }})"><i
                                                     class="fa fa-minus"></i></button>
                                             <input type="number" value="{{ $cart->quantity }}"
-                                                class="text-center input-quantity" readonly disabled>
+                                                max="{{ $this->totalStok }}" class="text-center input-quantity" readonly
+                                                disabled>
                                             <button class="btn btn1" wire:loading.attr="disabled"
                                                 wire:click="incrementQuantity({{ $cart->id }})"><i
                                                     class="fa fa-plus"></i></button>
@@ -115,9 +116,10 @@
                         <hr>
                         <div class="">
                             @if ($total != 0)
-                                <button wire:click='Order' wire:key="checkout" class="btn btn-warning shadow">Checkout
+                                <button wire:click='Order' wire:loading.attr="disabled"
+                                    class="btn btn-warning shadow">Checkout
                                     <div class="spinner-border text-light" style="width: 15px;  height:15px;"
-                                        role="status" wire:loading wire:target='checkout'>
+                                        role="status" wire:loading wire:target='Order'>
                                         <span class="visually-hidden">Loading...</span>
                                     </div>
                                 </button>

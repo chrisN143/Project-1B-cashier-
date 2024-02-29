@@ -18,6 +18,7 @@ class Checkout extends Component
 
     public $carts, $totalprice = 0;
     public $payment;
+    public $totalStok;
     #[Rule('required')]
     public $customerName;
     #[Rule('required')]
@@ -59,6 +60,23 @@ class Checkout extends Component
 
     public function Order()
     {
+        // $this->carts = Cart::where('user_id', Auth::id())->get();
+        // foreach ($this->carts as $Item) {
+        //     // $this->totalprice += $Item->product->price * $Item->quantity;
+        //     // $this->totalStok = Product::where('id', $Item->product_id)->get('stok');
+        //     $stok = Product::where('id', $Item->product_id)->first();
+        //     $this->totalStok = $stok->stok - $Item->quantity; 
+
+            # code...
+            foreach ($this->carts as $Item) {
+                $countstok = Product::where('id', $Item->product_id)->first();
+                if ($countstok->stok - $Item->quantity >= 0) {
+
+                } else {
+                    return session()->flash('error', 'Product ' . $countstok->name . ' hanya mempunyai ' . $countstok->stok .  ' stok ');
+                }
+            }
+    
         $this->validate();
         // $payment = 
         $order = Order::create([
@@ -71,7 +89,7 @@ class Checkout extends Component
         ]);
         foreach ($this->carts as $Item) {
             $countstok = Product::where('id', $Item->product_id)->first();
-            if ($countstok->stok - $Item->quantity >= 0) {
+
                 $orderitems = OrderItems::create([
                     'order_id' => $order->id,
                     'product_id' => $Item->product_id,
@@ -84,9 +102,7 @@ class Checkout extends Component
                 $countstok->update([
                     'stok' => $countstok->stok - $Item->quantity
                 ]);
-            } else {
-                return session()->flash('error', 'Product ' . $countstok->name . ' hanya mempunyai ' . $countstok->stok .  ' stok ');
-            }
+
         }
 
         session()->flash('status', 'Orders Has Make!');
@@ -100,6 +116,8 @@ class Checkout extends Component
 
             return redirect()->route('menu.checkout');
         }
+
+
     }
     #[On('add')]
     public function cartCount()
@@ -115,14 +133,20 @@ class Checkout extends Component
     public function mount()
     {
         // $this->payment_mode = Transaction::where('id', $this->payment)->first();
-
         $this->totalprice = 0;
         $this->carts = Cart::where('user_id', Auth::id())->get();
         foreach ($this->carts as $Item) {
             $this->totalprice += $Item->product->price * $Item->quantity;
+         
         }
         return $this->totalprice;
     }
+    // public function test()
+    // {
+    //     // $this->payment_mode = Transaction::where('id', $this->payment)->first();
+
+
+    // }
     public function render()
     {
         $this->customerName = auth()->user()->name;

@@ -1,18 +1,17 @@
-
 <div class="card">
     @if (session('message'))
-    <div class="alert alert-success" role="alert">
-        {{ session('message') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        <div class="alert alert-success" role="alert">
+            {{ session('message') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 
-    </div>
-@endif
+        </div>
+    @endif
     <div class="card-header border-0 pt-6">
         <table class="table table-row-dashed ">
             <thead class="text-gray-600 fw-semibold">
                 <tr>
-                    <th class="min-w-125px sorting" style="width: 125px;" scope="col">NAME</th>
-                    <th class="min-w-125px sorting" style="width: 125px;" scope="col">STATUS</th>
+                    <th class="min-w-125px sorting" style="width: 125px;" scope="col">TOTAL</th>
+                    <th class="min-w-125px sorting" style="width: 125px;" scope="col">PAYMENT METHOD</th>
                     <th class="min-w-125px sorting" style="width: 125px;" scope="col">CREATED AT</th>
                     <th class="min-w-125px sorting" style="width: 125px;" scope="col">ACTION</th>
                 </tr>
@@ -20,8 +19,8 @@
             <tbody>
                 @foreach ($orders as $order)
                     <tr>
-                        <th class="my-2">{{ $order->customer_name }}</th>
-                        <td class="my-2">{{ $order->status_message }}</td>
+                        <th class="my-2">{{ $order->total_price }}</th>
+                        <td class="my-2">{{ $order->payment_method }}</td>
                         <td class="my-2">{{ $order->created_at->diffForHumans() }}</td>
                         <td>
                             <a href="">
