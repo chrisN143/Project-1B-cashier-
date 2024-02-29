@@ -26,8 +26,9 @@ class Detail extends Component
     #[Rule('required')]
     public $price;
     #[Rule('required')]
+    
+    public $stok;
     public $store_id;
-
     #[Rule('nullable|sometimes|image|max:6140')]
     public $image;
     #[Rule('required')]
@@ -42,6 +43,7 @@ class Detail extends Component
             // $this->code = $product->code;
             $this->oldImage = $product->getImage();
             $this->store_id = $product->store_id;
+            $this->stok = $product->stok;
             $this->description = $product->description;
         }
     }

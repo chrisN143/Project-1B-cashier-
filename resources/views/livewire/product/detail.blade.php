@@ -13,6 +13,12 @@
             <span class="text-danger font-italic">{{ $message }}</span>
         @enderror
     </div>
+    <div class='form-group mt-3'>
+        <input type='text' class='form-control' placeholder="Stok" id="stok" name="stok" wire:model='stok'>
+        @error('stok')
+            <span class="text-danger font-italic">{{ $message }}</span>
+        @enderror
+    </div>
 
     <div class="input-group mt-3">
         <input type="file" class="form-control" name="image" wire:model='image'>

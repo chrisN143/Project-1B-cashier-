@@ -13,6 +13,7 @@ class OrderItems extends Model
         'product_id',
         'product_name',
         'product_price',
+        'product_quantity',
         'product_image'
     ];
     public function order(){

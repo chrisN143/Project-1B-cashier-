@@ -115,9 +115,9 @@
                         <hr>
                         <div class="">
                             @if ($total != 0)
-                                <button wire:click='Order' class="btn btn-warning shadow">Checkout
+                                <button wire:click='Order' wire:key="checkout" class="btn btn-warning shadow">Checkout
                                     <div class="spinner-border text-light" style="width: 15px;  height:15px;"
-                                        role="status" wire:loading>
+                                        role="status" wire:loading wire:target='checkout'>
                                         <span class="visually-hidden">Loading...</span>
                                     </div>
                                 </button>

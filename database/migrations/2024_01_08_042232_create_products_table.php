@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string("code");
             $table->string("name")->index();
             $table->string("image")->nullable();
+            $table->unsignedInteger("stok")->default(0);
             $table->integer("price");
             $table->string("description")->nullable();
             $table->timestamps();

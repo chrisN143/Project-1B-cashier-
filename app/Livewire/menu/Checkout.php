@@ -5,6 +5,7 @@ namespace App\Livewire\Menu;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderItems;
+use App\Models\Product;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -69,14 +70,25 @@ class Checkout extends Component
             'payment_method' => $this->payment_id,
         ]);
         foreach ($this->carts as $Item) {
-            $orderitems = OrderItems::create([
-                'order_id' => $order->id,
-                'product_id' => $Item->product_id,
-                'product_price' => $Item->product->price,
-                'product_name' => $Item->product->name,
-                'product_image' => $Item->product->image
-            ]);
+            $countstok = Product::where('id', $Item->product_id)->first();
+            if ($countstok->stok - $Item->quantity >= 0) {
+                $orderitems = OrderItems::create([
+                    'order_id' => $order->id,
+                    'product_id' => $Item->product_id,
+                    'product_price' => $Item->product->price,
+                    'product_name' => $Item->product->name,
+                    'product_image' => $Item->product->image,
+                    'product_quantity' => $Item->quantity
+                ]);
+
+                $countstok->update([
+                    'stok' => $countstok->stok - $Item->quantity
+                ]);
+            } else {
+                return session()->flash('error', 'Product ' . $countstok->name . ' hanya mempunyai ' . $countstok->stok .  ' stok ');
+            }
         }
+
         session()->flash('status', 'Orders Has Make!');
 
         if ($order) {

@@ -15,6 +15,7 @@ class Product extends Model
         'store_id',
         'code',
         'price',
+        'stok',
         'name',
         'image',
         'description',
