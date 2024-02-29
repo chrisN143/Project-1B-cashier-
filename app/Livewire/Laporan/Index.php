@@ -17,6 +17,9 @@ class Index extends Component
     public $orders;
     public $ordersCount;
     public $totalprice;
+
+    public $filter;
+    public $results;
     public function filter()
     {
         // Order where created at between start date and end date then paginate 10 of them
@@ -34,6 +37,7 @@ class Index extends Component
     }
     public function render()
     {
+
         $this->ordersCount = Order::all()->count();
 
         $order = Order::latest()->paginate(10);

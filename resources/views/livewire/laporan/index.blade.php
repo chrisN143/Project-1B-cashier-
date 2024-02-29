@@ -113,7 +113,7 @@
             <input id="end" class="form-control" type="date" wire:model='end_date'>
         </div>
         <div class="col-md-1">
-            <button type="submit"wire:click="filter">Filter</button>
+            <button type="submit" wire:click="filter">Filter</button>
         </div>
         <div class="col-md-2">
             {{-- <form class="d-flex"> --}}
@@ -164,8 +164,7 @@
             </table>
             {{ $order->links() }}
         </div>
-        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
-            tabindex="0">
+        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
             ...</div>
         <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
             tabindex="0">

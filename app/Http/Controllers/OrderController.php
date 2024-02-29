@@ -18,7 +18,7 @@ class OrderController extends Controller
         $main_breadcrumb_link = route('orders.index');
         $breadcrumb = null;
         $orders = Order::latest()->where('user_id', auth()->user()->id);
-        $hash = new Hashids();
+
         // Confirm Delete Alert
         $title_delete = 'Delete Data!';
         $text = "Are you sure?";
@@ -33,7 +33,7 @@ class OrderController extends Controller
                 'main_breadcrumb_link',
                 'breadcrumb',
                 'orders',
-                'hash'
+
             )
         );
     }
