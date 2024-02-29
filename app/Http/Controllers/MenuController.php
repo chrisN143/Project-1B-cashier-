@@ -12,8 +12,11 @@ use App\Models\Transaction;
 class MenuController extends Controller
 {
 
+
+
     public function index()
     {
+
         /* Header Setting */
         $title = "Menu";
         $header = "Menu List";

@@ -44,7 +44,7 @@ class LaporanController extends Controller
         $order = Order::where('order_code', $reportId)->first();
         if ($order) {
             return view(
-                'app.order.detail',
+                'app.laporan.detail',
                 compact(
 
                     'title',
@@ -57,7 +57,33 @@ class LaporanController extends Controller
 
             );
         } else {
-            return redirect('/orders')->with('message', 'Order Id not Found');
+            return redirect('/laporan')->with('message', 'Order Id not Found');
+        }
+    }
+
+    public function edit($reportId)
+    {
+        $title = "Laporan";
+        $header = "Laporan Edit";
+        $main_breadcrumb = "Laporan Edit";
+        $main_breadcrumb_link = url('laporan/edit/' . $reportId); //$reportId didapatkan dari codingan {{$order->id}} pada table-order.blade.php
+        $breadcrumb = null;
+        $order = Order::where('order_code', $reportId)->first();
+        // $id = $request->id;
+
+        if ($order) {
+            return view(
+                'app.laporan.edit',
+        compact(
+            // 'permission',
+            'title',
+            'header',
+            'main_breadcrumb',
+            'main_breadcrumb_link',
+            'breadcrumb',
+            'order'
+            // 'id'
+        ));
         }
     }
 }

@@ -1,4 +1,4 @@
-<div>
+<div class="mt-5">
     @if (session('status'))
         <div class="alert alert-success" role="alert">
             {{ session('status') }}
@@ -21,15 +21,12 @@
 
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         @foreach ($stores as $store)
-                            <li class="dropdown-item" href="#"><a class="link-underline link-underline-opacity-0"
-                                    href="{{ url('/menu?store=' . $store->store_name) }}">{{ $store->store_name }}</a>
-                            </li>
+                            <li class="dropdown-item" href="#" wire:model="store"><input type="checkbox"
+                                    name="" id=""> {{ $store->store_name }}</li>
                         @endforeach
                     </ul>
-
-                    <a href="{{ route('menu.checkout') }}"><button class="btn btn-secondary mx-2"><i
-                                class="fa-solid fa-cart-shopping"
-                                style="width: 18px"></i>({{ $cartUser }})</button></a>
+                    <button class="btn btn-primary mx-2"><i class="fa-solid fa-cart-shopping text-ligth"
+                            style="width: 18px"></i>({{ $cartUser }})</button>
                 </div>
             </div>
             <div class="col-md-3">
@@ -41,10 +38,10 @@
     </div>
 
     {{-- Card  --}}
-    <div class="container">
-        <div class="row justify-content-center" style="display: flex">
+    <div class="container mx-auto">
+        <div class="row">
             @forelse ($products as $item)
-                <div class="col-md-3 m-2">
+                <div class="col-lg-3 my-2">
                     <div class="card">
                         <img src="{{ asset('storage/images/' . $item->image) }}" class="img-fluid rounded"
                             alt="{{-- $post->category->name --}}">
@@ -58,25 +55,13 @@
                                 </small>
                             <h6>Price : Rp. {{ $item->price }}</h6>
                             </p>
-                            <div class="d-flex mx-3">
-                                @if ($this->inputquantity > 0)
-                                    <input type="number" wire:model.live="inputquantity"
-                                        value="{{ $this->inputquantity }}" class="form-control me-3"
-                                        style="width:60px;">
-                                    <button wire:click="add({{ $item->id }})"
-                                        class="btn btn-info btn-sm text-white">
-                                        Add
-                                    </button>
-                                @else
-                                    <input type="number" wire:model.live="inputquantity"
-                                        value="{{ $this->inputquantity }}" class="form-control me-3"
-                                        style="width:60px;">
-                                    <button wire:click="add({{ $item->id }})"
-                                        class="btn btn-info btn-sm text-white">
-                                        Add
-                                    </button>
-                                @endif
-                            </div>
+
+                            {{-- <input type="number" wire:model.live="inputquantity" value="{{ $this->inputquantity }}"
+                                    class="form-control me-3" style="width:60px;"> --}}
+                            <button wire:click="add({{ $item->id }})" class=" mx-3 btn btn-info btn-sm text-white">
+                                Add
+                            </button>
+
                         </div>
                     </div>
                 </div>

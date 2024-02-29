@@ -64,7 +64,7 @@ return [
             ],
         ],
         [
-            'text' => 'Purchesing',
+            'text' => 'Purchase',
             'icon' => 'ki-duotone ki-abstract-28 fs-2',
             'role' => 'All',
             'submenu' => [

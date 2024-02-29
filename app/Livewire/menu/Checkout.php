@@ -10,9 +10,11 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\Attributes\Rule;
+use Livewire\Attributes\On;
 
 class Checkout extends Component
 {
+
     public $carts, $totalprice = 0;
     public $payment;
     #[Rule('required')]
@@ -20,6 +22,7 @@ class Checkout extends Component
     #[Rule('required')]
     public $payment_id;
     public $email;
+    public $cartUser;
 
     public function decrementQuantity($id)
     {
@@ -58,7 +61,7 @@ class Checkout extends Component
         $this->validate();
         // $payment = 
         $order = Order::create([
-            'order_code'=> 'Order-' . Str::random(10),
+            'order_code' => 'Order-' . Str::random(10),
             'user_id' => auth()->user()->id,
             'customer_name' => $this->customerName,
             'status_message' => 'in progress',
@@ -75,7 +78,7 @@ class Checkout extends Component
             ]);
         }
         session()->flash('status', 'Orders Has Make!');
-        
+
         if ($order) {
             Cart::where('user_id', Auth::id())->delete();
             session()->flash('status', 'Orders Placed Succesfully');
@@ -85,8 +88,17 @@ class Checkout extends Component
 
             return redirect()->route('menu.checkout');
         }
-     
     }
+    #[On('add')]
+    public function cartCount()
+    {
+        if (Auth::check()) {
+            return $this->cartUser = Cart::where('user_id', auth()->user()->id)->count();
+        } else {
+            return $this->cartUser = 0;
+        }
+    }
+    #[On('add')]
 
     public function mount()
     {

@@ -70,7 +70,7 @@
             padding: 4px 2px;
         }
 
-        .shopping-cart .btn1 {
+        .btn1 {
             border: 1px solid;
 
             margin-right: 3px;
@@ -80,13 +80,13 @@
             font-size: 10px;
         }
 
-        .shopping-cart .btn1:hover {
+         .btn1:hover {
             background-color: #2874f0;
 
             color: #fff;
         }
 
-        .shopping-cart .input-quantity {
+         .input-quantity {
             border: 1px solid #000;
 
             margin-right: 3px;
@@ -100,32 +100,7 @@
             text-align: center;
         }
 
-        @media only screen and (max-width: 600px) {
-            .shopping-cart>.cart-header>.row>.col-cart-header h4 {
-                font-size: 10px;
-                margin-bottom: 0px;
-            }
-
-            .shopping-cart .btn1:hover {
-                background-color: #2874f0;
-
-                color: #fff;
-            }
-
-            .shopping-cart .input-quantity {
-                border: 1px solid #000;
-
-                margin-right: 3px;
-
-                font-size: 10px;
-
-                width: 30%;
-
-                outline: none;
-
-                text-align: center;
-            }
-        }
+   
     </style>
 @endsection
 

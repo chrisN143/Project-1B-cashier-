@@ -109,5 +109,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::controller(LaporanController::class)->prefix('laporan')->name('laporan.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/{reportId}', 'detail')->name('detail');
+        Route::get('/edit/{reportId}', 'edit')->name('edit');
     });
 });
