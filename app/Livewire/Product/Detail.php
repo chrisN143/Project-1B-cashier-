@@ -64,6 +64,7 @@ class Detail extends Component
                 'name' => $this->name,
                 'price' => str_replace(",", ".", str_replace(".", "", $this->price)),
                 'store_id' => $this->store_id,
+
                 'image' => $this->image != null ? $this->image->hashname() : $product->image,
                 'description' => $this->description
             ]);

@@ -165,6 +165,36 @@
 
             text-align: center;
         }
+
+        /* CSS for responsiveness */
+        @media only screen and (max-width: 600px) {
+
+            /* Change table layout to columns */
+            table {
+                display: block;
+                overflow-x: auto;
+                width: 100%;
+            }
+
+            /* Ensure table cells display as block elements */
+            table td,
+            table th {
+                display: block;
+                text-align: left;
+            }
+
+            /* Optional: Style table header cells */
+            table th {
+                background-color: #f2f2f2;
+            }
+
+            /* Optional: Add padding and border to table cells */
+            table td,
+            table th {
+                border: 1px solid #dddddd;
+                padding: 8px;
+            }
+        }
     </style>
 @endsection
 
