@@ -24,8 +24,6 @@ class Index extends Component
     {
 
 
-        // $this->results = Order::where('created_at', '', '%' . $this->filter . '%')->get();
-
         $order = Order::whereDate('created_at', '>=', $this->start_date)->whereDate('created_at', '<=', $this->end_date)->paginate(10);
         return $order;
     }
