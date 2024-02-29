@@ -113,7 +113,7 @@
             <input class="form-control" type="date" wire:model='end_date'>
         </div>
         <div class="col-md-1">
-            <button type="submit"wire:click="filter">Filter</button>
+            <button type="submit" wire:click="filter">Filter</button>
         </div>
         <div class="col-md-2">
             {{-- <form class="d-flex"> --}}
@@ -144,7 +144,6 @@
                 <caption>Order Information</caption>
                 <tbody>
                     @foreach ($order as $index => $item)
-
                         <tr>
                             <td data-label="No">{{ $index + 1 }}</td>
                             <td data-label="No Customer">{{ $item->customer_name }}</td>
@@ -152,8 +151,10 @@
                             <td data-label="Tipe Pembayaran">{{ $item->payment_method }}</td>
                             <td data-label="Tanggal Order">{{ $item->created_at->diffForHumans() }}</td>
                             <td data-label="Action">
-                                <a href="{{ url('laporan/'. $item->order_code) }}" class="btn btn-primary">Detail</a>
-                                <a href="{{ url('laporan/edit/'. $item->order_code) }}" class="btn btn-success">Edit</a></td>
+                                <a href="{{ url('laporan/' . $item->order_code) }}" class="btn btn-primary">Detail</a>
+                                <a href="{{ url('laporan/edit/' . $item->order_code) }}"
+                                    class="btn btn-success">Edit</a>
+                            </td>
                             </td>
                         </tr>
                     @endforeach
@@ -163,8 +164,7 @@
             </table>
             {{ $order->links() }}
         </div>
-        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
-            tabindex="0">
+        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
             ...</div>
         <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
             tabindex="0">

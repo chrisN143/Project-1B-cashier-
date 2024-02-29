@@ -17,9 +17,14 @@ class Index extends Component
     public $orders;
     public $ordersCount;
     public $totalprice;
+
+    public $filter;
+    public $results;
     public function filter()
     {
 
+
+        // $this->results = Order::where('created_at', '', '%' . $this->filter . '%')->get();
 
         $order = Order::whereDate('created_at', '>=', $this->start_date)->whereDate('created_at', '<=', $this->end_date)->paginate(10);
         return $order;
@@ -35,6 +40,7 @@ class Index extends Component
     }
     public function render()
     {
+
         $this->ordersCount = Order::all()->count();
 
         $order = Order::latest()->paginate(10);
