@@ -173,6 +173,7 @@
         {{-- <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div> --}}
     </div>
     <script>
+        // When the web is loaded
         window.onload = function() {
             // Get the current date, month, and year
             let date = new Date();
