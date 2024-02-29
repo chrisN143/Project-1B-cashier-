@@ -21,7 +21,8 @@ class Index extends Component
     {
 
 
-        $order = Order::whereDate('created_at', '>=', $this->start_date)->whereDate('created_at', '<=', $this->end_date)->paginate(10);
+        $order = Order::whereDate('created_at', '>=', $this->start_date)
+            ->whereDate('created_at', '<=', $this->end_date)->paginate(10);
         return $order;
     }
     public function mount()
