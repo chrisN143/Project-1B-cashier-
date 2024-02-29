@@ -6,7 +6,7 @@ use Livewire\WithPagination;
 
 use App\Models\Order;
 use Livewire\Component;
-use Hashids\Hashids;
+
 use Illuminate\Support\Facades\Auth;
 
 class Index extends Component
@@ -37,11 +37,10 @@ class Index extends Component
     {
         $this->ordersCount = Order::all()->count();
 
-        $hash = new Hashids();
         $order = Order::latest()->paginate(10);
         return view('livewire.laporan.index', [
             'order' => $order,
-            'hash' => $hash
+            // 'hash' => $hash
 
         ]);
     }
