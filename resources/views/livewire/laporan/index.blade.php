@@ -156,7 +156,7 @@
                                 <a href="{{ url('laporan/edit/' . $item->order_code) }}"
                                     class="btn btn-success">Edit</a>
                             </td>
-                            </td>
+
                         </tr>
                     @endforeach
 
@@ -212,6 +212,6 @@
             document.getElementById('start').addEventListener("change", changeDate);
         };
     </script>
- 
+
 
 </div>
