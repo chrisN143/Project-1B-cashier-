@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId("user_id");
             $table->string("order_code");
-            $table->string("status_message");
+            // $table->string("status_message");
             $table->string("customer_name");
             // $table->foreignId("payment_id");
             $table->string("payment_method");

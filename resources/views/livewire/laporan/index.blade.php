@@ -107,17 +107,22 @@
     <!--end::Col-->
     <div class="row py-3">
         <div class="col-md-2">
-            <input id="start" class="form-control" type="date" wire:model='start_date'>
+            <input id="start" class="form-control" type="date" wire:model='date'>
         </div>
         <div class="col-md-2">
-            <input id="end" class="form-control" type="date" wire:model='end_date'>
+            <select class="form-select" name="store_id" wire:model="payment">
+                <option value="" hidden selected>All Payment Mode</option>
+                @foreach ($transaction as $method)
+                    <option value="{{ $method->payment_method }}">{{ $method->payment_method }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="col-md-1">
-            <button type="submit" wire:click="filter">Filter</button>
+            <button type="submit" class="btn btn-info btn-sm" wire:click="filter">Filter</button>
         </div>
         <div class="col-md-2">
             {{-- <form class="d-flex"> --}}
-            <input class="form-control me-2" type="search" placeholder="No Customer" aria-label="Search"
+            <input class="form-control me-2" type="search" placeholder="No Customer" wire:model.live="search"
                 id="searchInput">
 
             {{-- </form> --}}
@@ -132,10 +137,7 @@
             <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane"
                 type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Profile</button>
         </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane"
-                type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Contact</button>
-        </li>
+
     </ul>
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
@@ -152,10 +154,8 @@
                             <td data-label="Tanggal Order">{{ $item->created_at->diffForHumans() }}</td>
                             <td data-label="Action">
                                 <a href="{{ url('laporan/' . $item->order_code) }}" class="btn btn-primary">Detail</a>
-                                <a href="{{ url('laporan/edit/' . $item->order_code) }}"
-                                    class="btn btn-success">Edit</a>
                             </td>
-                            </td>
+
                         </tr>
                     @endforeach
 
@@ -165,13 +165,14 @@
             {{ $order->links() }}
         </div>
         <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-            ...</div>
+            @livewire('laporan.itemsDatatable')
+        </div>
         <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
             tabindex="0">
             ...</div>
         {{-- <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div> --}}
     </div>
-    <script>
+    {{-- <script>
         // When the web is loaded
         window.onload = function() {
             // Get the current date, month, and year
@@ -209,6 +210,6 @@
             // Attach the changeDate function to the onchange event of the start date input
             document.getElementById('start').addEventListener("change", changeDate);
         };
-    </script>
+    </script> --}}
 
 </div>
