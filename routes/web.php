@@ -96,19 +96,20 @@ Route::group(['middleware' => 'auth'], function () {
     });
     Route::controller(MenuController::class)->prefix('menu')->name('menu.')->group(function () {
         Route::get('/', 'index')->name('index');
-        Route::get('/detail', 'detail')->name('detail');
+        // Route::get('/detail', 'detail')->name('detail');
         // Route::get('/detail/cart', 'cart')->name('cart');
-        Route::get('/detail/checkout', 'checkout')->name('checkout');
+        // Route::get('m /checkout', 'checkout')->name('checkout');
     });
 
     Route::controller(OrderController::class)->prefix('orders')->name('orders.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/{orderId}', 'detail')->name('detail');
+        Route::get('/print/{orderId}', 'print')->name('print');
     });
 
     Route::controller(LaporanController::class)->prefix('laporan')->name('laporan.')->group(function () {
         Route::get('/', 'index')->name('index');
         Route::get('/{reportId}', 'detail')->name('detail');
-        Route::get('/edit/{reportId}', 'edit')->name('edit');
+        // Route::get('/edit/{reportId}', 'edit')->name('edit');
     });
 });

@@ -28,6 +28,11 @@
                                     class="btn btn-dark btn-sm"><i class="fa-solid fa-eye "></i></a>
                                 {{-- <button wire:click="edit"  class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square"></i></button> --}}
                             </a>
+                            <a href="">
+                                <a href="{{ url('orders/print/' . $order->order_code) }}" wire:click="show"
+                                    class="btn btn-dark btn-sm"><i class="fa-solid fa-print"></i></a>
+                                {{-- <button wire:click="edit"  class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square"></i></button> --}}
+                            </a>
                         </td>
                     </tr>
                 @endforeach
