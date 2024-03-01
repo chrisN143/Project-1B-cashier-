@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css"  />
     @yield('after_css')
     @livewireStyles
+
 </head>
 <!--end::Head-->
 

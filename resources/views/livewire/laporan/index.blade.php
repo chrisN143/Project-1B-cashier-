@@ -86,7 +86,7 @@
                     <!--begin::Title-->
                     <div class="card-title d-flex flex-column">
                         <!--begin::Amount-->
-                        <span class="text-light  fw-semibold fs-4">Incomme</span>
+                        <span class="text-light  fw-semibold fs-4">Income</span>
                         <h4 class=" text-light lh-1 ls-n2">Rp.{{ $totalprice }}</h4>
                         <span class="text-light fw-semibold fs-6">Created At</span>
                         <!--end::Amount-->
@@ -115,6 +115,7 @@
         <div class="col-md-1">
             <button type="submit" wire:click="filter">Filter</button>
         </div>
+
         <div class="col-md-2">
             {{-- <form class="d-flex"> --}}
             <input class="form-control me-2" type="search" placeholder="No Customer" aria-label="Search"
@@ -164,7 +165,8 @@
             </table>
             {{ $order->links() }}
         </div>
-        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
+            tabindex="0">
             ...</div>
         <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
             tabindex="0">
@@ -210,5 +212,6 @@
             document.getElementById('start').addEventListener("change", changeDate);
         };
     </script>
+ 
 
 </div>

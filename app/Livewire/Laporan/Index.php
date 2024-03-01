@@ -18,8 +18,7 @@ class Index extends Component
     public $ordersCount;
     public $totalprice;
 
-    public $filter;
-    public $results;
+
     public function filter()
     {
 
