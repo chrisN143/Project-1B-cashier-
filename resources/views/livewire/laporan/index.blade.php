@@ -152,8 +152,6 @@
                             <td data-label="Tanggal Order">{{ $item->created_at->diffForHumans() }}</td>
                             <td data-label="Action">
                                 <a href="{{ url('laporan/' . $item->order_code) }}" class="btn btn-primary">Detail</a>
-                                <a href="{{ url('laporan/edit/' . $item->order_code) }}"
-                                    class="btn btn-success">Edit</a>
                             </td>
 
                         </tr>

@@ -1,45 +1,4 @@
-@extends('layouts.app')
-
-@section('after_css')
-    <link rel="stylesheet"
-        href="{{ asset('assets/templates/metronic/dist/assets/plugins/custom/datatables/datatables.bundle.css') }}">
-@endsection
-
-@section('content_header')
-    <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3 ">
-        <!--begin::Title-->
-        <h1 class="page-heading d-flex text-gray-900 fw-bold fs-3 flex-column justify-content-center my-0">
-            {{ $header }}
-        </h1>
-        <!--end::Title-->
-
-        <!--begin::Breadcrumb-->
-        <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
-            <!--begin::Item-->
-            <li class="breadcrumb-item text-muted">
-                <a href="{{ $main_breadcrumb_link }}" class="text-muted text-hover-primary">
-                    {{ $main_breadcrumb }} </a>
-            </li>
-            <!--end::Item-->
-            @if ($breadcrumb)
-                <!--begin::Item-->
-                <li class="breadcrumb-item">
-                    <span class="bullet bg-gray-500 w-5px h-2px"></span>
-                </li>
-                <!--end::Item-->
-                <!--begin::Item-->
-                <li class="breadcrumb-item text-muted">
-                    {{ $breadcrumb }} </li>
-                <!--end::Item-->
-            @endif
-        </ul>
-        <!--end::Breadcrumb-->
-    </div>
-@endsection
-
-@section('content')
-    @livewire('order.detail-orders', ['order' => $order])
-    {{-- <div class="card">
+    <div class="card">
         <!--begin::Card header-->
         <div class="card-body py-4">
             <div class="container">
@@ -48,21 +7,24 @@
                         <div class="shadow bg-white p-5 rounded">
                             <h4 class="mx-3  text-capitalize">
                                 My order Details
-                                <a href="{{ route('orders.index') }}" class="btn btn-danger btn-sm ">back To All Orders</a>
+                                <a href="{{ route('orders.index') }}" class="btn btn-danger btn-sm ">back To All
+                                    Orders</a>
+                                <a href="{{ url('orders/print/' . $order->order_code) }}"
+                                    class="btn btn-success btn-sm ">Print</a>
                             </h4>
                             <hr>
                             <div class="row p-5">
                                 <div class="col-md-8">
                                     <h5>Order Details</h5>
                                     <hr>
-                                    
+
                                     <h6>Tracking Id/No. : {{ $order->order_code }}</h6>
                                     <h6>Order Created Date : {{ $order->created_at->format('d-m-Y h:i A') }}
                                         ({{ $order->created_at->diffForHumans() }})</h6>
                                     <h6>Payment Mode : {{ $order->payment_mode }}</h6>
-                                    <h6 class="border p-2 text-success">
+                                    {{-- <h6 class="border p-2 text-success">
                                         Order status : <span class="text-Uppercase">{{ $order->status_message }}</span>
-                                    </h6>
+                                    </h6> --}}
                                 </div>
                                 <div class="col-md-8">
                                     <h4>User Details</h4>
@@ -112,5 +74,4 @@
                 </div>
             </div>
         </div>
-    </div> --}}
-@endsection
+    </div>

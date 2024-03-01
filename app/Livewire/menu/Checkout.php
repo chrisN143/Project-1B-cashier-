@@ -83,7 +83,7 @@ class Checkout extends Component
             'order_code' => 'Order-' . Str::random(10),
             'user_id' => auth()->user()->id,
             'customer_name' => $this->customerName,
-            'status_message' => 'in progress',
+            // 'status_message' => 'in progress',
             'total_price' => $this->totalprice,
             'payment_method' => $this->payment_id,
         ]);
