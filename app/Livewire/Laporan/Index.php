@@ -17,6 +17,7 @@ class Index extends Component
 
     public $date = '';
     public $payment = '';
+    public $search = '';
     public $orders;
     public $ordersCount;
     public $totalprice;
@@ -45,7 +46,7 @@ class Index extends Component
     {
         $payment = Transaction::all();
         $this->ordersCount = Order::all()->count();
-        $order = Order::where('created_at', 'like', '%' . $this->date . '%')->where('payment_method', 'like', '%' . $this->payment . '%')->orderBy('id', 'DESC')->paginate(3);
+        $order = Order::where('created_at', 'like', '%' . $this->date . '%')->where('customer_name', 'like', '%' . $this->search . '%')->where('payment_method', 'like', '%' . $this->payment . '%')->orderBy('id', 'DESC')->paginate(10);
 
         // $order = Order::latest()->paginate(10);
         return view('livewire.laporan.index', [

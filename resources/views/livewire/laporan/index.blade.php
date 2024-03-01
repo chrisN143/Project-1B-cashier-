@@ -122,7 +122,7 @@
         </div>
         <div class="col-md-2">
             {{-- <form class="d-flex"> --}}
-            <input class="form-control me-2" type="search" placeholder="No Customer" aria-label="Search"
+            <input class="form-control me-2" type="search" placeholder="No Customer" wire:model.live="search"
                 id="searchInput">
 
             {{-- </form> --}}
