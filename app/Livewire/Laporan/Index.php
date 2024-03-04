@@ -5,28 +5,37 @@ namespace App\Livewire\Laporan;
 use Livewire\WithPagination;
 
 use App\Models\Order;
+use App\Models\Transaction;
 use Livewire\Component;
 
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Url;
 
 class Index extends Component
 {
     use WithPagination;
-    public $start_date;
-    public $end_date;
+
+    // public $date = '';
+    public $start_date = '';
+    public $end_date = '';
+    public $payment = '';
+    public $search = '';
     public $orders;
+    public $transaction;
     public $ordersCount;
     public $totalprice;
 
 
     public function filter()
     {
-        // Order where created at between start date and end date then paginate 10 of them
-        $order = Order::where('created_at', 'between', $this->start_date, 'and', $this->end_date)->paginate(10);
-        return dd($order);
+        $this->resetPage();
     }
+
     public function mount()
     {
+        $this->transaction = Transaction::all();
+
+        $this->ordersCount = Order::all()->count();
         $this->totalprice = 0;
         $this->orders = Order::all();
         foreach ($this->orders as $Item) {
@@ -36,14 +45,10 @@ class Index extends Component
     }
     public function render()
     {
-
-        $this->ordersCount = Order::all()->count();
-
-        $order = Order::latest()->paginate(10);
+        $order = Order::whereDate('created_at', '>=', $this->start_date)->whereDate('created_at', '<=', $this->end_date)->where('customer_name', 'like', '%' . $this->search . '%')->where('payment_method', 'like', '%' . $this->payment . '%')->orderBy('id', 'DESC')->paginate(10);
+        // $order = Order::where('created_at', 'like', '%' . $this->date . '%')->where('customer_name', 'like', '%' . $this->search . '%')->where('payment_method', 'like', '%' . $this->payment . '%')->orderBy('id', 'DESC')->paginate(10);
         return view('livewire.laporan.index', [
             'order' => $order,
-            // 'hash' => $hash
-
         ]);
     }
 }

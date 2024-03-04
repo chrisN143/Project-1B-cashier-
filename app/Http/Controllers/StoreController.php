@@ -36,7 +36,7 @@ class StoreController extends Controller
     {
         /* Header Setting */
         $title = "Store";
-        $header = "Store Create";
+
         $main_breadcrumb = "Store";
         $main_breadcrumb_link = route('store.detail');
         $breadcrumb = null;
@@ -48,7 +48,7 @@ class StoreController extends Controller
             compact(
                 'id',
                 'title',
-                'header',
+
                 'main_breadcrumb',
                 'main_breadcrumb_link',
                 'breadcrumb'

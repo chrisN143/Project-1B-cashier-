@@ -63,4 +63,21 @@ class OrderController extends Controller
         return redirect('/orders')->with('message', 'Order Id not Found');
     }
     }
+
+    public function print($orderId)
+    {
+        /* Header Setting */
+
+        $order = Order::where('order_code', $orderId)->first();
+        if ($order) {
+            return view(
+                'app.order.print-order',
+                compact(
+                'order',
+            )
+        );
+    } else {
+        return redirect('/orders')->with('message', 'Order Id not Found');
+    }
+    }
 }

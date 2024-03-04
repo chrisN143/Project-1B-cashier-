@@ -46,20 +46,9 @@ class ItemsDatatable extends Component
                     $authUser = User::find(Auth::id());
 
                     $detailsHtml = '';
-                    $detailsUrl = route('product.detail', $item->id);
+                    $detailsUrl = route('laporan.detail', $item->order_code);
                     $detailsHtml = "<a href='$detailsUrl' class='btn btn-primary btn-sm ml-2'><i class='fa fa-detail mr-2'></i>details</a>";
-                    $editHtml = '';
-                    $editUrl = route('product.detail', ['id' => $item['id']]);
-                    $editHtml = "<a href='$editUrl' class='btn btn-primary btn-sm ml-2'><i class='fa-solid fa-pen-to-square'></i></a>";
-
-
-                    $destroyHtml = '';
-                    $destroyHtml = "<button type='submit' wire:click.prevent=\"destroy('$item->id')\" class='btn btn-danger btn-sm ml-2'
-                                wire:confirm=\"Delete Data?\">
-                                <i class='fa fa-trash mr-2'></i>
-                                    </button>";
-
-                    $html = "$editHtml  $destroyHtml";
+                    $html = "$detailsHtml";
 
                     return $html;
                 },
