@@ -45,7 +45,7 @@ class Checkout extends Component
         } else {
             session()->flash('error', 'Something wrong!');
         }
-     
+        // $this->resetPage();
     }
     public function incrementQuantity($id)
     {
@@ -58,18 +58,20 @@ class Checkout extends Component
         }
     }
 
-    public function Order()
+    public function order()
     {
-        $this->validate();
-        foreach ($this->carts as $Item) {
-            $countstok = Product::where('id', $Item->product_id)->first();
-            if ($countstok->stok - $Item->quantity < 0) {
+
+
+        foreach ($this->carts as $item) {
+            $countstok = Product::where('id', $item->product_id)->first();
+            if ($countstok->stok - $item->quantity < 0) {
                 return session()->flash('error', 'Product ' . $countstok->name . ' hanya mempunyai ' . $countstok->stok .  ' stok ');
             }
         }
 
+        $this->validate();
+        // $payment =
         $order = Order::create([
-            'order_code' => 'Order-' . Str::random(10),
             'user_id' => auth()->user()->id,
             'customer_name' => $this->customerName,
             'total_price' => $this->totalprice,
@@ -104,8 +106,9 @@ class Checkout extends Component
             return redirect()->route('menu.checkout');
         }
     }
-    #[On('add')]
 
+
+    #[On('add')]
     public function mount()
     {
         $this->customerName = auth()->user()->name;

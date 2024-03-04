@@ -27,7 +27,7 @@ class Detail extends Component
     #[Rule('required')]
     public $price;
     #[Rule('required')]
-    
+
     public $stok;
     #[Rule('required')]
     public $store_id;
@@ -39,6 +39,7 @@ class Detail extends Component
     public function mount()
     {
         $this->store = Store::all();
+
         if ($this->objId) {
             $product = Product::find($this->objId);
             $this->name = $product->name;
@@ -69,15 +70,15 @@ class Detail extends Component
                     'price' => str_replace(",", ".", str_replace(".", "", $this->price)),
                     'store_id' => $this->store_id,
 
-                    'image' => $this->image != null ? $this->image->hashname() : $product->image,
-                    'description' => $this->description
-                ]);
-            } else {
-                //Create
-                Product::create([
-                    'name' => $this->name,
-                    'price' => str_replace(",", ".", str_replace(".", "", $this->price)),
-                    'store_id' => $this->store_id,
+                'image' => $this->image != null ? $this->image->hashname() : $product->image,
+                'description' => $this->description
+            ]);
+        } else {
+            //Create
+            Product::create([
+                'name' => $this->name,
+                'price' => str_replace(",", ".", str_replace(".", "", $this->price)),
+                'store_id' => $this->store_id,
 
                     'image' => $this->image != null ? $this->image->hashname() : null,
                     'description' => $this->description
