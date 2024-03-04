@@ -20,7 +20,7 @@ class OrderItems extends Model
         'product_image'
     ];
     public function order(){
-        return $this->hasMany(orderItems::class, 'order_id', 'id');
+        return $this->belongsTo(Order::class);
     }
     public function product()
     {

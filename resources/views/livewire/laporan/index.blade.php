@@ -35,8 +35,8 @@
                     <!--begin::Title-->
                     <div class="card-title d-flex flex-column">
                         <!--begin::Amount-->
-                        <span class="text-light  fw-semibold fs-4">Incomme</span>
-                        <h4 class=" text-light lh-1 ls-n2">Rp.{{ $totalprice }}</h4>
+                        <span class="text-light  fw-semibold fs-2">Incomme</span>
+                        <h4 class="fs-2 text-light lh-1 ls-n2">Rp. {{ $totalprice }}</h4>
                         <span class="text-light fw-semibold fs-6">Created At</span>
                         <!--end::Amount-->
 
@@ -54,46 +54,57 @@
     </div>
 
     <!--end::Col-->
-    <div class="row py-3">
-        <div class="col-md-2">
-            <input id="start" class="form-control" type="date" wire:model='start_date'>
-        </div>
-        <div class="col-md-2">
-            <input id="start" class="form-control" type="date" wire:model='end_date'>
-        </div>
-        <div class="col-md-2">
-            <select class="form-select" name="store_id" wire:model="payment">
-                <option value="" hidden selected>All Payment Mode</option>
-                @foreach ($transaction as $method)
-                    <option value="{{ $method->payment_method }}">{{ $method->payment_method }}</option>
-                @endforeach
-            </select>
-        </div>
-        <div class="col-md-1">
-            <button type="submit" class="btn btn-info btn-sm" wire:click="filter">Filter</button>
-        </div>
-        <div class="col-md-2">
-            {{-- <form class="d-flex"> --}}
-            <input class="form-control me-2" type="search" placeholder="No Customer" wire:model.live="search"
-                id="searchInput">
 
-            {{-- </form> --}}
-        </div>
-    </div>
     <ul class="nav nav-tabs" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane"
-                type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Home</button>
+                type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">all</button>
+        </li>
+        {{-- <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane"
+                type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">items</button>
+        </li> --}}
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="order-items-tab" data-bs-toggle="tab" data-bs-target="#order-items-tab-pane"
+                type="button" role="tab" aria-controls="order-items-tab-pane" aria-selected="false">Order
+                items</button>
         </li>
         <li class="nav-item" role="presentation">
-            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane"
-                type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Profile</button>
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane"
+                type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Trashed
+                Order</button>
         </li>
 
     </ul>
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
             tabindex="0">
+            <div class="row py-3">
+                <div class="col-md-2">
+                    <input id="start" class="form-control" type="date" wire:model='start_date'>
+                </div>
+                <div class="col-md-2">
+                    <input id="start" class="form-control" type="date" wire:model='end_date'>
+                </div>
+                <div class="col-md-2">
+                    <select class="form-select" name="store_id" wire:model="payment">
+                        <option value="" hidden selected>All Payment Mode</option>
+                        @foreach ($transaction as $method)
+                            <option value="{{ $method->payment_method }}">{{ $method->payment_method }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-1">
+                    <button type="submit" class="btn btn-info btn-sm" wire:click="filter">Filter</button>
+                </div>
+                <div class="col-md-2">
+                    {{-- <form class="d-flex"> --}}
+                    <input class="form-control me-2" type="search" placeholder="No Customer" wire:model.live="search"
+                        id="searchInput">
+
+                    {{-- </form> --}}
+                </div>
+            </div>
             <table>
                 <caption>Order Information</caption>
                 <tbody>
@@ -116,52 +127,114 @@
             </table>
             {{ $order->links() }}
         </div>
-        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+        {{-- <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
+            tabindex="0">
             @livewire('laporan.itemsDatatable')
+        </div> --}}
+        <div class="tab-pane fade" id="order-items-tab-pane" role="tabpanel" aria-labelledby="order-items-tab"
+            tabindex="0">
+            <div class="row py-3">
+                {{-- <div class="col-md-2">
+                    <input id="start" class="form-control" type="date" wire:model='start_date'>
+                </div>
+                <div class="col-md-2">
+                    <input id="start" class="form-control" type="date" wire:model='end_date'>
+                </div>
+                <div class="col-md-2">
+                    <select class="form-select" name="store_id" wire:model="payment">
+                        <option value="" hidden selected>All Payment Mode</option>
+                        @foreach ($transaction as $method)
+                            <option value="{{ $method->payment_method }}">{{ $method->payment_method }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-1">
+                    <button type="submit" class="btn btn-info btn-sm" wire:click="filter">Filter</button>
+                </div> --}}
+                <div class="col-md-2">
+                    {{-- <form class="d-flex"> --}}
+                    <input class="form-control me-2" type="search" placeholder="No Customer"
+                        wire:model.live="searchItems" id="searchInput">
+
+                    {{-- </form> --}}
+                </div>
+            </div>
+            <table>
+                <caption>Order Information</caption>
+                <tbody>
+                    @foreach ($orderItems as $item)
+                        <tr>
+                            <td data-label="No">{{ $item->order->order_code }}</td>
+                            <td data-label="No Customer">{{ $item->product_name }}</td>
+                            <td data-label="Total Harga">{{ $item->product_price }}</td>
+                            <td data-label="Tipe Pembayaran">{{ $item->product_quantity }}</td>
+                            <td data-label="Tanggal Order">{{ $item->created_at->diffForHumans() }}</td>
+                            {{-- <td data-label="Action">
+                                <a href="{{ url('laporan/' . $item->order_code) }}"
+                                    class="btn btn-primary">Detail</a>
+                            </td> --}}
+
+                        </tr>
+                    @endforeach
+
+
+                </tbody>
+            </table>
+            {{ $orderItems->links() }}
         </div>
         <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
             tabindex="0">
-            ...</div>
-        {{-- <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div> --}}
+            {{-- <div class="row py-3">
+                <div class="col-md-2">
+                    <input id="start" class="form-control" type="date" wire:model='start_date'>
+                </div>
+                <div class="col-md-2">
+                    <input id="start" class="form-control" type="date" wire:model='end_date'>
+                </div>
+                <div class="col-md-2">
+                    <select class="form-select" name="store_id" wire:model="payment">
+                        <option value="" hidden selected>All Payment Mode</option>
+                        @foreach ($transaction as $method)
+                            <option value="{{ $method->payment_method }}">{{ $method->payment_method }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="col-md-1">
+                    <button type="submit" class="btn btn-info btn-sm" wire:click="filter">Filter</button>
+                </div>
+                <div class="col-md-2">
+                    <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="No Customer"
+                        wire:model.live="search" id="searchInput">
+
+                    </form>
+                </div>
+            </div> --}}
+            <table>
+                <caption>Order Information</caption>
+                <tbody>
+                    @foreach ($deletedorders as $index => $item)
+                        <tr>
+                            <td data-label="No">{{ $index + 1 }}</td>
+                            <td data-label="No Customer">{{ $item->customer_name }}</td>
+                            <td data-label="Total Harga">{{ $item->total_price }}</td>
+                            <td data-label="Tipe Pembayaran">{{ $item->payment_method }}</td>
+                            <td data-label="Tanggal Order">{{ $item->created_at->diffForHumans() }}</td>
+                            <td data-label="Action">
+                                <a href="{{ url('laporan/' . $item->order_code) }}"
+                                    class="btn btn-primary">Detail</a>
+                            </td>
+
+                        </tr>
+                    @endforeach
+
+
+                </tbody>
+            </table>
+            {{-- {{ $deletedorders->links() }} --}}
+
+        </div>
     </div>
-    {{-- <script>
-        // When the web is loaded
-        window.onload = function() {
-            // Get the current date, month, and year
-            let date = new Date();
-            let date_now = date.getDate();
-            let month_now = date.getMonth() + 1;
-            let year_now = date.getFullYear();
 
-            // Format the current date for the input fields
-            let format =
-                `${year_now}-${month_now < 10 ? '0' + month_now : month_now}-${date_now < 10 ? '0' + date_now : date_now}`;
-            let format_end =
-                `${year_now}-${month_now + 1 < 10 ? '0' + (month_now + 1) : month_now + 1}-${date_now < 10 ? '0' + date_now : date_now}`;
-
-            // Set the default value for start and end date
-            document.getElementById('start').value = format;
-            document.getElementById('end').value = format_end;
-
-            // Function to update the end date based on the start date
-            function changeDate() {
-                let start = document.getElementById('start').value;
-
-                // Update the end date based on the selected start date
-                let end_date = new Date(start);
-                end_date.setMonth(end_date.getMonth() + 1);
-
-                // Format the end date for the input field
-                let format_end =
-                    `${end_date.getFullYear()}-${end_date.getMonth() + 1 < 10 ? '0' + (end_date.getMonth() + 1) : end_date.getMonth() + 1}-${end_date.getDate() < 10 ? '0' + end_date.getDate() : end_date.getDate()}`;
-
-                // Set the updated end date value
-                document.getElementById('end').value = format_end;
-            }
-
-            // Attach the changeDate function to the onchange event of the start date input
-            document.getElementById('start').addEventListener("change", changeDate);
-        };
-    </script> --}}
 
 </div>
