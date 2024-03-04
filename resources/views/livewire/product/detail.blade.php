@@ -9,10 +9,10 @@
     <div class="input-group has-validation mt-3">
         <span class="input-group-text" id="inputGroupPrepend">Rp.</span>
         <input type='text' class='form-control' placeholder="Price" id="price" wire:model='price'>
-        @error('price')
-            <span class="text-danger font-italic">{{ $message }}</span>
-        @enderror
     </div>
+    @error('price')
+        <span class="text-danger font-italic">{{ $message }}</span>
+    @enderror
     <div class='form-group mt-3'>
         <input type='text' class='form-control' placeholder="Stok" id="stok" name="stok" wire:model='stok'>
         @error('stok')
@@ -38,7 +38,7 @@
                 <option value="{{ $st->id }}"{{ $objId ? 'selected' : '' }}>{{ $st->store_name }}</option>
             @endforeach
         </select>
-        @error('storeId')
+        @error('store_id')
             <span class="text-danger font-italic">{{ $message }}</span>
         @enderror
     </div>
@@ -50,18 +50,22 @@
             <span class="text-danger font-italic">{{ $message }}</span>
         @enderror
     </div>
-    <button class='btn btn-primary mt-3' wire:click='store'>
+
+    <button class='btn btn-primary mt-3' wire:click='add'>
         {{ $objId ? 'Update' : 'Create' }}
-        <div class="spinner-border text-light" style="width: 15px;  height:15px;" role="status" wire:loading>
+        <div class="spinner-border text-light" style="width: 15px;  height:15px;" wire:loading>
             <span class="visually-hidden">Loading...</span>
         </div>
     </button>
+
+
     {{-- </form> --}}
     <script src="https://unpkg.com/imask"></script>
 
     <script>
         const Price = document.getElementById('price');
         IMask(Price, {
+            mnv
             mask: Number, // enable number mask
 
             // other options are optional with defaults below

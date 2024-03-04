@@ -75,13 +75,9 @@ class MenuIndex extends Component
 
     public function render()
     {
-        $this->cartUser = $this->cartCount();
 
-        // if (strlen($this->search) > 2) {
         $products =  $this->search === null ? Product::latest()->paginate(20) : Product::latest()->where('name', 'like', '%' . $this->search . '%')->paginate(20);
-        // }
         return view('livewire.menu.menu-index', [
-            'cartUser' => $this->cartUser,
             'products' => $products
         ]);
     }

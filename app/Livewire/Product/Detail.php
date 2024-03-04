@@ -11,15 +11,16 @@ use Livewire\WithFileUploads;
 // use Livewire\WithFileUploads;
 // use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
+use PhpParser\Node\Stmt\TryCatch;
 
 class Detail extends Component
 {
     use WithFileUploads;
-    use WithPagination;
+
 
     public $objId;
     public $oldImage;
-    // public $store;
+    public $store;
 
     #[Rule('required')]
     public $name;
@@ -28,6 +29,7 @@ class Detail extends Component
     #[Rule('required')]
     
     public $stok;
+    #[Rule('required')]
     public $store_id;
     #[Rule('nullable|sometimes|image|max:6140')]
     public $image;
@@ -36,6 +38,7 @@ class Detail extends Component
 
     public function mount()
     {
+        $this->store = Store::all();
         if ($this->objId) {
             $product = Product::find($this->objId);
             $this->name = $product->name;
@@ -48,47 +51,45 @@ class Detail extends Component
         }
     }
 
-    public function store()
+    public function add()
     {
 
-        if ($this->image != null) {
             $this->validate();
-            $this->image->store('images', 'public');
-        }
 
-        $this->validate();
-        if ($this->objId) {
-            //Update
-            $product = Product::find($this->objId);
-            $product->update([
-                'name' => $this->name,
-                'price' => str_replace(",", ".", str_replace(".", "", $this->price)),
-                'store_id' => $this->store_id,
+            if ($this->image != null) {
+                $this->validate();
+                $this->image->store('images', 'public');
+            }
 
-                'image' => $this->image != null ? $this->image->hashname() : $product->image,
-                'description' => $this->description
-            ]);
-        } else {
-            //Create
-            Product::create([
-                'name' => $this->name,
-                'price' => str_replace(",", ".", str_replace(".", "", $this->price)),
-                'code' => 'Product-' . Str::random(10),
-                'store_id' => $this->store_id,
+            if ($this->objId) {
+                //Update
+                $product = Product::find($this->objId);
+                $product->update([
+                    'name' => $this->name,
+                    'price' => str_replace(",", ".", str_replace(".", "", $this->price)),
+                    'store_id' => $this->store_id,
 
-                'image' => $this->image != null ? $this->image->hashname() : null,
-                'description' => $this->description
-            ]);
-        }
+                    'image' => $this->image != null ? $this->image->hashname() : $product->image,
+                    'description' => $this->description
+                ]);
+            } else {
+                //Create
+                Product::create([
+                    'name' => $this->name,
+                    'price' => str_replace(",", ".", str_replace(".", "", $this->price)),
+                    'store_id' => $this->store_id,
 
-        return redirect()->route('product.index');
+                    'image' => $this->image != null ? $this->image->hashname() : null,
+                    'description' => $this->description
+                ]);
+            }
+
+            return redirect()->route('product.index');
+
     }
 
     public function render()
     {
-        $store = Store::all();
-        return view('livewire.product.detail', [
-            'store' => $store
-        ]);
+        return view('livewire.product.detail');
     }
 }

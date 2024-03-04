@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use Illuminate\Support\Str;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -20,7 +21,13 @@ class Product extends Model
         'image',
         'description',
     ];
+    protected static function booted(): void
+    {
+        static::creating(function ($model) {
+            $model->code =  'Product-' . Str::random(10);
 
+        });
+    }
     public function store()
     {
 

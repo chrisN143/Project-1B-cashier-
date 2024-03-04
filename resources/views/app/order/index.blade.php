@@ -38,5 +38,5 @@
 @endsection
 
 @section('content')
-    @livewire('order.table-order')
+    @livewire('order.itemsdatatable')
 @endsection
