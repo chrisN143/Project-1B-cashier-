@@ -36,7 +36,7 @@ class TransactionController extends Controller
     {
         /* Header Setting */
         $title = "Transaction";
-        $header = "Transaction Create";
+
         $main_breadcrumb = "Transaction";
         $main_breadcrumb_link = route('transaction.detail');
         $breadcrumb = null;
@@ -48,7 +48,7 @@ class TransactionController extends Controller
             compact(
                 'id',
                 'title',
-                'header',
+       
                 'main_breadcrumb',
                 'main_breadcrumb_link',
                 'breadcrumb'

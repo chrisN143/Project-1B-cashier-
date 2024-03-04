@@ -22,8 +22,9 @@ class Detail extends Component
         }
     }
 
-    public function transaction()
+    public function add()
     {
+        $this->validate();
         if ($this->objId) {
             //Update
             $transaction = Transaction::find($this->objId);

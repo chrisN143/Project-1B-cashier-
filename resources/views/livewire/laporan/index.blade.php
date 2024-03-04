@@ -29,57 +29,6 @@
         <!--begin::Col-->
         <div class="col-md-3">
             <!--begin::Card widget 7-->
-            <div class="card card-flush bg-warning bg-gradient">
-                <!--begin::Header-->
-                <div class="card-header py-4">
-                    <!--begin::Title-->
-                    <div class="card-title d-flex flex-column">
-                        <!--begin::Amount-->
-                        <span class="text-light fw-semibold fs-2">Roles</span>
-                        <span class="fs-2hx fw-bold text-light me-2 lh-1 ls-n2"></span>
-                        <span class="text-light fw-semibold fs-6">Created At</span>
-                        <!--end::Amount-->
-                        <!--begin::Subtitle-->
-                        <!--end::Subtitle-->
-                    </div>
-                    <span class="float-right display-5 bg-opacity-25"><i
-                            class="fa-solid fa-cart-shopping fs-1 text-light"></i></span>
-                    <!--end::Title-->
-                </div>
-                <!--end::Header-->
-            </div>
-            <!--end::Card widget 7-->
-        </div>
-        <!--end::Col-->
-        <!--begin::Col-->
-        <div class="col-md-3">
-            <!--begin::Card widget 7-->
-            <div class="card card-flush bg-success bg-gradient">
-                <!--begin::Header-->
-                <div class="card-header py-4">
-                    <!--begin::Title-->
-                    <div class="card-title d-flex flex-column">
-                        <!--begin::Amount-->
-                        <span class="text-light  fw-semibold fs-4">Permissions</span>
-                        <span class="fs-2hx fw-bold text-light lh-1 ls-n2"></span>
-                        <span class="text-light fw-semibold fs-6">Created At</span>
-                        <!--end::Amount-->
-
-                        <!--begin::Subtitle-->
-                        <!--end::Subtitle-->
-                    </div>
-                    <span class="float-right display-5 bg-opacity-25"><i
-                            class="fa-solid fa-cart-shopping fs-1 text-light"></i></span>
-                    <!--end::Title-->
-                </div>
-                <!--end::Header-->
-            </div>
-            <!--end::Card widget 7-->
-        </div>
-        <!--end::Col-->
-        <!--begin::Col-->
-        <div class="col-md-3">
-            <!--begin::Card widget 7-->
             <div class="card card-flush bg-danger bg-gradient">
                 <!--begin::Header-->
                 <div class="card-header py-4">
@@ -110,14 +59,22 @@
             <input id="start" class="form-control" type="date" wire:model='start_date'>
         </div>
         <div class="col-md-2">
-            <input id="end" class="form-control" type="date" wire:model='end_date'>
+            <input id="start" class="form-control" type="date" wire:model='end_date'>
+        </div>
+        <div class="col-md-2">
+            <select class="form-select" name="store_id" wire:model="payment">
+                <option value="" hidden selected>All Payment Mode</option>
+                @foreach ($transaction as $method)
+                    <option value="{{ $method->payment_method }}">{{ $method->payment_method }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="col-md-1">
-            <button type="submit" wire:click="filter">Filter</button>
+            <button type="submit" class="btn btn-info btn-sm" wire:click="filter">Filter</button>
         </div>
         <div class="col-md-2">
             {{-- <form class="d-flex"> --}}
-            <input class="form-control me-2" type="search" placeholder="No Customer" aria-label="Search"
+            <input class="form-control me-2" type="search" placeholder="No Customer" wire:model.live="search"
                 id="searchInput">
 
             {{-- </form> --}}
@@ -132,10 +89,7 @@
             <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane"
                 type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Profile</button>
         </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane"
-                type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Contact</button>
-        </li>
+
     </ul>
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
@@ -162,8 +116,7 @@
             </table>
             {{ $order->links() }}
         </div>
-        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
-            tabindex="0">
+        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
             @livewire('laporan.itemsDatatable')
         </div>
         <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
@@ -171,7 +124,7 @@
             ...</div>
         {{-- <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">...</div> --}}
     </div>
-    <script>
+    {{-- <script>
         // When the web is loaded
         window.onload = function() {
             // Get the current date, month, and year
@@ -209,6 +162,6 @@
             // Attach the changeDate function to the onchange event of the start date input
             document.getElementById('start').addEventListener("change", changeDate);
         };
-    </script>
+    </script> --}}
 
 </div>
