@@ -1,6 +1,4 @@
 <div>
-
-
     <div class='form-group mb-3'>
         <input type='text' placeholder="Store Name" class='form-control' name="store" wire:model='store'>
         @error('store')
@@ -13,6 +11,4 @@
             <span class="visually-hidden">Loading...</span>
         </div>
     </button>
-
-
 </div>
