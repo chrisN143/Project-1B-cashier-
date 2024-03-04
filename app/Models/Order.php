@@ -22,13 +22,15 @@ class Order extends Model
         'payment_method',
         'payment_id'
     ];
+
     protected static function booted(): void
     {
         static::creating(function ($model) {
             $model->order_code = 'Order-' . Str::random(10);
         });
+
         static::deleted(function ($model) {
-            $model->orderItems = null;
+            $model->orderItems()->delete();
         });
     }
     public function orderItems()
