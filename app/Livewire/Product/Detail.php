@@ -19,14 +19,14 @@ class Detail extends Component
 
     public $objId;
     public $oldImage;
-    // public $store;
+    public $store;
 
     #[Rule('required')]
     public $name;
     #[Rule('required')]
     public $price;
     #[Rule('required')]
-    
+
     public $stok;
     public $store_id;
     #[Rule('nullable|sometimes|image|max:6140')]
@@ -36,6 +36,8 @@ class Detail extends Component
 
     public function mount()
     {
+        $this->store = Store::all();
+
         if ($this->objId) {
             $product = Product::find($this->objId);
             $this->name = $product->name;
@@ -73,7 +75,6 @@ class Detail extends Component
             Product::create([
                 'name' => $this->name,
                 'price' => str_replace(",", ".", str_replace(".", "", $this->price)),
-                'code' => 'Product-' . Str::random(10),
                 'store_id' => $this->store_id,
 
                 'image' => $this->image != null ? $this->image->hashname() : null,
@@ -86,9 +87,6 @@ class Detail extends Component
 
     public function render()
     {
-        $store = Store::all();
-        return view('livewire.product.detail', [
-            'store' => $store
-        ]);
+        return view('livewire.product.detail');
     }
 }

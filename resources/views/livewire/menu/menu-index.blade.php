@@ -12,23 +12,7 @@
     @endif
     <div class="container my-3">
         <div class="row justify-content-between">
-            <div class="col-md-3 my-2">
-                <div class="dropdown">
-                    {{-- <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
-                        data-bs-toggle="dropdown" aria-expanded="false">
-                        Category
-                    </a> --}}
-                    {{-- 
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        @foreach ($stores as $store)
-                            <li class="dropdown-item" href="#" wire:model="store"><input type="checkbox"
-                                    name="" id=""> {{ $store->store_name }}</li>
-                        @endforeach
-                    </ul> --}}
-                    <button class="btn btn-primary mx-2"><i class="fa-solid fa-cart-shopping text-ligth"
-                            style="width: 18px"></i>({{ $cartUser }})</button>
-                </div>
-            </div>
+
             <div class="col-md-3 my-2">
                 <input class="form-control me-2" wire:model.live="search" type="text" placeholder="Search"
                     aria-label="Search">

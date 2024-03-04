@@ -1,2 +1,1 @@
-
-@extends('livewire.product.livewire-datatable')
+@extends('livewire.livewire-datatable')
