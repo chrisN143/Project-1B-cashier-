@@ -71,10 +71,6 @@
             <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane"
                 type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">all</button>
         </li>
-        {{-- <li class="nav-item" role="presentation">
-            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane"
-                type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">items</button>
-        </li> --}}
         <li class="nav-item" role="presentation">
             <button class="nav-link" id="order-items-tab" data-bs-toggle="tab" data-bs-target="#order-items-tab-pane"
                 type="button" role="tab" aria-controls="order-items-tab-pane" aria-selected="false">Order
@@ -169,15 +165,14 @@
                     @foreach ($deletedorders as $item)
                         <tr>
                             <td data-label="No Customer">{{ $item->order_code }}</td>
-
                             <td data-label="No Customer">{{ $item->customer_name }}</td>
                             <td data-label="Total Harga">{{ $item->total_price }}</td>
                             <td data-label="Tipe Pembayaran">{{ $item->payment_method }}</td>
                             <td data-label="Tanggal Order">{{ $item->created_at->diffForHumans() }}</td>
-                            <td data-label="Action">
+                            {{-- <td data-label="Action">
                                 <a href="{{ url('laporan/' . $item->order_code) }}"
                                     class="btn btn-primary">Detail</a>
-                            </td>
+                            </td> --}}
 
                         </tr>
                     @endforeach
