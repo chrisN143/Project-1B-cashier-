@@ -11,9 +11,9 @@
 </head>
 
 <body>
-    <div class="container mx-auto my-5">
-        @livewire('order.print-order', ['order' => $order])
-    </div>
+
+    @livewire('order.print-order', ['order' => $order])
+
 </body>
 
 </html>

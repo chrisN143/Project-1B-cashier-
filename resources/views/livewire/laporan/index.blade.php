@@ -53,7 +53,7 @@
         </div>
     </div>
 
-    <table>
+    <table class="my-3">
         <tbody>
             @foreach ($itemCounts as $itemCount)
                 <tr>
@@ -99,7 +99,7 @@
                 </div>
                 <div class="col-md-2">
                     <select class="form-select" name="store_id" wire:model="payment">
-                        <option value="" hidden selected>All Payment Mode</option>
+                        <option value="" selected>All Payment Mode</option>
                         @foreach ($transaction as $method)
                             <option value="{{ $method->payment_method }}">{{ $method->payment_method }}</option>
                         @endforeach
@@ -119,8 +119,9 @@
             <table>
                 <caption>Order Information</caption>
                 <tbody>
-                    {{-- @foreach ($order as $item)
+                    @foreach ($order as $item)
                         <tr>
+                            <td data-label="No Customer">{{ $item->order_code }}</td>
                             <td data-label="No Customer">{{ $item->customer_name }}</td>
                             <td data-label="Total Harga">{{ $item->total_price }}</td>
                             <td data-label="Tipe Pembayaran">{{ $item->payment_method }}</td>
@@ -130,45 +131,17 @@
                             </td>
 
                         </tr>
-                    @endforeach --}}
+                    @endforeach
 
 
                 </tbody>
             </table>
-            {{-- {{ $order->links() }} --}}
+            {{ $order->links() }}
         </div>
-        {{-- <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
-            tabindex="0">
-            @livewire('laporan.itemsDatatable')
-        </div> --}}
+
         <div class="tab-pane fade" id="order-items-tab-pane" role="tabpanel" aria-labelledby="order-items-tab"
             tabindex="0">
-            <div class="row py-3">
-                {{-- <div class="col-md-2">
-                    <input id="start" class="form-control" type="date" wire:model='start_date'>
-                </div>
-                <div class="col-md-2">
-                    <input id="start" class="form-control" type="date" wire:model='end_date'>
-                </div>
-                <div class="col-md-2">
-                    <select class="form-select" name="store_id" wire:model="payment">
-                        <option value="" hidden selected>All Payment Mode</option>
-                        @foreach ($transaction as $method)
-                            <option value="{{ $method->payment_method }}">{{ $method->payment_method }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="col-md-1">
-                    <button type="submit" class="btn btn-info btn-sm" wire:click="filter">Filter</button>
-                </div> --}}
-                <div class="col-md-2">
-                    {{-- <form class="d-flex"> --}}
-                    <input class="form-control me-2" type="search" placeholder="No Customer"
-                        wire:model.live="searchItems" id="searchInput">
 
-                    {{-- </form> --}}
-                </div>
-            </div>
             <table>
                 <caption>Order Information</caption>
                 <tbody>
@@ -179,10 +152,6 @@
                             <td data-label="Total Harga">{{ $item->product_price }}</td>
                             <td data-label="Tipe Pembayaran">{{ $item->product_quantity }}</td>
                             <td data-label="Tanggal Order">{{ $item->created_at->diffForHumans() }}</td>
-                            {{-- <td data-label="Action">
-                                <a href="{{ url('laporan/' . $item->order_code) }}"
-                                    class="btn btn-primary">Detail</a>
-                            </td> --}}
 
                         </tr>
                     @endforeach
@@ -190,42 +159,18 @@
 
                 </tbody>
             </table>
-            {{ $orderItems->links() }}
         </div>
         <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
             tabindex="0">
-            {{-- <div class="row py-3">
-                <div class="col-md-2">
-                    <input id="start" class="form-control" type="date" wire:model='start_date'>
-                </div>
-                <div class="col-md-2">
-                    <input id="start" class="form-control" type="date" wire:model='end_date'>
-                </div>
-                <div class="col-md-2">
-                    <select class="form-select" name="store_id" wire:model="payment">
-                        <option value="" hidden selected>All Payment Mode</option>
-                        @foreach ($transaction as $method)
-                            <option value="{{ $method->payment_method }}">{{ $method->payment_method }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="col-md-1">
-                    <button type="submit" class="btn btn-info btn-sm" wire:click="filter">Filter</button>
-                </div>
-                <div class="col-md-2">
-                    <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="No Customer"
-                        wire:model.live="search" id="searchInput">
 
-                    </form>
-                </div>
-            </div> --}}
             <table>
                 <caption>Order Information</caption>
                 <tbody>
                     @foreach ($deletedorders as $item)
                         <tr>
-                            {{-- <td data-label="No Customer">{{ $item->customer_name }}</td> --}}
+                            <td data-label="No Customer">{{ $item->order_code }}</td>
+
+                            <td data-label="No Customer">{{ $item->customer_name }}</td>
                             <td data-label="Total Harga">{{ $item->total_price }}</td>
                             <td data-label="Tipe Pembayaran">{{ $item->payment_method }}</td>
                             <td data-label="Tanggal Order">{{ $item->created_at->diffForHumans() }}</td>
