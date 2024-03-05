@@ -53,6 +53,17 @@
         </div>
     </div>
 
+    <table>
+        <tbody>
+            @foreach ($itemCounts as $itemCount)
+                <tr>
+                    <td>{{ $itemCount['product_name'] }}</td>
+                    <td>{{ $itemCount['total_quantity'] }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+
     <!--end::Col-->
 
     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -108,9 +119,8 @@
             <table>
                 <caption>Order Information</caption>
                 <tbody>
-                    @foreach ($order as $index => $item)
+                    {{-- @foreach ($order as $item)
                         <tr>
-                            <td data-label="No">{{ $index + 1 }}</td>
                             <td data-label="No Customer">{{ $item->customer_name }}</td>
                             <td data-label="Total Harga">{{ $item->total_price }}</td>
                             <td data-label="Tipe Pembayaran">{{ $item->payment_method }}</td>
@@ -120,12 +130,12 @@
                             </td>
 
                         </tr>
-                    @endforeach
+                    @endforeach --}}
 
 
                 </tbody>
             </table>
-            {{ $order->links() }}
+            {{-- {{ $order->links() }} --}}
         </div>
         {{-- <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab"
             tabindex="0">
@@ -213,10 +223,9 @@
             <table>
                 <caption>Order Information</caption>
                 <tbody>
-                    @foreach ($deletedorders as $index => $item)
+                    @foreach ($deletedorders as $item)
                         <tr>
-                            <td data-label="No">{{ $index + 1 }}</td>
-                            <td data-label="No Customer">{{ $item->customer_name }}</td>
+                            {{-- <td data-label="No Customer">{{ $item->customer_name }}</td> --}}
                             <td data-label="Total Harga">{{ $item->total_price }}</td>
                             <td data-label="Tipe Pembayaran">{{ $item->payment_method }}</td>
                             <td data-label="Tanggal Order">{{ $item->created_at->diffForHumans() }}</td>
@@ -235,6 +244,5 @@
 
         </div>
     </div>
-
 
 </div>

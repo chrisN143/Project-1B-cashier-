@@ -47,16 +47,25 @@ class Index extends Component
         }
         return $this->totalprice;
     }
+
     public function render()
     {
         $orderItems =  OrderItems::when($this->searchItems, function ($query) {
             $query->where('product_name', 'like', '%' . $this->searchItems . '%');
         })->paginate(20);
+        $itemCounts = $orderItems->groupBy('product_name')->map(function ($items) {
+            return [
+                'product_name' => $items->first()->product_name,
+                'total_quantity' => $items->sum('product_quantity')
+            ];
+        });
+
         $order = Order::whereDate('created_at', '>=', $this->start_date)->whereDate('created_at', '<=', $this->end_date)->where('customer_name', 'like', '%' . $this->search . '%')->where('payment_method', 'like', '%' . $this->payment . '%')->orderBy('id', 'DESC')->paginate(10);
         // $order = Order::where('created_at', 'like', '%' . $this->date . '%')->where('customer_name', 'like', '%' . $this->search . '%')->where('payment_method', 'like', '%' . $this->payment . '%')->orderBy('id', 'DESC')->paginate(10);
         return view('livewire.laporan.index', [
             'order' => $order,
             'orderItems' => $orderItems,
+            'itemCounts' => $itemCounts
         ]);
     }
 }
