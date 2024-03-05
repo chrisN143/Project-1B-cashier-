@@ -1,1 +1,1 @@
-@extends('livewire.laporan.livewire-datatable')
+@extends('livewire.livewire-datatable')
