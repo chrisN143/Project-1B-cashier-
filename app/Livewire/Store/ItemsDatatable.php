@@ -4,18 +4,18 @@ namespace App\Livewire\Store;
 
 use App\Models\Store;
 use App\Models\User;
-use App\Traits\WithDatatable;
+use App\Traits\WithDatatable; //namespace untuk with datatable backend
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 
 class ItemsDatatable extends Component
 {
-    use WithDatatable;
+    use WithDatatable; //untuk memanggil fungsi yang di folder Traits
 
     public function destroy($id)
     {
-        $item = Store::find($id);
+        $item = Store::find($id); // untuk memanggil table database
         $authUser = User::find(Auth::id());
         $item->delete();
     }
@@ -24,8 +24,8 @@ class ItemsDatatable extends Component
     {
         return [
             [
-                'key' => 'store_name',
-                'name' => 'name',
+                'key' => 'store_name', //key sesuai colounm database (untuk memanggil isi database)
+                'name' => 'name', //nama coloumn untuk tampilan
             ],
             [
                 'key' => 'created_at',
@@ -41,7 +41,7 @@ class ItemsDatatable extends Component
 
                     $detailsHtml = '';
                     $detailsUrl = route('store.detail', $item->id);
-                    $detailsHtml = "<a href='$detailsUrl' class='btn btn-primary btn-sm ml-2'><i class='fa fa-detail mr-2'></i>details</a>";
+                    $detailsHtml = "<a href='$detailsUrl' class='btn btn-primary btn-sm ml-2'><i class='fa fa-detail mr-2'></i>details</a>"; // untuk tampilan tombol detail tetapi sesuai kan kebutuhan
                     $editHtml = '';
                     $editUrl = route('store.detail', ['id' => $item['id']]);
                     $editHtml = "<a href='$editUrl' class='btn btn-primary btn-sm ml-2'><i class='fa-solid fa-pen-to-square'></i></a>";
@@ -53,7 +53,7 @@ class ItemsDatatable extends Component
                                 <i class='fa fa-trash mr-2'></i>
                                     </button>";
 
-                    $html = "$editHtml  $destroyHtml";
+                    $html = "$editHtml  $destroyHtml"; //agar tombol dapat di tampilkan 
 
                     return $html;
                 },

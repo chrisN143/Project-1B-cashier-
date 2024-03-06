@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class OrderItems extends Model
 {
     use HasFactory;
+    use SoftDeletes;
+
     protected $fillable = [
         'order_id',
         'product_id',
@@ -17,7 +20,7 @@ class OrderItems extends Model
         'product_image'
     ];
     public function order(){
-        return $this->hasMany(orderItems::class, 'order_id', 'id');
+        return $this->belongsTo(Order::class);
     }
     public function product()
     {
