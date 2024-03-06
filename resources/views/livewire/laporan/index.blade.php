@@ -9,8 +9,8 @@
                     <!--begin::Title-->
                     <div class="card-title d-flex flex-column ">
                         <!--begin::Amount-->
-                        <span class="text-light fw-semibold fs-2">All orders</span>
-                        <span class="fs-2 text-light lh-1 ls-n2">{{ $this->ordersCount }}</span>
+                        <span class="text-light fw-semibold fs-4">All orders</span>
+                        <span class=" text-light lh-1 ls-n2">{{ $this->ordersCount }}</span>
                         <span class="text-light fw-semibold fs-6">Created At</span>
                         <!--end::Amount-->
 
