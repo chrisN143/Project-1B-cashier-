@@ -104,7 +104,7 @@
                                             <td colspan="3" class="text-center">Total Amount :</td>
                                             <td>Rp. {{ $order->total_price }}</td>
                                         </tr>
-                                    </tbody>
+                                    </tbody>    
                                 </table>
                                 <div>
                                     {{-- {{ $order->links() }} --}}
