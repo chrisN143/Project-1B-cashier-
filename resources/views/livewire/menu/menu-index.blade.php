@@ -37,7 +37,7 @@
                                     <h5 class="">Category : {{ $item->store->store_name }}</h5>
                                     {{-- $post->created_at->diffForHumans() --}}
                                 </small>
-                            <h6>Price : Rp. {{ $item->price }}</h6>
+                            <h6>Price : Rp. {{number_format($item->price, 0, ',', '.') }}</h6>
                             </p>
 
                             {{-- <input type="number" wire:model.live="inputquantity" value="{{ $this->inputquantity }}"

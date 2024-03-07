@@ -17,7 +17,6 @@ class MenuIndex extends Component
     use WithPagination;
     #[Url()]
     protected $queryString = ['search' => ['except' => '']];
-
     public $search = '';
 
     public $stores;

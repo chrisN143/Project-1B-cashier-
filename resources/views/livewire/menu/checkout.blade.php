@@ -26,7 +26,7 @@
                         @forelse ($carts as $cart)
                             <tr>
                                 <td data-label="No Customer">{{ $cart->product->name }}</td>
-                                <td data-label="Total Harga">Rp. {{ $cart->product->price }}</td>
+                                <td data-label="Total Harga">Rp. {{number_format($cart->product->price, 0, ',', '.') }}</td>
                                 <td data-label="Tipe Pembayaran">
                                     @if ($cart->quantity > 0)
                                         <div class="input-group">
@@ -53,7 +53,7 @@
                                         </div>
                                     @endif
                                 </td>
-                                <td data-label="Tanggal Order"> Rp. {{ $cart->product->price * $cart->quantity }}
+                                <td data-label="Tanggal Order"> Rp. {{ number_format ($cart->product->price * $cart->quantity, 0, ',', '.') }}
                                 </td>
                                 @php
                                     $total += $cart->product->price * $cart->quantity;
@@ -111,7 +111,7 @@
                 <div class="col-md-5 my-4">
                     <div class="shadow bg-white p-3">
                         <h4>Total:
-                            <span>Rp. {{ $total }}</span>
+                            <span>Rp. {{number_format($total , 0, ',', '.') }}</span>
                         </h4>
                         <hr>
                         <div class="">

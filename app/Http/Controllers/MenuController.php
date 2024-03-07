@@ -64,28 +64,6 @@ class MenuController extends Controller
             )
         );
     }
-    public function cart(Request $request)
-    {
-        /* Header Setting */
-        $title = "Menu";
-        $header = "Menu Cart";
-        $main_breadcrumb = "Menu";
-        $main_breadcrumb_link = route('menu.cart');
-        $breadcrumb = null;
-        $id = $request->id;
-
-        return view(
-            'app.menu.cart',
-            compact(
-                'id',
-                'title',
-                'header',
-                'main_breadcrumb',
-                'main_breadcrumb_link',
-                'breadcrumb'
-            )
-        );
-    }
     public function checkout()
     {
         /* Header Setting */
