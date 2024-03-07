@@ -16,7 +16,7 @@
                     <input id="start" class="form-control" type="date" wire:model='start_date'>
                 </div>
                 <div class="col-md-2 my-2">
-                    <input id="start" class="form-control" type="date" wire:model='end_date'>
+                    <input id="end" class="form-control" type="date" wire:model='end_date'>
                 </div>
                 <div class="col-md-1 my-2">
                     <button type="submit" class="btn btn-info btn-sm" wire:click="filter">Filter</button>

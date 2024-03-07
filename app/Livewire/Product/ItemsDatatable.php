@@ -67,7 +67,14 @@ class ItemsDatatable extends Component
 
     public function getQuery(): Builder
     {
-        return Product::query();
+        $array = [
+            [
+                'key' => 'name',
+                'name' => 'Name',
+            ],
+
+        ];
+        return Product::query($array);
     }
 
     public function getView(): string
