@@ -20,7 +20,7 @@
                 </div>
                 <div class="col-md-1 my-2">
                     <button type="submit" class="btn btn-info btn-sm" wire:click="filter">Filter</button>
-                </div>
+                </div> 
                 <div class="col-md-2 my-2">
                     <input class="form-control me-2" type="search" placeholder="No Customer"
                         wire:model.live="searchItems" id="searchInput">
