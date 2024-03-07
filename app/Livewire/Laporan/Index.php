@@ -28,7 +28,8 @@ class Index extends Component
     public $transaction;
     // public $ordersCount;
     public $totalprice;
-    public $results;
+
+
     public function filter()
     {
         $this->resetPage();

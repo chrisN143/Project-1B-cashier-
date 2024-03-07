@@ -36,7 +36,8 @@
                     <div class="card-title d-flex flex-column">
                         <!--begin::Amount-->
                         <span class="text-light  fw-semibold fs-2">Incomme</span>
-                        <h4 class="fs-2 text-light lh-1 ls-n2">Rp. {{ $ordersPrice }}</h4>
+                        <h4 class="fs-2 text-light lh-1 ls-n2">Rp. {{ number_format($ordersPrice, 0, ',', '.') }}</h4>
+
                         <span class="text-light fw-semibold fs-6">Created At</span>
                         <!--end::Amount-->
 
@@ -88,7 +89,7 @@
                         <tr>
                             <td data-label="No Customer">{{ $item->order_code }}</td>
                             <td data-label="Customer Name">{{ $item->customer_name }}</td>
-                            <td data-label="Total Price">Rp. {{ $item->total_price }}</td>
+                            <td data-label="Total Price">Rp. {{ number_format($item->total_price, 0, ',', '.') }}</td>
                             <td data-label="Payment Method">{{ $item->payment_method }}</td>
                             <td data-label="Tanggal Order">{{ $item->created_at }}</td>
                             <td data-label="Action">
@@ -118,6 +119,7 @@
 
 
     </div>
+
 
 
 
