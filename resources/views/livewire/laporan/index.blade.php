@@ -98,7 +98,6 @@
                             <td data-label="Action">
                                 <a href="{{ url('laporan/' . $item->order_code) }}" class="btn btn-primary">Detail</a>
                             </td>
-
                         </tr>
                     @empty
                         <tr>
@@ -109,7 +108,6 @@
                                     </strong>
                                 </h3>
                             </td>
-
 
                         </tr>
                     @endforelse
