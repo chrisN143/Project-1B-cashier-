@@ -61,7 +61,7 @@
                     <input id="start" class="form-control" type="date" wire:model='start_date'>
                 </div>
                 <div class="col-md-2 my-2">
-                    <input id="start" class="form-control" type="date" wire:model='end_date'>
+                    <input id="end" class="form-control" type="date" wire:model='end_date'>
                 </div>
                 <div class="col-md-2 my-2">
                     <select class="form-select" name="store_id" wire:model="payment">
@@ -122,6 +122,45 @@
 
 
     </div>
+    <script>
+        window.onload = function() {
+            // Get the current date, month, and year
+            let date = new Date();
+            let date_now = date.getDate();
+            let month_now = date.getMonth() + 1;
+            let year_now = date.getFullYear();
+
+            // Format the current date for the input fields
+            let format =
+                `${year_now}-${month_now < 10 ? '0' + month_now : month_now}-${date_now < 10 ? '0' + date_now : date_now}`;
+            let format_end =
+                `${year_now}-${month_now + 1 < 10 ? '0' + (month_now + 1) : month_now + 1}-${date_now < 10 ? '0' + date_now : date_now}`;
+
+            // Set the default value for start and end date
+            document.getElementById('start').value = format;
+            document.getElementById('end').value = format_end;
+
+            // Function to update the end date based on the start date
+            function changeDate() {
+                let start = document.getElementById('start').value;
+
+                // Update the end date based on the selected start date
+                let end_date = new Date(start);
+                end_date.setMonth(end_date.getMonth() + 1);
+
+                // Format the end date for the input field
+                let format_end =
+                    `${end_date.getFullYear()}-${end_date.getMonth() + 1 < 10 ? '0' + (end_date.getMonth() + 1) : end_date.getMonth() + 1}-${end_date.getDate() < 10 ? '0' + end_date.getDate() : end_date.getDate()}`;
+
+                // Set the updated end date value
+                document.getElementById('end').value = format_end;
+            }
+
+            // Attach the changeDate function to the onchange event of the start date input
+            document.getElementById('start').addEventListener("change", changeDate);
+        };
+    </script>
+
 
 
 </div>
