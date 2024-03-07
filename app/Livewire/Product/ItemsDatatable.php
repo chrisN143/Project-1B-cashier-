@@ -67,6 +67,7 @@ class ItemsDatatable extends Component
 
     public function getQuery(): Builder
     {
+
         return Product::query();
     }
 

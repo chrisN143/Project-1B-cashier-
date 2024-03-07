@@ -5,6 +5,7 @@ namespace App\Livewire\Laporan;
 use Livewire\WithPagination;
 
 use App\Models\OrderItems;
+use Illuminate\Support\Carbon;
 use Livewire\Component;
 
 class StokReport extends Component
@@ -12,6 +13,7 @@ class StokReport extends Component
     use WithPagination;
 
     public $start_date = '';
+
     public $end_date = '';
     public $payment = '';
     public $search = '';
@@ -24,6 +26,8 @@ class StokReport extends Component
 
     public function mount()
     {
+        $this->start_date = Carbon::now()->format('Y-m-d');
+        $this->end_date = Carbon::now()->add(31, 'day')->format('Y-m-d');
     }
     public function render()
     {

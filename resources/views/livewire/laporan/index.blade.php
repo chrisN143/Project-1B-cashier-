@@ -58,13 +58,13 @@
             tabindex="0">
             <div class="row py-3">
                 <div class="col-md-2 my-2">
-                    <input id="start" class="form-control" type="date" wire:model='start_date'>
+                    <input id="start" class="form-control" type="date" wire:model.live='start_date'>
                 </div>
                 <div class="col-md-2 my-2">
-                    <input id="end" class="form-control" type="date" wire:model='end_date'>
+                    <input id="end" class="form-control" type="date" wire:model.live='end_date'>
                 </div>
                 <div class="col-md-2 my-2">
-                    <select class="form-select" name="store_id" wire:model="payment">
+                    <select class="form-select" name="store_id" wire:model.live="payment">
                         <option value="" selected>All Payment Mode</option>
                         @foreach ($transaction as $method)
                             <option value="{{ $method->payment_method }}">{{ $method->payment_method }}</option>
@@ -72,20 +72,17 @@
                     </select>
                 </div>
                 <div class="col-md-2 my-2">
-                    <select class="form-select" name="orders" wire:model="allOrders">
+                    <select class="form-select" name="orders" wire:model.live="allOrders">
                         <option value="" selected>All Order</option>
                         <option value="trashed">Trashed Order</option>
                     </select>
-                </div>
-                <div class="col-md-1 my-2">
-                    <button type="submit" class="btn btn-info btn-sm" wire:click="filter">Filter</button>
                 </div>
                 <div class="col-md-2 my-2">
                     <input class="form-control me-2" type="search" placeholder="No Customer" wire:model.live="search"
                         id="searchInput">
                 </div>
             </div>
-            <table>
+            <table wire:poll.3s>
                 <caption>{{ $this->allOrders === 'trashed' ? 'Trashed Orders' : 'All Orders' }}</caption>
                 <tbody>
                     @forelse($order as $item)
@@ -94,7 +91,7 @@
                             <td data-label="Customer Name">{{ $item->customer_name }}</td>
                             <td data-label="Total Price">Rp. {{ number_format($item->total_price, 0, ',', '.') }}</td>
                             <td data-label="Payment Method">{{ $item->payment_method }}</td>
-                            <td data-label="Tanggal Order">{{ $item->created_at->diffForHumans() }}</td>
+                            <td data-label="Tanggal Order">{{ $item->created_at }}</td>
                             <td data-label="Action">
                                 <a href="{{ url('laporan/' . $item->order_code) }}" class="btn btn-primary">Detail</a>
                             </td>
@@ -120,44 +117,7 @@
 
 
     </div>
-    <script>
-        window.onload = function() {
-            // Get the current date, month, and year
-            let date = new Date();
-            let date_now = date.getDate();
-            let month_now = date.getMonth() + 1;
-            let year_now = date.getFullYear();
 
-            // Format the current date for the input fields
-            let format =
-                `${year_now}-${month_now < 10 ? '0' + month_now : month_now}-${date_now < 10 ? '0' + date_now : date_now}`;
-            let format_end =
-                `${year_now}-${month_now + 1 < 10 ? '0' + (month_now + 1) : month_now + 1}-${date_now < 10 ? '0' + date_now : date_now}`;
-
-            // Set the default value for start and end date
-            document.getElementById('start').value = format;
-            document.getElementById('end').value = format_end;
-
-            // Function to update the end date based on the start date
-            function changeDate() {
-                let start = document.getElementById('start').value;
-
-                // Update the end date based on the selected start date
-                let end_date = new Date(start);
-                end_date.setMonth(end_date.getMonth() + 1);
-
-                // Format the end date for the input field
-                let format_end =
-                    `${end_date.getFullYear()}-${end_date.getMonth() + 1 < 10 ? '0' + (end_date.getMonth() + 1) : end_date.getMonth() + 1}-${end_date.getDate() < 10 ? '0' + end_date.getDate() : end_date.getDate()}`;
-
-                // Set the updated end date value
-                document.getElementById('end').value = format_end;
-            }
-
-            // Attach the changeDate function to the onchange event of the start date input
-            document.getElementById('start').addEventListener("change", changeDate);
-        };
-    </script>
 
 
 
