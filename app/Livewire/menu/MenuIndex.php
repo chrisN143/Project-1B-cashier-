@@ -40,7 +40,7 @@ class MenuIndex extends Component
         } else {
             Cart::create([
                 'user_id' => auth()->user()->id,
-                'quantity' => $thmnjis->inputquantity,
+                'quantity' => $this->inputquantity,
                 'product_id' => $id
             ]);
             session()->flash('status', 'Product added to cart!');
@@ -49,7 +49,7 @@ class MenuIndex extends Component
     }
 
 
-    
+
 
     public function mount()
     {

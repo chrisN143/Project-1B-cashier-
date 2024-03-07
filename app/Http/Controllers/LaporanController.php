@@ -61,29 +61,24 @@ class LaporanController extends Controller
         }
     }
 
-    public function edit($reportId)
+    public function stok()
     {
-        $title = "Laporan";
-        $header = "Laporan Edit";
-        $main_breadcrumb = "Laporan Edit";
-        $main_breadcrumb_link = url('laporan/edit/' . $reportId); //$reportId didapatkan dari codingan {{$order->id}} pada table-order.blade.php
+        $title = "Laporan Stok";
+        $header = "Laporan Stok";
+        $main_breadcrumb = "Laporan Stok";
+        $main_breadcrumb_link = route('stoks'); //$reportId didapatkan dari codingan {{$order->id}} pada table-order.blade.php
         $breadcrumb = null;
-        $order = Order::where('order_code', $reportId)->first();
-        // $id = $request->id;
 
-        if ($order) {
-            return view(
-                'app.laporan.edit',
-        compact(
-            // 'permission',
-            'title',
-            'header',
-            'main_breadcrumb',
-            'main_breadcrumb_link',
-            'breadcrumb',
-            'order'
-            // 'id'
-        ));
-        }
+
+        return view(
+            'app.laporan.stok',
+            compact(
+                'title',
+                'header',
+                'main_breadcrumb',
+                'main_breadcrumb_link',
+                'breadcrumb',
+            )
+        );
     }
 }

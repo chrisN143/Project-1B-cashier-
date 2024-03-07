@@ -80,12 +80,23 @@ return [
                 ],
             ],
         ],
-
         [
             'text' => 'Laporan',
-            'url'  => 'laporan',
-            'icon' => 'ki-duotone ki-element-11 fs-2',
+            'icon' => 'ki-duotone ki-abstract-28 fs-2',
             'role' => 'Admin',
+            'submenu' => [
+                [
+                    'text' => 'All Orders',
+                    'url'  => 'laporan',
+                    'role' => 'Admin',
+                ],
+                [
+                    'text' => 'Stok Report',
+                    'url'  => 'stok-report',
+                    'role' => 'Admin',
+                ],
+            ],
         ],
+
     ],
 ];
