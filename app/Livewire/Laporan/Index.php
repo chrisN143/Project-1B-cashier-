@@ -53,6 +53,11 @@ class Index extends Component
         $orderItems =  OrderItems::when($this->searchItems, function ($query) {
             $query->where('product_name', 'like', '%' . $this->searchItems . '%');
         })->get();
+
+        $this->ordersCount =  OrderItems::when($this->searchItems, function ($query) {
+            $query->where('product_name', 'like', '%' . $this->searchItems . '%');
+        })->get()->count();
+
         $itemCounts = $orderItems->groupBy('product_name')->map(function ($items) {
             return [
                 'product_name' => $items->first()->product_name,
