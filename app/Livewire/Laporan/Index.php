@@ -7,6 +7,7 @@ use Livewire\WithPagination;
 use App\Models\Order;
 use App\Models\OrderItems;
 use App\Models\Transaction;
+use Illuminate\Support\Carbon;
 use Livewire\Component;
 
 use Illuminate\Support\Facades\Auth;
@@ -35,7 +36,8 @@ class Index extends Component
 
     public function mount()
     {
-
+        $this->start_date = Carbon::now()->format('Y-m-d');
+        $this->end_date = Carbon::now()->add(31, 'day')->format('Y-m-d');
         $this->transaction = Transaction::all();
 
     }
@@ -46,16 +48,16 @@ class Index extends Component
             $query->where('product_name', 'like', '%' . $this->searchItems . '%');
         })->get();
 
-        $this->ordersCount =  OrderItems::when($this->searchItems, function ($query) {
-            $query->where('product_name', 'like', '%' . $this->searchItems . '%');
-        })->get()->count();
+        // $this->ordersCount =  OrderItems::when($this->searchItems, function ($query) {
+        //     $query->where('product_name', 'like', '%' . $this->searchItems . '%');
+        // })->get()->count();
 
-        $itemCounts = $orderItems->groupBy('product_name')->map(function ($items) {
-            return [
-                'product_name' => $items->first()->product_name,
-                'total_quantity' => $items->sum('product_quantity')
-            ];
-        });
+        // $itemCounts = $orderItems->groupBy('product_name')->map(function ($items) {
+        //     return [
+        //         'product_name' => $items->first()->product_name,
+        //         'total_quantity' => $items->sum('product_quantity')
+        //     ];
+        // });
 
         $order = $this->allOrders === 'trashed' ? Order::withTrashed()->whereDate('created_at', '>=', $this->start_date)->whereDate('created_at', '<=', $this->end_date)->where('customer_name', 'like', '%' . $this->search . '%')->where('payment_method', 'like', '%' . $this->payment . '%')->paginate(10) : Order::whereDate('created_at', '>=', $this->start_date)->whereDate('created_at', '<=', $this->end_date)->where('customer_name', 'like', '%' . $this->search . '%')->where('payment_method', 'like', '%' . $this->payment . '%')->orderBy('id', 'DESC')->paginate(10);
         $ordersCount = $order->count();
