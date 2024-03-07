@@ -107,9 +107,11 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/print/{orderId}', 'print')->name('print');
     });
 
-    Route::controller(LaporanController::class)->prefix('laporan')->name('laporan.')->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::get('/{reportId}', 'detail')->name('detail');
-        // Route::get('/edit/{reportId}', 'edit')->name('edit');
+    Route::controller(LaporanController::class)->group(function () {
+        Route::prefix('laporan')->name('laporan.')->group(function () {
+            Route::get('/', 'index')->name('index');
+            Route::get('/{reportId}', 'detail')->name('detail');
+        });
+        Route::get('/stok-report', 'stok')->name('stoks');
     });
 });
