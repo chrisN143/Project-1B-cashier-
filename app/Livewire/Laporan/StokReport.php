@@ -34,7 +34,7 @@ class StokReport extends Component
         // $orderItems =  OrderItems::when($this->searchItems, function ($query) {
         //     $query->where('product_name', 'like', '%' . $this->searchItems . '%');
         // })->get();
-        $orderItems =  OrderItems::whereDate('created_at', '>=', $this->start_date)->whereDate('created_at', '<=', $this->end_date)->where('product_name', 'like', '%' . $this->search . '%')->get();
+        $orderItems =  OrderItems::whereDate('created_at', '>=', $this->start_date)->whereDate('created_at', '<=', $this->end_date)->where('product_name', 'like', '%' . $this->search . '%')->paginate(10);
         $itemCounts = $orderItems->groupBy('product_name')->map(function ($items) {
             return [
                 'product_name' => $items->first()->product_name,

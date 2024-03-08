@@ -1,4 +1,5 @@
 <div>
+
     <div style="font-size: 0.95em;">
         <div class="mb-3 row justify-content-between">
             @if (!isset($show_filter) || $show_filter == true)
