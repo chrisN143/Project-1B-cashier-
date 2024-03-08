@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Livewire\Product;
+namespace App\Livewire\User;
 
 // use App\Models\Payment;
-use App\Models\Product;
+
+use App\Models\Store;
+use App\Models\Transaction;
 use App\Models\User;
 use App\Traits\WithDatatable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
 use Livewire\Component;
 
 class ItemsDatatable extends Component
@@ -17,8 +18,7 @@ class ItemsDatatable extends Component
 
     public function destroy($id)
     {
-        $item = Product::find($id);
-
+        $item = User::find($id);
         $authUser = User::find(Auth::id());
         $item->delete();
     }
@@ -27,21 +27,18 @@ class ItemsDatatable extends Component
     {
         return [
             [
-                'key' => 'code',
-                'name' => 'Id',
-            ],
-            [
                 'key' => 'name',
                 'name' => 'Name',
             ],
             [
-                'key' => 'price',
-                'name' => 'Price',
+                'key' => 'email',
+                'name' => 'Email',
             ],
             [
-                'key' => 'stok',
-                'name' => 'Stok',
+                'key' => 'email',
+                'name' => 'Email',
             ],
+
             [
                 'name' => 'Aksi',
                 'sortable' => false,
@@ -50,10 +47,10 @@ class ItemsDatatable extends Component
                     $authUser = User::find(Auth::id());
 
                     $detailsHtml = '';
-                    $detailsUrl = route('product.detail', $item->id);
+                    $detailsUrl = route('store.detail', $item->id);
                     $detailsHtml = "<a href='$detailsUrl' class='btn btn-primary btn-sm ml-2'><i class='fa fa-detail mr-2'></i>details</a>";
                     $editHtml = '';
-                    $editUrl = route('product.detail', ['id' => $item['id']]);
+                    $editUrl = route('transaction.detail', ['id' => $item['id']]);
                     $editHtml = "<a href='$editUrl' class='btn btn-primary btn-sm ml-2'><i class='fa-solid fa-pen-to-square'></i></a>";
 
 
@@ -73,12 +70,11 @@ class ItemsDatatable extends Component
 
     public function getQuery(): Builder
     {
-
-        return Product::query();
+        return User::query();
     }
 
     public function getView(): string
     {
-        return 'livewire.product.itemsdatatable';
+        return 'livewire.transaction.itemsdatatable';
     }
 }

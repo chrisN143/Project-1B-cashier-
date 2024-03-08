@@ -16,6 +16,10 @@ class ProductController extends Controller
 {
     public function index()
     {
+        // $products = DB::table('products')
+        //     ->rightJoin('stores', 'stores.id', '=', 'products.store_id')
+        //     ->get();
+        // dd($products);
         /* Header Setting */
         $title = "Product";
         $header = "Product List";
