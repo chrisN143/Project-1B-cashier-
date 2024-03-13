@@ -15,7 +15,7 @@
             @if (!isset($keyword_filter) || $keyword_filter == true)
                 <div class="mb-2 col-sm-6">
                     <label>Kata Kunci</label>
-                    <input wire:model="search" type="text" class="form-control">
+                    <input wire:model.live="search" type="text" class="form-control">
                 </div>
             @endif
         </div>
