@@ -15,7 +15,7 @@
                         wire:model.live="searchItems" id="searchInput">
                 </div>
             </div>
-            <table class="my-3" wire:poll.3s>
+            {{-- <table class="my-3" wire:poll.3s>
                 <tbody>
                     @foreach ($orderItems as $item)
                         <tr>
@@ -32,14 +32,14 @@
 
                 </tbody>
             </table>
-            {{ $orderItems->links() }}
+            {{ $orderItems->links() }} --}}
 
         </div>
 
 
     </div>
 
-    <table class="my-3">
+    {{-- <table class="my-3">
         <tbody>
             @foreach ($itemCounts as $itemCount)
                 <tr>
@@ -48,6 +48,6 @@
                 </tr>
             @endforeach
         </tbody>
-    </table>
+    </table> --}}
 
 </div>
