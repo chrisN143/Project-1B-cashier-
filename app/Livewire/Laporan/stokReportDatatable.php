@@ -10,7 +10,6 @@ use App\Models\Product;
 use Livewire\Component;
 use Livewire\Attributes\On;
 use App\Traits\WithDatatable;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -20,17 +19,11 @@ class ItemsDatatable extends Component
     public $start_date;
     public $end_date;
 
-    public function onMount()
+    #[On('date')]
+    public function handleDate($start_date, $end_date)
     {
-        $this->start_date = Carbon::now()->format('Y-m-d');
-        $this->end_date = Carbon::now()->add(31, 'day')->format('Y-m-d');
-    }
-
-    #[On('add-filter')]
-    public function handleDate($arr)
-    {
-        $this->start_date = $arr['start_date'];
-        $this->end_date = $arr['end_date'];
+        $this->start_date = $start_date;
+        $this->end_date = $end_date;
     }
 
     public function destroy($id)
@@ -82,7 +75,8 @@ class ItemsDatatable extends Component
     }
     public function getQuery(): Builder
     {
-        return Order::whereDate('created_at', '<=', $this->end_date);
+
+        return Order::whereDate('orders.created_at', '<=', '2024-03-07 06:26:01');
         // ->whereDate('orders.created_at', '>=', $this->end_date);
     }
 
