@@ -40,7 +40,14 @@ class Index extends Component
         $this->start_date = Carbon::now()->format('Y-m-d');
         $this->end_date = Carbon::now()->add(31, 'day')->format('Y-m-d');
         $this->transaction = Transaction::all();
+    }
 
+    public function updated()
+    {
+        $this->dispatch('add-filter', [
+            "start_date" => $this->start_date,
+            "end_date" => $this->end_date
+        ]);
     }
 
     public function render()

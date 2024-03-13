@@ -82,7 +82,7 @@
                         id="searchInput">
                 </div>
             </div>
-            <table wire:poll.3s>
+            {{-- <table wire:poll.3s>
                 <caption>{{ $this->allOrders === 'trashed' ? 'Trashed Orders' : 'All Orders' }}</caption>
                 <tbody>
                     @forelse($order as $item)
@@ -110,8 +110,9 @@
                     @endforelse
                 </tbody>
             </table>
-            {{ $order->links() }}
+            {{ $order->links() }} --}}
             {{-- @livewire('laporan.itemsdatatable') --}}
+
 
         </div>
 
