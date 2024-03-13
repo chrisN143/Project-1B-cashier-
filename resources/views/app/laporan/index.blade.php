@@ -144,6 +144,7 @@
 @endsection
 
 @section('content')
+
     @livewire('laporan.index')
     @livewire('laporan.itemsdatatable')
 @endsection
