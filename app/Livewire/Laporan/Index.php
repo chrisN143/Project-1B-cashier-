@@ -24,9 +24,10 @@ class Index extends Component
     public $search = '';
     public $searchItems = '';
     public $orders;
+    public $order;
     public $allOrders;
     public $transaction;
-    // public $ordersCount;
+    public $orderItems;
     public $totalprice;
 
 
@@ -44,43 +45,36 @@ class Index extends Component
 
     public function updated()
     {
+        $filteredData = $this->order;
         $this->dispatch('add-filter', [
             "start_date" => $this->start_date,
             "payment" => $this->payment,
-            "end_date" => $this->end_date
+            "end_date" => $this->end_date,
+            "order" => $filteredData
         ]);
     }
 
     public function render()
     {
-        $orderItems =  OrderItems::when($this->searchItems, function ($query) {
+        $this->orderItems =  OrderItems::when($this->searchItems, function ($query) {
             $query->where('product_name', 'like', '%' . $this->searchItems . '%');
         })->get();
 
-        // $this->ordersCount =  OrderItems::when($this->searchItems, function ($query) {
-        //     $query->where('product_name', 'like', '%' . $this->searchItems . '%');
-        // })->get()->count();
-
-        // $itemCounts = $orderItems->groupBy('product_name')->map(function ($items) {
-        //     return [
-        //         'product_name' => $items->first()->product_name,
-        //         'total_quantity' => $items->sum('product_quantity')
-        //     ];
-        // });
-
         $order = $this->allOrders === 'trashed' ? Order::withTrashed()->whereDate('created_at', '>=', $this->start_date)->whereDate('created_at', '<=', $this->end_date)->where('customer_name', 'like', '%' . $this->search . '%')->where('payment_method', 'like', '%' . $this->payment . '%')->paginate(10) : Order::whereDate('created_at', '>=', $this->start_date)->whereDate('created_at', '<=', $this->end_date)->where('customer_name', 'like', '%' . $this->search . '%')->where('payment_method', 'like', '%' . $this->payment . '%')->orderBy('id', 'DESC')->paginate(10);
+
+        $this->dispatch('order', data: $order);
+
         $ordersCount = $order->count();
+
         $prais = [];
         foreach ($order as $Item)
             array_push($prais, $Item->total_price);
 
-
         $ril_praise_sum = collect($prais)->sum();
-        // return $this->totalprice;
 
         return view('livewire.laporan.index', [
             'order' => $order,
-            'orderItems' => $orderItems,
+            'orderItems' => $this->orderItems,
             'ordersCount' => $ordersCount,
             'ordersPrice' => $ril_praise_sum
         ]);
