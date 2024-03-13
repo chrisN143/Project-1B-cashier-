@@ -19,15 +19,19 @@ class StokReport extends Component
     public $search = '';
     public $searchItems = '';
 
-    public function filter()
-    {
-        $this->resetPage();
-    }
 
     public function mount()
     {
         $this->start_date = Carbon::now()->format('Y-m-d');
         $this->end_date = Carbon::now()->add(31, 'day')->format('Y-m-d');
+    }
+    public function updated()
+    {
+        $this->dispatch('items-filter', [
+            "payment" =>  $this->payment,
+            "start_date" =>  $this->start_date,
+            "end_date" => $this->end_date
+        ]);
     }
     public function render()
     {

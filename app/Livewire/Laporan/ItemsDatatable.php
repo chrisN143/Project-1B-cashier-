@@ -61,7 +61,7 @@ class ItemsDatatable extends Component
                 'render' => function ($item) {
                     return 'Rp.' . number_format($item->total_price, 0, ',', '.');
                 }
-
+                            
             ],
             [
                 'key' => 'payment_method',

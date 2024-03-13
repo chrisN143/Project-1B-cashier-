@@ -11,20 +11,29 @@ use App\Models\Product;
 use Livewire\Component;
 use Livewire\Attributes\On;
 use App\Traits\WithDatatable;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Carbon;
 
 class stokReportDatatable extends Component
 {
     use WithDatatable;
     public $start_date;
-    public $end_date;
 
-    #[On('date')]
-    public function handleDate($start_date, $end_date)
+    public $end_date;
+    public function onMount()
     {
-        $this->start_date = $start_date;
-        $this->end_date = $end_date;
+        $this->start_date = Carbon::now()->format('Y-m-d');
+        $this->end_date = Carbon::now()->add(31, 'day')->format('Y-m-d');
+    }
+
+    #[On('items-filter')]
+    public function handleDate($filter)
+    {
+        $this->start_date = $filter['start_date'];
+
+        $this->end_date = $filter['end_date'];
     }
 
     public function destroy($id)
@@ -38,23 +47,50 @@ class stokReportDatatable extends Component
     {
         return [
             [
-                'key' => 'order_code',
+                'key' => 'order_items.product_price',
                 'name' => 'Id',
+                'render' => function ($item) {
+                    return $item->order_code;
+                }
 
             ],
             [
-                'key' => 'customer_name',
+                'key' => 'order_items.product_name',
                 'name' => 'Name',
+                'render' => function ($item) {
+                    return $item->product_name;
+                }
 
             ],
             [
-                'key' => 'total_price',
-                'name' => 'Stok',
+                'key' => 'order_items.product_price',
+                'name' => 'Price',
+                'render' => function ($item) {
+                    return 'Rp.' . number_format($item->product_price, 0, ',', '.');
+                }
+            ],
+
+            [
+                'key' => 'order_items.product_quantity',
+                'name' => 'Quantity',
+                'render' => function ($item) {
+                    return $item->product_quantity;
+                }
 
             ],
             [
-                'key' => 'created_at',
-                'name' => 'Stok',
+                'key' => 'order_items.product_price',
+                'name' => 'Price',
+                'render' => function ($item) {
+                    return 'Rp.' . number_format($item->product_price * $item->product_quantity, 0, ',', '.');
+                }
+            ],
+            [
+                'key' => 'order_items.created_at',
+                'name' => 'Created_at',
+                'render' => function ($item) {
+                    return $item->created_at;
+                }
 
             ],
             [
@@ -76,8 +112,16 @@ class stokReportDatatable extends Component
     }
     public function getQuery(): Builder
     {
-
-        return OrderItems::whereDate('orders.created_at', '<=', '2024-03-07 06:26:01');
+        return OrderItems::select(
+            'order_items.product_price as product_price',
+            'order_items.product_name as product_name',
+            'order_items.product_quantity as product_quantity',
+            'order_items.created_at as created_at',
+            'orders.order_code as order_code',
+        )
+            ->join('orders', 'orders.id', '=', 'order_items.order_id')
+            ->whereDate('order_items.created_at', '>=', $this->start_date)
+            ->whereDate('order_items.created_at', '<=', $this->end_date);
         // ->whereDate('orders.created_at', '>=', $this->end_date);
     }
 
