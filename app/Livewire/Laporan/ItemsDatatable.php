@@ -18,8 +18,9 @@ class ItemsDatatable extends Component
 {
     use WithDatatable;
     public $start_date;
-    public $end_date;
 
+    public $payment;
+    public $end_date;
     public function onMount()
     {
         $this->start_date = Carbon::now()->format('Y-m-d');
@@ -31,6 +32,7 @@ class ItemsDatatable extends Component
     {
         $this->start_date = $arr['start_date'];
         $this->end_date = $arr['end_date'];
+        $this->payment = $arr['payment'];
     }
 
     public function destroy($id)
@@ -56,6 +58,14 @@ class ItemsDatatable extends Component
             [
                 'key' => 'total_price',
                 'name' => 'Stok',
+                'render' => function ($item) {
+                    return 'Rp.' . number_format($item->total_price, 0, ',', '.');
+                }
+
+            ],
+            [
+                'key' => 'payment_method',
+                'name' => 'Payment',
 
             ],
             [
@@ -82,7 +92,8 @@ class ItemsDatatable extends Component
     }
     public function getQuery(): Builder
     {
-        return Order::whereDate('created_at', '<=', $this->end_date);
+
+        return Order::whereDate('created_at', '>=', $this->start_date)->whereDate('created_at', '<=', $this->end_date)->where('payment_method', $this->payment);
         // ->whereDate('orders.created_at', '>=', $this->end_date);
     }
 
