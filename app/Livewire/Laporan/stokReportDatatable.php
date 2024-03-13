@@ -6,6 +6,7 @@ namespace App\Livewire\Laporan;
 
 use App\Models\User;
 use App\Models\Order;
+use App\Models\OrderItems;
 use App\Models\Product;
 use Livewire\Component;
 use Livewire\Attributes\On;
@@ -13,7 +14,7 @@ use App\Traits\WithDatatable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Builder;
 
-class ItemsDatatable extends Component
+class stokReportDatatable extends Component
 {
     use WithDatatable;
     public $start_date;
@@ -28,7 +29,7 @@ class ItemsDatatable extends Component
 
     public function destroy($id)
     {
-        $item = Order::find($id);
+        $item = OrderItems::find($id);
 
         $item->delete();
     }
@@ -76,12 +77,12 @@ class ItemsDatatable extends Component
     public function getQuery(): Builder
     {
 
-        return Order::whereDate('orders.created_at', '<=', '2024-03-07 06:26:01');
+        return OrderItems::whereDate('orders.created_at', '<=', '2024-03-07 06:26:01');
         // ->whereDate('orders.created_at', '>=', $this->end_date);
     }
 
     public function getView(): string
     {
-        return 'livewire.laporan.laporanDatatable';
+        return 'livewire.laporan.stokReportDatatable';
     }
 }

@@ -46,6 +46,7 @@ class Index extends Component
     {
         $this->dispatch('add-filter', [
             "start_date" => $this->start_date,
+            "payment" => $this->payment,
             "end_date" => $this->end_date
         ]);
     }
