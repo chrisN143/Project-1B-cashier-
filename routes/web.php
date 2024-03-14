@@ -55,6 +55,8 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/', 'index')->name('index');
             Route::get('create', 'create')->name('create');
             Route::get('edit/{permission}', 'edit')->name('edit');
+            Route::get('show/{role}', 'show')->name('show');
+
         });
     });
 
@@ -65,7 +67,6 @@ Route::group(['middleware' => 'auth'], function () {
 
             Route::get('create', 'create')->name('create');
         
-            Route::get('show/{role}', 'show')->name('show');
             Route::get('edit/{role}', 'edit')->name('edit');
 
         });
