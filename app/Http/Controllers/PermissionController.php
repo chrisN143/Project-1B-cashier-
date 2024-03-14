@@ -74,7 +74,7 @@ class PermissionController extends Controller
         ));
     }
 
-    public function edit(Permission $permission)
+    public function edit(Request $request)
     {
         /* Header Setting */
         $title = "Permission Edit";
@@ -82,6 +82,7 @@ class PermissionController extends Controller
         $main_breadcrumb = "Permission";
         $main_breadcrumb_link = route('permission.index');
         $breadcrumb = "Edit";
+        $permission= $request->id;
 
         return view('app.permissions.edit', compact(
             'permission',
