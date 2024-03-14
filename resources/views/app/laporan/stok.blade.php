@@ -3,7 +3,6 @@
     <link rel="stylesheet"
         href="{{ asset('assets/templates/metronic/dist/assets/plugins/custom/datatables/datatables.bundle.css') }}">
     <style>
-      
         @media screen and (max-width: 600px) {
             table {
                 border: 0;
@@ -145,6 +144,5 @@
 
 @section('content')
     @livewire('laporan.stok-report')
-    @livewire('laporan.stokReportDatatable')
-    @livewire('laporan.stok-filter')
+
 @endsection
