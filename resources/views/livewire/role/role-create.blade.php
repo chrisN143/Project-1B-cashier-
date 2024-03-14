@@ -6,7 +6,7 @@
             <!--begin::Card body-->
             <div class="card-body p-12">
                 <!--begin::Form-->
-                <form action="{{ route('role.store') }}" method="post">
+                <form wire:submit="post">
                     @csrf
                     <!--begin::Wrapper-->
                     <div class="mb-0">
