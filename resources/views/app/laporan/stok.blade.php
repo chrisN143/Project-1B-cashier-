@@ -3,7 +3,7 @@
     <link rel="stylesheet"
         href="{{ asset('assets/templates/metronic/dist/assets/plugins/custom/datatables/datatables.bundle.css') }}">
     <style>
-        /* Gaya tambahan untuk membuat tabel responsif */
+      
         @media screen and (max-width: 600px) {
             table {
                 border: 0;
