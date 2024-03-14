@@ -14,6 +14,7 @@
                         <span class="text-light fw-semibold fs-6">Created At</span>
                         <!--end::Amount-->
 
+
                         <!--begin::Subtitle-->
                         <!--end::Subtitle-->
                     </div>
