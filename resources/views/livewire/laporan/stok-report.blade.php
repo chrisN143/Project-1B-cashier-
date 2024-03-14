@@ -10,10 +10,7 @@
                 <div class="col-md-2 my-2">
                     <input id="end" class="form-control" type="date" wire:model.live='end_date'>
                 </div>
-                <div class="col-md-2 my-2">
-                    <input class="form-control me-2" type="search" placeholder="No Customer"
-                        wire:model.live="searchItems" id="searchInput">
-                </div>
+
             </div>
             {{-- <table class="my-3" wire:poll.3s>
                 <tbody>

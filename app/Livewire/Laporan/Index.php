@@ -45,20 +45,19 @@ class Index extends Component
 
     public function updated()
     {
-        $filteredData = $this->order;
         $this->dispatch('add-filter', [
             "start_date" => $this->start_date,
             "payment" => $this->payment,
             "end_date" => $this->end_date,
-            "order" => $filteredData
+            // "order" => $this->order
         ]);
     }
 
     public function render()
     {
-        $this->orderItems =  OrderItems::when($this->searchItems, function ($query) {
-            $query->where('product_name', 'like', '%' . $this->searchItems . '%');
-        })->get();
+        // $this->orderItems =  OrderItems::when($this->searchItems, function ($query) {
+        //     $query->where('product_name', 'like', '%' . $this->searchItems . '%');
+        // })->get();
 
         $order = $this->allOrders === 'trashed' ? Order::withTrashed()->whereDate('created_at', '>=', $this->start_date)->whereDate('created_at', '<=', $this->end_date)->where('customer_name', 'like', '%' . $this->search . '%')->where('payment_method', 'like', '%' . $this->payment . '%')->paginate(10) : Order::whereDate('created_at', '>=', $this->start_date)->whereDate('created_at', '<=', $this->end_date)->where('customer_name', 'like', '%' . $this->search . '%')->where('payment_method', 'like', '%' . $this->payment . '%')->orderBy('id', 'DESC')->paginate(10);
 
