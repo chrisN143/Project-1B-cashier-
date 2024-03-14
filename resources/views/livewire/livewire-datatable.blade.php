@@ -1,4 +1,5 @@
 <div>
+
     <div style="font-size: 0.95em;">
         <div class="mb-3 row justify-content-between">
             @if (!isset($show_filter) || $show_filter == true)
@@ -14,7 +15,7 @@
             @if (!isset($keyword_filter) || $keyword_filter == true)
                 <div class="mb-2 col-sm-6">
                     <label>Kata Kunci</label>
-                    <input wire:model="search" type="text" class="form-control">
+                    <input wire:model.live="search" type="text" class="form-control">
                 </div>
             @endif
         </div>

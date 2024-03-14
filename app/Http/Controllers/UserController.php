@@ -28,7 +28,7 @@ class UserController extends Controller
         $text = "Are you sure?";
         confirmDelete($title_delete, $text);
 
-        return view('users.index', compact(
+        return view('app.users.index', compact(
             'title',
             'header',
             'main_breadcrumb',
@@ -37,37 +37,7 @@ class UserController extends Controller
         ));
     }
 
-    public function data_table()
-    {
-        $model = User::query();
 
-        return DataTables::eloquent($model)
-            ->editColumn('created_at', function ($data) {
-                $formatedDate = Carbon::createFromFormat('Y-m-d H:i:s', $data->created_at)->format('d/m/Y | H:i');
-                return $formatedDate;
-            })
-            ->addColumn('action', function ($data) {
-                $url_show = route('user.show', $data->id);
-                $url_edit = route('user.edit', $data->id);
-                $url_delete = route('user.destroy', $data->id);
-
-                $btn = "<div class='btn-group'>";
-                $btn .= "<a href='$url_show' class = 'btn btn-primary btn-sm text-nowrap text-white'> <i class='ki-duotone ki-eye'><span class='path1'></span><span class='path2'></span><span class='path3'></span></i> Detail</a>";
-                $btn .= "<a href='$url_edit' class = 'btn btn-warning btn-sm text-nowrap text-white'> <i class='ki-duotone ki-notepad-edit'><span class='path1'></span><span class='path2'></span></i> Edit</a>";
-                $btn .= "<a href='$url_delete' class = 'btn btn-danger btn-sm text-nowrap text-white' data-confirm-delete='true'><i class='ki-duotone ki-trash-square'><span class='path1'></span><span class='path2'></span> <span class='path3'></span><span class='path4'></span></i> Delete</a>";
-                $btn .= "</div>";
-
-                return $btn;
-            })
-            ->addColumn('role', function ($data) {
-                if (!empty($data->roles)) {
-                    return $data->roles->first()->name;
-                } else {
-                    return "Not Assigned";
-                }
-            })
-            ->toJson();
-    }
 
     public function create()
     {
@@ -81,7 +51,7 @@ class UserController extends Controller
         $roles = Role::all()
             ->pluck('name', 'name');
 
-        return view('users.create', compact(
+        return view('app.users.create', compact(
             'title',
             'header',
             'main_breadcrumb',
@@ -105,7 +75,7 @@ class UserController extends Controller
 
         $user_role = $user->roles->first()->name;
 
-        return view('users.edit', compact(
+        return view('app.users.edit', compact(
             'user',
             'title',
             'header',
@@ -126,7 +96,7 @@ class UserController extends Controller
         $main_breadcrumb_link = route('user.index');
         $breadcrumb = "Detail";
 
-        return view('users.show', compact(
+        return view('app.users.show', compact(
             'user',
             'title',
             'header',
@@ -142,7 +112,7 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'role' => 'required',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|unique:users|email',
             'password' => 'required|same:confirm-password|min:8',
         ]);
 

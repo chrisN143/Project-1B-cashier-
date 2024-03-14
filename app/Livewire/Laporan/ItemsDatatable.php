@@ -4,22 +4,41 @@ namespace App\Livewire\Laporan;
 
 // use App\Models\Payment;
 
+use App\Models\User;
 use App\Models\Order;
 use App\Models\Product;
-use App\Models\User;
-use App\Traits\WithDatatable;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\Attributes\On;
+use App\Traits\WithDatatable;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Builder;
 
 class ItemsDatatable extends Component
 {
     use WithDatatable;
+    public $start_date;
+
+    public $payment;
+    public $end_date;
+    public function onMount()
+    {
+        $this->start_date = Carbon::now()->format('Y-m-d');
+        $this->end_date = Carbon::now()->add(31, 'day')->format('Y-m-d');
+    }
+
+    #[On('add-filter')]
+    public function handleDate($arr)
+    {
+        $this->start_date = $arr['start_date'];
+        $this->end_date = $arr['end_date'];
+        $this->payment = $arr['payment'];
+    }
 
     public function destroy($id)
     {
         $item = Order::find($id);
-        // $authUser = User::find(Auth::id());
+
         $item->delete();
     }
 
@@ -30,14 +49,30 @@ class ItemsDatatable extends Component
             [
                 'key' => 'order_code',
                 'name' => 'Id',
+
             ],
             [
                 'key' => 'customer_name',
                 'name' => 'Name',
+
             ],
             [
                 'key' => 'total_price',
-                'name' => 'Price',
+                'name' => 'Stok',
+                'render' => function ($item) {
+                    return 'Rp.' . number_format($item->total_price, 0, ',', '.');
+                }
+
+            ],
+            [
+                'key' => 'payment_method',
+                'name' => 'Payment',
+
+            ],
+            [
+                'key' => 'created_at',
+                'name' => 'Stok',
+
             ],
             [
                 'name' => 'Aksi',
@@ -56,10 +91,12 @@ class ItemsDatatable extends Component
             ],
         ];
     }
-
     public function getQuery(): Builder
     {
-        return Order::query();
+
+        return Order::whereDate('created_at', '>=', $this->start_date)
+            ->whereDate('created_at', '<=', $this->end_date)
+            ->where('payment_method', $this->payment);
     }
 
     public function getView(): string

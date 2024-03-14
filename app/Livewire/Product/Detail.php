@@ -55,20 +55,21 @@ class Detail extends Component
     public function add()
     {
 
+        $this->validate();
+
+        if ($this->image != null) {
             $this->validate();
+            $this->image->store('images', 'public');
+        }
 
-            if ($this->image != null) {
-                $this->validate();
-                $this->image->store('images', 'public');
-            }
-
-            if ($this->objId) {
-                //Update
-                $product = Product::find($this->objId);
-                $product->update([
-                    'name' => $this->name,
-                    'price' => str_replace(",", ".", str_replace(".", "", $this->price)),
-                    'store_id' => $this->store_id,
+        if ($this->objId) {
+            //Update
+            $product = Product::find($this->objId);
+            $product->update([
+                'name' => $this->name,
+                'price' => str_replace(",", ".", str_replace(".", "", $this->price)),
+                'store_id' => $this->store_id,
+                'stok' => $this->stok,
 
                 'image' => $this->image != null ? $this->image->hashname() : $product->image,
                 'description' => $this->description
@@ -79,14 +80,14 @@ class Detail extends Component
                 'name' => $this->name,
                 'price' => str_replace(",", ".", str_replace(".", "", $this->price)),
                 'store_id' => $this->store_id,
+                'stok' => $this->stok,
 
-                    'image' => $this->image != null ? $this->image->hashname() : null,
-                    'description' => $this->description
-                ]);
-            }
+                'image' => $this->image != null ? $this->image->hashname() : null,
+                'description' => $this->description
+            ]);
+        }
 
-            return redirect()->route('product.index');
-
+        return redirect()->route('product.index');
     }
 
     public function render()

@@ -9,7 +9,7 @@
                     <!--begin::Title-->
                     <div class="card-title d-flex flex-column ">
                         <!--begin::Amount-->
-                        <span class="text-light fw-semibold fs-6">All orders</span>
+                        <span class="text-light fw-semibold fs-2">All orders</span>
                         <span class="fs-2 text-light lh-1 ls-n2">{{ $this->ordersCount }}</span>
                         <span class="text-light fw-semibold fs-6">Created At</span>
                         <!--end::Amount-->
@@ -35,7 +35,7 @@
                     <!--begin::Title-->
                     <div class="card-title d-flex flex-column">
                         <!--begin::Amount-->
-                        <span class="text-light  fw-semibold fs-6">Incomme</span>
+                        <span class="text-light  fw-semibold fs-2">Incomme</span>
                         <h4 class="fs-2 text-light lh-1 ls-n2">Rp. {{ $totalprice }}</h4>
                         <span class="text-light fw-semibold fs-6">Created At</span>
                         <!--end::Amount-->
@@ -84,105 +84,38 @@
 
     </ul>
     <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab"
-            tabindex="0">
+        <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
             <div class="row py-3">
-                <div class="col-md-2">
-                    <input id="start" class="form-control" type="date" wire:model='start_date'>
+                <div class="col-md-2 my-2">
+                    <input id="start" class="form-control" type="date" wire:model.live='start_date'>
                 </div>
-                <div class="col-md-2">
-                    <input id="start" class="form-control" type="date" wire:model='end_date'>
+                <div class="col-md-2 my-2">
+                    <input id="end" class="form-control" type="date" wire:model.live='end_date'>
                 </div>
-                <div class="col-md-2">
-                    <select class="form-select" name="store_id" wire:model="payment">
+                <div class="col-md-2 my-2">
+                    <select class="form-select" name="store_id" wire:model.live="payment">
                         <option value="" selected>All Payment Mode</option>
                         @foreach ($transaction as $method)
                             <option value="{{ $method->payment_method }}">{{ $method->payment_method }}</option>
                         @endforeach
                     </select>
                 </div>
-                <div class="col-md-1">
-                    <button type="submit" class="btn btn-info btn-sm" wire:click="filter">Filter</button>
-                </div>
-                <div class="col-md-2">
-                    {{-- <form class="d-flex"> --}}
-                    <input class="form-control me-2" type="search" placeholder="No Customer" wire:model.live="search"
-                        id="searchInput">
-
-                    {{-- </form> --}}
-                </div>
+                {{-- <div class="col-md-2 my-2">
+                    <select class="form-select" name="orders" wire:model.live="allOrders">
+                        <option value="" selected>All Order</option>
+                        <option value="trashed">Trashed Order</option>
+                    </select>
+                </div> --}}
             </div>
-            <table>
-                <caption>Order Information</caption>
-                <tbody>
-                    @foreach ($order as $item)
-                        <tr>
-                            <td data-label="No Customer">{{ $item->order_code }}</td>
-                            <td data-label="No Customer">{{ $item->customer_name }}</td>
-                            <td data-label="Total Harga">{{ $item->total_price }}</td>
-                            <td data-label="Tipe Pembayaran">{{ $item->payment_method }}</td>
-                            <td data-label="Tanggal Order">{{ $item->created_at->diffForHumans() }}</td>
-                            <td data-label="Action">
-                                <a href="{{ url('laporan/' . $item->order_code) }}" class="btn btn-primary">Detail</a>
-                            </td>
-
-                        </tr>
-                    @endforeach
 
 
-                </tbody>
-            </table>
-            {{ $order->links() }}
-        </div>
-
-        <div class="tab-pane fade" id="order-items-tab-pane" role="tabpanel" aria-labelledby="order-items-tab"
-            tabindex="0">
-
-            <table>
-                <caption>Order Information</caption>
-                <tbody>
-                    @foreach ($orderItems as $item)
-                        <tr>
-                            <td data-label="No">{{ $item->order->order_code }}</td>
-                            <td data-label="No Customer">{{ $item->product_name }}</td>
-                            <td data-label="Total Harga">{{ $item->product_price }}</td>
-                            <td data-label="Tipe Pembayaran">{{ $item->product_quantity }}</td>
-                            <td data-label="Tanggal Order">{{ $item->created_at->diffForHumans() }}</td>
-
-                        </tr>
-                    @endforeach
-
-
-                </tbody>
-            </table>
-        </div>
-        <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
-            tabindex="0">
-
-            <table>
-                <caption>Order Information</caption>
-                <tbody>
-                    @foreach ($deletedorders as $item)
-                        <tr>
-                            <td data-label="No Customer">{{ $item->order_code }}</td>
-                            <td data-label="No Customer">{{ $item->customer_name }}</td>
-                            <td data-label="Total Harga">{{ $item->total_price }}</td>
-                            <td data-label="Tipe Pembayaran">{{ $item->payment_method }}</td>
-                            <td data-label="Tanggal Order">{{ $item->created_at->diffForHumans() }}</td>
-                            {{-- <td data-label="Action">
-                                <a href="{{ url('laporan/' . $item->order_code) }}"
-                                    class="btn btn-primary">Detail</a>
-                            </td> --}}
-
-                        </tr>
-                    @endforeach
-
-
-                </tbody>
-            </table>
-            {{-- {{ $deletedorders->links() }} --}}
 
         </div>
+
+
     </div>
+
+
+
 
 </div>
