@@ -40,22 +40,20 @@
                                 <table class="table table-bordered">
                                     <thead>
                                         <th>Items Id</th>
-                                        <th>image</th>
                                         <th>Product</th>
+                                        <th>Quantity</th>
+
                                         <th>Price</th>
                                     </thead>
                                     <tbody>
                                         @foreach ($order->orderItems as $item)
                                             <tr>
-                                                <th width="10%">{{ $item->id }}</th>
-                                                <th width="10%">
-                                                    <img src="{{ asset('storage/image/' . $item->product->image) }}"
-                                                        class="rounded me-3" width="80px"
-                                                        alt="{{ $item->product->name }}">
-                                                </th>
-                                                <th width="10%">{{ $item->product->name }}</th>
+                                                <th width="10%">{{ $item->product->code }}</th>
 
-                                                <th width="10%">Rp. {{ $item->product->price }}</th>
+                                                <th width="10%">{{ $item->product_name }}</th>
+                                                <th width="10%">{{ $item->product_quantity }}</th>
+
+                                                <th width="10%">Rp. {{ $item->product_price }}</th>
 
 
                                             </tr>

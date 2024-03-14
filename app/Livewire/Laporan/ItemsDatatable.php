@@ -48,7 +48,7 @@ class ItemsDatatable extends Component
 
                     $detailsHtml = '';
                     $detailsUrl = route('laporan.detail', $item->order_code);
-                    $detailsHtml = "<a href='$detailsUrl' class='btn btn-primary btn-sm ml-2'><i class='fa fa-detail mr-2'></i>details</a>";
+                    $detailsHtml = "<a href='$detailsUrl' class='btn btn-primary btn-sm ml-2'><i class='fa-solid fa-eye'></i></a>";
                     $html = "$detailsHtml";
 
                     return $html;

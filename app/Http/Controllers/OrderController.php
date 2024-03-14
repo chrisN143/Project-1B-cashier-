@@ -51,33 +51,34 @@ class OrderController extends Controller
             return view(
                 'app.order.detail',
                 compact(
-                'title',
-                'header',
-                'main_breadcrumb',
-                'main_breadcrumb_link',
-                'breadcrumb',
-                'order',
-            )
-        );
-    } else {
-        return redirect('/orders')->with('message', 'Order Id not Found');
-    }
+                    'title',
+                    'header',
+                    'main_breadcrumb',
+                    'main_breadcrumb_link',
+                    'breadcrumb',
+                    'order',
+                )
+            );
+        } else {
+            return redirect('/orders')->with('message', 'Order Id not Found');
+        }
     }
 
     public function print($orderId)
     {
         /* Header Setting */
-
+        $title = "Print Your Order";
         $order = Order::where('order_code', $orderId)->first();
         if ($order) {
             return view(
                 'app.order.print-order',
                 compact(
-                'order',
-            )
-        );
-    } else {
-        return redirect('/orders')->with('message', 'Order Id not Found');
-    }
+                    'title',
+                    'order',
+                )
+            );
+        } else {
+            return redirect('/orders')->with('message', 'Order Id not Found');
+        }
     }
 }

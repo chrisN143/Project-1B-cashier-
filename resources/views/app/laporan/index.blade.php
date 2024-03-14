@@ -146,17 +146,3 @@
 @section('content')
     @livewire('laporan.index')
 @endsection
-{{-- @section('after_js')
-    <script>
-        $(document).ready(function() {
-            $("#searchInput").on("keyup", function() {
-                var value = $(this).val().toLowerCase();
-                $("table tbody tr").each(function() {
-                    var customerNo = $(this).find("[data-label='No Customer']").text()
-                        .toLowerCase();
-                    $(this).toggle(customerNo.indexOf(value) > -1);
-                });
-            });
-        });
-    </script>
-@endsection --}}
