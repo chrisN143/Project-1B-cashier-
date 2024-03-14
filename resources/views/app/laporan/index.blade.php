@@ -111,7 +111,7 @@
             justify-content: flex-end;
         }
     </style>
-@endsection/
+@endsection
 @section('content_header')
     <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3 ">
         <!--begin::Title-->
@@ -144,7 +144,6 @@
 @endsection
 
 @section('content')
-
     @livewire('laporan.index')
     @livewire('laporan.itemsdatatable')
 @endsection
