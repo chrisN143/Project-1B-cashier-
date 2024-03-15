@@ -17,6 +17,7 @@ class Checkout extends Component
 {
 
     public $carts, $totalprice = 0;
+    public $store_id;
     public $payment;
     public $totalStok;
     #[Rule('required')]
@@ -26,6 +27,11 @@ class Checkout extends Component
     public $email;
     public $cartUser;
 
+    #[On('store')]
+    public function handledStore($allStore)
+    {
+        $this->store_id= $allStore['storeClassification'];
+    }
     public function decrementQuantity($id)
     {
         $cartData = Cart::where('id', $id)->where('user_id', auth()->user()->id)->first();
@@ -114,7 +120,7 @@ class Checkout extends Component
         $this->customerName = auth()->user()->name;
         $this->payment = Transaction::all();
         $this->totalprice = 0;
-        $this->carts = Cart::where('user_id', Auth::id())->get();
+        $this->carts = Cart::where('user_id', Auth::id())->where('store_id', 'like', '%' . $this->store_id . '%')->get();
         foreach ($this->carts as $Item) {
             $this->totalprice += $Item->product->price * $Item->quantity;
         }

@@ -18,7 +18,8 @@ class Cart extends Model
         'payment_id',
         'user_id',
         'quantity',
-        'product_id'
+        'product_id',
+        'store_id'
     ];
 
     public function user(){
@@ -30,5 +31,8 @@ class Cart extends Model
     }
     public function product(){
         return $this->belongsTo(Product::class,'product_id','id');
+    }
+    public function store(){
+        return $this->belongsTo(Store::class,'store_id','id');
     }
 }
