@@ -56,7 +56,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::middleware('role_or_permission:Admin')->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('create', 'create')->name('create');
-            Route::get('edit/{id}', 'edit')->name('edit');
+            Route::get('edit/{permission}', 'edit')->name('edit');
 
         });
     });
@@ -68,8 +68,12 @@ Route::group(['middleware' => 'auth'], function () {
 
             Route::get('create', 'create')->name('create');
 
+<<<<<<< HEAD
             Route::get('edit/{id}', 'edit')->name('edit');
 
+=======
+            Route::get('edit/{role}', 'edit')->name('edit');
+>>>>>>> origin/main
         });
     });
 
@@ -88,7 +92,6 @@ Route::group(['middleware' => 'auth'], function () {
     });
     Route::controller(MenuController::class)->prefix('menu')->name('menu.')->group(function () {
         Route::get('/', 'index')->name('index');
-
     });
 
     Route::controller(OrderController::class)->prefix('orders')->name('orders.')->group(function () {

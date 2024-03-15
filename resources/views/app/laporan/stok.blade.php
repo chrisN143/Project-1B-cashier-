@@ -146,4 +146,5 @@
 @section('content')
     @livewire('laporan.stok-report')
     @livewire('laporan.stokReportDatatable')
+    @livewire('laporan.stok-filter')
 @endsection
