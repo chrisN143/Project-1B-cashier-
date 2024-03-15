@@ -11,8 +11,7 @@
         </div>
     @endif
     <div class="container my-3">
-        <div class="row justify-content-between">
-
+        <div class="row">
             <div class="col-md-3 my-2">
                 <input class="form-control me-2" wire:model.live="search" type="text" placeholder="Search"
                     aria-label="Search">
@@ -27,14 +26,9 @@
                 </select>
             </div>
             {{-- <div class="col-md-2 my-2">
-                <select class="form-select" name="store_id" wire:model="store_id">
-                    <option value="" selected>All Stores</option>
-
-                    @foreach ($stores as $store)
-                        <option value="{{ $store->id }}">{{ $store->store_name }}</option>
-                    @endforeach
-                </select>
+                <button wire:click="filter" class="btn btn-info btn-se" type="submit">filter</button>
             </div> --}}
+
         </div>
     </div>
 

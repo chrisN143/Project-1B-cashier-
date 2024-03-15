@@ -1,6 +1,6 @@
-<div class="row shadow border rounded p-3">
+<div class="row shadow border rounded p-3" wire:poll.3s>
     <div class="col-md-4 my-auto">
-        <h6>Check Out :</h6>
+        <h4>Check Out : On Store {{ $cartStore->store_name }}</h4>
         @if (session('error'))
             <div class="alert alert-danger" role="alert">
                 {{ session('error') }}
@@ -25,7 +25,9 @@
                         @endphp
                         @forelse ($carts as $cart)
                             <tr>
-                                <td data-label="No Customer">{{ $cart->product->name }}</td>
+                                <td data-label="No Customer">
+                                    <strong>{{ $cart->product->name }}</strong>
+                                </td>
                                 <td data-label="Total Harga">Rp. {{ number_format($cart->product->price, 0, ',', '.') }}
                                 </td>
                                 <td data-label="Tipe Pembayaran">
