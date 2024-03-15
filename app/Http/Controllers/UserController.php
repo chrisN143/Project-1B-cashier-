@@ -61,7 +61,7 @@ class UserController extends Controller
         ));
     }
 
-    public function edit(User $user)
+    public function edit(Request $request,User $user)
     {
         /* Header Setting */
         $title = "User Edit";
@@ -69,7 +69,7 @@ class UserController extends Controller
         $main_breadcrumb = "User";
         $main_breadcrumb_link = route('user.index');
         $breadcrumb = "Edit";
-
+        $userId= $request->id;
         $roles = Role::all()
             ->pluck('name', 'name');
 
@@ -77,6 +77,7 @@ class UserController extends Controller
 
         return view('app.users.edit', compact(
             'user',
+            'userId',
             'title',
             'header',
             'main_breadcrumb',
