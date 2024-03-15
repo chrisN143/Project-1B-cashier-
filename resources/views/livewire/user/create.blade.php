@@ -87,7 +87,7 @@
                                     <!--end::Input group-->
                                     <!--begin::Input group-->
                                     <div class="form-floating mb-7">
-                                        <input type="password" name="confirm-password"
+                                        <input wire:model="password" type="password" name="confirm-password"
                                             class="form-control form-control-solid" id="confirm-password"
                                             placeholder="" />
                                         <label for="confirm-password">Confirm Password</label>

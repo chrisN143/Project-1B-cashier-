@@ -61,7 +61,7 @@ class UserController extends Controller
         ));
     }
 
-    public function edit(Request $request,User $user)
+    public function edit(Request $request)
     {
         /* Header Setting */
         $title = "User Edit";
@@ -73,10 +73,10 @@ class UserController extends Controller
         $roles = Role::all()
             ->pluck('name', 'name');
 
-        $user_role = $user->roles->first()->name;
+        // $user_role = $user->roles->first()->name;
 
         return view('app.users.edit', compact(
-            'user',
+            // 'user',
             'userId',
             'title',
             'header',
@@ -84,7 +84,7 @@ class UserController extends Controller
             'main_breadcrumb_link',
             'breadcrumb',
             'roles',
-            'user_role'
+            // 'user_role'
         ));
     }
 
@@ -143,24 +143,24 @@ class UserController extends Controller
         ]);
 
         /* Update */
-        DB::transaction(function () use ($request, $user) {
-            $input = $request->all();
-            $role = $input['role'];
+        // DB::transaction(function () use ($request, $user) {
+        //     $input = $request->all();
+        //     $role = $input['role'];
 
-            if (!empty($input['password'])) {
-                $input['password'] = bcrypt($input['password']);
-            } else {
-                $input = Arr::except($input, ['password']);
-            }
+        //     if (!empty($input['password'])) {
+        //         $input['password'] = bcrypt($input['password']);
+        //     } else {
+        //         $input = Arr::except($input, ['password']);
+        //     }
 
-            $user->update($input);
+        //     $user->update($input);
 
-            DB::table('model_has_roles')
-                ->where('model_id', $user->id)
-                ->delete();
+        //     DB::table('model_has_roles')
+        //         ->where('model_id', $user->id)
+        //         ->delete();
 
-            $user->assignRole($role);
-        });
+        //     $user->assignRole($role);
+        // });
 
         /* Alert & Redirect */
         Alert::toast('Data Berhasil Diperbarui', 'success');

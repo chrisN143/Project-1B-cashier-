@@ -21,6 +21,7 @@ class Create extends Component
     public $email;
     #[Rule('required|min:8')]
     public $password;
+    
 
 
     public function add()

@@ -34,5 +34,5 @@
 @endsection
 
 @section('content')
-    @livewire('user.edit', ['user' => $user, 'userId' => $userId])
+    @livewire('user.edit', ['userId' => $userId])
 @endsection
