@@ -8,28 +8,21 @@ use Livewire\Component;
 
 class IndexIncome extends Component
 {
-    public $order;
-    public $ordersCount = 0;
-    public $ordersPrice = 0;
-    public $total_price = 0;
+  public $order;
+  public $ordersCount;
+  public $ordersPrice;
 
-    public function mount()
-    {
-        $this->ordersCount = Order::count();
-        $this->ordersPrice = Order::get('total_price')->sum('total_price');
-    }
+  #[On('order')]
+  public function handleOrder($data)
+  {
+    $this->order = $data['data'];
+  }
 
-    #[On('order')]
-    public function handleOrder($data)
-    {
-        $this->order = $data['data'];
-    }
+  public function render()
+  {
+    $this->ordersCount = collect($this->order)->count();
+    $this->ordersPrice = collect($this->order)->sum('total_price');
 
-    public function render()
-    {
-        $this->ordersCount = is_null($this->order) ? 0 : count($this->order);
-        $this->ordersPrice = is_null($this->order) ? 0 : collect($this->order)->sum('total_price');
-
-        return view('livewire.laporan.index-income');
-    }
+    return view('livewire.laporan.index-income');
+  }
 }

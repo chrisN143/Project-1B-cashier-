@@ -25,16 +25,13 @@ class DatabaseSeeder extends Seeder
         ]);
         Store::create([
             'store_name' => 'Elektronik',
-
-
+            
         ]);
         Store::create([
-
             'store_name' => 'Gaming',
 
         ]);
         Store::create([
-
             'store_name' => 'Wearable',
         ]);
         Store::create([

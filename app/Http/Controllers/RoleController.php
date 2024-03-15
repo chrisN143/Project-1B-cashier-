@@ -27,7 +27,7 @@ class RoleController extends Controller
         $text = "Are you sure?";
         confirmDelete($title_delete, $text);
 
-        return view('roles.index', compact(
+        return view('app.roles.index', compact(
             'title',
             'header',
             'main_breadcrumb',
@@ -36,30 +36,30 @@ class RoleController extends Controller
         ));
     }
 
-    public function data_table()
-    {
-        $model = Role::query();
+    // public function data_table()
+    // {
+    //     $model = Role::query();
 
-        return DataTables::eloquent($model)
-            ->editColumn('created_at', function ($data) {
-                $formatedDate = Carbon::createFromFormat('Y-m-d H:i:s', $data->created_at)->format('d/m/Y | H:i');
-                return $formatedDate;
-            })
-            ->addColumn('action', function ($data) {
-                $url_show = route('role.show', $data->id);
-                $url_edit = route('role.edit', $data->id);
-                $url_delete = route('role.destroy', $data->id);
+    //     return DataTables::eloquent($model)
+    //         ->editColumn('created_at', function ($data) {
+    //             $formatedDate = Carbon::createFromFormat('Y-m-d H:i:s', $data->created_at)->format('d/m/Y | H:i');
+    //             return $formatedDate;
+    //         })
+    //         ->addColumn('action', function ($data) {
+    //             $url_show = route('role.show', $data->id);
+    //             $url_edit = route('role.edit', $data->id);
+    //             $url_delete = route('role.destroy', $data->id);
 
-                $btn = "<div class='btn-group'>";
-                $btn .= "<a href='$url_show' class = 'btn btn-primary btn-sm text-nowrap text-white'> <i class='ki-duotone ki-eye'><span class='path1'></span><span class='path2'></span><span class='path3'></span></i> Detail</a>";
-                $btn .= "<a href='$url_edit' class = 'btn btn-warning btn-sm text-nowrap text-white'> <i class='ki-duotone ki-notepad-edit'><span class='path1'></span><span class='path2'></span></i> Edit</a>";
-                $btn .= "<a href='$url_delete' class = 'btn btn-danger btn-sm text-nowrap text-white' data-confirm-delete='true'><i class='ki-duotone ki-trash-square'><span class='path1'></span><span class='path2'></span> <span class='path3'></span><span class='path4'></span></i> Delete</a>";
-                $btn .= "</div>";
+    //             $btn = "<div class='btn-group'>";
+    //             $btn .= "<a href='$url_show' class = 'btn btn-primary btn-sm text-nowrap text-white'> <i class='ki-duotone ki-eye'><span class='path1'></span><span class='path2'></span><span class='path3'></span></i> Detail</a>";
+    //             $btn .= "<a href='$url_edit' class = 'btn btn-warning btn-sm text-nowrap text-white'> <i class='ki-duotone ki-notepad-edit'><span class='path1'></span><span class='path2'></span></i> Edit</a>";
+    //             $btn .= "<a href='$url_delete' class = 'btn btn-danger btn-sm text-nowrap text-white' data-confirm-delete='true'><i class='ki-duotone ki-trash-square'><span class='path1'></span><span class='path2'></span> <span class='path3'></span><span class='path4'></span></i> Delete</a>";
+    //             $btn .= "</div>";
 
-                return $btn;
-            })
-            ->toJson();
-    }
+    //             return $btn;
+    //         })
+    //         ->toJson();
+    // }
 
     public function create()
     {
@@ -72,7 +72,7 @@ class RoleController extends Controller
 
         $permissions = Permission::all();
 
-        return view('roles.create', compact(
+        return view('app.roles.create', compact(
             'permissions',
             'title',
             'header',
@@ -82,7 +82,7 @@ class RoleController extends Controller
         ));
     }
 
-    public function edit(Role $role)
+    public function edit(Request $request, Role $role)
     {
         /* Header Setting */
         $title = "Role Edit";
@@ -90,14 +90,15 @@ class RoleController extends Controller
         $main_breadcrumb = "Role";
         $main_breadcrumb_link = route('role.index');
         $breadcrumb = "Edit";
-
+$id = $request->id;
         $permissions = Permission::all();
         $role_permissions = DB::table("role_has_permissions")
             ->where("role_id", $role->id)
             ->pluck('permission_id', 'permission_id')
             ->all();
 
-        return view('roles.edit', compact(
+        return view('app.roles.edit', compact(
+            'id',
             'role',
             'permissions',
             'role_permissions',
@@ -122,7 +123,7 @@ class RoleController extends Controller
             ->where("role_has_permissions.role_id", $role->id)
             ->get();
 
-        return view('roles.show', compact(
+        return view('app.roles.show', compact(
             'role',
             'role_permissions',
             'title',

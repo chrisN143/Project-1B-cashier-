@@ -98,8 +98,7 @@ class ItemsDatatable extends Component
             'products.stok as product_stok',
             'products.price as product_price',
             'stores.store_name as store_name'
-        )
-            ->join('stores', 'stores.id', '=', 'products.store_id');
+        )->join('stores', 'stores.id', '=', 'products.store_id');
     }
 
     public function getView(): string

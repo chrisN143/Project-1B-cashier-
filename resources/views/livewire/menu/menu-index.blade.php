@@ -11,13 +11,24 @@
         </div>
     @endif
     <div class="container my-3">
-        <div class="row justify-content-between">
-
+        <div class="row">
             <div class="col-md-3 my-2">
                 <input class="form-control me-2" wire:model.live="search" type="text" placeholder="Search"
                     aria-label="Search">
-                {{-- <button class="btn btn-outline-secondary" type="submit">Search</button> --}}
             </div>
+            <div class="col-md-2 my-2">
+                <select class="form-select" name="store_id" wire:model.live="store_id">
+                    <option value="" selected>All Stores</option>
+
+                    @foreach ($stores as $store)
+                        <option value="{{ $store->id }}">{{ $store->store_name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            {{-- <div class="col-md-2 my-2">
+                <button wire:click="filter" class="btn btn-info btn-se" type="submit">filter</button>
+            </div> --}}
+
         </div>
     </div>
 
@@ -37,7 +48,7 @@
                                     <h5 class="">Category : {{ $item->store->store_name }}</h5>
                                     {{-- $post->created_at->diffForHumans() --}}
                                 </small>
-                            <h6>Price : Rp. {{number_format($item->price, 0, ',', '.') }}</h6>
+                            <h6>Price : Rp. {{ number_format($item->price, 0, ',', '.') }}</h6>
                             </p>
 
                             {{-- <input type="number" wire:model.live="inputquantity" value="{{ $this->inputquantity }}"

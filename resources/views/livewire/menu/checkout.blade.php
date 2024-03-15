@@ -1,6 +1,6 @@
-<div class="row shadow border rounded p-3">
+<div class="row shadow border rounded p-3" wire:poll.3s>
     <div class="col-md-4 my-auto">
-        <h6>Check Out :</h6>
+        <h4>Check Out : On Store {{ $cartStore->store_name }}</h4>
         @if (session('error'))
             <div class="alert alert-danger" role="alert">
                 {{ session('error') }}
@@ -25,8 +25,11 @@
                         @endphp
                         @forelse ($carts as $cart)
                             <tr>
-                                <td data-label="No Customer">{{ $cart->product->name }}</td>
-                                <td data-label="Total Harga">Rp. {{number_format($cart->product->price, 0, ',', '.') }}</td>
+                                <td data-label="No Customer">
+                                    <strong>{{ $cart->product->name }}</strong>
+                                </td>
+                                <td data-label="Total Harga">Rp. {{ number_format($cart->product->price, 0, ',', '.') }}
+                                </td>
                                 <td data-label="Tipe Pembayaran">
                                     @if ($cart->quantity > 0)
                                         <div class="input-group">
@@ -53,7 +56,10 @@
                                         </div>
                                     @endif
                                 </td>
-                                <td data-label="Tanggal Order"> Rp. {{ number_format ($cart->product->price * $cart->quantity, 0, ',', '.') }}
+                                <td data-label="Store">{{ $cart->store->store_name }}
+                                </td>
+                                <td data-label="Tanggal Order"> Rp.
+                                    {{ number_format($cart->product->price * $cart->quantity, 0, ',', '.') }}
                                 </td>
                                 @php
                                     $total += $cart->product->price * $cart->quantity;
@@ -111,7 +117,7 @@
                 <div class="col-md-5 my-4">
                     <div class="shadow bg-white p-3">
                         <h4>Total:
-                            <span>Rp. {{number_format($total , 0, ',', '.') }}</span>
+                            <span>Rp. {{ number_format($total, 0, ',', '.') }}</span>
                         </h4>
                         <hr>
                         <div class="">

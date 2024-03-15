@@ -6,6 +6,7 @@ use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderItems;
 use App\Models\Product;
+use App\Models\Store;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
@@ -16,7 +17,8 @@ use Livewire\Attributes\On;
 class Checkout extends Component
 {
 
-    public $carts, $totalprice = 0;
+    public $carts, $cartStore, $totalprice = 0;
+    public $store_id = '1';
     public $payment;
     public $totalStok;
     #[Rule('required')]
@@ -26,6 +28,11 @@ class Checkout extends Component
     public $email;
     public $cartUser;
 
+    #[On('store')]
+    public function handledStore($allStore)
+    {
+        $this->store_id = $allStore['storeClassification'];
+    }
     public function decrementQuantity($id)
     {
         $cartData = Cart::where('id', $id)->where('user_id', auth()->user()->id)->first();
@@ -60,8 +67,6 @@ class Checkout extends Component
 
     public function order()
     {
-
-
         foreach ($this->carts as $item) {
             $countstok = Product::where('id', $item->product_id)->first();
             if ($countstok->stok - $item->quantity < 0) {
@@ -97,7 +102,7 @@ class Checkout extends Component
         session()->flash('status', 'Orders Has Make!');
 
         if ($order) {
-            Cart::where('user_id', Auth::id())->delete();
+            Cart::where('user_id', Auth::id())->where('store_id', 'like', '%' . $this->store_id . '%')->delete();
             session()->flash('status', 'Orders Placed Succesfully');
             return redirect()->route('menu.index');
         } else {
@@ -111,10 +116,11 @@ class Checkout extends Component
     #[On('add')]
     public function mount()
     {
+        $this->cartStore = Store::find($this->store_id);
         $this->customerName = auth()->user()->name;
         $this->payment = Transaction::all();
         $this->totalprice = 0;
-        $this->carts = Cart::where('user_id', Auth::id())->get();
+        $this->carts = Cart::where('user_id', Auth::id())->where('store_id', 'like', '%' . $this->store_id . '%')->get();
         foreach ($this->carts as $Item) {
             $this->totalprice += $Item->product->price * $Item->quantity;
         }

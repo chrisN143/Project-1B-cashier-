@@ -1,3 +1,2 @@
 
 @extends('livewire.livewire-datatable')
-

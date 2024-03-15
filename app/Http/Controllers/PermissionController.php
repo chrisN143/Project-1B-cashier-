@@ -24,7 +24,7 @@ class PermissionController extends Controller
         $text = "Are you sure?";
         confirmDelete($title_delete, $text);
 
-        return view('permissions.index', compact(
+        return view('app.permissions.index', compact(
             'title',
             'header',
             'main_breadcrumb',
@@ -33,28 +33,28 @@ class PermissionController extends Controller
         ));
     }
 
-    public function data_table()
-    {
-        $model = Permission::query();
+    // public function data_table()
+    // {
+    //     $model = Permission::query();
 
-        return DataTables::eloquent($model)
-            ->editColumn('created_at', function ($data) {
-                $formatedDate = Carbon::createFromFormat('Y-m-d H:i:s', $data->created_at)->format('d/m/Y | H:i');
-                return $formatedDate;
-            })
-            ->addColumn('action', function ($data) {
-                $url_edit = route('permission.edit', $data->id);
-                $url_delete = route('permission.destroy', $data->id);
+    //     return DataTables::eloquent($model)
+    //         ->editColumn('created_at', function ($data) {
+    //             $formatedDate = Carbon::createFromFormat('Y-m-d H:i:s', $data->created_at)->format('d/m/Y | H:i');
+    //             return $formatedDate;
+    //         })
+    //         ->addColumn('action', function ($data) {
+    //             $url_edit = route('permission.edit', $data->id);
+    //             $url_delete = route('permission.destroy', $data->id);
 
-                $btn = "<div class='btn-group'>";
-                $btn .= "<a href='$url_edit' class = 'btn btn-warning btn-sm text-nowrap text-white'> <i class='ki-duotone ki-notepad-edit'><span class='path1'></span><span class='path2'></span></i> Edit</a>";
-                $btn .= "<a href='$url_delete' class = 'btn btn-danger btn-sm text-nowrap text-white' data-confirm-delete='true'><i class='ki-duotone ki-trash-square'><span class='path1'></span><span class='path2'></span> <span class='path3'></span><span class='path4'></span></i> Delete</a>";
-                $btn .= "</div>";
+    //             $btn = "<div class='btn-group'>";
+    //             $btn .= "<a href='$url_edit' class = 'btn btn-warning btn-sm text-nowrap text-white'> <i class='ki-duotone ki-notepad-edit'><span class='path1'></span><span class='path2'></span></i> Edit</a>";
+    //             $btn .= "<a href='$url_delete' class = 'btn btn-danger btn-sm text-nowrap text-white' data-confirm-delete='true'><i class='ki-duotone ki-trash-square'><span class='path1'></span><span class='path2'></span> <span class='path3'></span><span class='path4'></span></i> Delete</a>";
+    //             $btn .= "</div>";
 
-                return $btn;
-            })
-            ->toJson();
-    }
+    //             return $btn;
+    //         })
+    //         ->toJson();
+    // }
 
     public function create()
     {
@@ -65,7 +65,7 @@ class PermissionController extends Controller
         $main_breadcrumb_link = route('permission.index');
         $breadcrumb = "Create";
 
-        return view('permissions.create', compact(
+        return view('app.permissions.create', compact(
             'title',
             'header',
             'main_breadcrumb',
@@ -74,7 +74,7 @@ class PermissionController extends Controller
         ));
     }
 
-    public function edit(Permission $permission)
+    public function edit(Request $request)
     {
         /* Header Setting */
         $title = "Permission Edit";
@@ -82,8 +82,9 @@ class PermissionController extends Controller
         $main_breadcrumb = "Permission";
         $main_breadcrumb_link = route('permission.index');
         $breadcrumb = "Edit";
+        $permission= $request->id;
 
-        return view('permissions.edit', compact(
+        return view('app.permissions.edit', compact(
             'permission',
             'title',
             'header',

@@ -1,16 +1,17 @@
 <?php
 
-namespace App\Livewire\User;
+namespace App\Livewire\Role;
 
 // use App\Models\Payment;
 
 use App\Models\Store;
-use App\Models\Transaction;
+
 use App\Models\User;
 use App\Traits\WithDatatable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Spatie\Permission\Models\Role as Roles;
 
 class ItemsDatatable extends Component
 {
@@ -18,7 +19,7 @@ class ItemsDatatable extends Component
 
     public function destroy($id)
     {
-        $item = User::find($id);
+        $item = Roles::find($id);
         $authUser = User::find(Auth::id());
         $item->delete();
     }
@@ -27,18 +28,18 @@ class ItemsDatatable extends Component
     {
         return [
             [
+                'key' => 'id',
+                'name' => 'id',
+            ],
+            [
                 'key' => 'name',
                 'name' => 'Name',
             ],
-            [
-                'key' => 'email',
-                'name' => 'Email',
-            ],
-            [
-                'key' => 'email',
-                'name' => 'Email',
-            ],
 
+            [
+                'key' => 'created_at',
+                'name' => 'Created_at',
+            ],
             [
                 'name' => 'Aksi',
                 'sortable' => false,
@@ -47,11 +48,14 @@ class ItemsDatatable extends Component
                     $authUser = User::find(Auth::id());
 
                     $detailsHtml = '';
-                    $detailsUrl = route('store.detail', $item->id);
-                    $detailsHtml = "<a href='$detailsUrl' class='btn btn-primary btn-sm ml-2'><i class='fa fa-detail mr-2'></i>details</a>";
-                    $editHtml = '';
-                    $editUrl = route('user.edit', ['id' => $item['id']]);
-                    $editHtml = "<a href='$editUrl' class='btn btn-primary btn-sm ml-2'><i class='fa-solid fa-pen-to-square'></i></a>";
+                    $detailsUrl = route('role.edit', $item->id);
+                    $detailsHtml = "<a href='$detailsUrl' class='btn btn-primary btn-sm ml-2'><i class='fa-solid fa-pen-to-square'></i></a>";
+                    // $editHtml = '';
+                    // $editUrl = route('order.print', $item->order_code);
+                    // $editHtml = "<a href='$editUrl' class='btn btn-primary btn-sm ml-2'><i class='fa-solid fa-pen-to-square'></i></a>";
+                    // $printHtml = '';
+                    // $printUrl = route('orders.print', $item->order_code);
+                    // $printHtml = "<a href='$printUrl' class='btn btn-success btn-sm ml-2'><i class='fa-solid fa-print'></i></a>";
 
 
                     $destroyHtml = '';
@@ -60,7 +64,7 @@ class ItemsDatatable extends Component
                                 <i class='fa fa-trash mr-2'></i>
                                     </button>";
 
-                    $html = "$editHtml  $destroyHtml";
+                    $html = "$detailsHtml  $destroyHtml";
 
                     return $html;
                 },
@@ -70,11 +74,11 @@ class ItemsDatatable extends Component
 
     public function getQuery(): Builder
     {
-        return User::query();
+        return Roles::query();
     }
 
     public function getView(): string
     {
-        return 'livewire.transaction.itemsdatatable';
+        return 'livewire.role.itemsdatatable';
     }
 }

@@ -44,13 +44,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::controller(UserController::class)->prefix('user')->name('user.')->group(function () {
         Route::middleware('role_or_permission:Admin')->group(function () {
             Route::get('/', 'index')->name('index');
-            Route::get('data_table', 'data_table')->name('data_table');
             Route::get('create', 'create')->name('create');
-            Route::post('store', 'store')->name('store');
-            Route::get('show/{user}', 'show')->name('show');
             Route::get('edit/{user}', 'edit')->name('edit');
-            Route::put('update/{user}', 'update')->name('update');
-            Route::delete('destroy/{user}', 'destroy')->name('destroy');
+            Route::get('show/{role}', 'show')->name('show');
+
         });
     });
 
@@ -58,12 +55,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::controller(PermissionController::class)->prefix('permission')->name('permission.')->group(function () {
         Route::middleware('role_or_permission:Admin')->group(function () {
             Route::get('/', 'index')->name('index');
-            Route::get('data_table', 'data_table')->name('data_table');
             Route::get('create', 'create')->name('create');
-            Route::post('store', 'store')->name('store');
             Route::get('edit/{permission}', 'edit')->name('edit');
-            Route::put('update/{permission}', 'update')->name('update');
-            Route::delete('destroy/{permission}', 'destroy')->name('destroy');
+
         });
     });
 
@@ -71,13 +65,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::controller(RoleController::class)->prefix('role')->name('role.')->group(function () {
         Route::middleware('role_or_permission:Admin')->group(function () {
             Route::get('/', 'index')->name('index');
-            Route::get('data_table', 'data_table')->name('data_table');
+
             Route::get('create', 'create')->name('create');
-            Route::post('store', 'store')->name('store');
-            Route::get('show/{role}', 'show')->name('show');
+
             Route::get('edit/{role}', 'edit')->name('edit');
-            Route::put('update/{role}', 'update')->name('update');
-            Route::delete('destroy/{role}', 'destroy')->name('destroy');
         });
     });
 
@@ -96,9 +87,6 @@ Route::group(['middleware' => 'auth'], function () {
     });
     Route::controller(MenuController::class)->prefix('menu')->name('menu.')->group(function () {
         Route::get('/', 'index')->name('index');
-        // Route::get('/detail', 'detail')->name('detail');
-        // Route::get('/detail/cart', 'cart')->name('cart');
-        // Route::get('m /checkout', 'checkout')->name('checkout');
     });
 
     Route::controller(OrderController::class)->prefix('orders')->name('orders.')->group(function () {

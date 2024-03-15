@@ -44,10 +44,14 @@ class ItemsDatatable extends Component
 
     public function getColumns(): array
     {
+        
         return [
             [
                 'key' => 'order_code',
                 'name' => 'Id',
+                'render' => function ($item) {
+                    return $item->order_code;
+                }
 
             ],
             [
@@ -93,8 +97,13 @@ class ItemsDatatable extends Component
     public function getQuery(): Builder
     {
 
-        return Order::whereDate('created_at', '>=', $this->start_date)->whereDate('created_at', '<=', $this->end_date)->where('payment_method', $this->payment);
-        // ->whereDate('orders.created_at', '>=', $this->end_date);
+        if ($this->payment)
+            return Order::whereDate('created_at', '>=', $this->start_date)
+                ->whereDate('created_at', '<=', $this->end_date)
+                ->where('payment_method', $this->payment);
+        else
+            return Order::whereDate('created_at', '>=', $this->start_date)
+                ->whereDate('created_at', '<=', $this->end_date);
     }
 
     public function getView(): string
