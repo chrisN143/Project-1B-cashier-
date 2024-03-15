@@ -6,8 +6,8 @@
             <!--begin::Card body-->
             <div class="card-body p-12">
                 <!--begin::Form-->
-                <form wire:submit="post">
-                    @csrf
+                <form wire:submit="store">
+     
                     <!--begin::Wrapper-->
                     <div class="mb-0">
                         <!--begin::Row-->
@@ -16,8 +16,8 @@
                             <div class="col-lg-12">
                                 <!--begin::Input group-->
                                 <div class="form-floating mb-7">
-                                    <input type="text" name="name" class="form-control form-control-solid"
-                                        id="name" placeholder="" value="{{ old('name') }}" />
+                                    <input type="text" wire:model="name" class="form-control form-control-solid"
+                                        id="name" placeholder=""  />
                                     <label for="name">Name</label>
                                     <div
                                         class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">

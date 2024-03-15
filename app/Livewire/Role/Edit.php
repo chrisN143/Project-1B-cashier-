@@ -2,16 +2,20 @@
 
 namespace App\Livewire\Role;
 use Illuminate\Support\Facades\DB;
-use Livewire\Attributes\Rule;
+
 
 use Livewire\Component;
 use Spatie\Permission\Models\Permission;
+use Livewire\Attributes\Rule;
+use Spatie\Permission\Models\Role;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class Edit extends Component
 {
     #[Rule('required')]
     public $name;
     public $role;
+    public $id;
     public $permissions;
     public $role_permissions;
     public function mount() {
@@ -20,10 +24,13 @@ class Edit extends Component
         ->where("role_id", $this->role->id)
         ->pluck('permission_id', 'permission_id')
         ->all();
+        $roles = Role::find($this->id);
+        $this->name = $roles->name;
     }
+
     public function update() {
          /* Validation */
-$this->validate();
+            $this->validate();
 
         /* Update */
 

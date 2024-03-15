@@ -34,5 +34,5 @@
 @endsection
 
 @section('content')
-@livewire(' role.edit', ['role' => $role])
+@livewire(' role.edit', ['role' => $role, 'id' => $id])
 @endsection

@@ -82,7 +82,7 @@ class RoleController extends Controller
         ));
     }
 
-    public function edit(Role $role)
+    public function edit(Request $request, Role $role)
     {
         /* Header Setting */
         $title = "Role Edit";
@@ -90,7 +90,7 @@ class RoleController extends Controller
         $main_breadcrumb = "Role";
         $main_breadcrumb_link = route('role.index');
         $breadcrumb = "Edit";
-
+$id = $request->id;
         $permissions = Permission::all();
         $role_permissions = DB::table("role_has_permissions")
             ->where("role_id", $role->id)
@@ -98,6 +98,7 @@ class RoleController extends Controller
             ->all();
 
         return view('app.roles.edit', compact(
+            'id',
             'role',
             'permissions',
             'role_permissions',

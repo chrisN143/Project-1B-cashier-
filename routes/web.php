@@ -68,7 +68,7 @@ Route::group(['middleware' => 'auth'], function () {
 
             Route::get('create', 'create')->name('create');
 
-            Route::get('edit/{role}', 'edit')->name('edit');
+            Route::get('edit/{id}', 'edit')->name('edit');
 
         });
     });

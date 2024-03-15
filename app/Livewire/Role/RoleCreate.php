@@ -4,22 +4,23 @@ namespace App\Livewire\Role;
 
 use Livewire\Component;
 use Spatie\Permission\Models\Permission;
-
+use Livewire\Attributes\Rule;
+use Spatie\Permission\Models\Role;
+use RealRashid\SweetAlert\Facades\Alert;
+    
 class RoleCreate extends Component
 {
+
     public $permissions;
+    #[Rule('required')]
+    public $name;
     public function store() {
-        $request->validate([
-            'name' => 'required|unique:roles,name',
-        ]);
+    $this->validate();      
+            $role = Role::create([
+                'name' => $this->name
+            ]);
+            $role->syncPermissions($this->permissions);
 
-        /* Store */
-        DB::transaction(function () use ($request) {
-            $input = $request->all();
-
-            $role = Role::create($input);
-            $role->syncPermissions($request->permission);
-        });
 
         /* Alert & Redirect */
         Alert::toast('Data Berhasil Disimpan', 'success');
