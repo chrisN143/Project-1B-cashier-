@@ -68,7 +68,12 @@ Route::group(['middleware' => 'auth'], function () {
 
             Route::get('create', 'create')->name('create');
 
+<<<<<<< HEAD
+            Route::get('edit/{id}', 'edit')->name('edit');
+
+=======
             Route::get('edit/{role}', 'edit')->name('edit');
+>>>>>>> origin/main
         });
     });
 
