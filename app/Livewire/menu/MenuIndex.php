@@ -20,14 +20,15 @@ class MenuIndex extends Component
     public $search = '';
 
     public $stores;
-    public $store_id;
+    public $store_id = '1';
     // public $product;
     public $carts;
     private $inputquantity = 1;
     // protected
-public function filter() {
-    $this->resetPage();
-}
+    public function filter()
+    {
+        $this->resetPage();
+    }
     public function add($id)
     {
         $cart = Cart::where('product_id', $id)->first();

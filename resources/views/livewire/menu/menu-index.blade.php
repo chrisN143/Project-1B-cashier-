@@ -25,10 +25,7 @@
                     @endforeach
                 </select>
             </div>
-            {{-- <div class="col-md-2 my-2">
-                <button wire:click="filter" class="btn btn-info btn-se" type="submit">filter</button>
-            </div> --}}
-
+ 
         </div>
     </div>
 

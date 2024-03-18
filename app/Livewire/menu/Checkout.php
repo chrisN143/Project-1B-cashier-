@@ -121,6 +121,7 @@ class Checkout extends Component
         $this->payment = Transaction::all();
         $this->totalprice = 0;
         $this->carts = Cart::where('user_id', Auth::id())->where('store_id', 'like', '%' . $this->store_id . '%')->get();
+
         foreach ($this->carts as $Item) {
             $this->totalprice += $Item->product->price * $Item->quantity;
         }
@@ -129,7 +130,6 @@ class Checkout extends Component
 
     public function render()
     {
-
         return view('livewire.menu.checkout');
     }
 }

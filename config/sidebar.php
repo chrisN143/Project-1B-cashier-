@@ -12,7 +12,7 @@ return [
         [
             'text' => 'Dashboard',
             'url'  => 'dashboard',
-            'icon' => 'ki-duotone ki-element-11 fs-2',
+            'icon' => 'ki-duotone ki-chart-pie-4 fs-2',
             'role' => 'All',
         ],
         [
@@ -21,7 +21,7 @@ return [
         ],
         [
             'text' => 'Master Data',
-            'icon' => 'ki-duotone ki-abstract-28 fs-2',
+            'icon' => 'ki-duotone ki-code text-success fs-2',
             'role' => 'Admin',
             'submenu' => [
                 [
@@ -43,7 +43,7 @@ return [
         ],
         [
             'text' => 'Users Management',
-            'icon' => 'ki-duotone ki-abstract-28 fs-2',
+            'icon' => 'ki-duotone ki-security-user  fs-2',
             'role' => 'Admin',
             'submenu' => [
                 [
@@ -65,7 +65,7 @@ return [
         ],
         [
             'text' => 'Purchase',
-            'icon' => 'ki-duotone ki-abstract-28 fs-2',
+            'icon' => 'ki-duotone ki-finance-calculator text-primary fs-2',
             'role' => 'All',
             'submenu' => [
                 [
@@ -82,7 +82,7 @@ return [
         ],
         [
             'text' => 'Laporan',
-            'icon' => 'ki-duotone ki-abstract-28 fs-2',
+            'icon' => 'ki-duotone ki-calendar text-warning fs-2',
             'role' => 'Admin',
             'submenu' => [
                 [

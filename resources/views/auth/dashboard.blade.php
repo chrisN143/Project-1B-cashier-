@@ -51,7 +51,7 @@
                         <!--end::Subtitle-->
                     </div>
                     <span class="float-right display-5 bg-opacity-25"><i
-                            class="fa-solid fa-cart-shopping fs-1 text-light"></i></span>
+                            class="fa-solid fa-user fs-1 text-light"></i></span>
                     <!--end::Title-->
                 </div>
                 <!--end::Header-->
@@ -76,7 +76,7 @@
                         <!--end::Subtitle-->
                     </div>
                     <span class="float-right display-5 bg-opacity-25"><i
-                            class="fa-solid fa-cart-shopping fs-1 text-light"></i></span>
+                            class="fa-solid fa-users fs-1 text-light"></i></span>
                     <!--end::Title-->
                 </div>
                 <!--end::Header-->
@@ -102,7 +102,7 @@
                         <!--end::Subtitle-->
                     </div>
                     <span class="float-right display-5 bg-opacity-25"><i
-                            class="fa-solid fa-cart-shopping fs-1 text-light"></i></span>
+                            class="fa-solid fa-address-card fs-1 text-light"></i></span>
                     <!--end::Title-->
                 </div>
                 <!--end::Header-->
@@ -138,4 +138,4 @@
     </div>
 
     <!--end::Col-->
-    @endsection
+@endsection

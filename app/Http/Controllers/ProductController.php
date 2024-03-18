@@ -14,57 +14,53 @@ use Yajra\DataTables\Facades\DataTables;
 
 class ProductController extends Controller
 {
-    public function index()
-    {
-        // $products = DB::table('products')
-        //     ->rightJoin('stores', 'stores.id', '=', 'products.store_id')
-        //     ->get();
-        // dd($products);
-        /* Header Setting */
-        $title = "Product";
-        $header = "Product List";
-        $main_breadcrumb = "Product";
-        $main_breadcrumb_link = route('product.index');
-        $breadcrumb = null;
+        public function index()
+        {
 
-        // Confirm Delete Alert
-        $title_delete = 'Delete Data!';
-        $text = "Are you sure?";
-        confirmDelete($title_delete, $text);
+            $title = "Product";
+            $header = "Product List";
+            $main_breadcrumb = "Product";
+            $main_breadcrumb_link = route('product.index');
+            $breadcrumb = null;
 
-        return view(
-            'app.product.index',
-            compact(
-                'title',
-                'header',
-                'main_breadcrumb',
-                'main_breadcrumb_link',
-                'breadcrumb'
-            )
-        );
-    }
+            // Confirm Delete Alert
+            $title_delete = 'Delete Data!';
+            $text = "Are you sure?";
+            confirmDelete($title_delete, $text);
 
-    public function detail(Request $request)
-    {
-        /* Header Setting */
-        $title = "Product";
-        $header = "Product Create";
-        $main_breadcrumb = "Product";
-        $main_breadcrumb_link = route('product.detail');
-        $breadcrumb = null;
+            return view(
+                'app.product.index',
+                compact(
+                    'title',
+                    'header',
+                    'main_breadcrumb',
+                    'main_breadcrumb_link',
+                    'breadcrumb'
+                )
+            );
+        }
 
-        $id = $request->id;
+        public function detail(Request $request)
+        {
+            /* Header Setting */
+            $title = "Product";
+            $header = "Product Create";
+            $main_breadcrumb = "Product";
+            $main_breadcrumb_link = route('product.detail');
+            $breadcrumb = null;
 
-        return view(
-            'app.product.detail',
-            compact(
-                'id',
-                'title',
-                'header',
-                'main_breadcrumb',
-                'main_breadcrumb_link',
-                'breadcrumb'
-            )
-        );
-    }
+            $id = $request->id;
+
+            return view(
+                'app.product.detail',
+                compact(
+                    'id',
+                    'title',
+                    'header',
+                    'main_breadcrumb',
+                    'main_breadcrumb_link',
+                    'breadcrumb'
+                )
+            );
+        }
 }
