@@ -25,7 +25,9 @@ class MenuIndex extends Component
     public $carts;
     private $inputquantity = 1;
     // protected
-
+public function filter() {
+    $this->resetPage();
+}
     public function add($id)
     {
         $cart = Cart::where('product_id', $id)->first();
