@@ -18,7 +18,7 @@ class Detail extends Component
     {
         if ($this->objId) {
             $transaction = Transaction::find($this->objId);
-            $this->name = $transaction->payment_method  ;
+            $this->name = $transaction->payment_method;
         }
     }
 

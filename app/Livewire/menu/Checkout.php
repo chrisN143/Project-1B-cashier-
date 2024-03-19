@@ -10,7 +10,6 @@ use App\Models\Store;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use Illuminate\Support\Str;
 use Livewire\Attributes\Rule;
 use Livewire\Attributes\On;
 
@@ -52,7 +51,6 @@ class Checkout extends Component
         } else {
             session()->flash('error', 'Something wrong!');
         }
-        // $this->resetPage();
     }
     public function incrementQuantity($id)
     {
@@ -75,7 +73,6 @@ class Checkout extends Component
         }
 
         $this->validate();
-        // $payment =
         $order = Order::create([
             'user_id' => auth()->user()->id,
             'customer_name' => $this->customerName,
@@ -116,20 +113,20 @@ class Checkout extends Component
     #[On('add')]
     public function mount()
     {
-        $this->cartStore = Store::find($this->store_id);
         $this->customerName = auth()->user()->name;
         $this->payment = Transaction::all();
         $this->totalprice = 0;
+    }
+
+
+    public function render()
+    {
+        $this->cartStore = Store::find($this->store_id);
         $this->carts = Cart::where('user_id', Auth::id())->where('store_id', 'like', '%' . $this->store_id . '%')->get();
 
         foreach ($this->carts as $Item) {
             $this->totalprice += $Item->product->price * $Item->quantity;
         }
-        return $this->totalprice;
-    }
-
-    public function render()
-    {
         return view('livewire.menu.checkout');
     }
 }

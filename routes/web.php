@@ -45,7 +45,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::middleware('role_or_permission:Admin')->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('create', 'create')->name('create');
-            Route::get('edit/{user}', 'edit')->name('edit');
+            Route::get('edit/{id}', 'edit')->name('edit');
             Route::get('show/{role}', 'show')->name('show');
         });
     });

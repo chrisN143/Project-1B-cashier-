@@ -3,15 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
-use Spatie\Permission\Models\Role;
-use RealRashid\SweetAlert\Facades\Alert;
-use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Auth;
-use Yajra\DataTables\Facades\DataTables;
-
 class ProductController extends Controller
 {
         public function index()
@@ -49,7 +40,7 @@ class ProductController extends Controller
             $main_breadcrumb_link = route('product.detail');
             $breadcrumb = null;
 
-            $id = $request->id;
+            $id = $request->product_id;
 
             return view(
                 'app.product.detail',

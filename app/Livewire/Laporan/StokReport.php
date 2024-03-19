@@ -13,12 +13,10 @@ class StokReport extends Component
     use WithPagination;
 
     public $start_date = '';
-
     public $end_date = '';
     public $payment = '';
     public $search = '';
     public $searchItems = '';
-
 
     public function mount()
     {

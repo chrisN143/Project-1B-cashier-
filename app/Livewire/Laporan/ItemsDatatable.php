@@ -18,7 +18,6 @@ class ItemsDatatable extends Component
 {
     use WithDatatable;
     public $start_date;
-
     public $payment;
     public $end_date;
     public function onMount()
@@ -38,7 +37,6 @@ class ItemsDatatable extends Component
     public function destroy($id)
     {
         $item = Order::find($id);
-
         $item->delete();
     }
 

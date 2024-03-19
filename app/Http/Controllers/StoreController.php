@@ -48,7 +48,6 @@ class StoreController extends Controller
             compact(
                 'id',
                 'title',
-
                 'main_breadcrumb',
                 'main_breadcrumb_link',
                 'breadcrumb'

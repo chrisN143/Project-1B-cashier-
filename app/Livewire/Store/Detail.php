@@ -13,9 +13,6 @@ class Detail extends Component
     public $objId;
     #[Rule('required')]
     public $store;
-
-
-
     public function mount()
     {
         if ($this->objId) {

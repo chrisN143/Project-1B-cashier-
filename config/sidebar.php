@@ -12,7 +12,7 @@ return [
         [
             'text' => 'Dashboard',
             'url'  => 'dashboard',
-            'icon' => 'ki-duotone ki-chart-pie-4 fs-2',
+            'icon' => 'ki-duotone ki-chart-pie-4 text-info fs-2',
             'role' => 'All',
         ],
         [
@@ -43,7 +43,7 @@ return [
         ],
         [
             'text' => 'Users Management',
-            'icon' => 'ki-duotone ki-security-user  fs-2',
+            'icon' => 'ki-duotone ki-security-user text-danger fs-2',
             'role' => 'Admin',
             'submenu' => [
                 [
