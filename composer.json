@@ -12,7 +12,7 @@
         "laravel/tinker": "^2.8",
         "livewire/livewire": "^3.3",
         "realrashid/sweet-alert": "^7.1",
-        "spatie/laravel-permission": "^6.3",
+        "spatie/laravel-permission": "^6.4",
         "vinkla/hashids": "^11.0",
         "yajra/laravel-datatables": "^10.1"
     },

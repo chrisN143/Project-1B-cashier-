@@ -3,6 +3,7 @@
 namespace App\Livewire\User;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Livewire\Attributes\Rule;
 use Livewire\Attributes\Validate;
@@ -17,31 +18,32 @@ class Create extends Component
 
     #[Rule('required')]
     public $name;
+    #[Rule('required')]
+    public $user_roles;
     #[Rule('required|unique:users|email')]
     public $email;
     #[Rule('required|min:8')]
     public $password;
-    
+
 
 
     public function add()
     {
         $this->validate();
-        User::create([
+        $user = User::create([
             'name' => $this->name,
             'email' => $this->email,
-            'password' => $this->password,
+            'password' => Hash::make($this->password),
         ]);
+        $user->assignRole($this->user_roles);
 
         Alert::toast('Data Berhasil Disimpan', 'success');
         return redirect()->route('user.index');
-
     }
 
     public function mount()
     {
-        $this->roles = Role::all();
-
+        $this->roles = Role::All()->pluck('name', 'name');
     }
 
     public function render()

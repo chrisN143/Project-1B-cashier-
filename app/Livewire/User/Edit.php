@@ -3,6 +3,7 @@
 namespace App\Livewire\User;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Livewire\Attributes\Rule;
 use Spatie\Permission\Models\Role;
@@ -14,13 +15,14 @@ class Edit extends Component
     public $roles;
 
     public $user;
+    public $user_role;
     public $userId;
 
     #[Rule('required')]
     public $name;
     #[Rule('required')]
-    public $role;
-    #[Rule('required|unique:users|email')]
+    public $roleUser;
+    #[Rule('required|email')]
     public $email;
     #[Rule('required|min:8')]
     public $password;
@@ -29,21 +31,36 @@ class Edit extends Component
     {
         $this->validate();
         $user = User::find($this->userId);
-        $user->update([
-            'name' => $this->name,
-            'role' => $this->role,
-            'email' => $this->email,
-            'password' => $this->password,
-        ]);
+        if ($this->password == $user->password && $this->email == $user->email) {
+            $user->update([
+                'name' => $this->name,
+            ]);
+            $user->assignRole($this->roleUser);
+        } else {
+            $user->update([
+                'name' => $this->name,
+                'email' => $this->email,
+                'password' => Hash::make($this->password)
+            ]);
+            $user->assignRole($this->roleUser);
+        }
 
         Alert::toast('Data Berhasil Diperbarui', 'success');
         return redirect()->route('user.index');
-
     }
 
     public function mount()
     {
-        $this->roles = Role::All();
+        $this->roles = Role::All()->pluck('name', 'name');
+
+        $userEdit = User::find($this->userId);
+        $this->user_role = $userEdit->getRoleNames()->first();
+        $this->name = $userEdit->name;
+        $this->roleUser = $userEdit->getRoleNames()->first();
+        $this->email = $userEdit->email;
+        $this->password = $userEdit->password;
+
+        // return $roles;
     }
 
     public function render()

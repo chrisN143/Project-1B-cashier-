@@ -1,6 +1,6 @@
-<div class="row shadow border rounded p-3" wire:poll.3s>
-    <div class="col-md-4 my-auto">
-        <h4>Check Out : On Store {{ $cartStore->store_name }}</h4>
+<div class="row shadow border rounded p-3">
+    <div class="col-md-5 my-auto">
+        <h4>Check Out : On Store {{ $cartStore->store_name }} </h4>
         @if (session('error'))
             <div class="alert alert-danger" role="alert">
                 {{ session('error') }}
@@ -14,12 +14,12 @@
     </div>
     <div class="py-1 py-md-3 bg-light">
 
-        <div class="container">
+        <div class="container" wire:loading.attr="disabled">
             <div class="card p-4">
 
                 <table>
 
-                    <tbody wire:poll.3s>
+                    <tbody>
                         @php
                             $total = 0;
                         @endphp

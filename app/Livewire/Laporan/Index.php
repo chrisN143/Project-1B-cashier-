@@ -17,7 +17,6 @@ class Index extends Component
 {
     use WithPagination;
 
-    // public $date = '';
     public $start_date = '';
     public $end_date = '';
     public $payment = '';
@@ -49,7 +48,6 @@ class Index extends Component
             "start_date" => $this->start_date,
             "payment" => $this->payment,
             "end_date" => $this->end_date,
-            // "order" => $this->order
         ]);
     }
 
@@ -57,8 +55,6 @@ class Index extends Component
     {
         $order = $this->allOrders === 'trashed' ? Order::withTrashed()->whereDate('created_at', '>=', $this->start_date)->whereDate('created_at', '<=', $this->end_date)->where('customer_name', 'like', '%' . $this->search . '%')->where('payment_method', 'like', '%' . $this->payment . '%')->paginate(10) : Order::whereDate('created_at', '>=', $this->start_date)->whereDate('created_at', '<=', $this->end_date)->where('customer_name', 'like', '%' . $this->search . '%')->where('payment_method', 'like', '%' . $this->payment . '%')->orderBy('id', 'DESC')->paginate(10);
         $this->dispatch('order', data: $order);
-        return view('livewire.laporan.index', [
-            'order' => $order,
-        ]);
+        return view('livewire.laporan.index');
     }
 }

@@ -34,7 +34,7 @@
 @section('content')
     <div class="row g-5 gx-xl-10 mb-5 mb-xl-10 ">
         <!--begin::Col-->
-        <div class="col-md-3">
+        <div class="col-md-4">
             <!--begin::Card widget 7-->
             <div class="card card-flush bg-primary bg-gradient">
                 <!--begin::Header-->
@@ -51,7 +51,7 @@
                         <!--end::Subtitle-->
                     </div>
                     <span class="float-right display-5 bg-opacity-25"><i
-                            class="fa-solid fa-cart-shopping fs-1 text-light"></i></span>
+                            class="fa-solid fa-user fs-1 text-light"></i></span>
                     <!--end::Title-->
                 </div>
                 <!--end::Header-->
@@ -60,7 +60,7 @@
         </div>
         <!--end::Col-->
         <!--begin::Col-->
-        <div class="col-md-3">
+        <div class="col-md-4">
             <!--begin::Card widget 7-->
             <div class="card card-flush bg-warning bg-gradient">
                 <!--begin::Header-->
@@ -76,7 +76,7 @@
                         <!--end::Subtitle-->
                     </div>
                     <span class="float-right display-5 bg-opacity-25"><i
-                            class="fa-solid fa-cart-shopping fs-1 text-light"></i></span>
+                            class="fa-solid fa-users fs-1 text-light"></i></span>
                     <!--end::Title-->
                 </div>
                 <!--end::Header-->
@@ -85,7 +85,7 @@
         </div>
         <!--end::Col-->
         <!--begin::Col-->
-        <div class="col-md-3">
+        <div class="col-md-4">
             <!--begin::Card widget 7-->
             <div class="card card-flush bg-success bg-gradient">
                 <!--begin::Header-->
@@ -102,7 +102,7 @@
                         <!--end::Subtitle-->
                     </div>
                     <span class="float-right display-5 bg-opacity-25"><i
-                            class="fa-solid fa-cart-shopping fs-1 text-light"></i></span>
+                            class="fa-solid fa-address-card fs-1 text-light"></i></span>
                     <!--end::Title-->
                 </div>
                 <!--end::Header-->
@@ -111,7 +111,7 @@
         </div>
         <!--end::Col-->
         <!--begin::Col-->
-        <div class="col-md-3">
+        <div class="col-md-4">
             <!--begin::Card widget 7-->
             <div class="card card-flush bg-danger bg-gradient">
                 <!--begin::Header-->
@@ -138,4 +138,4 @@
     </div>
 
     <!--end::Col-->
-    @endsection
+@endsection

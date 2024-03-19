@@ -16,12 +16,12 @@
                             <div class="col-lg-12">
                                 <!--begin::Input group-->
                                 <div class="mb-5">
-                                    <select wire:model="role" class="form-select form-select-solid" name="role" data-control="select2"
-                                        data-placeholder="Select an option" data-allow-clear="true">
-                                        <option></option>
+                                    <select wire:model="role" class="form-select form-select-solid" name="role"
+                                        data-control="select2" data-placeholder="Select an option"
+                                        data-allow-clear="true">
                                         @foreach ($roles as $role)
-                                            <option value="{{ $role->name }}">
-                                                {{ $role->name}}</option>
+                                            <option value="{{ $role }}" {{ $user_role == $role ? 'selected' : '' }}>
+                                                {{ $role }}</option>
                                         @endforeach
                                     </select>
                                     <div
@@ -38,8 +38,9 @@
                             <div class="col-lg-6">
                                 <!--begin::Input group-->
                                 <div class="form-floating mb-7">
-                                    <input wire:model="name" type="text" name="name" class="form-control form-control-solid"
-                                        id="name" placeholder="" value="" />
+                                    <input wire:model="name" type="text" name="name"
+                                        class="form-control form-control-solid" id="name" placeholder=""
+                                        value="" />
                                     <label for="name">Name</label>
                                     <div
                                         class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
@@ -51,8 +52,8 @@
                                 <!--end::Input group-->
                                 <!--begin::Input group-->
                                 <div class="form-floating mb-7">
-                                    <input wire:model="password" type="password" name="password" class="form-control form-control-solid"
-                                        id="password" placeholder="" />
+                                    <input wire:model="password" type="password" name="password"
+                                        class="form-control form-control-solid" id="password" placeholder="" />
                                     <label for="password">Password</label>
                                     <div
                                         class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
@@ -77,8 +78,8 @@
                             <div class="col-lg-6">
                                 <!--begin::Input group-->
                                 <div class="form-floating mb-7">
-                                    <input wire:model="email" type="email" name="email" class="form-control form-control-solid"
-                                        id="email" placeholder=""  />
+                                    <input wire:model="email" type="email" name="email"
+                                        class="form-control form-control-solid" id="email" placeholder="" />
                                     <label for="email">Email address</label>
                                     <div
                                         class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">

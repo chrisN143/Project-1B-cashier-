@@ -18,16 +18,13 @@
             </div>
             <div class="col-md-2 my-2">
                 <select class="form-select" name="store_id" wire:model.live="store_id">
-                    <option value="" selected>All Stores</option>
+                    <option value="" hidden selected>All Stores</option>
 
                     @foreach ($stores as $store)
                         <option value="{{ $store->id }}">{{ $store->store_name }}</option>
                     @endforeach
                 </select>
             </div>
-            {{-- <div class="col-md-2 my-2">
-                <button wire:click="filter" class="btn btn-info btn-se" type="submit">filter</button>
-            </div> --}}
 
         </div>
     </div>

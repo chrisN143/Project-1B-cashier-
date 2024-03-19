@@ -1,5 +1,4 @@
 <div>
-    {{-- <form action="POST" enctype="multipart/form-data" wire:submit='store'> --}}
     <div class='form-group'>
         <input type='text' class='form-control' placeholder="Product Name" id="name" name="name" wire:model='name'>
         @error('name')

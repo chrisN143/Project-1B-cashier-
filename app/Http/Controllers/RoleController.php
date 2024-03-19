@@ -8,7 +8,7 @@ use Spatie\Permission\Models\Permission;
 use RealRashid\SweetAlert\Facades\Alert;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Carbon;
+
 use Illuminate\Support\Facades\Auth;
 
 class RoleController extends Controller
@@ -35,31 +35,6 @@ class RoleController extends Controller
             'breadcrumb'
         ));
     }
-
-    // public function data_table()
-    // {
-    //     $model = Role::query();
-
-    //     return DataTables::eloquent($model)
-    //         ->editColumn('created_at', function ($data) {
-    //             $formatedDate = Carbon::createFromFormat('Y-m-d H:i:s', $data->created_at)->format('d/m/Y | H:i');
-    //             return $formatedDate;
-    //         })
-    //         ->addColumn('action', function ($data) {
-    //             $url_show = route('role.show', $data->id);
-    //             $url_edit = route('role.edit', $data->id);
-    //             $url_delete = route('role.destroy', $data->id);
-
-    //             $btn = "<div class='btn-group'>";
-    //             $btn .= "<a href='$url_show' class = 'btn btn-primary btn-sm text-nowrap text-white'> <i class='ki-duotone ki-eye'><span class='path1'></span><span class='path2'></span><span class='path3'></span></i> Detail</a>";
-    //             $btn .= "<a href='$url_edit' class = 'btn btn-warning btn-sm text-nowrap text-white'> <i class='ki-duotone ki-notepad-edit'><span class='path1'></span><span class='path2'></span></i> Edit</a>";
-    //             $btn .= "<a href='$url_delete' class = 'btn btn-danger btn-sm text-nowrap text-white' data-confirm-delete='true'><i class='ki-duotone ki-trash-square'><span class='path1'></span><span class='path2'></span> <span class='path3'></span><span class='path4'></span></i> Delete</a>";
-    //             $btn .= "</div>";
-
-    //             return $btn;
-    //         })
-    //         ->toJson();
-    // }
 
     public function create()
     {
@@ -90,7 +65,7 @@ class RoleController extends Controller
         $main_breadcrumb = "Role";
         $main_breadcrumb_link = route('role.index');
         $breadcrumb = "Edit";
-$id = $request->id;
+        $id = $request->id;
         $permissions = Permission::all();
         $role_permissions = DB::table("role_has_permissions")
             ->where("role_id", $role->id)
@@ -132,60 +107,5 @@ $id = $request->id;
             'main_breadcrumb_link',
             'breadcrumb'
         ));
-    }
-
-    public function store(Request $request)
-    {
-        /* Validation */
-        $request->validate([
-            'name' => 'required|unique:roles,name',
-        ]);
-
-        /* Store */
-        DB::transaction(function () use ($request) {
-            $input = $request->all();
-
-            $role = Role::create($input);
-            $role->syncPermissions($request->permission);
-        });
-
-        /* Alert & Redirect */
-        Alert::toast('Data Berhasil Disimpan', 'success');
-        return redirect()->route('role.index');
-    }
-
-    public function update(Request $request, Role $role)
-    {
-        /* Validation */
-        $request->validate([
-            'name' => 'required'
-        ]);
-
-        /* Update */
-        DB::transaction(function () use ($request, $role) {
-            $input = $request->all();
-
-            $role->update($input);
-            $role->syncPermissions($request->permission);
-        });
-
-        /* Alert & Redirect */
-        Alert::toast('Data Berhasil Diperbarui', 'success');
-        return redirect()->route('role.index');
-    }
-
-    public function destroy(Role $role)
-    {
-        $user_role = Auth::user()->roles->first()->id;
-        if ($user_role == $role->id) {
-            Alert::toast('Role Sedang Dipakai', 'error');
-            return back()->withInput();
-        }
-
-        $role->delete();
-
-        /* Alert & Redirect */
-        Alert::toast('Data Berhasil Dihapus', 'success');
-        return redirect()->route('role.index');
     }
 }

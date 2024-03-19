@@ -158,7 +158,6 @@
                         <!--end::Menu item-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-5">
-
                             <a href="" class="menu-link px-5"
                                 onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">

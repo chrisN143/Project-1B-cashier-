@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Laporan;
 
-use App\Models\Order;
 use Livewire\Attributes\On;
 use Livewire\Component;
 
