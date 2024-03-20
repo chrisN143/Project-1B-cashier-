@@ -36,7 +36,8 @@
                 <div class="col-lg-3 my-2">
                     <div class="card">
                         <img src="{{ asset('storage/images/' . $item->image) }}" class="img-fluid rounded"
-                            alt="{{-- $post->category->name --}}">
+                            alt="">
+
                         <div class="card-body text-center">
                             <h4 class="card-title"> {{ $item->name }}</h4>
 
