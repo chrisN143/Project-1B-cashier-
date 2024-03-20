@@ -1,6 +1,4 @@
 <div>
-    @livewire('laporan.index-income')
-
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
             <div class="row py-3">
@@ -26,9 +24,6 @@
                     </select>
                 </div>
             </div>
-
-
-
         </div>
     </div>
 </div>

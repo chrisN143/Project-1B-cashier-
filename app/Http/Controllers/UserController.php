@@ -80,7 +80,7 @@ class UserController extends Controller
         ));
     }
 
-    public function show(User $user)
+    public function show(Request $request, User $user)
     {
         /* Header Setting */
         $title = "User Detail";
@@ -88,10 +88,12 @@ class UserController extends Controller
         $main_breadcrumb = "User";
         $main_breadcrumb_link = route('user.index');
         $breadcrumb = "Detail";
+        $userId = $request->id;
 
         return view('app.users.show', compact(
             'user',
             'title',
+            'userId',
             'header',
             'main_breadcrumb',
             'main_breadcrumb_link',

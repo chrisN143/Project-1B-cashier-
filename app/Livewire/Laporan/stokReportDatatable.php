@@ -20,18 +20,22 @@ class stokReportDatatable extends Component
 {
     use WithDatatable;
     public $start_date;
+    public $stores;
 
     public $end_date;
     public function onMount()
     {
         $this->start_date = Carbon::now()->format('Y-m-d');
         $this->end_date = Carbon::now()->add(31, 'day')->format('Y-m-d');
+        $this->stores = 'elektronik';
+
     }
 
     #[On('items-filter')]
     public function handleDate($filter)
     {
         $this->start_date = $filter['start_date'];
+        $this->stores = $filter['stores'];
 
         $this->end_date = $filter['end_date'];
     }
@@ -116,12 +120,14 @@ class stokReportDatatable extends Component
             'order_items.product_price as product_price',
             'order_items.product_name as product_name',
             'order_items.product_quantity as product_quantity',
+            'order_items.product_store as product_store',
             'order_items.created_at as created_at',
             'orders.order_code as order_code',
         )
             ->join('orders', 'orders.id', '=', 'order_items.order_id')
             ->whereDate('order_items.created_at', '>=', $this->start_date)
-            ->whereDate('order_items.created_at', '<=', $this->end_date);
+            ->whereDate('order_items.created_at', '<=', $this->end_date)
+            ->where('product_store',  'like', '%' . $this->stores . '%');
         // ->whereDate('orders.created_at', '>=', $this->end_date);
     }
 

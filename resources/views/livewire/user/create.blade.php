@@ -15,7 +15,7 @@
                             <div class="col-lg-12">
                                 <!--begin::Input group-->
                                 <div class="mb-5">
-                                    <select class="form-select form-select-solid" wire:model="user_roles"
+                                    <select class="form-select form-select-solid" wire:model="userRole"
                                         data-control="select2" data-placeholder="Select an option"
                                         data-allow-clear="true">
                                         <option></option>
@@ -88,7 +88,7 @@
                                 <!--end::Input group-->
                                 <!--begin::Input group-->
                                 <div class="form-floating mb-7">
-                                    <input wire:model="password" type="password" name="confirm-password"
+                                    <input wire:model="confirmPassword" type="password" name="confirm-password"
                                         class="form-control form-control-solid" id="confirm-password" placeholder="" />
                                     <label for="confirm-password">Confirm Password</label>
                                     <div

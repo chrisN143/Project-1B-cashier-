@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\Attributes\Rule;
 use Livewire\Attributes\On;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class Checkout extends Component
 {
@@ -78,6 +79,7 @@ class Checkout extends Component
             'customer_name' => $this->customerName,
             'total_price' => $this->totalprice,
             'payment_method' => $this->payment_id,
+            'store_name' => $this->cartStore->store_name,
         ]);
         foreach ($this->carts as $Item) {
             $countstok = Product::where('id', $Item->product_id)->first();
@@ -88,7 +90,8 @@ class Checkout extends Component
                 'product_price' => $Item->product->price,
                 'product_name' => $Item->product->name,
                 'product_image' => $Item->product->image,
-                'product_quantity' => $Item->quantity
+                'product_quantity' => $Item->quantity,
+                'product_store' => $this->cartStore->store_name
             ]);
 
             $countstok->update([
@@ -101,9 +104,12 @@ class Checkout extends Component
         if ($order) {
             Cart::where('user_id', Auth::id())->where('store_id', 'like', '%' . $this->store_id . '%')->delete();
             session()->flash('status', 'Orders Placed Succesfully');
+            Alert::toast('Pesanan Berhasil Dibuat', 'success');
+
             return redirect()->route('menu.index');
         } else {
             session()->flash('error', 'Something Was Wrong');
+            Alert::toast('Pesanan Gagal Dibuat', 'error');
 
             return redirect()->route('menu.checkout');
         }
