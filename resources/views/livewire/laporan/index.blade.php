@@ -11,7 +11,7 @@
                     <input id="end" class="form-control" type="date" wire:model.live='end_date'>
                 </div>
                 <div class="col-md-2 my-2">
-                    <select class="form-select" name="store_id" wire:model.live="payment">
+                    <select class="form-select" name="store_id" wire:model.live="paywment">
                         <option value="" selected>All Payment Mode</option>
                         @foreach ($transaction as $method)
                             <option value="{{ $method->payment_method }}">{{ $method->payment_method }}</option>
