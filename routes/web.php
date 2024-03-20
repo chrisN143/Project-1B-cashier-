@@ -102,4 +102,3 @@ Route::group(['middleware' => 'auth'], function () {
         Route::get('/stok-report', 'stok')->name('stoks');
     });
 });
-
