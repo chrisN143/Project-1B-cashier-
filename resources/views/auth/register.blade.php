@@ -45,11 +45,36 @@
     </script>
     <!--end::Theme mode setup on page load-->
     <!--begin::Root-->
-    <div class="d-flex flex-column flex-root" id="kt_app_root">
+    <div class="bg-container d-flex flex-column flex-root" id="kt_app_root">
         <!--begin::Page bg image-->
         <style>
             body {
                 background-image: url('{{ asset('assets/templates/metronic/dist/assets/media/auth/bg4.jpg') }}');
+            }
+
+
+            .bg-container {
+                background: linear-gradient(45deg, #000000, #7462ff, #ffffff, #00ffea, #3178fa, #051d4b);
+
+                width: 100%;
+                height: 500%;
+
+                background-size: 300% 300%;
+                animation: animate 12s ease infinite;
+            }
+
+            @keyframes animate {
+                0% {
+                    background-position: 0 50%;
+                }
+
+                50% {
+                    background-position: 100% 50%;
+                }
+
+                100% {
+                    background-position: 0 50%;
+                }
             }
 
             [data-bs-theme="dark"] body {
@@ -64,7 +89,8 @@
             <div
                 class="d-flex flex-column-fluid flex-lg-row-auto justify-content-center justify-content-lg-end p-12 p-lg-20">
                 <!--begin::Card-->
-                <div class="bg-body d-flex flex-column align-items-stretch flex-center rounded-4 w-md-600px p-20">
+                <div
+                    class="bg-body shadow d-flex flex-column align-items-stretch flex-center rounded-4 w-md-600px p-20">
                     <!--begin::Wrapper-->
                     <div class="d-flex flex-center flex-column flex-column-fluid px-lg-10 pb-15 pb-lg-20">
                         <!--begin::Form-->

@@ -38,5 +38,6 @@
 @endsection
 
 @section('content')
+    @livewire('order.order-filter')
     @livewire('order.itemsdatatable')
 @endsection

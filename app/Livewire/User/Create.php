@@ -19,23 +19,28 @@ class Create extends Component
     #[Rule('required')]
     public $name;
     #[Rule('required')]
-    public $user_roles;
+    public $userRole;
     #[Rule('required|unique:users|email')]
     public $email;
     #[Rule('required|min:8')]
     public $password;
+    public $confirmPassword;
 
 
 
     public function add()
     {
         $this->validate();
+        if ($this->password != $this->confirmPassword) {
+            Alert::toast('Konfirmasi Password Gagal', 'error');
+            return redirect()->route('user.create');
+        }
         $user = User::create([
             'name' => $this->name,
             'email' => $this->email,
             'password' => Hash::make($this->password),
         ]);
-        $user->assignRole($this->user_roles);
+        $user->assignRole($this->userRole);
 
         Alert::toast('Data Berhasil Disimpan', 'success');
         return redirect()->route('user.index');

@@ -42,17 +42,17 @@ Route::controller(AuthController::class)->group(function () {
 Route::group(['middleware' => 'auth'], function () {
     /* Users */
     Route::controller(UserController::class)->prefix('user')->name('user.')->group(function () {
-        Route::middleware('role_or_permission:Admin')->group(function () {
+        Route::middleware('role_or_permission:Admin|Superadmin')->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('create', 'create')->name('create');
             Route::get('edit/{id}', 'edit')->name('edit');
-            Route::get('show/{role}', 'show')->name('show');
+            Route::get('show/{id}', 'show')->name('show');
         });
     });
 
     /* Permissions */
     Route::controller(PermissionController::class)->prefix('permission')->name('permission.')->group(function () {
-        Route::middleware('role_or_permission:Admin')->group(function () {
+        Route::middleware('role_or_permission:Admin|Superadmin')->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('create', 'create')->name('create');
             Route::get('edit/{permission}', 'edit')->name('edit');
@@ -61,7 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     /* Roles */
     Route::controller(RoleController::class)->prefix('role')->name('role.')->group(function () {
-        Route::middleware('role_or_permission:Admin')->group(function () {
+        Route::middleware('role_or_permission:Admin|Superadmin')->group(function () {
             Route::get('/', 'index')->name('index');
 
             Route::get('create', 'create')->name('create');
@@ -73,6 +73,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     /* Product */
     Route::controller(ProductController::class)->prefix('product')->name('product.')->group(function () {
+
         Route::get('/', 'index')->name('index');
         Route::get('/detail', 'detail')->name('detail');
     });
