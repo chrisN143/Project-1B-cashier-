@@ -8,7 +8,7 @@
     </div>
 
     <button class='btn btn-info mt-3' wire:click='add'>
-        {{ $objId ? 'Update' : 'Create' }}
+        {{ $objId ? 'Update' : 'Create' }}  
         <div class="spinner-border text-light" style="width: 15px;  height:15px;" wire:loading>
             <span class="visually-hidden">Loading...</span>
         </div>

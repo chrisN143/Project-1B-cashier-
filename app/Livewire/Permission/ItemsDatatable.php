@@ -2,8 +2,6 @@
 
 namespace App\Livewire\Permission;
 
-// use App\Models\Payment;
-use App\Models\Product;
 use App\Models\User;
 use App\Traits\WithDatatable;
 use Illuminate\Database\Eloquent\Builder;

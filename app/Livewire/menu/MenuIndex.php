@@ -2,15 +2,12 @@
 
 namespace App\Livewire\Menu;
 
-use Livewire\Attributes\Reactive;
 use Livewire\Attributes\Url;
-use Livewire\Attributes\On;
 use Livewire\WithPagination;
 use Livewire\Component;
 use App\Models\Product;
 use App\Models\Store;
 use App\Models\Cart;
-use Illuminate\Support\Facades\Auth;
 
 class MenuIndex extends Component
 {
@@ -18,14 +15,14 @@ class MenuIndex extends Component
     #[Url()]
     protected $queryString = ['search' => ['except' => '']];
     public $search = '';
-
     public $stores;
-    public $store_id;
-    // public $product;
+    public $store_id = '1';
     public $carts;
     private $inputquantity = 1;
-    // protected
-
+    public function filter()
+    {
+        $this->resetPage();
+    }
     public function add($id)
     {
         $cart = Cart::where('product_id', $id)->first();
@@ -50,10 +47,6 @@ class MenuIndex extends Component
         }
         $this->dispatch('add');
     }
-
-
-
-
     public function mount()
     {
         $this->stores = Store::All();
@@ -66,14 +59,11 @@ class MenuIndex extends Component
             'storeClassification' => $this->store_id
         ]);
     }
-
-
     public function render()
     {
         $products =  Product::where('store_id', 'like', '%' . $this->store_id . '%')->when($this->search, function ($query) {
             $query->where('name', 'like', '%' . $this->search . '%');
         })->paginate(20);
-
         return view('livewire.menu.menu-index', [
 
             'products' => $products

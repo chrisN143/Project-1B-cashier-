@@ -48,7 +48,7 @@
                 <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
                     <!--begin::Add user-->
                     <a href="{{ route('role.create') }}" class="btn btn-primary"> <i
-                            class="ki-duotone ki-plus fs-2"></i>Create Product</a>
+                            class="ki-duotone ki-plus fs-2"></i>Create Role</a>
                     <!--end::Add user-->
                 </div>
                 <!--end::Toolbar-->

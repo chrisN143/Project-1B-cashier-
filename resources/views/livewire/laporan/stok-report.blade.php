@@ -8,6 +8,13 @@
                 <div class="col-md-2 my-2">
                     <input id="end" class="form-control" type="date" wire:model.live='end_date'>
                 </div>
+                <div class="col-md-2 my-2">
+                    <select class="form-select" name="orders" wire:model.live="storeName">
+                        @foreach ($stores as $store)
+                            <option value="{{ $store->store_name }}">{{ $store->store_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
         </div>
     </div>

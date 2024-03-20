@@ -1,6 +1,6 @@
-<div id="kt_app_header" class="app-header" data-kt-sticky="true" data-kt-sticky-activate="{default: true, lg: true}"
-    data-kt-sticky-name="app-header-minimize" data-kt-sticky-offset="{default: '200px', lg: '0'}"
-    data-kt-sticky-animation="false">
+<div id="kt_app_header" style="background: #cfe2ff" class="app-header" data-kt-sticky="true"
+    data-kt-sticky-activate="{default: true, lg: true}" data-kt-sticky-name="app-header-minimize"
+    data-kt-sticky-offset="{default: '200px', lg: '0'}" data-kt-sticky-animation="false">
     <!--begin::Header container-->
     <div class="app-container  container-fluid d-flex align-items-stretch justify-content-between "
         id="kt_app_header_container">
@@ -133,10 +133,10 @@
                                 <!--begin::Username-->
                                 <div class="d-flex flex-column">
                                     <div class="fw-bold d-flex align-items-center fs-5">
-                                        {{ Auth::user()->name }} <span
-                                            class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">{{ Auth::user()->getRoleNames()->first() ? Auth::user()->getRoleNames()->first() : '' }}</span>
+                                        {{ Auth::user()->name }}
                                     </div>
-
+                                    <span
+                                        class="badge badge-success fw-bold fs-8 py-1">{{ Auth::user()->getRoleNames()->first() ? Auth::user()->getRoleNames()->first() : '' }}</span>
                                     <a href="#" class="fw-semibold text-muted text-hover-primary fs-7">
                                         {{ Auth::user()->email }} </a>
                                 </div>
@@ -158,7 +158,6 @@
                         <!--end::Menu item-->
                         <!--begin::Menu item-->
                         <div class="menu-item px-5">
-
                             <a href="" class="menu-link px-5"
                                 onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">

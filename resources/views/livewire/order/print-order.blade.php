@@ -2,8 +2,13 @@
     <h3>Order Details</h3>
     <hr>
     <div class="row">
-        <div class="col-6">
+        <div class="col-7">
             <div class="fs-5 p-3">Order Code : <strong>{{ $order->order_code }}</strong></div>
+
+        </div>
+        <div class="col-5">
+            <div class="fs-5 p-3">Nama Toko : <strong class="text-capitalize">{{ $order->store_name }}</strong>
+            </div>
         </div>
     </div>
     <div class="row justify-content-between">
@@ -34,7 +39,7 @@
             <tr>
                 <td>{{ $item->product_name }}</td>
                 <td class="text-center">{{ $item->product_quantity }}</td>
-                <td>Rp. {{ $item->product_price }}</td>
+                <td>Rp. {{ number_format($item->product_price, 0, ',', '.') }}</td>
             </tr>
         @endforeach
 
@@ -50,7 +55,7 @@
             <div class="p-3">Harga Jual</div>
         </div>
         <div class="col-3">
-            <div class="p-3">Rp. {{ $order->total_price }}</div>
+            <div class="p-3">Rp. {{ number_format($order->total_price, 0, ',', '.') }}</div>
         </div>
     </div>
     <div class="row justify-content-end">
@@ -63,7 +68,7 @@
             <div class="p-3">Total</div>
         </div>
         <div class="col-3">
-            <div class="p-3">Rp. {{ $order->total_price }}</div>
+            <div class="p-3">Rp. {{ number_format($order->total_price, 0, ',', '.') }}</div>
         </div>
     </div>
     <div class="row justify-content-end">
@@ -71,7 +76,7 @@
             <div class="p-3">Tunai</div>
         </div>
         <div class="col-3">
-            <div class="p-3">Rp. {{ $order->total_price }}</div>
+            <div class="p-3">Rp. {{ number_format($order->total_price, 0, ',', '.') }}</div>
         </div>
     </div>
 

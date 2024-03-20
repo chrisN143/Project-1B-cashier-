@@ -1,11 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Hashids\Hashids;
-use Illuminate\Http\Request;
 use App\Models\Order;
-
 
 class OrderController extends Controller
 {

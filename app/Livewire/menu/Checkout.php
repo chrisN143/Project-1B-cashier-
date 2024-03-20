@@ -6,18 +6,19 @@ use App\Models\Cart;
 use App\Models\Order;
 use App\Models\OrderItems;
 use App\Models\Product;
+use App\Models\Store;
 use App\Models\Transaction;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
-use Illuminate\Support\Str;
 use Livewire\Attributes\Rule;
 use Livewire\Attributes\On;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class Checkout extends Component
 {
 
-    public $carts, $totalprice = 0;
-    public $store_id;
+    public $carts, $cartStore, $totalprice = 0;
+    public $store_id = '1';
     public $payment;
     public $totalStok;
     #[Rule('required')]
@@ -30,7 +31,7 @@ class Checkout extends Component
     #[On('store')]
     public function handledStore($allStore)
     {
-        $this->store_id= $allStore['storeClassification'];
+        $this->store_id = $allStore['storeClassification'];
     }
     public function decrementQuantity($id)
     {
@@ -51,7 +52,6 @@ class Checkout extends Component
         } else {
             session()->flash('error', 'Something wrong!');
         }
-        // $this->resetPage();
     }
     public function incrementQuantity($id)
     {
@@ -66,8 +66,6 @@ class Checkout extends Component
 
     public function order()
     {
-
-
         foreach ($this->carts as $item) {
             $countstok = Product::where('id', $item->product_id)->first();
             if ($countstok->stok - $item->quantity < 0) {
@@ -76,12 +74,12 @@ class Checkout extends Component
         }
 
         $this->validate();
-        // $payment =
         $order = Order::create([
             'user_id' => auth()->user()->id,
             'customer_name' => $this->customerName,
             'total_price' => $this->totalprice,
             'payment_method' => $this->payment_id,
+            'store_name' => $this->cartStore->store_name,
         ]);
         foreach ($this->carts as $Item) {
             $countstok = Product::where('id', $Item->product_id)->first();
@@ -92,7 +90,8 @@ class Checkout extends Component
                 'product_price' => $Item->product->price,
                 'product_name' => $Item->product->name,
                 'product_image' => $Item->product->image,
-                'product_quantity' => $Item->quantity
+                'product_quantity' => $Item->quantity,
+                'product_store' => $this->cartStore->store_name
             ]);
 
             $countstok->update([
@@ -103,11 +102,14 @@ class Checkout extends Component
         session()->flash('status', 'Orders Has Make!');
 
         if ($order) {
-            Cart::where('user_id', Auth::id())->delete();
+            Cart::where('user_id', Auth::id())->where('store_id', 'like', '%' . $this->store_id . '%')->delete();
             session()->flash('status', 'Orders Placed Succesfully');
+            Alert::toast('Pesanan Berhasil Dibuat', 'success');
+
             return redirect()->route('menu.index');
         } else {
             session()->flash('error', 'Something Was Wrong');
+            Alert::toast('Pesanan Gagal Dibuat', 'error');
 
             return redirect()->route('menu.checkout');
         }
@@ -120,16 +122,17 @@ class Checkout extends Component
         $this->customerName = auth()->user()->name;
         $this->payment = Transaction::all();
         $this->totalprice = 0;
-        $this->carts = Cart::where('user_id', Auth::id())->where('store_id', 'like', '%' . $this->store_id . '%')->get();
-        foreach ($this->carts as $Item) {
-            $this->totalprice += $Item->product->price * $Item->quantity;
-        }
-        return $this->totalprice;
     }
+
 
     public function render()
     {
+        $this->cartStore = Store::find($this->store_id);
+        $this->carts = Cart::where('user_id', Auth::id())->where('store_id', 'like', '%' . $this->store_id . '%')->get();
 
+        foreach ($this->carts as $Item) {
+            $this->totalprice += $Item->product->price * $Item->quantity;
+        }
         return view('livewire.menu.checkout');
     }
 }

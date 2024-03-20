@@ -8,7 +8,7 @@ use App\Models\Product;
 use App\Models\Store;
 use App\Models\Transaction;
 use Illuminate\Database\Seeder;
-use Stringable;
+
 use Illuminate\Support\Str;
 
 
@@ -25,16 +25,13 @@ class DatabaseSeeder extends Seeder
         ]);
         Store::create([
             'store_name' => 'Elektronik',
-
-
+            
         ]);
         Store::create([
-
             'store_name' => 'Gaming',
 
         ]);
         Store::create([
-
             'store_name' => 'Wearable',
         ]);
         Store::create([
@@ -115,6 +112,24 @@ class DatabaseSeeder extends Seeder
             'Price' => '599000',
             'stok' => '20',
 
+            'store_id' => '3',
+            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias error enim voluptates tenetur delectus ducimus quia!'
+        ]);
+        Product::create([
+
+            'code' => 'Product-' . Str::random(10),
+            'name' => 'Banana Smart Watch',
+            'Price' => '3699000',
+            'stok' => '20',
+            'store_id' => '3',
+            'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias error enim voluptates tenetur delectus ducimus quia!'
+        ]);
+        Product::create([
+
+            'code' => 'Product-' . Str::random(10),
+            'name' => 'Banana Smart Watch',
+            'Price' => '3699000',
+            'stok' => '20',
             'store_id' => '3',
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias error enim voluptates tenetur delectus ducimus quia!'
         ]);

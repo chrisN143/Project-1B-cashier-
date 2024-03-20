@@ -2,7 +2,6 @@
 
 namespace App\Livewire\Product;
 
-// use App\Models\Payment;
 use App\Models\Product;
 use App\Models\User;
 use App\Traits\WithDatatable;
@@ -17,7 +16,6 @@ class ItemsDatatable extends Component
     public function destroy($id)
     {
         $item = Product::find($id);
-
         $authUser = User::find(Auth::id());
         $item->delete();
     }
@@ -71,7 +69,7 @@ class ItemsDatatable extends Component
                     $detailsUrl = route('product.detail', $item->product_id);
                     $detailsHtml = "<a href='$detailsUrl' class='btn btn-primary btn-sm ml-2'><i class='fa fa-detail mr-2'></i>details</a>";
                     $editHtml = '';
-                    $editUrl = route('product.detail', ['id' => $item['id']]);
+                    $editUrl = route('product.detail', ['product_id' => $item['product_id']]);
                     $editHtml = "<a href='$editUrl' class='btn btn-primary btn-sm ml-2'><i class='fa-solid fa-pen-to-square'></i></a>";
 
 
@@ -80,10 +78,24 @@ class ItemsDatatable extends Component
                                 wire:confirm=\"Delete Data?\">
                                 <i class='fa fa-trash mr-2'></i>
                                     </button>";
+                    if (auth()->user()->hasAnyPermission('product-edit|update')) {
+                        # code...
+                        $html = "$editHtml";
+                        return $html;
+                    }
+                    if (auth()->user()->hasAnyPermission('product-delete')) {
+                        # code...
+                        $html = "$destroyHtml";
+                        return $html;
+                    }
+                    if (auth()->user()->hasAnyPermission(['product-delete', 'product-edit|update'])) {
+                        # code...
+                        $html = "$editHtml $destroyHtml";
+                        return $html;
+                    }
+                    // $html = "$editHtml";
 
-                    $html = "$editHtml  $destroyHtml";
-
-                    return $html;
+                    // return $html;
                 },
             ],
         ];

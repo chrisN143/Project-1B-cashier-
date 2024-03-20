@@ -11,30 +11,21 @@
         </div>
     @endif
     <div class="container my-3">
-        <div class="row justify-content-between">
-
+        <div class="row">
             <div class="col-md-3 my-2">
                 <input class="form-control me-2" wire:model.live="search" type="text" placeholder="Search"
                     aria-label="Search">
             </div>
             <div class="col-md-2 my-2">
                 <select class="form-select" name="store_id" wire:model.live="store_id">
-                    <option value="" selected>All Stores</option>
+                    <option value="" hidden selected>All Stores</option>
 
                     @foreach ($stores as $store)
                         <option value="{{ $store->id }}">{{ $store->store_name }}</option>
                     @endforeach
                 </select>
             </div>
-            {{-- <div class="col-md-2 my-2">
-                <select class="form-select" name="store_id" wire:model="store_id">
-                    <option value="" selected>All Stores</option>
 
-                    @foreach ($stores as $store)
-                        <option value="{{ $store->id }}">{{ $store->store_name }}</option>
-                    @endforeach
-                </select>
-            </div> --}}
         </div>
     </div>
 
@@ -48,10 +39,15 @@
                             alt="{{-- $post->category->name --}}">
                         <div class="card-body text-center">
                             <h4 class="card-title"> {{ $item->name }}</h4>
+
                             <p>
 
                                 <small class="text-body-secondary">
                                     <h5 class="">Category : {{ $item->store->store_name }}</h5>
+                                    {{-- $post->created_at->diffForHumans() --}}
+                                </small>
+                                <small class="text-body-secondary">
+                                    <h5 class="">Stock : {{ $item->stok }}</h5>
                                     {{-- $post->created_at->diffForHumans() --}}
                                 </small>
                             <h6>Price : Rp. {{ number_format($item->price, 0, ',', '.') }}</h6>
