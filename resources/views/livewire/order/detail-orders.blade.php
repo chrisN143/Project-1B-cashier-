@@ -53,14 +53,16 @@
                                                 <th width="10%">{{ $item->product_name }}</th>
                                                 <th width="10%">{{ $item->product_quantity }}</th>
 
-                                                <th width="10%">Rp. {{ $item->product_price }}</th>
+                                                <th width="10%">Rp.
+                                                    {{ number_format($item->product_price * $item->product_quantity, 0, ',', '.') }}
+                                                </th>
 
 
                                             </tr>
                                         @endforeach
                                         <tr>
                                             <td colspan="3" class="text-center">Total Amount :</td>
-                                            <td>Rp. {{ $order->total_price }}</td>
+                                            <td>Rp.{{ number_format($order->total_price, 0, ',', '.') }}</td>
                                         </tr>
                                     </tbody>
                                 </table>
