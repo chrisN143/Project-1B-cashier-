@@ -77,7 +77,7 @@ class Checkout extends Component
         $order = Order::create([
             'user_id' => auth()->user()->id,
             'customer_name' => $this->customerName,
-            'total_price' => $this->totalprice,
+            'total_price' => $this->totalprice + ($this->totalprice * 0.12),
             'payment_method' => $this->payment_id,
             'store_name' => $this->cartStore->store_name,
         ]);

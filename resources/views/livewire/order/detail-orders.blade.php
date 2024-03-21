@@ -59,6 +59,10 @@
                                             </tr>
                                         @endforeach
                                         <tr>
+                                            <td colspan="3" class="text-center">PPN 12% :</td>
+                                            <td>Rp. {{ $order->total_price }}</td>
+                                        </tr>
+                                        <tr>
                                             <td colspan="3" class="text-center">Total Amount :</td>
                                             <td>Rp. {{ $order->total_price }}</td>
                                         </tr>
