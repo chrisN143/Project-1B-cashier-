@@ -5,6 +5,7 @@ namespace App\Livewire\Transaction;
 use Livewire\Component;
 use App\Models\Transaction;
 use Livewire\Attributes\Rule;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class Detail extends Component
 {
@@ -31,10 +32,14 @@ class Detail extends Component
             $transaction->update([
                 'payment_method' => $this->name,
             ]);
+            Alert::toast('Data Berhasil Diperbarui', 'success');
+            
         } else {
             Transaction::create([
                 'payment_method' => $this->name,
             ]);
+            Alert::toast('Data Berhasil Dibuat', 'success');
+
         }
 
         return redirect()->route('transaction.index');

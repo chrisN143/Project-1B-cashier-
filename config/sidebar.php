@@ -1,5 +1,105 @@
 <?php
 
+// return [
+//     /* Documentation Menu Item Dynamic Sidebar
+
+//     Item Component:
+//     text,icon,url,header,submenu, role
+
+//     */
+
+//     'menu' => [
+//         [
+//             'text' => 'Dashboard',
+//             'url'  => 'dashboard',
+//             'icon' => 'ki-duotone ki-chart-pie-4 text-info fs-2',
+//             'role' => 'Superadmin|Admin',
+//         ],
+//         [
+//             'header' => 'Pages',
+//             'role'   => 'Superadmin|Admin'
+//         ],
+//         [
+//             'text' => 'Master Data',
+//             'icon' => 'ki-duotone ki-code text-success fs-2',
+//             'role' => 'Superadmin|Admin|Product-Manegement',
+//             'submenu' => [
+//                 [
+//                     'text' => 'Product',
+//                     'url'  => 'product',
+//                     'role' => 'Superadmin|Admin|Product-Manegement',
+//                 ],
+//                 [
+//                     'text' => 'Store',
+//                     'url'  => 'store',
+//                     'role' => 'Superadmin|Admin|Product-Manegement',
+//                 ],
+//                 [
+//                     'text' => 'Transaction',
+//                     'url'  => 'transaction',
+//                     'role' => 'Superadmin|Admin|Product-Manegement',
+//                 ],
+//             ],
+//         ],
+//         [
+//             'text' => 'Users Management',
+//             'icon' => 'ki-duotone ki-security-user text-danger fs-2',
+//             'role' => 'Superadmin|Admin',
+//             'submenu' => [
+//                 [
+//                     'text' => 'Users',
+//                     'url'  => 'user',
+//                     'role' => 'Superadmin|Admin',
+//                 ],
+//                 [
+//                     'text' => 'Permissions',
+//                     'url'  => 'permission',
+//                     'role' => 'Superadmin|Admin',
+//                 ],
+//                 [
+//                     'text' => 'Roles',
+//                     'url'  => 'role',
+//                     'role' => 'Superadmin|Admin',
+//                 ],
+//             ],
+//         ],
+//         [
+//             'text' => 'Purchase',
+//             'icon' => 'ki-duotone ki-finance-calculator text-primary fs-2',
+//             'role' => 'Superadmin|Admin|User',
+//             'submenu' => [
+//                 [
+//                     'text' => 'Menu',
+//                     'url'  => 'menu',
+//                     'role' => 'Superadmin|Admin|User',
+//                 ],
+//                 [
+//                     'text' => 'Orders',
+//                     'url'  => 'orders',
+//                     'role' => 'Superadmin|Admin|User',
+//                 ],
+//             ],
+//         ],
+//         [
+//             'text' => 'Laporan',
+//             'icon' => 'ki-duotone ki-calendar text-warning fs-2',
+//             'role' => 'Superadmin|Admin',
+//             'submenu' => [
+//                 [
+//                     'text' => 'All Orders',
+//                     'url'  => 'laporan',
+//                     'role' => 'Superadmin|Admin',
+//                 ],
+//                 [
+//                     'text' => 'Stok Report',
+//                     'url'  => 'stok-report',
+//                     'role' => 'Superadmin|Admin',
+//                 ],
+//             ],
+//         ],
+
+//     ],
+// ];
 return [
     /* Documentation Menu Item Dynamic Sidebar
     
@@ -13,87 +113,90 @@ return [
             'text' => 'Dashboard',
             'url'  => 'dashboard',
             'icon' => 'ki-duotone ki-chart-pie-4 text-info fs-2',
-            'role' => 'All',
-        ],
-        [
-            'header' => 'Pages',
-            'role'   => 'Admin'
+            'permission' => 'dashboard-view',
         ],
         [
             'text' => 'Master Data',
             'icon' => 'ki-duotone ki-code text-success fs-2',
-            'role' => 'Admin',
+            'permission' => 'master-data-view',
+
             'submenu' => [
                 [
                     'text' => 'Product',
                     'url'  => 'product',
-                    'role' => 'Admin',
+                    'permission' => 'product-list',
+
                 ],
                 [
                     'text' => 'Store',
                     'url'  => 'store',
-                    'role' => 'Admin',
+                    'permission' => 'store-list',
+
                 ],
                 [
                     'text' => 'Transaction',
                     'url'  => 'transaction',
-                    'role' => 'Admin',
+                    'permission' => 'transaction-list',
+
                 ],
             ],
         ],
         [
             'text' => 'Users Management',
             'icon' => 'ki-duotone ki-security-user text-danger fs-2',
-            'role' => 'Admin',
+            'permission' => 'userManegement-list',
             'submenu' => [
                 [
                     'text' => 'Users',
                     'url'  => 'user',
-                    'role' => 'Admin',
+                    'permission' => 'user-list',
+
                 ],
                 [
                     'text' => 'Permissions',
                     'url'  => 'permission',
-                    'role' => 'Admin',
+                    'permission' => 'permission-list',
+
                 ],
                 [
                     'text' => 'Roles',
                     'url'  => 'role',
-                    'role' => 'Admin',
+                    'permission' => 'role-list',
+
                 ],
             ],
         ],
         [
             'text' => 'Purchase',
             'icon' => 'ki-duotone ki-finance-calculator text-primary fs-2',
-            'role' => 'All',
+            'permission' => 'menuView-list',
             'submenu' => [
                 [
                     'text' => 'Menu',
                     'url'  => 'menu',
-                    'role' => 'All',
+                    'permission' => 'menuView-list',
                 ],
                 [
                     'text' => 'Orders',
                     'url'  => 'orders',
-                    'role' => 'All',
+                    'permission' => 'menuView-list',
                 ],
             ],
         ],
         [
             'text' => 'Laporan',
             'icon' => 'ki-duotone ki-calendar text-warning fs-2',
-            'role' => 'Admin',
+            'permission' => 'laporan-list',
             'submenu' => [
                 [
                     'text' => 'All Orders',
                     'url'  => 'laporan',
-                    'role' => 'Admin',
+                    'permission' => 'laporan-list',
                 ],
                 [
                     'text' => 'Stok Report',
                     'url'  => 'stok-report',
-                    'role' => 'Admin',
+                    'permission' => 'stokReport-list',
                 ],
             ],
         ],

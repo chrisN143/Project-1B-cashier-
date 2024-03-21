@@ -16,7 +16,7 @@
                             <div class="col-lg-12">
                                 <!--begin::Input group-->
                                 <div class="mb-5">
-                                    <select wire:model="role" class="form-select form-select-solid" name="role"
+                                    <select wire:model="roleUser" class="form-select form-select-solid" name="roleUser"
                                         data-control="select2" data-placeholder="Select an option"
                                         data-allow-clear="true">
                                         @foreach ($roles as $role)
@@ -26,7 +26,7 @@
                                     </select>
                                     <div
                                         class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
-                                        @error('role')
+                                        @error('roleUser')
                                             <p>{{ $message }}</p>
                                         @enderror
                                     </div>

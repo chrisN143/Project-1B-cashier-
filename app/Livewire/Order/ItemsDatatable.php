@@ -6,12 +6,33 @@ use App\Models\Order;
 use App\Models\User;
 use App\Traits\WithDatatable;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class ItemsDatatable extends Component
 {
     use WithDatatable;
+    public $start_date;
+    public $payment;
+    public $end_date;
+    public $stores;
+    public function onMount()
+    {
+        $this->start_date = Carbon::now()->format('Y-m-d');
+        $this->end_date = Carbon::now()->add(31, 'day')->format('Y-m-d');
+        $this->stores = 'elektronik';
+    }
+
+    #[On('order-filter')]
+    public function handleDate($arr)
+    {
+        $this->start_date = $arr['start_date'];
+        $this->end_date = $arr['end_date'];
+        $this->payment = $arr['payment'];
+        $this->stores = $arr['stores'];
+    }
 
     public function destroy($id)
     {
@@ -30,10 +51,18 @@ class ItemsDatatable extends Component
             [
                 'key' => 'total_price',
                 'name' => 'Total',
+                'render' => function ($item) {
+                    return 'Rp.' . number_format($item->total_price, 0, ',', '.');
+                }
             ],
             [
                 'key' => 'payment_method',
                 'name' => 'Payment',
+            ],
+            [
+                'key' => 'store_name',
+                'name' => 'Store',
+
             ],
             [
                 'key' => 'created_at',
@@ -67,7 +96,10 @@ class ItemsDatatable extends Component
 
     public function getQuery(): Builder
     {
-        return Order::query();
+        return Order::whereDate('created_at', '>=', $this->start_date)
+            ->whereDate('created_at', '<=', $this->end_date)
+            ->where('store_name',  'like', '%' . $this->stores . '%')
+            ->where('payment_method', 'like', '%' . $this->payment . '%');
     }
 
     public function getView(): string

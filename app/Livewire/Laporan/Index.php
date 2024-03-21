@@ -5,13 +5,10 @@ namespace App\Livewire\Laporan;
 use Livewire\WithPagination;
 
 use App\Models\Order;
-use App\Models\OrderItems;
+use App\Models\Store;
 use App\Models\Transaction;
 use Illuminate\Support\Carbon;
 use Livewire\Component;
-
-use Illuminate\Support\Facades\Auth;
-use Livewire\Attributes\Url;
 
 class Index extends Component
 {
@@ -22,6 +19,8 @@ class Index extends Component
     public $payment = '';
     public $search = '';
     public $searchItems = '';
+    public $storeName = 'elektronik';
+    public $stores;
     public $orders;
     public $order;
     public $allOrders;
@@ -40,6 +39,7 @@ class Index extends Component
         $this->start_date = Carbon::now()->format('Y-m-d');
         $this->end_date = Carbon::now()->add(31, 'day')->format('Y-m-d');
         $this->transaction = Transaction::all();
+        $this->stores = Store::all();
     }
 
     public function updated()
@@ -48,6 +48,8 @@ class Index extends Component
             "start_date" => $this->start_date,
             "payment" => $this->payment,
             "end_date" => $this->end_date,
+            "stores" => $this->storeName,
+
         ]);
     }
 

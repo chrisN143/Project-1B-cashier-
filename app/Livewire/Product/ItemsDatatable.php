@@ -79,9 +79,15 @@ class ItemsDatatable extends Component
                                 <i class='fa fa-trash mr-2'></i>
                                     </button>";
 
-                    $html = "$editHtml  $destroyHtml";
+                    
+                    if (auth()->user()->hasAnyPermission(['product-delete', 'product-edit|update'])) {
+                        # code...
+                        $html = "$editHtml $destroyHtml";
+                        return $html;
+                    }
+                    // $html = "$editHtml";
 
-                    return $html;
+                    // return $html;
                 },
             ],
         ];

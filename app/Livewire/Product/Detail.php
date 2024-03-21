@@ -7,6 +7,7 @@ use App\Models\Store;
 use Livewire\Component;
 use Livewire\Attributes\Rule;
 use Livewire\WithFileUploads;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class Detail extends Component
 {
@@ -64,8 +65,7 @@ class Detail extends Component
                 'image' => $this->image != null ? $this->image->hashname() : $product->image,
                 'description' => $this->description
             ]);
-            session()->flash('success', 'Product has been Edit!');
-
+            Alert::toast('Data Berhasil Diperbarui', 'success');
         } else {
             //Create
             Product::create([
@@ -76,9 +76,7 @@ class Detail extends Component
                 'image' => $this->image != null ? $this->image->hashname() : null,
                 'description' => $this->description
             ]);
-            session()->flash('success', 'Product has been created!');
-
-
+            Alert::toast('Data Berhasil Dibuat', 'success');
         }
 
         return redirect()->route('product.index');

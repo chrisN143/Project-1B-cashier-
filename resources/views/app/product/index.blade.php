@@ -40,21 +40,24 @@
 @section('content')
     <div class="card">
         <!--begin::Card header-->
-        <div class="card-header border-0 pt-6">
-            <!--begin::Card title-->
-            <!--begin::Card toolbar-->
-            <div class="card-toolbar">
-                <!--begin::Toolbar-->
-                <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
-                    <!--begin::Add user-->
-                    <a href="{{ route('product.detail') }}" class="btn btn-primary"> <i
-                            class="ki-duotone ki-plus fs-2"></i>Create Product</a>
-                    <!--end::Add user-->
+        @if (auth()->user()->hasAnyPermission('product-create'))
+            <div class="card-header border-0 pt-6">
+                <!--begin::Card title-->
+                <!--begin::Card toolbar-->
+                <div class="card-toolbar">
+                    <!--begin::Toolbar-->
+                    <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
+                        <!--begin::Add user-->
+                        <a href="{{ route('product.detail') }}" class="btn btn-primary"> <i
+                                class="ki-duotone ki-plus fs-2"></i>Create Product</a>
+                        <!--end::Add user-->
+                    </div>
+                    <!--end::Toolbar-->
                 </div>
-                <!--end::Toolbar-->
+                <!--end::Card toolbar-->
             </div>
-            <!--end::Card toolbar-->
-        </div>
+        @endif
+
         <!--end::Card header-->
 
         <!--begin::Card body-->

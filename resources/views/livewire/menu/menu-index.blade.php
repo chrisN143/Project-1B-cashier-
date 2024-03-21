@@ -36,13 +36,19 @@
                 <div class="col-lg-3 my-2">
                     <div class="card">
                         <img src="{{ asset('storage/images/' . $item->image) }}" class="img-fluid rounded"
-                            alt="{{-- $post->category->name --}}">
+                            alt="">
+
                         <div class="card-body text-center">
                             <h4 class="card-title"> {{ $item->name }}</h4>
+
                             <p>
 
                                 <small class="text-body-secondary">
                                     <h5 class="">Category : {{ $item->store->store_name }}</h5>
+                                    {{-- $post->created_at->diffForHumans() --}}
+                                </small>
+                                <small class="text-body-secondary">
+                                    <h5 class="">Stock : {{ $item->stok }}</h5>
                                     {{-- $post->created_at->diffForHumans() --}}
                                 </small>
                             <h6>Price : Rp. {{ number_format($item->price, 0, ',', '.') }}</h6>

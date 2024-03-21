@@ -58,7 +58,6 @@ class Edit extends Component
         $this->name = $userEdit->name;
         $this->roleUser = $userEdit->getRoleNames()->first();
         $this->email = $userEdit->email;
-        $this->password = $userEdit->password;
 
         // return $roles;
     }
