@@ -111,7 +111,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::controller(LaporanController::class)->group(function () {
         Route::prefix('laporan')->name('laporan.')->group(function () {
             Route::middleware('permission:laporan-list')->group(function () {
-
                 Route::get('/', 'index')->name('index');
                 Route::get('/{reportId}', 'detail')->name('detail');
             });

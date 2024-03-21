@@ -69,6 +69,14 @@
                                             </tr>
                                         @endforeach
                                         <tr>
+                                            <td colspan="3" class="text-center">Total Price :</td>
+                                            <td>
+                                                Rp.
+                                                {{ number_format($totalprice, 0, ',', '.') }}
+
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <td colspan="3" class="text-center">PPN 12% :</td>
                                             <td>
                                                 Rp.
