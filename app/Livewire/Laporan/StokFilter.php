@@ -10,7 +10,7 @@ class StokFilter extends Component
     public $stokCount;
     public $itemCounts;
 
-    #[On('filter-stock')]
+    #[On('items')]
     public function handleOrder($data)
     {
         $this->stokCount = $data;

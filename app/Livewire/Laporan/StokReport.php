@@ -33,11 +33,13 @@ class StokReport extends Component
             "end_date" => $this->end_date
         ]);
     }
+
     public function render()
     {
         $orderItems =  OrderItems::whereDate('created_at', '>=', $this->start_date)->whereDate('created_at', '<=', $this->end_date)->where('product_name', 'like', '%' . $this->search . '%')->paginate(10);
 
-        $this->dispatch('filter-stock', data: 'wenomechainsama');
+        $this->dispatch('items', data: $orderItems);
+
         return view('livewire.laporan.stok-report');
     }
 }
