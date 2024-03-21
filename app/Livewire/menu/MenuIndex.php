@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\Store;
 use App\Models\Cart;
 
+
 class MenuIndex extends Component
 {
     use WithPagination;
