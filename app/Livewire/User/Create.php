@@ -40,7 +40,7 @@ class Create extends Component
             'email' => $this->email,
             'password' => Hash::make($this->password),
         ]);
-        $user->assignRole($this->userRole);
+        $user->assignRole([$this->userRole]);
 
         Alert::toast('Data Berhasil Disimpan', 'success');
         return redirect()->route('user.index');

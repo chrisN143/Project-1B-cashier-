@@ -14,13 +14,14 @@ class RoleCreate extends Component
     public $permissions;
     #[Rule('required')]
     public $name;
+    private $rolePermission;
     public function store()
     {
         $this->validate();
         $role = Role::create([
             'name' => $this->name
         ]);
-        $role->syncPermissions($this->permissions);
+        $role->syncPermissions($this->rolePermission);
         /* Alert & Redirect */
         Alert::toast('Data Berhasil Disimpan', 'success');
         return redirect()->route('role.index');
