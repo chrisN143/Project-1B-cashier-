@@ -62,7 +62,7 @@
                                                     {{ number_format($item->product_price * $item->product_quantity, 0, ',', '.') }}
                                                 </th>
                                                 @php
-                                                
+
                                                     $totalprice += $item->product_price * $item->product_quantity;
                                                 @endphp
 
@@ -86,6 +86,7 @@
                                 <div>
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>
