@@ -64,6 +64,8 @@ class RolePermissionSeeder extends Seeder
         /* User */
         $user = Role::create(['name' => 'User']);
         $user->syncPermissions(['menuView-list']);
+        $tukang = Role::create(['name' => 'tukang']);
+        $tukang->syncPermissions(['master-data-view','product-list','store-list','transaction-list']);
 
     }
 }

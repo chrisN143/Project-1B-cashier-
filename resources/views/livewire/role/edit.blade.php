@@ -39,8 +39,8 @@
                                                 @foreach ($permissions as $permission)
                                                     <div class="col-lg-4 mb-5">
                                                         <div class="form-check form-check-custom form-check-solid">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                value="{{ $permission->name }}" id="{{ $permission->id }}"
+                                                            <input class="form-check-input" wire:model="rolePermission" type="checkbox"
+                                                                value="{{ $permission->name }}" id="{{ $permission->name }}"
                                                                 name="permission[]"
                                                                 {{ in_array($permission->id, $role_permissions) ? 'checked' : '' }} />
                                                             <label class="form-check-label" for="{{ $permission->id }}">

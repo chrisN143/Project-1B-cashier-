@@ -38,7 +38,7 @@
                                             @foreach ($permissions as $permission)
                                                 <div class="col-lg-4 mb-5">
                                                     <div class="form-check form-check-custom form-check-solid">
-                                                        <input class="form-check-input" type="checkbox"
+                                                        <input class="form-check-input" wire:model="rolePermission" type="checkbox"
                                                             value="{{ $permission->name }}" id="{{ $permission->id }}"
                                                             name="permission[]"
                                                             {{ is_array(old('permission')) && in_array($permission->name, old('permission')) ? ' checked' : '' }} />

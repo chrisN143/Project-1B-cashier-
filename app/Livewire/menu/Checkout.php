@@ -77,7 +77,7 @@ class Checkout extends Component
         $order = Order::create([
             'user_id' => auth()->user()->id,
             'customer_name' => $this->customerName,
-            'total_price' => $this->totalprice,
+            'total_price' => $this->totalprice + ($this->totalprice * 0.12),
             'payment_method' => $this->payment_id,
             'store_name' => $this->cartStore->store_name,
         ]);
@@ -128,7 +128,7 @@ class Checkout extends Component
     public function render()
     {
         $this->cartStore = Store::find($this->store_id);
-        $this->carts = Cart::where('user_id', Auth::id())->where('store_id', 'like', '%' . $this->store_id . '%')->get();
+        $this->carts = Cart::where('user_id', Auth::id())->where('store_id', $this->store_id)->get();
 
         foreach ($this->carts as $Item) {
             $this->totalprice += $Item->product->price * $Item->quantity;
