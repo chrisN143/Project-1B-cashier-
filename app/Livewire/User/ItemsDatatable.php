@@ -50,7 +50,7 @@ class ItemsDatatable extends Component
                     $detailsUrl = route('store.detail', $item->id);
                     $detailsHtml = "<a href='$detailsUrl' class='btn btn-primary btn-sm ml-2'><i class='fa fa-detail mr-2'></i>details</a>";
                     $editHtml = '';
-                    $editUrl = route('user.edit', ['id' => $item['id']]);
+                    $editUrl = route('user.edit',$item->id);
                     $editHtml = "<a href='$editUrl' class='btn btn-primary btn-sm ml-2'><i class='fa-solid fa-pen-to-square'></i></a>";
 
 

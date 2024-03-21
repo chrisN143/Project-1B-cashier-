@@ -2,15 +2,13 @@
 
 namespace App\Livewire\Menu;
 
-use Livewire\Attributes\Reactive;
 use Livewire\Attributes\Url;
-use Livewire\Attributes\On;
 use Livewire\WithPagination;
 use Livewire\Component;
 use App\Models\Product;
 use App\Models\Store;
 use App\Models\Cart;
-use Illuminate\Support\Facades\Auth;
+
 
 class MenuIndex extends Component
 {
@@ -18,13 +16,14 @@ class MenuIndex extends Component
     #[Url()]
     protected $queryString = ['search' => ['except' => '']];
     public $search = '';
-
     public $stores;
-    // public $product;
+    public $store_id = '1';
     public $carts;
     private $inputquantity = 1;
-    // protected
-
+    public function filter()
+    {
+        $this->resetPage();
+    }
     public function add($id)
     {
         $cart = Cart::where('product_id', $id)->first();
@@ -37,34 +36,35 @@ class MenuIndex extends Component
 
             session()->flash('status', 'Product already updated');
         } else {
+            $product = Product::find($id);
             Cart::create([
                 'user_id' => auth()->user()->id,
                 'quantity' => $this->inputquantity,
-                'product_id' => $id
+                'product_id' => $id,
+                'store_id' => $product->store_id
+
             ]);
             session()->flash('status', 'Product added to cart!');
         }
         $this->dispatch('add');
     }
-
-
-
-
     public function mount()
     {
         $this->stores = Store::All();
         $this->carts = Cart::where('user_id', auth()->id())->get();
         $this->search = request()->query('search', $this->search);
     }
-
-
-
+    public function updated()
+    {
+        $this->dispatch('store', [
+            'storeClassification' => $this->store_id
+        ]);
+    }
     public function render()
     {
-        $products =  Product::when($this->search, function ($query) {
+        $products =  Product::where('store_id', 'like', '%' . $this->store_id . '%')->when($this->search, function ($query) {
             $query->where('name', 'like', '%' . $this->search . '%');
         })->paginate(20);
-
         return view('livewire.menu.menu-index', [
 
             'products' => $products

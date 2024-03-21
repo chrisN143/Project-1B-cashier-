@@ -3,6 +3,7 @@
 namespace App\Livewire\Permission;
 
 use Livewire\Component;
+use RealRashid\SweetAlert\Facades\Alert;
 use Spatie\Permission\Models\Permission;
 
 class PermissionEdit extends Component
@@ -12,22 +13,19 @@ class PermissionEdit extends Component
     public $name;
     public function mount()
     {
-$permission = Permission::find($this->permission);
-$this->name = $permission->name;
+        $this->name = $this->permission->name;
     }
-    public function update(Type $var = null)
+    public function update()
     {
-
-
         /* Update */
+      
         if (!$this->permission) {
             Alert::toast('Terdapat kesalahan data', 'error');
             return back()->withInput();
         }
 
-
-        $permission->update([
-            'name'=> $this->name
+        $this->permission->update([
+            'name' => $this->name
         ]);
 
         /* Alert & Redirect */

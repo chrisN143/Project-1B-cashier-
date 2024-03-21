@@ -43,8 +43,16 @@ class AuthController extends Controller
         if (Auth::attempt($credentials, $remember_token)) {
             $request->session()->regenerate();
 
-            Alert::toast('Berhasil login', 'success');
-            return redirect()->route('dashboard')
+            // Alert::toast('Berhasil login', 'success');
+            // if (Auth::user()->hasRole('Admin')) {
+            //     return redirect()->route('dashboard')
+            //         ->withSuccess('Anda Berhasil Login!');
+            // }
+            // if (Auth::user()->hasRole('Product-Manegement')) {
+            //     return redirect()->route('product.index')
+            //         ->withSuccess('Anda Berhasil Login!');
+            // }
+            return redirect()->route('menu.index')
                 ->withSuccess('Anda Berhasil Login!');
         }
 

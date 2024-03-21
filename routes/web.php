@@ -34,7 +34,9 @@ Route::controller(AuthController::class)->group(function () {
         Route::post('/register', 'registerStore')->name('register.store');
     });
     Route::middleware('auth')->group(function () {
-        Route::get('/dashboard', 'dashboard')->name('dashboard');
+        Route::middleware('permission:dashboard-view')->group(function () {
+            Route::get('/dashboard', 'dashboard')->name('dashboard');
+        });
         Route::post('/logout', 'logout')->name('logout');
     });
 });
@@ -42,64 +44,80 @@ Route::controller(AuthController::class)->group(function () {
 Route::group(['middleware' => 'auth'], function () {
     /* Users */
     Route::controller(UserController::class)->prefix('user')->name('user.')->group(function () {
-        Route::middleware('role_or_permission:Admin')->group(function () {
+        Route::middleware('permission:user-list')->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('create', 'create')->name('create');
-            Route::get('edit/{user}', 'edit')->name('edit');
-            Route::get('show/{role}', 'show')->name('show');
-
+            Route::get('edit/{id}', 'edit')->name('edit');
+            Route::get('show/{id}', 'show')->name('show');
         });
     });
 
     /* Permissions */
     Route::controller(PermissionController::class)->prefix('permission')->name('permission.')->group(function () {
-        Route::middleware('role_or_permission:Admin')->group(function () {
+        Route::middleware('permission:permission-list')->group(function () {
             Route::get('/', 'index')->name('index');
             Route::get('create', 'create')->name('create');
             Route::get('edit/{permission}', 'edit')->name('edit');
-
         });
     });
 
     /* Roles */
     Route::controller(RoleController::class)->prefix('role')->name('role.')->group(function () {
-        Route::middleware('role_or_permission:Admin')->group(function () {
+        Route::middleware('permission:role-list')->group(function () {
             Route::get('/', 'index')->name('index');
-
             Route::get('create', 'create')->name('create');
-
-            Route::get('edit/{role}', 'edit')->name('edit');
+            Route::get('edit/{id}', 'edit')->name('edit');
         });
     });
 
     /* Product */
     Route::controller(ProductController::class)->prefix('product')->name('product.')->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::get('/detail', 'detail')->name('detail');
+        Route::middleware('permission:product-list')->group(function () {
+
+            Route::get('/', 'index')->name('index');
+            Route::get('/detail', 'detail')->name('detail');
+        });
     });
     Route::controller(StoreController::class)->prefix('store')->name('store.')->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::get('/detail', 'detail')->name('detail');
+        Route::middleware('permission:store-list')->group(function () {
+
+            Route::get('/', 'index')->name('index');
+            Route::get('/detail', 'detail')->name('detail');
+        });
     });
     Route::controller(TransactionController::class)->prefix('transaction')->name('transaction.')->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::get('/detail', 'detail')->name('detail');
+        Route::middleware('permission:transaction-list')->group(function () {
+
+            Route::get('/', 'index')->name('index');
+            Route::get('/detail', 'detail')->name('detail');
+        });
     });
     Route::controller(MenuController::class)->prefix('menu')->name('menu.')->group(function () {
-        Route::get('/', 'index')->name('index');
+        Route::middleware('permission:menuView-list')->group(function () {
+
+            Route::get('/', 'index')->name('index');
+        });
     });
 
     Route::controller(OrderController::class)->prefix('orders')->name('orders.')->group(function () {
-        Route::get('/', 'index')->name('index');
-        Route::get('/{orderId}', 'detail')->name('detail');
-        Route::get('/print/{orderId}', 'print')->name('print');
+        Route::middleware('permission:menuView-list')->group(function () {
+
+            Route::get('/', 'index')->name('index');
+            Route::get('/{orderId}', 'detail')->name('detail');
+            Route::get('/print/{orderId}', 'print')->name('print');
+        });
     });
 
     Route::controller(LaporanController::class)->group(function () {
         Route::prefix('laporan')->name('laporan.')->group(function () {
-            Route::get('/', 'index')->name('index');
-            Route::get('/{reportId}', 'detail')->name('detail');
+            Route::middleware('permission:laporan-list')->group(function () {
+                Route::get('/', 'index')->name('index');
+                Route::get('/{reportId}', 'detail')->name('detail');
+            });
         });
-        Route::get('/stok-report', 'stok')->name('stoks');
+        Route::middleware('permission:stokReport-list')->group(function () {
+
+            Route::get('/stok-report', 'stok')->name('stoks');
+        });
     });
 });

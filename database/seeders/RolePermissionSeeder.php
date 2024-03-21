@@ -28,6 +28,24 @@ class RolePermissionSeeder extends Seeder
             'user-create|store',
             'user-edit|update',
             'user-delete',
+            'dashboard-view',
+            'master-data-view',
+            'product-list',
+            'product-create',
+            'product-edit|update',
+            'product-delete',
+            'store-list',
+            'store-create',
+            'store-edit|update',
+            'store-delete',
+            'transaction-create',
+            'transaction-edit|update',
+            'transaction-delete',
+            'transaction-list',
+            'userManegement-list',
+            'menuView-list',
+            'laporan-list',
+            'stokReport-list',
         ];
 
         foreach ($permissions as $permission) {
@@ -36,11 +54,18 @@ class RolePermissionSeeder extends Seeder
 
         /* Create Role */
         /* Admin */
-        $admin = Role::create(['name' => 'Admin']);
+        $superadmin = Role::create(['name' => 'Superadmin']);
         $getPermissions = Permission::pluck('id', 'id')->all();
-        $admin->syncPermissions($getPermissions);
+        $superadmin->syncPermissions($getPermissions);
+        $admin = Role::create(['name' => 'Admin']);
+        $getAdminPermissions = Permission::pluck('id', 'id')->all();
+        $admin->syncPermissions($getAdminPermissions);
 
         /* User */
-        Role::create(['name' => 'User']);
+        $user = Role::create(['name' => 'User']);
+        $user->syncPermissions(['menuView-list']);
+        $tukang = Role::create(['name' => 'tukang']);
+        $tukang->syncPermissions(['master-data-view','product-list','store-list','transaction-list']);
+
     }
 }

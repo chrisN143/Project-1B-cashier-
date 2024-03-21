@@ -8,7 +8,26 @@
                 <div class="col-md-2 my-2">
                     <input id="end" class="form-control" type="date" wire:model.live='end_date'>
                 </div>
+                <div class="col-md-2 my-2">
+                    <select class="form-select" name="orders" wire:model.live="storeName">
+                        @foreach ($stores as $store)
+                            <option value="{{ $store->store_name }}">{{ $store->store_name }}</option>
+                        @endforeach
+                    </select>
+                </div>
             </div>
         </div>
     </div>
+    @livewire('laporan.stokReportDatatable')
+    <table class="my-3">
+        <tbody>
+            @foreach ($itemCounts as $itemCount)
+                <tr>
+                    <td>{{ $itemCount['product_name'] }}</td>
+                    <td>{{ $itemCount['total_quantity'] }}</td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+
 </div>
