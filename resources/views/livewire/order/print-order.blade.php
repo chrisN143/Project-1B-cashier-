@@ -68,16 +68,20 @@
                         <tr>
                             <td>{{ $item->product_name }}</td>
                             <td>{{ $item->product_quantity }}</td>
-                            <td>Rp. {{ number_format($item->product_price * $item->product_quantity, 0, ',', '.') }}</td>
+                            <td>Rp. {{ number_format($item->product_price * $item->product_quantity, 0, ',', '.') }}
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
 
             <div class="total">
-                <p><strong>Total Harga:</strong> Rp. {{ number_format($order->total_price, 0, ',', '.') }}</p>
-                <p><strong>{{ $order->payment_method }} : </strong> Rp.
-                    {{ number_format($order->total_price, 0, ',', '.') }}</p>
+
+                <p><strong>Total Pembelian:</strong> Rp. {{ number_format($order->total_price, 0, ',', '.') }}</p>
+                <p><strong>PPN 12% :</strong> Rp. {{ number_format($order->total_price * 0.12, 0, ',', '.') }}</p>
+                <hr>
+                <p><strong>Pembayaran {{ $order->payment_method }} : </strong> Rp.
+                    {{ number_format($order->total_price * 0.12, 0, ',', '.') }}</p>
             </div>
         </div>
 </div>
