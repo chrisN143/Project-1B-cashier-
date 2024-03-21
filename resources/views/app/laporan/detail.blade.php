@@ -47,21 +47,21 @@
                         <div class="shadow bg-white p-5 rounded">
                             <h4 class="mx-3  text-capitalize">
                                 Order Details
-                                <a href="{{ route('orders.index') }}" class="btn btn-danger btn-sm ">back To All Orders</a>
+                                <a href="{{ route('orders.index') }}" class="btn btn-primary btn-sm ">Back To All Orders</a>
                             </h4>
                             <hr>
                             <div class="row p-2">
                                 <div class="col-md-8">
                                     <h6>Tracking Id/No. : {{ $order->order_code }}</h6>
                                     <h6>Order Created Date : {{ $order->created_at->format('d-m-Y h:i A') }}
-                                        ({{ $order->created_at->diffForHumans() }})</h6>
-                                    <h6>Payment Mode : {{ $order->payment_mode }}</h6>
+                                    </h6>
+
                                 </div>
                                 <div class="col-md-8">
                                     <h4>User Details</h4>
                                     <hr>
-                                    <h6>Full Name : {{ $order->customer_name }}</h6>
-                                    <h6>Payment method : {{ $order->payment_method }}</h6>
+                                    <h6>Customer Name : {{ $order->customer_name }}</h6>
+                                    <h6>Payment Method : {{ $order->payment_method }}</h6>
                                 </div>
                             </div>
                             <br>
@@ -79,20 +79,20 @@
                                         @foreach ($order->orderItems as $item)
                                             <tr>
                                                 <th width="10%">{{ $item->product->code }}</th>
-
                                                 <th width="10%">{{ $item->product_name }}</th>
                                                 <th width="10%">{{ $item->product_quantity }}</th>
-
                                                 <th width="10%">Rp. {{ $item->product_price }}</th>
-
-
                                             </tr>
                                         @endforeach
                                         <tr>
-                                            <td colspan="3" class="text-center">Total Amount :</td>
-                                            <td>Rp. {{ $order->total_price }}</td>
+                                            <td colspan="3" class="text-center">PPN 12% :</td>
+                                            <td>Rp. {{ number_format($order->total_price * 0.12, 0, ',', '.') }}</td>
                                         </tr>
-                                    </tbody>    
+                                        <tr>
+                                            <td colspan="3" class="text-center">Total Amount (incl. PPN):</td>
+                                            <td>Rp. {{ number_format($order->total_price, 0, ',', '.') }}</td>
+                                        </tr>
+                                    </tbody>
                                 </table>
                                 <div>
                                 </div>
