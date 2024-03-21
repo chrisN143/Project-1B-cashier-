@@ -45,6 +45,11 @@
 
                                         <th>Price</th>
                                     </thead>
+                                    @php
+                                        $totalprice = 0;
+
+                                    @endphp
+
                                     <tbody>
                                         @foreach ($order->orderItems as $item)
                                             <tr>
@@ -56,13 +61,20 @@
                                                 <th width="10%">Rp.
                                                     {{ number_format($item->product_price * $item->product_quantity, 0, ',', '.') }}
                                                 </th>
+                                                @php
+                                                    $totalprice += $item->product_price * $item->product_quantity;
+                                                @endphp
 
 
                                             </tr>
                                         @endforeach
                                         <tr>
                                             <td colspan="3" class="text-center">PPN 12% :</td>
-                                            <td>Rp. {{ $order->total_price }}</td>
+                                            <td>
+                                                Rp.
+                                                {{ number_format($totalprice * 0.12, 0, ',', '.') }}
+
+                                            </td>
                                         </tr>
                                         <tr>
                                             <td colspan="3" class="text-center">Total Amount :</td>
