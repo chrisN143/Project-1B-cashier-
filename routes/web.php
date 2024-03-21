@@ -115,7 +115,7 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::get('/{reportId}', 'detail')->name('detail');
             });
         });
-        Route::middleware('permission:stokReport -list')->group(function () {
+        Route::middleware('permission:stokReport-list')->group(function () {
 
             Route::get('/stok-report', 'stok')->name('stoks');
         });

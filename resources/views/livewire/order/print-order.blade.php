@@ -41,11 +41,13 @@
             font-weight: bold;
         }
     </style>
+
     </head>
 
     <body>
 
         <div class="container">
+
             <h1>Order Receipt</h1>
 
             <div>
@@ -83,7 +85,6 @@
             </table>
 
             <div class="total">
-
                 <p><strong>Total Pembelian : </strong> Rp. {{ number_format($totalprice, 0, ',', '.') }}</p>
                 <p><strong>PPN 12% :</strong> Rp. {{ number_format($order->total_price * 0.12, 0, ',', '.') }}</p>
                 <hr>
@@ -91,4 +92,6 @@
                     {{ number_format($order->total_price, 0, ',', '.') }}</p>
             </div>
         </div>
+
+
 </div>
