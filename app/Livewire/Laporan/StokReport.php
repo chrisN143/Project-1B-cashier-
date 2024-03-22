@@ -36,16 +36,21 @@ class StokReport extends Component
 
         ]);
     }
+
     public function render()
     {
-  
+
         $orderItems =  OrderItems::whereDate('created_at', '>=', $this->start_date)->whereDate('created_at', '<=', $this->end_date)->where('product_name', 'like', '%' . $this->search . '%')->paginate(10);
+
+        $this->dispatch('items', data: $orderItems);
+
+        return view('livewire.laporan.stok-report');
         $itemCounts = $orderItems->groupBy('product_name')->map(function ($items) {
             return [
                 'product_name' => $items->first()->product_name,
                 'total_quantity' => $items->sum('product_quantity')
             ];
-        }); 
+        });
         return view('livewire.laporan.stok-report', [
             'itemCounts' => $itemCounts,
             'orderItems' => $orderItems,

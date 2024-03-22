@@ -10,9 +10,8 @@
                             <div>
                                 <a href="{{ route('orders.index') }}" class="btn btn-danger btn-xs">Back</a>
                                 <a href="{{ url('orders/print/' . $order->order_code) }}"
-                                    class="btn btn-success btn-sm">Print</a>
+                                    class="btn btn-success btn-xs">Print</a>
                             </div>
-
                         </div>
                         <hr>
                         <div class="row p-3">
@@ -22,7 +21,6 @@
                                 <h6>Tracking Id/No.: {{ $order->order_code }}</h6>
                                 <h6>Order Created Date: {{ $order->created_at->format('d-m-Y h:i A') }}
                                     ({{ $order->created_at->diffForHumans() }})</h6>
-
                             </div>
                             <div class="col-md-6">
                                 <h5>User Details</h5>
@@ -55,10 +53,10 @@
                                             <td>Rp.
                                                 {{ number_format($item->product_price * $item->product_quantity, 0, ',', '.') }}
                                             </td>
+                                            @php
+                                                $totalprice += $item->product_price * $item->product_quantity;
+                                            @endphp
                                         </tr>
-                                        @php
-                                            $totalprice += $item->product_price * $item->product_quantity;
-                                        @endphp
                                     @endforeach
                                     <tr>
                                         <td colspan="3" class="text-center">Total Price :</td>
@@ -70,7 +68,8 @@
                                     </tr>
                                     <tr>
                                         <td colspan="3" class="text-center">Total Amount :</td>
-                                        <td>Rp. {{ number_format($order->total_price, 0, ',', '.') }}</td>
+                                        <td>Rp. {{ number_format($totalprice + $totalprice * 0.12, 0, ',', '.') }}
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
