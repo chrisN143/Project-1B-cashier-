@@ -48,7 +48,7 @@ class ItemsDatatable extends Component
                 'key' => 'products.price',
                 'name' => 'Price',
                 'render' => function ($item) {
-                    return 'Rp.' . $item->product_price;
+                    return 'Rp.' . number_format($item->product_price, 0, ',', '.');
                 }
             ],
             [
@@ -79,7 +79,7 @@ class ItemsDatatable extends Component
                                 <i class='fa fa-trash mr-2'></i>
                                     </button>";
 
-                    
+
                     if (auth()->user()->hasAnyPermission(['product-delete', 'product-edit|update'])) {
                         # code...
                         $html = "$editHtml $destroyHtml";
