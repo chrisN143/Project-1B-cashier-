@@ -119,7 +119,6 @@ return [
             'text' => 'Master Data',
             'icon' => 'ki-duotone ki-code text-success fs-2',
             'permission' => 'master-data-view',
-
             'submenu' => [
                 [
                     'text' => 'Product',
@@ -196,7 +195,7 @@ return [
                 [
                     'text' => 'Stok Report',
                     'url'  => 'stok-report',
-                    'permission' => 'stokReport-list',
+                    'permission' => 'laporan-list',
                 ],
             ],
         ],

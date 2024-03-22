@@ -48,7 +48,7 @@ class ItemsDatatable extends Component
                 'key' => 'products.price',
                 'name' => 'Price',
                 'render' => function ($item) {
-                    return 'Rp.' . $item->product_price;
+                    return 'Rp.' . number_format($item->product_price, 0, ',', '.');
                 }
             ],
             [
@@ -78,16 +78,8 @@ class ItemsDatatable extends Component
                                 wire:confirm=\"Delete Data?\">
                                 <i class='fa fa-trash mr-2'></i>
                                     </button>";
-                    if (auth()->user()->hasAnyPermission('product-edit|update')) {
-                        # code...
-                        $html = "$editHtml";
-                        return $html;
-                    }
-                    if (auth()->user()->hasAnyPermission('product-delete')) {
-                        # code...
-                        $html = "$destroyHtml";
-                        return $html;
-                    }
+
+
                     if (auth()->user()->hasAnyPermission(['product-delete', 'product-edit|update'])) {
                         # code...
                         $html = "$editHtml $destroyHtml";

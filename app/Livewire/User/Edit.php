@@ -31,7 +31,7 @@ class Edit extends Component
     {
         $this->validate();
         $user = User::find($this->userId);
-        if ($this->password == $user->password && $this->email == $user->email) {
+        if ($this->email == $user->email) {
             $user->update([
                 'name' => $this->name,
             ]);
@@ -56,7 +56,7 @@ class Edit extends Component
         $userEdit = User::find($this->userId);
         $this->user_role = $userEdit->getRoleNames()->first();
         $this->name = $userEdit->name;
-        $this->roleUser = $userEdit->getRoleNames()->first();
+        // $this->roleUser = $userEdit->getRoleNames()->first();
         $this->email = $userEdit->email;
 
         // return $roles;

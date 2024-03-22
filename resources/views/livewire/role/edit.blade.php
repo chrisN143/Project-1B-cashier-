@@ -1,4 +1,6 @@
 <div>
+    {{-- @dd($this->role_permissions) --}}
+    {{-- @dd($oldPermissions) --}}
     <div class="d-flex flex-column flex-lg-row">
         <!--begin::Content-->
         <div class="flex-lg-row-fluid mb-10 mb-lg-0">
@@ -8,61 +10,61 @@
                 <div class="card-body p-12">
                     <!--begin::Form-->
                     {{-- <form action="{{ route('role.update', $this->role) }}" method="post"> --}}
-                 
-                        <!--begin::Wrapper-->
-                        <div class="mb-0">
-                            <!--begin::Row-->
-                            <div class="row gx-10 mb-5">
-                                <!--begin::Col-->
-                                <div class="col-lg-12">
-                                    <!--begin::Input group-->
-                                    <div class="form-floating mb-7">
-                                        <input type="text" wire:model="name" class="form-control form-control-solid"
-                                            id="name" placeholder="" value="{{ old('name', $role->name) }}" />
-                                        <label for="name">Name</label>
-                                        <div
-                                            class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
-                                            @error('name')
-                                                <p>{{ $message }}</p>
-                                            @enderror
-                                        </div>
+
+                    <!--begin::Wrapper-->
+                    <div class="mb-0">
+                        <!--begin::Row-->
+                        <div class="row gx-10 mb-5">
+                            <!--begin::Col-->
+                            <div class="col-lg-12">
+                                <!--begin::Input group-->
+                                <div class="form-floating mb-7">
+                                    <input type="text" wire:model="name" class="form-control form-control-solid"
+                                        id="name" placeholder="" />
+                                    <label for="name">Name</label>
+                                    <div
+                                        class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
+                                        @error('name')
+                                            <p>{{ $message }}</p>
+                                        @enderror
                                     </div>
-                                    <!--end::Input group-->
                                 </div>
-                                <div class="separator"></div>
-                                <div class="col-lg-12 mt-3 mb-5">
-                                    <div class="card">
-                                        </span>
-                                        <h3 class="fw-bold text-center m-5">Permissions</h3>
-                                        <div class="card-body">
-                                            <div class="row d-flex justify-content-center">
-                                                @foreach ($permissions as $permission)
-                                                    <div class="col-lg-4 mb-5">
-                                                        <div class="form-check form-check-custom form-check-solid">
-                                                            <input class="form-check-input" type="checkbox"
-                                                                value="{{ $permission->name }}" id="{{ $permission->id }}"
-                                                                name="permission[]"
-                                                                {{ in_array($permission->id, $role_permissions) ? 'checked' : '' }} />
-                                                            <label class="form-check-label" for="{{ $permission->id }}">
-                                                                {{ $permission->name }}
-                                                            </label>
-                                                        </div>
+                                <!--end::Input group-->
+                            </div>
+                            <div class="separator"></div>
+                            <div class="col-lg-12 mt-3 mb-5">
+                                <div class="card">
+                                    </span>
+                                    <h3 class="fw-bold text-center m-5">Permissions</h3>
+                                    <div class="card-body">
+                                        <div class="row d-flex justify-content-center">
+                                            @foreach ($permissions as $index => $permission)
+                                                <div class="col-lg-4 mb-5">
+                                                    <div class="form-check form-check-custom form-check-solid">
+                                                        <input class="form-check-input"
+                                                            wire:model="permissions.{{ $index }}.is_checked"
+                                                            type="checkbox" value="{{ $permission['name'] }}"
+                                                            id="{{ $permission['id'] }}" {{  }} />
+                                                        <label class="form-check-label" for="{{ $permission['id'] }}">
+                                                            {{ $permission['name'] }}
+                                                        </label>
                                                     </div>
-                                                @endforeach
-                                            </div>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
-                                </div>
-                                <!--end::Col-->
-                                <div class="col-lg-12">
-                                    <a href="{{ route('role.index') }}" class="btn btn-primary me-2">Back</a>
-                                    <button class="btn btn-warning me-2" type="reset">Reset</button>
-                                    <button class="btn btn-success me-2" wire:click="update" type="submit">Submit</button>
                                 </div>
                             </div>
-                            <!--end::Row-->
+                            <!--end::Col-->
+                            <div class="col-lg-12">
+                                <a href="{{ route('role.index') }}" class="btn btn-primary me-2">Back</a>
+                                <button class="btn btn-warning me-2" type="reset">Reset</button>
+                                <button class="btn btn-success me-2" wire:click="update" type="submit">Submit</button>
+                            </div>
                         </div>
-                        <!--end::Wrapper-->
+                        <!--end::Row-->
+                    </div>
+                    <!--end::Wrapper-->
                     {{-- </form> --}}
                     <!--end::Form-->
                 </div>

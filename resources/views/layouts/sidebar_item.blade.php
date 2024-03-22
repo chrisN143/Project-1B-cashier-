@@ -41,7 +41,7 @@
     @foreach (config('sidebar.menu') as $item)
         @if (isset($item['permission']))
             @if ($item['permission'] !== 'All')
-                @if (auth()->user()->hasAnyPermission($item['permission']))
+                @if (auth()->user()->hasPermissionTo($item['permission']))
                     @if (isset($item['header']))
                         <!--begin:Menu item-->
                         <div class="menu-item pt-5">
@@ -88,7 +88,7 @@
                             <div class="menu-sub menu-sub-accordion">
                                 @foreach ($item['submenu'] as $subItem)
                                     @if ($subItem['permission'] !== 'All')
-                                        @if (auth()->user()->hasAnyPermission($item['permission']))
+                                        @if (auth()->user()->hasPermissionTo($item['permission']))
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link--><a
@@ -165,7 +165,7 @@
                         <div class="menu-sub menu-sub-accordion">
                             @foreach ($item['submenu'] as $subItem)
                                 @if ($subItem['permission'] !== 'All')
-                                    @if (auth()->user()->hasAnyPermission($item['permission']))
+                                    @if (auth()->user()->hasPermissionTo($item['permission']))
                                         <!--begin:Menu item-->
                                         <div class="menu-item">
                                             <!--begin:Menu link--><a

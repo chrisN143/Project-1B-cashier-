@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
         ]);
         Store::create([
             'store_name' => 'Elektronik',
-            
+
         ]);
         Store::create([
             'store_name' => 'Gaming',
@@ -91,7 +91,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Xbox Gamepad',
             'Price' => '169000',
             'stok' => '20',
-            
+
             'store_id' => '2',
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias error enim voluptates tenetur delectus ducimus quia!'
         ]);
@@ -108,8 +108,8 @@ class DatabaseSeeder extends Seeder
         Product::create([
 
             'code' => 'Product-' . Str::random(10),
-            'name' => 'MI Smart Band',
-            'Price' => '599000',
+            'name' => 'Mac Book',
+            'Price' => '1299999',
             'stok' => '20',
 
             'store_id' => '3',
@@ -118,8 +118,8 @@ class DatabaseSeeder extends Seeder
         Product::create([
 
             'code' => 'Product-' . Str::random(10),
-            'name' => 'Banana Smart Watch',
-            'Price' => '3699000',
+            'name' => 'Keyboard RGB',
+            'Price' => '5000000',
             'stok' => '20',
             'store_id' => '3',
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias error enim voluptates tenetur delectus ducimus quia!'
@@ -127,8 +127,8 @@ class DatabaseSeeder extends Seeder
         Product::create([
 
             'code' => 'Product-' . Str::random(10),
-            'name' => 'Banana Smart Watch',
-            'Price' => '3699000',
+            'name' => 'MI SMART Beands',
+            'Price' => '4600000',
             'stok' => '20',
             'store_id' => '3',
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias error enim voluptates tenetur delectus ducimus quia!'
@@ -136,8 +136,8 @@ class DatabaseSeeder extends Seeder
         Product::create([
 
             'code' => 'Product-' . Str::random(10),
-            'name' => 'Banana Smart Watch',
-            'Price' => '3699000',
+            'name' => 'Fiber Optic',
+            'Price' => '1000000',
             'stok' => '20',
             'store_id' => '3',
             'description' => 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias error enim voluptates tenetur delectus ducimus quia!'
