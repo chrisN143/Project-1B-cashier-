@@ -195,7 +195,7 @@ return [
                 [
                     'text' => 'Stok Report',
                     'url'  => 'stok-report',
-                    'permission' => 'stokReport-list',
+                    'permission' => 'laporan-list',
                 ],
             ],
         ],

@@ -109,15 +109,17 @@ Route::group(['middleware' => 'auth'], function () {
     });
 
     Route::controller(LaporanController::class)->group(function () {
-        Route::prefix('laporan')->name('laporan.')->group(function () {
-            Route::middleware('permission:laporan-list')->group(function () {
+        Route::middleware('permission:laporan-list')->group(function () {
+
+            Route::prefix('laporan')->name('laporan.')->group(function () {
                 Route::get('/', 'index')->name('index');
                 Route::get('/{reportId}', 'detail')->name('detail');
             });
-        });
-        Route::middleware('permission:stokReport-list')->group(function () {
 
-            Route::get('/stok-report', 'stok')->name('stoks');
+            Route::middleware('permission:stokReport-list')->group(function () {
+
+                Route::get('/stok-report', 'stok')->name('stoks');
+            });
         });
     });
 });

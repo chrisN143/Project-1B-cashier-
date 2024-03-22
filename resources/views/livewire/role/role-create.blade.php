@@ -7,7 +7,7 @@
             <div class="card-body p-12">
                 <!--begin::Form-->
                 <form wire:submit="store">
-     
+
                     <!--begin::Wrapper-->
                     <div class="mb-0">
                         <!--begin::Row-->
@@ -17,7 +17,7 @@
                                 <!--begin::Input group-->
                                 <div class="form-floating mb-7">
                                     <input type="text" wire:model="name" class="form-control form-control-solid"
-                                        id="name" placeholder=""  />
+                                        id="name" placeholder="" />
                                     <label for="name">Name</label>
                                     <div
                                         class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
@@ -35,15 +35,15 @@
                                     <h3 class="fw-bold text-center m-5">Permissions</h3>
                                     <div class="card-body">
                                         <div class="row d-flex justify-content-center">
-                                            @foreach ($permissions as $permission)
+                                            @foreach ($permissions as $index => $permission)
                                                 <div class="col-lg-4 mb-5">
                                                     <div class="form-check form-check-custom form-check-solid">
-                                                        <input class="form-check-input" wire:model="rolePermission" type="checkbox"
-                                                            value="{{ $permission->name }}" id="{{ $permission->id }}"
-                                                            name="permission[]"
-                                                            {{ is_array(old('permission')) && in_array($permission->name, old('permission')) ? ' checked' : '' }} />
-                                                        <label class="form-check-label" for="{{ $permission->id }}">
-                                                            {{ $permission->name }}
+                                                        <input class="form-check-input"
+                                                            wire:model="permissions.{{ $index }}.is_checked"
+                                                            type="checkbox" value="{{ $permission['name'] }}"
+                                                            id="{{ $permission['id'] }}" />
+                                                        <label class="form-check-label" for="{{ $permission['id'] }}">
+                                                            {{ $permission['name'] }}
                                                         </label>
                                                     </div>
                                                 </div>

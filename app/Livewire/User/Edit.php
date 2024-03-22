@@ -35,14 +35,14 @@ class Edit extends Component
             $user->update([
                 'name' => $this->name,
             ]);
-            $user->assignRole([$this->user_role]);
+            $user->assignRole($this->roleUser);
         } else {
             $user->update([
                 'name' => $this->name,
                 'email' => $this->email,
                 'password' => Hash::make($this->password)
             ]);
-            $user->assignRole([$this->roleUser]);
+            $user->assignRole($this->roleUser);
         }
 
         Alert::toast('Data Berhasil Diperbarui', 'success');
@@ -54,7 +54,7 @@ class Edit extends Component
         $this->roles = Role::All()->pluck('name', 'name');
 
         $userEdit = User::find($this->userId);
-        $this->user_role = $userEdit->getRoleNames();
+        $this->user_role = $userEdit->getRoleNames()->first();
         $this->name = $userEdit->name;
         // $this->roleUser = $userEdit->getRoleNames()->first();
         $this->email = $userEdit->email;

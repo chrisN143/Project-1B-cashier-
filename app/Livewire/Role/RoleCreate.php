@@ -10,25 +10,61 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class RoleCreate extends Component
 {
-
-    public $permissions;
     #[Rule('required')]
     public $name;
-    private $rolePermission;
+
+    public $permissions;
+
+    // private $rolePermissions = [];
+
+    public function mount()
+    {
+        /*
+        [
+            'id'=>1,
+            'name'=>'user.create',
+            'is_checked'=>true/false
+        ],
+        [
+            'id'=>1,
+            'name'=>'user.read',
+            'is_checked'=>true/false
+        ]
+        */
+        // Value: ['abc','def']
+        $this->permissions = Permission::all()->toArray();
+
+        foreach ($this->permissions as $index => $item) {
+            // Value : ['is_checked'=>false]
+            $this->permissions[$index]['is_checked'] = false;
+        }
+    }
+
+
+
     public function store()
     {
         $this->validate();
+
+        $roles = [];
+        // dd($this->permissions);
+
+        foreach ($this->permissions as $index => $item) {
+            if ($this->permissions[$index]['is_checked'] === true) {
+                $roles[count($roles)] = $this->permissions[$index]['name'];
+            }
+        }
+
+        // dd($roles);
+
         $role = Role::create([
             'name' => $this->name
         ]);
-        $role->syncPermissions($this->rolePermission);
+        $role->syncPermissions($roles);
         /* Alert & Redirect */
         Alert::toast('Data Berhasil Disimpan', 'success');
+
         return redirect()->route('role.index');
-    }
-    public function mount()
-    {
-        $this->permissions = Permission::all();
     }
 
     public function render()
