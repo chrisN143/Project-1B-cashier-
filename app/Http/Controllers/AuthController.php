@@ -46,20 +46,17 @@ class AuthController extends Controller
             if (auth()->user()->hasAnyPermission('dashboard-view')) {
                 return redirect()->route('dashboard')
                     ->withSuccess('Anda Berhasil Login!');
-            } elseif (auth()->user()->hasAnyPermission('product-list')) {
+            } elseif (auth()->user()->hasAnyPermission('master-data-view')) {
                 return redirect()->route('product.index')
                     ->withSuccess('Anda Berhasil Login!');
-            } elseif (auth()->user()->hasAnyPermission('store-list')) {
+            } elseif (auth()->user()->hasAnyPermission('userManegement-list')) {
                 # code...
-                return redirect()->route('store.index')
-                    ->withSuccess('Anda Berhasil Login!');
-            } elseif (auth()->user()->hasAnyPermission('transaction-list')) {
-                return redirect()->route('transaction.index')
+                return redirect()->route('user.index')
                     ->withSuccess('Anda Berhasil Login!');
             } elseif (auth()->user()->hasAnyPermission('laporan-list')) {
-                return redirect()->route('transaction.index')
+                return redirect()->route('laporan.index')
                     ->withSuccess('Anda Berhasil Login!');
-            } else {
+            }  else {
                 return redirect()->route('menu.index')
                     ->withSuccess('Anda Berhasil Login!');
             }
