@@ -40,22 +40,24 @@
 @section('content')
     <div class="card">
         <!--begin::Card header-->
-        <div class="card-header border-0 pt-6">
-            <!--begin::Card title-->
-            <!--begin::Card toolbar-->
-            <div class="card-toolbar">
-                <!--begin::Toolbar-->
-                <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
-                    <!--begin::Add user-->
-                    <a href="{{ route('user.create') }}" class="btn btn-primary"> <i
-                            class="ki-duotone ki-plus fs-2"></i>Create User</a>
-                    <!--end::Add user-->
+        @if (auth()->user()->hasAnyPermission('user-create|store'))
+            <div class="card-header border-0 pt-6">
+                <!--begin::Card title-->
+                <!--begin::Card toolbar-->
+                <div class="card-toolbar">
+                    <!--begin::Toolbar-->
+                    <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">
+                        <!--begin::Add user-->
+                        <a href="{{ route('user.create') }}" class="btn btn-primary"> <i
+                                class="ki-duotone ki-plus fs-2"></i>Create User</a>
+                        <!--end::Add user-->
+                    </div>
+                    <!--end::Toolbar-->
                 </div>
-                <!--end::Toolbar-->
+                <!--end::Card toolbar-->
             </div>
-            <!--end::Card toolbar-->
-        </div>
-        <!--end::Card header-->
+            <!--end::Card header-->
+        @endif
         <!--begin::Card body-->
         <div class="card-body py-4">
             @livewire('user.itemsDatatable')

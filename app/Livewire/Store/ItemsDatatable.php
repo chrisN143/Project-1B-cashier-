@@ -40,7 +40,7 @@ class ItemsDatatable extends Component
                     $authUser = User::find(Auth::id());
 
                     $detailsHtml = '';
-                    $detailsUrl = route('store.detail', ['id' => $item['id']]);
+                    $detailsUrl = route('store.show', ['id' => $item['id']]);
                     $detailsHtml = "<a href='$detailsUrl' class='btn btn-primary btn-sm ml-2'><i class='fa-solid fa-circle-info'></i></a>"; // untuk tampilan tombol detail tetapi sesuai kan kebutuhan
                     $editHtml = '';
                     $editUrl = route('store.detail', ['id' => $item['id']]);
@@ -53,15 +53,16 @@ class ItemsDatatable extends Component
                                 <i class='fa fa-trash mr-2'></i>
                                     </button>";
 
-                    if (auth()->user()->hasAnyPermission('store-edit|update')) {
-                        $html = "$editHtml";
+
+                    if (auth()->user()->hasAnyPermission(['store-delete', 'store-edit|update'])) {
+                        # code...
+                        $html = "$editHtml $destroyHtml";
                         return $html;
                     } elseif (auth()->user()->hasAnyPermission('store-delete')) {
                         $html = "$detailsHtml $destroyHtml";
                         return $html;
-                    } elseif (auth()->user()->hasAnyPermission(['store-delete', 'store-edit|update'])) {
-                        # code...
-                        $html = "$editHtml $destroyHtml";
+                    } elseif (auth()->user()->hasAnyPermission('store-edit|update')) {
+                        $html = "$editHtml";
                         return $html;
                     } else {
                         $html = "$detailsHtml";

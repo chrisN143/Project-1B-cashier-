@@ -30,7 +30,6 @@
                                 <!--end::Col-->
                                 <div class="col-lg-12">
                                     <a href="{{ route('permission.index') }}" class="btn btn-primary me-2">Back</a>
-                                    <button class="btn btn-warning me-2" type="reset">Reset</button>
                                     <button class="btn btn-success me-2" wire:click="create" type="submit">Submit</button>
                                 </div>
                             </div>

@@ -48,7 +48,30 @@ class TransactionController extends Controller
             compact(
                 'id',
                 'title',
-       
+
+                'main_breadcrumb',
+                'main_breadcrumb_link',
+                'breadcrumb'
+            )
+        );
+    }
+    public function show(Request $request)
+    {
+        /* Header Setting */
+        $title = "Transaction";
+
+        $main_breadcrumb = "Transaction";
+        $main_breadcrumb_link = route('transaction.show');
+        $breadcrumb = null;
+
+        $id = $request->id;
+
+        return view(
+            'app.transaction.show',
+            compact(
+                'id',
+                'title',
+
                 'main_breadcrumb',
                 'main_breadcrumb_link',
                 'breadcrumb'
