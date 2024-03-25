@@ -44,7 +44,7 @@
                                                         <input class="form-check-input"
                                                             wire:model="permissions.{{ $index }}.is_checked"
                                                             type="checkbox" value="{{ $permission['name'] }}"
-                                                            id="{{ $permission['id'] }}" {{  }} />
+                                                            id="{{ $permission['id'] }}" />
                                                         <label class="form-check-label" for="{{ $permission['id'] }}">
                                                             {{ $permission['name'] }}
                                                         </label>

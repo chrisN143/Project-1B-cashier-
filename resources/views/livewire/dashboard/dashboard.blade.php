@@ -2,7 +2,7 @@
     <!--begin::Col-->
     <div class="col-md-4">
         <!--begin::Card widget 7-->
-        <div class="card card-flush bg-primary bg-gradient">
+        <div class="card card-flush border-dark border-1 bg-primary bg-gradient">
             <!--begin::Header-->
             <div class="card-header py-4">
                 <!--begin::Title-->
@@ -26,7 +26,7 @@
     <!--begin::Col-->
     <div class="col-md-4">
         <!--begin::Card widget 7-->
-        <div class="card card-flush bg-warning bg-gradient">
+        <div class="card card-flush bg-warning bg-gradient border-dark border-1">
             <!--begin::Header-->
             <div class="card-header py-4">
                 <!--begin::Title-->
@@ -53,7 +53,7 @@
     <!--begin::Col-->
     <div class="col-md-4">
         <!--begin::Card widget 7-->
-        <div class="card card-flush bg-danger bg-gradient">
+        <div class="card card-flush bg-danger bg-gradient border-dark border-1">
             <!--begin::Header-->
             <div class="card-header py-4">
                 <!--begin::Title-->
@@ -76,7 +76,7 @@
     </div>
     <div class="col-md-4">
         <!--begin::Card widget 7-->
-        <div class="card card-flush bg-success bg-gradient">
+        <div class="card card-flush bg-success bg-gradient border-dark border-1">
             <!--begin::Header-->
             <div class="card-header py-4">
                 <!--begin::Title-->
@@ -100,7 +100,7 @@
 
     <div class="col-md-4">
         <!--begin::Card widget 7-->
-        <div class="card card-flush bg-info bg-gradient">
+        <div class="card card-flush bg-info bg-gradient border-dark border-1">
             <!--begin::Header-->
             <div class="card-header py-4">
                 <!--begin::Title-->
@@ -124,7 +124,7 @@
 
     <div class="col-md-4">
         <!--begin::Card widget 7-->
-        <div class="card card-flush bg-secondary bg-gradient">
+        <div class="card card-flush bg-secondary bg-gradient border-dark border-1">
             <!--begin::Header-->
             <div class="card-header py-4">
                 <!--begin::Title-->

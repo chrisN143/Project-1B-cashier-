@@ -40,10 +40,9 @@ class ItemsDatatable extends Component
                 'searchable' => false,
                 'render' => function ($item) {
                     $authUser = User::find(Auth::id());
-
                     $detailsHtml = '';
-                    $detailsUrl = route('store.detail', $item->id);
-                    $detailsHtml = "<a href='$detailsUrl' class='btn btn-primary btn-sm ml-2'><i class='fa fa-detail mr-2'></i>details</a>";
+                    $detailsUrl = route('transaction.detail',['id' => $item['id']]);
+                    $detailsHtml = "<a href='$detailsUrl' class='btn btn-primary btn-sm ml-2'><i class='fa-solid fa-circle-info'></a>";
                     $editHtml = '';
                     $editUrl = route('transaction.detail', ['id' => $item['id']]);
                     $editHtml = "<a href='$editUrl' class='btn btn-primary btn-sm ml-2'><i class='fa-solid fa-pen-to-square'></i></a>";
@@ -55,9 +54,20 @@ class ItemsDatatable extends Component
                                 <i class='fa fa-trash mr-2'></i>
                                     </button>";
 
-                    $html = "$editHtml  $destroyHtml";
-
-                    return $html;
+                    if (auth()->user()->hasAnyPermission('transaction-edit|update')) {
+                        $html = "$editHtml";
+                        return $html;
+                    } elseif (auth()->user()->hasAnyPermission('transaction-delete')) {
+                        $html = "$detailsHtml $destroyHtml";
+                        return $html;
+                    } elseif (auth()->user()->hasAnyPermission(['transaction-delete', 'transaction-edit|update'])) {
+                        # code...
+                        $html = "$editHtml $destroyHtml";
+                        return $html;
+                    } else {
+                        $html = "$detailsHtml";
+                        return $html;
+                    }
                 },
             ],
         ];

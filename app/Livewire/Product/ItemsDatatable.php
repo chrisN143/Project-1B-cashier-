@@ -48,7 +48,7 @@ class ItemsDatatable extends Component
                 'key' => 'products.price',
                 'name' => 'Price',
                 'render' => function ($item) {
-                    return 'Rp.' . number_format($item->product_price, 0, "," , ".");
+                    return 'Rp.' . $item->product_price;
                 }
             ],
             [
@@ -66,8 +66,8 @@ class ItemsDatatable extends Component
                     $authUser = User::find(Auth::id());
 
                     $detailsHtml = '';
-                    $detailsUrl = route('product.detail', $item->product_id);
-                    $detailsHtml = "<a href='$detailsUrl' class='btn btn-primary btn-sm ml-2'><i class='fa fa-detail mr-2'></i>details</a>";
+                    $detailsUrl = route('product.detail', ['product_id' => $item['product_id']]);
+                    $detailsHtml = "<a href='$detailsUrl' class='btn btn-primary btn-sm ml-2'><i class='fa-solid fa-circle-info'></a>";
                     $editHtml = '';
                     $editUrl = route('product.detail', ['product_id' => $item['product_id']]);
                     $editHtml = "<a href='$editUrl' class='btn btn-primary btn-sm ml-2'><i class='fa-solid fa-pen-to-square'></i></a>";
@@ -79,10 +79,18 @@ class ItemsDatatable extends Component
                                 <i class='fa fa-trash mr-2'></i>
                                     </button>";
 
-                    
-                    if (auth()->user()->hasAnyPermission(['product-delete', 'product-edit|update'])) {
+                    if (auth()->user()->hasAnyPermission('product-edit|update')) {
+                        $html = "$editHtml";
+                        return $html;
+                    } elseif (auth()->user()->hasAnyPermission('product-delete')) {
+                        $html = "$detailsHtml $destroyHtml";
+                        return $html;
+                    } elseif (auth()->user()->hasAnyPermission(['product-delete', 'product-edit|update'])) {
                         # code...
                         $html = "$editHtml $destroyHtml";
+                        return $html;
+                    } else {
+                        $html = "$detailsHtml";
                         return $html;
                     }
                     // $html = "$editHtml";
