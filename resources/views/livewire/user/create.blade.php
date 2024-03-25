@@ -103,7 +103,6 @@
                             <!--end::Col-->
                             <div class="col-lg-12">
                                 <a href="{{ route('user.index') }}" class="btn btn-primary me-2">Back</a>
-                                <button class="btn btn-warning me-2" type="reset">Reset</button>
                                 <button wire:click="add" class="btn btn-success me-2" type="submit">Submit</button>
                             </div>
                         </div>
