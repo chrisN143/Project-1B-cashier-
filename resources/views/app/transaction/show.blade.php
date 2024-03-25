@@ -4,14 +4,14 @@
     <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3 ">
         <!--begin::Title-->
         <h1 class="page-heading d-flex text-gray-900 fw-bold fs-3 flex-column justify-content-center my-0">
-            {{ $header }}
+            Transaction Details
+
         </h1>
         <!--end::Title-->
 
         <!--begin::Breadcrumb-->
         <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
             <!--begin::Item-->
-
             <li class="breadcrumb-item text-muted">
                 <a href="{{ $main_breadcrumb_link }}" class="text-muted text-hover-primary">
                     {{ $main_breadcrumb }} </a>
@@ -25,7 +25,8 @@
                 <!--end::Item-->
                 <!--begin::Item-->
                 <li class="breadcrumb-item text-muted">
-                    {{ $breadcrumb }} </li>
+                    {{ $breadcrumb }}
+                </li>
                 <!--end::Item-->
             @endif
         </ul>
@@ -34,5 +35,9 @@
 @endsection
 
 @section('content')
-    @livewire('permission.permission-edit', ['permission' => $permission])
+    <div class="card">
+        <div class="card-body py-4">
+            @livewire('transaction.show', ['objId' => $id])
+        </div>
+    </div>
 @endsection

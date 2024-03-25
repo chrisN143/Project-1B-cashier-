@@ -41,8 +41,8 @@ class ItemsDatatable extends Component
                 'render' => function ($item) {
                     $authUser = User::find(Auth::id());
                     $detailsHtml = '';
-                    $detailsUrl = route('transaction.detail',['id' => $item['id']]);
-                    $detailsHtml = "<a href='$detailsUrl' class='btn btn-primary btn-sm ml-2'><i class='fa-solid fa-circle-info'></a>";
+                    $detailsUrl = route('transaction.show', ['id' => $item['id']]);
+                    $detailsHtml = "<a href='$detailsUrl' class='btn btn-primary btn-sm ml-2'><i class='fa-solid fa-circle-info'></i></a>";
                     $editHtml = '';
                     $editUrl = route('transaction.detail', ['id' => $item['id']]);
                     $editHtml = "<a href='$editUrl' class='btn btn-primary btn-sm ml-2'><i class='fa-solid fa-pen-to-square'></i></a>";
@@ -54,15 +54,16 @@ class ItemsDatatable extends Component
                                 <i class='fa fa-trash mr-2'></i>
                                     </button>";
 
-                    if (auth()->user()->hasAnyPermission('transaction-edit|update')) {
-                        $html = "$editHtml";
+                    if (auth()->user()->hasAnyPermission(['transaction-delete', 'transaction-edit|update'])) {
+                        # code...
+                        $html = "$editHtml $destroyHtml";
                         return $html;
                     } elseif (auth()->user()->hasAnyPermission('transaction-delete')) {
                         $html = "$detailsHtml $destroyHtml";
                         return $html;
-                    } elseif (auth()->user()->hasAnyPermission(['transaction-delete', 'transaction-edit|update'])) {
+                    } elseif (auth()->user()->hasAnyPermission('transaction-edit|update')) {
                         # code...
-                        $html = "$editHtml $destroyHtml";
+                        $html = "$editHtml";
                         return $html;
                     } else {
                         $html = "$detailsHtml";
