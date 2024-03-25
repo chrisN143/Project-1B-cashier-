@@ -43,17 +43,26 @@ class AuthController extends Controller
         if (Auth::attempt($credentials, $remember_token)) {
             $request->session()->regenerate();
 
-            // Alert::toast('Berhasil login', 'success');
-            // if (Auth::user()->hasRole('Admin')) {
-            //     return redirect()->route('dashboard')
-            //         ->withSuccess('Anda Berhasil Login!');
-            // }
-            // if (Auth::user()->hasRole('Product-Manegement')) {
-            //     return redirect()->route('product.index')
-            //         ->withSuccess('Anda Berhasil Login!');
-            // }
-            return redirect()->route('menu.index')
-                ->withSuccess('Anda Berhasil Login!');
+            if (auth()->user()->hasAnyPermission('dashboard-view')) {
+                return redirect()->route('dashboard')
+                    ->withSuccess('Anda Berhasil Login!');
+            } elseif (auth()->user()->hasAnyPermission('product-list')) {
+                return redirect()->route('product.index')
+                    ->withSuccess('Anda Berhasil Login!');
+            } elseif (auth()->user()->hasAnyPermission('store-list')) {
+                # code...
+                return redirect()->route('store.index')
+                    ->withSuccess('Anda Berhasil Login!');
+            } elseif (auth()->user()->hasAnyPermission('transaction-list')) {
+                return redirect()->route('transaction.index')
+                    ->withSuccess('Anda Berhasil Login!');
+            } elseif (auth()->user()->hasAnyPermission('laporan-list')) {
+                return redirect()->route('transaction.index')
+                    ->withSuccess('Anda Berhasil Login!');
+            } else {
+                return redirect()->route('menu.index')
+                    ->withSuccess('Anda Berhasil Login!');
+            }
         }
 
         Alert::error('Gagal', 'Email/Password Salah!');

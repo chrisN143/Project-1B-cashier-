@@ -16,11 +16,10 @@
                             <div class="col-lg-12">
                                 <!--begin::Input group-->
                                 <div class="mb-5">
-                                    <select wire:model="roleUser" class="form-select form-select-solid" name="roleUser"
-                                        data-control="select2" data-placeholder="Select an option"
-                                        data-allow-clear="true">
+                                    <select wire:model="roleUser" class="form-select form-select-solid" name="roleUser">
                                         @foreach ($roles as $role)
-                                            <option value="{{ $role }}" {{ $user_role == $role ? 'selected' : '' }}>
+                                            <option value="{{ $role }}"
+                                                {{ $user_role == $role ? 'selected' : '' }}>
                                                 {{ $role }}</option>
                                         @endforeach
                                     </select>

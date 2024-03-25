@@ -15,10 +15,10 @@
                             <div class="col-lg-12">
                                 <!--begin::Input group-->
                                 <div class="mb-5">
-                                    <select class="form-select form-select-solid" wire:model="userRole"
-                                        data-control="select2" data-placeholder="Select an option"
-                                        data-allow-clear="true">
-                                        <option></option>
+                                    <select class="form-select " wire:model="userRole"
+                                        data-placeholder="Select an option">
+                                        <option value="" hidden selected>Choose Your Role</option>
+
                                         @foreach ($roles as $role)
                                             <option value="{{ $role }}">{{ $role }}
                                             </option>

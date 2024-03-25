@@ -1,41 +1,3 @@
-{{-- <div class="menu-item">
-    <!--begin:Menu link-->
-    <a class="menu-link {{ Request::is('dashboard*') ? 'active' : '' }}" href="{{ route('dashboard') }}"><span
-            class="menu-icon"><i class="ki-duotone ki-chart-pie-4 text-info fs-2"><span class="path1"></span><span
-                    class="path2"></span><span class="path3"></span><span class="path4"></span></i></span><span
-            class="menu-title">Dashboard
-        </span></a>
-    <!--end:Menu link-->
-</div>
-<div data-kt-menu-trigger="click" class="menu-item menu-accordion " aria-expanded="false">
-    <!--begin:Menu link--><span class="menu-link"><span class="menu-icon"><i
-                class="ki-duotone ki-code text-success fs-2"><span class="path1"></span><span
-                    class="path2"></span><span class="path3"></span></i></span><span class="menu-title">Master Data
-        </span><span class="menu-arrow"></span></span>
-    <!--end:Menu link-->
-    <!--begin:Menu sub-->
-    <div class="menu-sub menu-sub-accordion" aria-expanded="false">
-
-        <div class="menu-item">
-            <!--begin:Menu link--><a class="menu-link {{ Request::is('product*') ? 'active' : '' }}"
-                href="{{ route('product.index') }}"><span class="menu-bullet"><span
-                        class="bullet bullet-dot"></span></span><span class="menu-title">Product</span></a>
-            <!--end:Menu link-->
-        </div>
-        <!--end:Menu item-->
-
-        <!--begin:Menu item-->
-        <div class="menu-item">
-            <!--begin:Menu link--><a class="menu-link {{ Request::is('store*') ? 'active' : '' }}"
-                href="{{ route('store.index') }}"><span class="menu-bullet"><span
-                        class="bullet bullet-dot"></span></span><span class="menu-title">Store</span></a>
-            <!--end:Menu link-->
-        </div>
-        <!--end:Menu item-->
-
-    </div>
-    <!--end:Menu sub-->
-</div> --}}
 
 @push('sidebar_item')
     @foreach (config('sidebar.menu') as $item)
@@ -88,7 +50,7 @@
                             <div class="menu-sub menu-sub-accordion">
                                 @foreach ($item['submenu'] as $subItem)
                                     @if ($subItem['permission'] !== 'All')
-                                        @if (auth()->user()->hasPermissionTo($item['permission']))
+                                        @if (auth()->user()->hasPermissionTo($subItem['permission']))
                                             <!--begin:Menu item-->
                                             <div class="menu-item">
                                                 <!--begin:Menu link--><a
@@ -165,7 +127,7 @@
                         <div class="menu-sub menu-sub-accordion">
                             @foreach ($item['submenu'] as $subItem)
                                 @if ($subItem['permission'] !== 'All')
-                                    @if (auth()->user()->hasPermissionTo($item['permission']))
+                                    @if (auth()->user()->hasPermissionTo($subItem['permission']))
                                         <!--begin:Menu item-->
                                         <div class="menu-item">
                                             <!--begin:Menu link--><a

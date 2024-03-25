@@ -45,7 +45,7 @@
     </script>
     <!--end::Theme mode setup on page load-->
     <!--begin::Root-->
-    <div class="bg-container d-flex flex-column flex-root" id="kt_app_root">
+    <div class="bg-primary bg-gradient d-flex flex-column flex-root" id="kt_app_root">
         <!--begin::Page bg image-->
         <style>
             body {
@@ -53,29 +53,6 @@
             }
 
 
-            .bg-container {
-                background: linear-gradient(45deg, #000000, #7462ff, #ffffff, #00ffea, #3178fa, #051d4b);
-
-                width: 100%;
-                height: 500%;
-
-                background-size: 300% 300%;
-                animation: animate 12s ease infinite;
-            }
-
-            @keyframes animate {
-                0% {
-                    background-position: 0 50%;
-                }
-
-                50% {
-                    background-position: 100% 50%;
-                }
-
-                100% {
-                    background-position: 0 50%;
-                }
-            }
 
             [data-bs-theme="dark"] body {
                 background-image: url('{{ asset('assets/templates/metronic/dist/assets/media/auth/bg4-dark.jpg') }}');
@@ -90,7 +67,7 @@
                 class="d-flex flex-column-fluid flex-lg-row-auto justify-content-center justify-content-lg-end p-12 p-lg-20">
                 <!--begin::Card-->
                 <div
-                    class="bg-body shadow d-flex flex-column align-items-stretch flex-center rounded-4 w-md-600px p-20">
+                    class="bg-body border border-dark border-1 d-flex flex-column align-items-stretch flex-center rounded-4 w-md-600px p-20">
                     <!--begin::Wrapper-->
                     <div class="d-flex flex-center flex-column flex-column-fluid px-lg-10 pb-15 pb-lg-20">
                         <!--begin::Form-->
@@ -112,7 +89,7 @@
                             <div class="fv-row mb-8 fv-plugins-icon-container">
                                 <!--begin::Name-->
                                 <input type="name" placeholder="Nama" name="name"
-                                    class="form-control bg-transparent" value="{{ old('name') }}" autofocus>
+                                    class="form-control border-dark border-1" value="{{ old('name') }}" autofocus>
                                 <!--end::Name-->
                                 <div
                                     class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
@@ -125,7 +102,7 @@
                             <div class="fv-row mb-8 fv-plugins-icon-container">
                                 <!--begin::Email-->
                                 <input type="email" placeholder="Email" name="email"
-                                    class="form-control bg-transparent" value="{{ old('email') }}">
+                                    class="form-control border-dark border-1" value="{{ old('email') }}">
                                 <!--end::Email-->
                                 <div
                                     class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
@@ -140,7 +117,7 @@
                                 <div class="mb-1">
                                     <!--begin::Input wrapper-->
                                     <div class="position-relative mb-3">
-                                        <input class="form-control bg-transparent" type="password"
+                                        <input class="form-control border-dark border-1" type="password"
                                             placeholder="Password" name="password">
                                         <span
                                             class="btn btn-sm btn-icon position-absolute translate-middle top-50 end-0 me-n2"
@@ -179,7 +156,7 @@
                             <div class="fv-row mb-8 fv-plugins-icon-container">
                                 <!--begin::Repeat Password-->
                                 <input placeholder="Konfirmasi Password" name="confirm-password" type="password"
-                                    autocomplete="off" class="form-control bg-transparent">
+                                    autocomplete="off" class="form-control border-dark border-1">
                                 <!--end::Repeat Password-->
                                 <div
                                     class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">

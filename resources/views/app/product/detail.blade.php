@@ -33,7 +33,7 @@
 @endsection
 
 @section('content')
-    <div class="card">
+    <div class="card border border-dark border-1">
         <div class="card-body py-4">
             @livewire('product.detail', ['objId' => $id])
         </div>

@@ -45,35 +45,13 @@
     </script>
     <!--end::Theme mode setup on page load-->
     <!--begin::Root-->
-    <div class="bg-container d-flex flex-column flex-root" id="kt_app_root">
+    <div class="bg-primary bg-gradient d-flex flex-column flex-root" id="kt_app_root">
         <!--begin::Page bg image-->
         <style>
             body {
                 background-image: url('{{ asset('assets/templates/metronic/dist/assets/media/auth/bg4.jpg') }}');
             }
 
-            .bg-container {
-                background: linear-gradient(45deg, #000000, #7462ff, #ffffff, #00ffea, #3178fa, #051d4b);
-
-                width: 100%;
-                height: 200%;
-                background-size: 300% 300%;
-                animation: animate 12s ease infinite;
-            }
-
-            @keyframes animate {
-                0% {
-                    background-position: 0 50%;
-                }
-
-                50% {
-                    background-position: 100% 50%;
-                }
-
-                100% {
-                    background-position: 0 50%;
-                }
-            }
 
             [data-bs-theme="dark"] body {
                 background-image: url('{{ asset('assets/templates/metronic/dist/assets/media/auth/bg4-dark.jpg') }}');
@@ -87,7 +65,7 @@
                 class="d-flex flex-column-fluid flex-lg-row-auto justify-content-center justify-content-lg-end p-12 p-lg-20">
                 <!--begin::Card-->
                 <div
-                    class="bg-body shadow d-flex flex-column align-items-stretch flex-center rounded-4 w-md-600px p-20">
+                    class="bg-body border border-1 border-black d-flex flex-column align-items-stretch flex-center rounded-4 w-md-600px p-20">
                     <!--begin::Wrapper-->
                     <div class="d-flex flex-center flex-column flex-column-fluid px-lg-10 pb-15 pb-lg-20">
                         <!--begin::Form-->
@@ -107,7 +85,7 @@
                             <div class="fv-row mb-8 fv-plugins-icon-container">
                                 <!--begin::Email-->
                                 <input type="text" placeholder="Email/Nama" name="username"
-                                    value="{{ old('username') }}" class="form-control bg-transparent" autofocus>
+                                    value="{{ old('username') }}" class="form-control border-dark border-1" autofocus>
                                 <!--end::Email-->
                                 <div
                                     class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
@@ -120,7 +98,7 @@
                             <div class="fv-row mb-3 fv-plugins-icon-container">
                                 <!--begin::Password-->
                                 <input type="password" placeholder="Password" name="password"
-                                    class="form-control bg-transparent">
+                                    class="form-control border-dark border-1">
                                 <!--end::Password-->
                                 <div
                                     class="fv-plugins-message-container fv-plugins-message-container--enabled invalid-feedback">
@@ -134,12 +112,13 @@
                             <div class="d-grid mb-10">
                                 <div class="mb-5">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="remember_token"
-                                            name="remember_token" {{ old('remember_token') ? 'checked' : '' }} />
+                                        <input class="form-check-input border-dark border-1" type="checkbox"
+                                            id="remember_token" name="remember_token"
+                                            {{ old('remember_token') ? 'checked' : '' }} />
                                         <label class="form-check-label" for="remember_token"> Ingat Saya </label>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary border-dark border-1">
                                     <!--begin::Indicator label-->
                                     <span class="indicator-label">Login</span>
                                     <!--end::Indicator label-->

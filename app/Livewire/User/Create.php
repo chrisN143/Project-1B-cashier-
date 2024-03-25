@@ -30,6 +30,7 @@ class Create extends Component
 
     public function add()
     {
+        // dd($this->userRole);
         $this->validate();
         if ($this->password != $this->confirmPassword) {
             Alert::toast('Konfirmasi Password Gagal', 'error');
@@ -48,7 +49,7 @@ class Create extends Component
 
     public function mount()
     {
-        $this->roles = Role::All()->pluck('name', 'name');
+        $this->roles = Role::All()->pluck('name');
     }
 
     public function render()
