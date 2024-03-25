@@ -58,7 +58,7 @@
                                     </tr>
                                     <tr>
                                         <td colspan="4" class="text-center">PPN 12% :</td>
-                                        <td>Rp. {{ number_format($order->total_price * 0.12, 0, ',', '.') }}</td>
+                                        <td>Rp. {{ number_format($totalprice * 0.12, 0, ',', '.') }}</td>
                                     </tr>
                                     <tr>
                                         <td colspan="4" class="text-center">Total Amount (incl. PPN):</td>
