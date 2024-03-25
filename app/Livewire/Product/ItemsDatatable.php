@@ -48,7 +48,7 @@ class ItemsDatatable extends Component
                 'key' => 'products.price',
                 'name' => 'Price',
                 'render' => function ($item) {
-                    return 'Rp.' . $item->product_price;
+                    return 'Rp.' . number_format($item->product_price, 0, ',', '.');
                 }
             ],
             [
