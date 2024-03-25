@@ -15,7 +15,7 @@
                         @endforeach
                     </select>
                 </div>
-            </div>
+            </div>s
         </div>
     </div>
     @livewire('laporan.stokReportDatatable')
