@@ -15,19 +15,71 @@
                         @endforeach
                     </select>
                 </div>
-            </div>s
+            </div>
         </div>
     </div>
     @livewire('laporan.stokReportDatatable')
-    <table class="my-3">
-        <tbody>
-            @foreach ($itemCounts as $itemCount)
-                <tr>
-                    <td>{{ $itemCount['product_name'] }}</td>
-                    <td>{{ $itemCount['total_quantity'] }}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+    <section>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f2f2f2;
+            }
 
+            .container {
+                max-width: 1000px;
+                margin: 20px auto;
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .table {
+                width: 60%;
+                border-collapse: collapse;
+                margin-top: 20px;
+
+            }
+
+            .table th,
+            .table td {
+                border: 1px solid #ddd;
+                padding: 8px;
+                text-align: center;
+            }
+
+            .table th {
+                background-color: #f2f2f2;
+            }
+
+            .table tr:nth-child(even) {
+                background-color: #f9f9f9;
+
+            }
+        </style>
+
+        <div class="container">
+            <h2>Stock Report</h2>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product Name</th>
+                        <th>Total Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($itemCounts as $itemCount)
+                        <tr>
+                            <td>{{ $itemCount['product_name'] }}</td>
+                            <td>{{ $itemCount['total_quantity'] }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+
+    </section>
 </div>
