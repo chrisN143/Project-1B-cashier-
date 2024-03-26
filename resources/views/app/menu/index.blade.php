@@ -137,11 +137,10 @@
         .btn1 {
             border: 1px solid;
 
-            margin-right: 3px;
 
             border-radius: 0px;
 
-            font-size: 10px;
+            font-size: 5px;
         }
 
         .btn1:hover {
@@ -153,7 +152,6 @@
         .input-quantity {
             border: 1px solid #000;
 
-            margin-right: 3px;
 
             font-size: 10px;
 
@@ -169,6 +167,26 @@
 @endsection
 
 @section('content')
-    @livewire('menu.checkout')
-    @livewire('menu.menu-index')
+    <div>
+        @if (session('error'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('error') }}
+            </div>
+        @endif
+        @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                @livewire('menu.menu-index')
+            </div>
+            <div class="col-md-6">
+                @livewire('menu.checkout')
+            </div>
+        </div>
+    </div>
 @endsection
