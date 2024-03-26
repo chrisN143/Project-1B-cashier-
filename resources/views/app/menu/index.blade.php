@@ -165,7 +165,7 @@
         }
 
         /* CSS for responsiveness */
-        @media only screen and (max-width: 600px) {
+        @media only screen and (max-width: 800px) {
 
             /* Change table layout to columns */
             table {
