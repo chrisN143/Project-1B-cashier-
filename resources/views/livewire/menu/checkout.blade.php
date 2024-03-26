@@ -22,17 +22,17 @@
                                 class="text-center input-quantity" readonly disabled>
                                 <button class="btn btn1" wire:loading.attr="disabled"
                                 wire:click="incrementQuantity({{ $cart->id }})"><i class="fa fa-plus"></i></button> --}}
-                            <button class="btn btn1" wire:loading.attr="disabled"
-                                wire:click="decrementQuantity({{ $cart->id }})"><i class="fa fa-minus"></i></button>
+                            {{-- <button class="btn btn1" wire:loading.attr="disabled"
+                                wire:click="decrementQuantity({{ $cart->id }})"><i class="fa fa-minus"></i></button> --}}
 
-                            {{ $cart->quantity }}
-                            <button class="btn btn1" wire:loading.attr="disabled"
-                                wire:click="incrementQuantity({{ $cart->id }})"><i class="fa fa-plus"></i></button>
+                            <h6>{{ $cart->quantity }}</h6>
+                            {{-- <button class="btn btn1" wire:loading.attr="disabled"
+                                wire:click="incrementQuantity({{ $cart->id }})"><i class="fa fa-plus"></i></button> --}}
 
                         </td>
 
                         <td>
-                            
+
                             <strong>
                                 Rp.
                                 {{ number_format($cart->product->price * $cart->quantity, 0, ',', '.') }}
@@ -94,8 +94,5 @@
         @endif
 
     </div>
-
-
-
 
 </div>

@@ -217,4 +217,14 @@
             </div>
         </div>
     </div>
+
+    @push('styles')
+        <style>
+            @media (max-width: 800px) {
+                .col-md-6 {
+                    width: 100%;
+                }
+            }
+        </style>
+    @endpush
 @endsection
