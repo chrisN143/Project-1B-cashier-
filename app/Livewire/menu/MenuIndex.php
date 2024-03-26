@@ -20,10 +20,12 @@ class MenuIndex extends Component
     public $store_id = '1';
     public $carts;
     private $inputquantity = 1;
+
     public function filter()
     {
         $this->resetPage();
     }
+
     public function add($id)
     {
         $cart = Cart::where('product_id', $id)->first();
@@ -32,8 +34,6 @@ class MenuIndex extends Component
         }
         if (Cart::where('user_id', auth()->user()->id)->where('product_id', $id)->exists()) {
             $cart->update(['quantity' => $cart->quantity + 1]);
-
-
             session()->flash('status', 'Product already updated');
         } else {
             $product = Product::find($id);
@@ -42,31 +42,33 @@ class MenuIndex extends Component
                 'quantity' => $this->inputquantity,
                 'product_id' => $id,
                 'store_id' => $product->store_id
-
             ]);
             session()->flash('status', 'Product added to cart!');
         }
         $this->dispatch('add');
     }
+
     public function mount()
     {
         $this->stores = Store::All();
         $this->carts = Cart::where('user_id', auth()->id())->get();
         $this->search = request()->query('search', $this->search);
     }
-    public function updated()
+
+    public function updatedStoreId()
     {
-        $this->dispatch('store', [
-            'storeClassification' => $this->store_id
+        $this->dispatch('store-selected', [
+            'store_id' => $this->store_id
         ]);
     }
+
     public function render()
     {
         $products =  Product::where('store_id', 'like', '%' . $this->store_id . '%')->when($this->search, function ($query) {
             $query->where('name', 'like', '%' . $this->search . '%');
         })->paginate(20);
-        return view('livewire.menu.menu-index', [
 
+        return view('livewire.menu.menu-index', [
             'products' => $products
         ]);
     }

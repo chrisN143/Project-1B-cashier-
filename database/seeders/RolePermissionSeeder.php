@@ -17,15 +17,15 @@ class RolePermissionSeeder extends Seeder
         /* Create Permission */
         $permissions = [
             'permission-list',
-            'permission-create|store',
+            'permission-create',
             'permission-edit|update',
             'permission-delete',
             'role-list',
-            'role-create|store',
+            'role-create',
             'role-edit|update',
             'role-delete',
             'user-list',
-            'user-create|store',
+            'user-create',
             'user-edit|update',
             'user-delete',
             'dashboard-view',
@@ -45,7 +45,7 @@ class RolePermissionSeeder extends Seeder
             'userManegement-list',
             'menuView-list',
             'laporan-list',
-            'stokReport-list',
+            'laporan-stokReport-list',
         ];
 
         foreach ($permissions as $permission) {
