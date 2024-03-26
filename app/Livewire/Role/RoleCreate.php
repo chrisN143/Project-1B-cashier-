@@ -7,6 +7,7 @@ use Spatie\Permission\Models\Permission;
 use Livewire\Attributes\Rule;
 use Spatie\Permission\Models\Role;
 use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Str;
 
 class RoleCreate extends Component
 {
