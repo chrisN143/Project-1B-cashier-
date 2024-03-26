@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('after_css')
-    <link rel="stylesheet"
-        href="{{ asset('assets/templates/metronic/dist/assets/plugins/custom/datatables/datatables.bundle.css') }}">
     <style>
         .btn1 {
             border: 1px solid;
@@ -232,7 +230,13 @@
 
 @section('content')
     <div class="container">
-        @livewire('menu.checkout')
-        @livewire('menu.menu-index')
+        <div class="row">
+            <div class="col-md-6">
+                @livewire('menu.menu-index')
+            </div>
+            <div class="col-md-6">
+                @livewire('menu.checkout')
+            </div>
+        </div>
     </div>
 @endsection

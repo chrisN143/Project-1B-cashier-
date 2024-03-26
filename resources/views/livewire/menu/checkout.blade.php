@@ -73,7 +73,6 @@
                             </tr>
 
                         @empty
-                            <h1 class="text-center">No cart Avaiable!!!</h1>
                         @endforelse
                     </tbody>
                 </table>
