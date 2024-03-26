@@ -56,7 +56,10 @@ class AuthController extends Controller
             } elseif (auth()->user()->hasAnyPermission('laporan-list')) {
                 return redirect()->route('laporan.index')
                     ->withSuccess('Anda Berhasil Login!');
-            }  else {
+            } elseif (auth()->user()->hasAnyPermission('menuView-list')) {
+                return redirect()->route('menu.index')
+                    ->withSuccess('Anda Berhasil Login!');
+            } else {
                 return redirect()->route('menu.index')
                     ->withSuccess('Anda Berhasil Login!');
             }

@@ -27,6 +27,9 @@ class Product extends Model
         static::creating(function ($model) {
             $model->code = 'Product-' . Str::random(10);
         });
+        static::deleted(function ($model) {
+            $model->image = Storage::delete('images/' . $model->image);;
+        });
     }
     public function store()
     {

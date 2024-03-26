@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('after_css')
-    <link rel="stylesheet"
-        href="{{ asset('assets/templates/metronic/dist/assets/plugins/custom/datatables/datatables.bundle.css') }}">
     <style>
         .btn1 {
             border: 1px solid;
@@ -159,7 +157,7 @@
 
             font-size: 10px;
 
-            width: 40%;
+            width: 10%;
 
             outline: none;
 
@@ -167,72 +165,10 @@
         }
 
         /* CSS for responsiveness */
-        @media only screen and (max-width: 600px) {
-
-            /* Change table layout to columns */
-            table {
-                display: block;
-                overflow-x: auto;
-                width: 100%;
-            }
-
-            /* Ensure table cells display as block elements */
-            table td,
-            table th {
-                display: block;
-                text-align: left;
-            }
-
-            /* Optional: Style table header cells */
-            table th {
-                background-color: #f2f2f2;
-            }
-
-            /* Optional: Add padding and border to table cells */
-            table td,
-            table th {
-                border: 1px solid #dddddd;
-                padding: 8px;
-            }
-        }
     </style>
 @endsection
 
-@section('content_header')
-    <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3 ">
-        <!--begin::Title-->
-        <h1 class="page-heading d-flex text-gray-900 fw-bold fs-3 flex-column justify-content-center my-0">
-            {{ $header }}
-        </h1>
-        <!--end::Title-->
-
-        <!--begin::Breadcrumb-->
-        <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
-            <!--begin::Item-->
-            <li class="breadcrumb-item text-muted">
-                <a href="{{ $main_breadcrumb_link }}" class="text-muted text-hover-primary">
-                    {{ $main_breadcrumb }} </a>
-            </li>
-            <!--end::Item-->
-            @if ($breadcrumb)
-                <!--begin::Item-->
-                <li class="breadcrumb-item">
-                    <span class="bullet bg-gray-500 w-5px h-2px"></span>
-                </li>
-                <!--end::Item-->
-                <!--begin::Item-->
-                <li class="breadcrumb-item text-muted">
-                    {{ $breadcrumb }} </li>
-                <!--end::Item-->
-            @endif
-        </ul>
-        <!--end::Breadcrumb-->
-    </div>
-@endsection
-
 @section('content')
-    <div class="container">
-        @livewire('menu.checkout')
-        @livewire('menu.menu-index')
-    </div>
+    @livewire('menu.checkout')
+    @livewire('menu.menu-index')
 @endsection
