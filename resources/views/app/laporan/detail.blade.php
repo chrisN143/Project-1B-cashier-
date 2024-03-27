@@ -38,7 +38,7 @@
 @endsection
 
 @section('content')
-    <div class="card">
+    <div class="card mx-3">
 
         <div class="card-body py-4">
             <div class="container">

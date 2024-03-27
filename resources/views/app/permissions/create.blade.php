@@ -34,5 +34,8 @@
 @endsection
 
 @section('content')
- @livewire('permission.permission-create')
+    <div class="container">
+
+        @livewire('permission.permission-create')
+    </div>
 @endsection

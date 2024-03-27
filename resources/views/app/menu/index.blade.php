@@ -24,21 +24,19 @@
 @endsection
 
 @section('content')
-    <div class="container">
         <div class="row">
-            <div class="col-md-6" style="overflow-y: auto; max-height: 70vh;">
+            <div class="col-sm-6" style="overflow-y: auto; max-height: 100vh;">
                 @livewire('menu.menu-index')
             </div>
             <div class="col-sm-6">
                 @livewire('menu.checkout')
             </div>
         </div>
-    </div>
 
     @push('styles')
         <style>
             @media (max-width: 800px) {
-                .col-md-6 {
+                .col-6 {
                     width: 100%;
                 }
             }

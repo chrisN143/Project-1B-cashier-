@@ -51,7 +51,7 @@
                     themeMode = localStorage.getItem("data-bs-theme");
                 } else {
                     themeMode = defaultThemeMode;
-                    
+
                 }
             }
 
@@ -94,7 +94,7 @@
                         <!--begin::Content-->
                         <div id="kt_app_content" class="app-content  flex-column-fluid ">
                             <!--begin::Content container-->
-                            <div id="kt_app_content_container" class="container">
+                            <div id="kt_app_content_container">
                                 <!--begin::Row-->
                                 @yield('content')
                                 <!--end::Row-->

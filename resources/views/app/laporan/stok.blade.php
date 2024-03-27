@@ -143,6 +143,9 @@
 @endsection
 
 @section('content')
+<div class="mx-3">
+
     @livewire('laporan.stok-report')
+</div>
 
 @endsection
