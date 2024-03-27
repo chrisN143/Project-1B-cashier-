@@ -32,8 +32,6 @@
                                 class="text-center input-quantity" readonly disabled>
                                 <button class="btn btn1" wire:loading.attr="disabled"
                                 wire:click="incrementQuantity({{ $cart->id }})"><i class="fa fa-plus"></i></button> --}}
-                            <button class="btn btn1" wire:loading.attr="disabled"
-                                wire:click="decrementQuantity({{ $cart->id }})"><i class="fa fa-minus"></i></button>
 
                             <h6>{{ $cart->quantity }}</h6>
                             {{-- <button class="btn btn1" wire:loading.attr="disabled"
@@ -51,6 +49,9 @@
                             $total += $cart->product->price * $cart->quantity;
                         @endphp
                         <td>
+                             <button class="btn btn1" wire:loading.attr="disabled"
+                                wire:click="decrementQuantity({{ $cart->id }})"><i class="fa fa-minus"></i></button>
+
                             <button wire:loading.attr="disabled" wire:click="destroy({{ $cart->id }})"
                                 class="btn btn-danger btn-sm">
                                 <i class="fa fa-trash"></i>
@@ -98,7 +99,7 @@
                     <span class="visually-hidden">Loading...</span>
                 </div>
             </button>
-            
+
         @else
             <button class="btn btn-warning disabled mt-3">Checkout
             </button>

@@ -23,7 +23,7 @@ class Checkout extends Component
     public $customerName;
     #[Rule('required')]
     public $payment_id;
- 
+
     #[On('store-selected')]
     public function handledStore($data)
     {
@@ -33,7 +33,7 @@ class Checkout extends Component
     public function decrementQuantity($id)
     {
         $cartData = Cart::where('id', $id)->where('user_id', auth()->user()->id)->first();
-        if ($cartData && $cartData->quantity > 0) {
+        if ($cartData && $cartData->quantity > 1) {
             $cartData->decrement('quantity');
             session()->flash('status', 'Quantity Updated!');
         } else {

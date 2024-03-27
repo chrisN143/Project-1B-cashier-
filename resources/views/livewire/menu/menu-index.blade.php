@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    <div class="container ">
+    <div class="container " style="overflow-y: auto; max-height: 70vh;">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-4">
             @forelse ($products as $item)
                 <div class="col">
