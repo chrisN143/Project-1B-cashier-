@@ -49,7 +49,7 @@
                             $total += $cart->product->price * $cart->quantity;
                         @endphp
                         <td>
-                             <button class="btn btn1" wire:loading.attr="disabled"
+                            <button class="btn btn1" wire:loading.attr="disabled"
                                 wire:click="decrementQuantity({{ $cart->id }})"><i class="fa fa-minus"></i></button>
 
                             <button wire:loading.attr="disabled" wire:click="destroy({{ $cart->id }})"
@@ -85,7 +85,7 @@
         @else
             <input type="text" class="form-control" placeholder="Nama Customer" aria-label="Nama Customer" disabled>
             <select class="form-select mt-3" name="store_id"disabled>
-                <option value="" hidden selected>Choose your Payment Method</option>
+                <option value="" hidden selected></option>
 
             </select>
         @endif
@@ -99,7 +99,6 @@
                     <span class="visually-hidden">Loading...</span>
                 </div>
             </button>
-
         @else
             <button class="btn btn-warning disabled mt-3">Checkout
             </button>
