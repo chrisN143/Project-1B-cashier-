@@ -80,7 +80,8 @@
             </select>
         @endif
         @if ($total != 0)
-            <button wire:click='order' wire:loading.attr="disabled"
+            <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" wire:click='order'
+                wire:loading.attr="disabled"
                 class="btn btn-warning border border-1 border-black text-dark mt-3">Checkout Rp.
                 {{ number_format($total, 0, ',', '.') }}
                 <div class="spinner-border text-light" style="width: 15px;  height:15px;" role="status" wire:loading
@@ -88,6 +89,7 @@
                     <span class="visually-hidden">Loading...</span>
                 </div>
             </button>
+            
         @else
             <button class="btn btn-warning disabled mt-3">Checkout
             </button>

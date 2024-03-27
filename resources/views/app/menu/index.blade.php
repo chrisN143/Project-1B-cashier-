@@ -212,6 +212,7 @@
             <div class="col-md-6" style="overflow-y: auto; max-height: 100vh;">
                 @livewire('menu.menu-index')
             </div>
+            {{-- Scroll = style="overflow-y: auto; max-height: 100vh;" --}}
             <div class="col-md-6">
                 @livewire('menu.checkout')
             </div>
