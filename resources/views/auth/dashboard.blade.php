@@ -32,6 +32,9 @@
 @endsection
 
 @section('content')
+<div class="mx-3">
+
     @livewire('dashboard.dashboard', ['lazy' => true])
+</div>
     <!--end::Col-->
 @endsection

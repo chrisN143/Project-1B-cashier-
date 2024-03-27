@@ -39,7 +39,9 @@
 
 @section('content')
 <div class="mx-3">
+
     @livewire('order.order-filter')
     @livewire('order.itemsdatatable')
+</div>
 </div>
 @endsection

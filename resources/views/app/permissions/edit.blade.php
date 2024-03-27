@@ -34,5 +34,8 @@
 @endsection
 
 @section('content')
+<div class="mx-3">
+
     @livewire('permission.permission-edit', ['permission' => $permission])
+</div>
 @endsection

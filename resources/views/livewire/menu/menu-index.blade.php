@@ -12,11 +12,11 @@
     @endif
     <div class="container my-3">
         <div class="row">
-            <div class="col-md-6 my-2">
+            <div class="col-sm-6 my-2">
                 <input class="form-control me-2" wire:model.live="search" type="text" placeholder="Search"
                     aria-label="Search">
             </div>
-            <div class="col-md-6 my-2">
+            <div class="col-sm-6 my-2">
                 <select class="form-select" name="store_id" wire:model.live="store_id">
                     <option value="" hidden selected>All Stores</option>
                     @foreach ($stores as $store)
@@ -28,11 +28,15 @@
     </div>
 
     <div class="container " style="overflow-y: auto; max-height: 70vh;">
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-4">
+        <div class="row row-cols-2 justify-content-center g-4">
             @forelse ($products as $item)
                 <div class="col">
                     <div class="card border-1 border-dark">
-                        {{-- <img src="{{ asset('storage/images/' . $item->image) }}" class="card-img-top" alt=""> --}}
+                        <div style="max-height: 150px; overflow:hidden;">
+
+                            <img src="{{ asset('storage/images/' . $item->image) }}" class="card-img-top"
+                                alt="">
+                        </div>
                         <div class="card-body">
                             <h5 class="card-title">{{ $item->name }}</h5>
                             <p class="card-text">

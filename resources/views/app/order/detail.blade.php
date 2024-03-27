@@ -38,6 +38,9 @@
 @endsection
 
 @section('content')
+<div class="mx-3">
+
     @livewire('order.detail-orders', ['order' => $order])
+</div>
 
 @endsection

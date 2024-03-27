@@ -10,7 +10,8 @@
     <div class="card mx-3">
         <!--begin::Card header-->
         @if (auth()->user()->hasAnyPermission('product-create'))
-            <div class="card-header border-0 pt-6">
+            <div class="card border border-dark border-1">
+
                 <!--begin::Card title-->
                 <!--begin::Card toolbar-->
                 <div class="card-toolbar">
@@ -26,6 +27,9 @@
                 <!--end::Card toolbar-->
             </div>
         @endif
+
+        <!--begin::Card header-->
+
 
         <!--end::Card header-->
 
