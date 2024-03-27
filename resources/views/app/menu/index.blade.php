@@ -18,8 +18,6 @@
         }
 
 
-        /* CSS for responsiveness */
-
     </style>
 @endsection
 
