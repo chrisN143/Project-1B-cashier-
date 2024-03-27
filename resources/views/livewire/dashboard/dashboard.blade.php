@@ -1,8 +1,8 @@
-<div class="row g-5 gx-xl-10 mb-5 mb-xl-10 ">
+<div class="row g-5 gx-xl-10 mb-5 mb-xl-10 mx-2">
     <!--begin::Col-->
     <div class="col-md-4">
         <!--begin::Card widget 7-->
-        <div class="card card-flush border-dark border-1 bg-primary bg-gradient">
+        <div class="card card-flush bg-primary bg-gradient">
             <!--begin::Header-->
             <div class="card-header py-4">
                 <!--begin::Title-->
@@ -24,9 +24,10 @@
     </div>
     <!--end::Col-->
     <!--begin::Col-->
+
     <div class="col-md-4">
         <!--begin::Card widget 7-->
-        <div class="card card-flush bg-warning bg-gradient border-dark border-1">
+        <div class="card card-flush bg-warning bg-gradient">
             <!--begin::Header-->
             <div class="card-header py-4">
                 <!--begin::Title-->
@@ -49,34 +50,36 @@
     <!--end::Col-->
     <!--begin::Col-->
 
-    <!--end::Col-->
-    <!--begin::Col-->
     <div class="col-md-4">
         <!--begin::Card widget 7-->
-        <div class="card card-flush bg-danger bg-gradient border-dark border-1">
+        <div class="card card-flush bg-danger bg-gradient">
             <!--begin::Header-->
             <div class="card-header py-4">
                 <!--begin::Title-->
                 <div class="card-title d-flex flex-column">
                     <!--begin::Amount-->
-                    <span class="text-light  fw-semibold fs-4">Products</span>
-                    <span class="fs-2hx fw-bold text-light lh-1 ls-n2">{{ $total_product }}</span>
+                    <span class="text-light fw-semibold fs-2">Products</span>
+                    <span class="fs-2hx fw-bold text-light me-2 lh-1 ls-n2">{{ $total_product }}</span>
                     <!--end::Amount-->
-
                     <!--begin::Subtitle-->
                     <!--end::Subtitle-->
                 </div>
                 <span class="float-right display-5 bg-opacity-25"><i
-                        class="fa-solid fa-cart-shopping fs-1 text-light"></i></span>
+                    class="fa-solid fa-cart-shopping fs-1 text-light"></i></span>
                 <!--end::Title-->
             </div>
             <!--end::Header-->
         </div>
         <!--end::Card widget 7-->
     </div>
+    <!--end::Col-->
+    <!--begin::Col-->
+
+
+
     <div class="col-md-4">
         <!--begin::Card widget 7-->
-        <div class="card card-flush bg-success bg-gradient border-dark border-1">
+        <div class="card card-flush bg-success bg-gradient">
             <!--begin::Header-->
             <div class="card-header py-4">
                 <!--begin::Title-->
@@ -100,7 +103,7 @@
 
     <div class="col-md-4">
         <!--begin::Card widget 7-->
-        <div class="card card-flush bg-info bg-gradient border-dark border-1">
+        <div class="card card-flush bg-info bg-gradient">
             <!--begin::Header-->
             <div class="card-header py-4">
                 <!--begin::Title-->
@@ -124,7 +127,7 @@
 
     <div class="col-md-4">
         <!--begin::Card widget 7-->
-        <div class="card card-flush bg-secondary bg-gradient border-dark border-1">
+        <div class="card card-flush bg-secondary bg-gradient">
             <!--begin::Header-->
             <div class="card-header py-4">
                 <!--begin::Title-->

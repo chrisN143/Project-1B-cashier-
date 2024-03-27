@@ -144,6 +144,8 @@
 @endsection
 
 @section('content')
+<div class="mx-3">
     @livewire('laporan.index')
     @livewire('laporan.itemsdatatable')
+</div>
 @endsection
