@@ -34,5 +34,5 @@
 @endsection
 
 @section('content')
-@livewire('permission.permission-edit', ['permission' => $permission])
+    @livewire('permission.permission-edit', ['permission' => $permission])
 @endsection

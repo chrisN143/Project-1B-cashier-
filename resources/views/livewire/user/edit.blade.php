@@ -16,11 +16,10 @@
                             <div class="col-lg-12">
                                 <!--begin::Input group-->
                                 <div class="mb-5">
-                                    <select wire:model="roleUser" class="form-select form-select-solid" name="roleUser"
-                                        data-control="select2" data-placeholder="Select an option"
-                                        data-allow-clear="true">
+                                    <select wire:model="roleUser" class="form-select form-select-solid" name="roleUser">
                                         @foreach ($roles as $role)
-                                            <option value="{{ $role }}" {{ $user_role == $role ? 'selected' : '' }}>
+                                            <option value="{{ $role }}"
+                                                {{ $user_role == $role ? 'selected' : '' }}>
                                                 {{ $role }}</option>
                                         @endforeach
                                     </select>
@@ -106,7 +105,6 @@
                             <!--end::Col-->
                             <div class="col-lg-12">
                                 <a href="{{ route('user.index') }}" class="btn btn-primary me-2">Back</a>
-                                <button class="btn btn-warning me-2" type="reset">Reset</button>
                                 <button wire:click="update" class="btn btn-success me-2" type="submit">Submit</button>
                             </div>
                         </div>

@@ -1,144 +1,98 @@
-<div class="row shadow border rounded p-3">
-    <div class="col-md-5 my-auto">
-        <h4>Check Out : On Store {{ $cartStore->store_name }} </h4>
-        @if (session('error'))
-            <div class="alert alert-danger" role="alert">
-                {{ session('error') }}
-            </div>
-        @endif
-        @if (session('status'))
-            <div class="alert alert-success" role="alert">
-                {{ session('status') }}
-            </div>
-        @endif
-    </div>
-    <div class="py-1 py-md-3 bg-light">
+<div class="border bg-light border-1 border-dark rounded  my-3">
 
-        <div class="container" wire:loading.attr="disabled">
-            <div class="card p-4">
 
-                <table>
+    <div class="p-2">
+        <h5>Check Out : On Store {{ $cartStore ? $cartStore->store_name : '' }} </h5>
 
-                    <tbody>
+        <table wire:poll.3s class="table table-striped">
+            <tbody>
+                @php
+                    $total = 0;
+                @endphp
+                @forelse ($carts as $cart)
+                    <tr class="text-center">
+                        <td class="my-auto">
+                            <strong>{{ $cart->product->name }}</strong>
+                        </td>
+                        <td>
+                            {{-- @if ($cart->quantity > 0)
+                            <button class="btn btn1" wire:loading.attr="disabled"
+                                wire:click="decrementQuantity({{ $cart->id }})"><i class="fa fa-minus"></i></button>
+                            <input type="number" value="" max="{{ $this->totalStok }}"
+                                class="text-center input-quantity" readonly disabled>
+                                <button class="btn btn1" wire:loading.attr="disabled"
+                                wire:click="incrementQuantity({{ $cart->id }})"><i class="fa fa-plus"></i></button> --}}
+                            {{-- <button class="btn btn1" wire:loading.attr="disabled"
+                                wire:click="decrementQuantity({{ $cart->id }})"><i class="fa fa-minus"></i></button> --}}
+
+                            <h6>{{ $cart->quantity }}</h6>
+                            {{-- <button class="btn btn1" wire:loading.attr="disabled"
+                                wire:click="incrementQuantity({{ $cart->id }})"><i class="fa fa-plus"></i></button> --}}
+
+                        </td>
+
+                        <td>
+
+                            <strong>
+                                Rp.
+                                {{ number_format($cart->product->price * $cart->quantity, 0, ',', '.') }}
+                            </strong>
+                        </td>
                         @php
-                            $total = 0;
+                            $total += $cart->product->price * $cart->quantity;
                         @endphp
-                        @forelse ($carts as $cart)
-                            <tr>
-                                <td data-label="No Customer">
-                                    <strong>{{ $cart->product->name }}</strong>
-                                </td>
-                                <td data-label="Total Harga">Rp. {{ number_format($cart->product->price, 0, ',', '.') }}
-                                </td>
-                                <td data-label="Tipe Pembayaran">
-                                    @if ($cart->quantity > 0)
-                                        <div class="input-group">
-                                            <button class="btn btn1" wire:loading.attr="disabled"
-                                                wire:click="decrementQuantity({{ $cart->id }})"><i
-                                                    class="fa fa-minus"></i></button>
-                                            <input type="number" value="{{ $cart->quantity }}"
-                                                max="{{ $this->totalStok }}" class="text-center input-quantity" readonly
-                                                disabled>
-                                            <button class="btn btn1" wire:loading.attr="disabled"
-                                                wire:click="incrementQuantity({{ $cart->id }})"><i
-                                                    class="fa fa-plus"></i></button>
-                                        </div>
-                                    @else
-                                        <div class="input-group">
-                                            <button class="btn btn1" wire:loading.attr="disabled"
-                                                wire:click="decrementQuantity({{ $cart->id }})"><i
-                                                    class="fa fa-minus"></i></button>
-                                            <input type="number" value="{{ $cart->quantity }}" class="input-quantity"
-                                                readonly disabled>
-                                            <button class="btn btn1" wire:loading.attr="disabled"
-                                                wire:click="incrementQuantity({{ $cart->id }})"><i
-                                                    class="fa fa-plus"></i></button>
-                                        </div>
-                                    @endif
-                                </td>
-                                <td data-label="Store">{{ $cart->store->store_name }}
-                                </td>
-                                <td data-label="Tanggal Order"> Rp.
-                                    {{ number_format($cart->product->price * $cart->quantity, 0, ',', '.') }}
-                                </td>
-                                @php
-                                    $total += $cart->product->price * $cart->quantity;
-                                @endphp
-                                <td data-label="Action">
-                                    <button wire:loading.attr="disabled" wire:click="destroy({{ $cart->id }})"
-                                        class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
+                        <td>
+                            <button wire:loading.attr="disabled" wire:click="destroy({{ $cart->id }})"
+                                class="btn btn-danger btn-sm">
+                                <i class="fa fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
 
-                        @empty
-                            <h1 class="text-center">No cart Avaiable!!!</h1>
-                        @endforelse
-                    </tbody>
-                </table>
+                @empty
+                    <h1 class="text-center">No cart Avaiable!!!</h1>
+                @endforelse
+            </tbody>
+        </table>
 
-            </div>
+    </div>
 
-            <div class="row justify-content-center">
 
-                <div class="col-md-7 my-4">
-                    <div class="shadow bg-white p-3">
-                        @if ($total != 0)
-                            <input type="text" class="form-control" placeholder="Nama Customer"
-                                aria-label="Nama Customer" wire:model="customerName">
-                            <hr>
-                            <select class="form-select" name="payment_id" wire:model="payment_id">
-                                <option value="" hidden selected>Choose your Payment Method</option>
-                                @foreach ($payment as $method)
-                                    <option value="{{ $method->payment_method }}">
-                                        {{ $method->payment_method }}</option>
-                                @endforeach
-                            </select>
-                            @error('payment_id')
-                                <p class="text-danger">{{ $message }}</p>
-                            @enderror
-                        @else
-                            <input type="text" class="form-control" placeholder="Nama Customer"
-                                aria-label="Nama Customer" disabled>
-                            <hr>
-                            <select class="form-select" name="store_id" wire:model="store_id" disabled>
-                                <option value="" hidden selected>Choose your Payment Method</option>
-                                @foreach ($payment as $method)
-                                    <option value="{{ $method->id }}">
-                                        {{ $method->payment_method }}</option>
-                                @endforeach
-                            </select>
-                        @endif
+    <div class="bg-white p-3 rounded">
+        @if ($total != 0)
+            <input type="text" class="form-control" placeholder="Nama Customer" aria-label="Nama Customer"
+                wire:model="customerName">
+            <select class="form-select mt-3" name="payment_id" wire:model="payment_id">
+                <option value="" hidden selected>Choose your Payment Method</option>
+                @foreach ($payment as $method)
+                    <option value="{{ $method->payment_method }}">
+                        {{ $method->payment_method }}</option>
+                @endforeach
+            </select>
+            @error('payment_id')
+                <p class="text-danger">{{ $message }}</p>
+            @enderror
+        @else
+            <input type="text" class="form-control" placeholder="Nama Customer" aria-label="Nama Customer" disabled>
+            <select class="form-select mt-3" name="store_id"disabled>
+                <option value="" hidden selected>Choose your Payment Method</option>
 
-                    </div>
-
+            </select>
+        @endif
+        @if ($total != 0)
+            <button wire:click='order' wire:loading.attr="disabled"
+                class="btn btn-warning border border-1 border-black text-dark mt-3">Checkout Rp.
+                {{ number_format($total, 0, ',', '.') }}
+                <div class="spinner-border text-light" style="width: 15px;  height:15px;" role="status" wire:loading
+                    wire:target='order'>
+                    <span class="visually-hidden">Loading...</span>
                 </div>
-                <div class="col-md-5 my-4">
-                    <div class="shadow bg-white p-3">
-                        <h4>Total:
-                            <span>Rp. {{ number_format($total, 0, ',', '.') }}</span>
-                        </h4>
-                        <hr>
-                        <div class="">
-                            @if ($total != 0)
-                                <button wire:click='order' wire:loading.attr="disabled"
-                                    class="btn btn-warning shadow">Checkout
-                                    <div class="spinner-border text-light" style="width: 15px;  height:15px;"
-                                        role="status" wire:loading wire:target='order'>
-                                        <span class="visually-hidden">Loading...</span>
-                                    </div>
-                                </button>
-                            @else
-                                <button class="btn btn-warning disabled">Checkout
-                                </button>
-                            @endif
-                        </div>
-                    </div>
+            </button>
+        @else
+            <button class="btn btn-warning disabled mt-3">Checkout
+            </button>
+        @endif
 
-                </div>
-            </div>
-        </div>
     </div>
 
 </div>

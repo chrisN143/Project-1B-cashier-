@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('after_css')
-    <link rel="stylesheet"
-        href="{{ asset('assets/templates/metronic/dist/assets/plugins/custom/datatables/datatables.bundle.css') }}">
     <style>
         .btn1 {
             border: 1px solid;
@@ -139,11 +137,10 @@
         .btn1 {
             border: 1px solid;
 
-            margin-right: 3px;
 
             border-radius: 0px;
 
-            font-size: 10px;
+            font-size: 5px;
         }
 
         .btn1:hover {
@@ -155,11 +152,10 @@
         .input-quantity {
             border: 1px solid #000;
 
-            margin-right: 3px;
 
             font-size: 10px;
 
-            width: 40%;
+            width: 10%;
 
             outline: none;
 
@@ -198,41 +194,37 @@
     </style>
 @endsection
 
-@section('content_header')
-    <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3 ">
-        <!--begin::Title-->
-        <h1 class="page-heading d-flex text-gray-900 fw-bold fs-3 flex-column justify-content-center my-0">
-            {{ $header }}
-        </h1>
-        <!--end::Title-->
-
-        <!--begin::Breadcrumb-->
-        <ul class="breadcrumb breadcrumb-separatorless fw-semibold fs-7 my-0 pt-1">
-            <!--begin::Item-->
-            <li class="breadcrumb-item text-muted">
-                <a href="{{ $main_breadcrumb_link }}" class="text-muted text-hover-primary">
-                    {{ $main_breadcrumb }} </a>
-            </li>
-            <!--end::Item-->
-            @if ($breadcrumb)
-                <!--begin::Item-->
-                <li class="breadcrumb-item">
-                    <span class="bullet bg-gray-500 w-5px h-2px"></span>
-                </li>
-                <!--end::Item-->
-                <!--begin::Item-->
-                <li class="breadcrumb-item text-muted">
-                    {{ $breadcrumb }} </li>
-                <!--end::Item-->
-            @endif
-        </ul>
-        <!--end::Breadcrumb-->
-    </div>
-@endsection
-
 @section('content')
-    <div class="container">
-        @livewire('menu.checkout')
-        @livewire('menu.menu-index')
+    <div>
+        @if (session('error'))
+            <div class="alert alert-danger" role="alert">
+                {{ session('error') }}
+            </div>
+        @endif
+        @if (session('status'))
+            <div class="alert alert-success" role="alert">
+                {{ session('status') }}
+            </div>
+        @endif
     </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                @livewire('menu.menu-index')
+            </div>
+            <div class="col-md-6">
+                @livewire('menu.checkout')
+            </div>
+        </div>
+    </div>
+
+    @push('styles')
+        <style>
+            @media (max-width: 800px) {
+                .col-md-6 {
+                    width: 100%;
+                }
+            }
+        </style>
+    @endpush
 @endsection

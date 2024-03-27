@@ -54,4 +54,26 @@ class StoreController extends Controller
             )
         );
     }
+    public function show(Request $request)
+    {
+        /* Header Setting */
+        $title = "Store";
+
+        $main_breadcrumb = "Store";
+        $main_breadcrumb_link = route('store.show');
+        $breadcrumb = null;
+
+        $id = $request->id;
+
+        return view(
+            'app.store.show',
+            compact(
+                'id',
+                'title',
+                'main_breadcrumb',
+                'main_breadcrumb_link',
+                'breadcrumb'
+            )
+        );
+    }
 }

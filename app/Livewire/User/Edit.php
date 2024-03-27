@@ -3,11 +3,11 @@
 namespace App\Livewire\User;
 
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Livewire\Component;
 use Livewire\Attributes\Rule;
 use Spatie\Permission\Models\Role;
-use Livewire\Attributes\Validate;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class Edit extends Component
@@ -32,17 +32,22 @@ class Edit extends Component
         $this->validate();
         $user = User::find($this->userId);
         if ($this->email == $user->email) {
+            $role = DB::table("model_has_roles")
+                ->where("model_id", $user->id)->delete();
             $user->update([
                 'name' => $this->name,
+                'password' => Hash::make($this->password)
             ]);
             $user->assignRole($this->roleUser);
         } else {
+            $role = DB::table("model_has_roles")
+                ->where("model_id", $user->id)->delete();
+            $user->assignRole($this->roleUser);
             $user->update([
                 'name' => $this->name,
                 'email' => $this->email,
                 'password' => Hash::make($this->password)
             ]);
-            $user->assignRole($this->roleUser);
         }
 
         Alert::toast('Data Berhasil Diperbarui', 'success');
@@ -56,7 +61,7 @@ class Edit extends Component
         $userEdit = User::find($this->userId);
         $this->user_role = $userEdit->getRoleNames()->first();
         $this->name = $userEdit->name;
-        // $this->roleUser = $userEdit->getRoleNames()->first();
+        $this->roleUser = $userEdit->getRoleNames()->first();
         $this->email = $userEdit->email;
 
         // return $roles;

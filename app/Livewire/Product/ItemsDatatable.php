@@ -66,8 +66,8 @@ class ItemsDatatable extends Component
                     $authUser = User::find(Auth::id());
 
                     $detailsHtml = '';
-                    $detailsUrl = route('product.detail', $item->product_id);
-                    $detailsHtml = "<a href='$detailsUrl' class='btn btn-primary btn-sm ml-2'><i class='fa fa-detail mr-2'></i>details</a>";
+                    $detailsUrl = route('product.show', ['product_id' => $item['product_id']]);
+                    $detailsHtml = "<a href='$detailsUrl' class='btn btn-primary btn-sm ml-2'><i class='fa-solid fa-circle-info'></i></a>";
                     $editHtml = '';
                     $editUrl = route('product.detail', ['product_id' => $item['product_id']]);
                     $editHtml = "<a href='$editUrl' class='btn btn-primary btn-sm ml-2'><i class='fa-solid fa-pen-to-square'></i></a>";
@@ -78,11 +78,18 @@ class ItemsDatatable extends Component
                                 wire:confirm=\"Delete Data?\">
                                 <i class='fa fa-trash mr-2'></i>
                                     </button>";
-
-
                     if (auth()->user()->hasAnyPermission(['product-delete', 'product-edit|update'])) {
+                        $html = "$editHtml  $destroyHtml";
+                        return $html;
+                    } elseif (auth()->user()->hasAnyPermission('product-delete')) {
+                        $html = "$detailsHtml $destroyHtml";
+                        return $html;
+                    } elseif (auth()->user()->hasAnyPermission('product-edit|update')) {
                         # code...
-                        $html = "$editHtml $destroyHtml";
+                        $html = "$editHtml";
+                        return $html;
+                    } else {
+                        $html = "$detailsHtml";
                         return $html;
                     }
                     // $html = "$editHtml";

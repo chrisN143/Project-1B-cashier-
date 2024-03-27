@@ -15,10 +15,10 @@
                             <div class="col-lg-12">
                                 <!--begin::Input group-->
                                 <div class="mb-5">
-                                    <select class="form-select form-select-solid" wire:model="userRole"
-                                        data-control="select2" data-placeholder="Select an option"
-                                        data-allow-clear="true">
-                                        <option></option>
+                                    <select class="form-select " wire:model="userRole"
+                                        data-placeholder="Select an option">
+                                        <option value="" hidden selected>Choose Your Role</option>
+
                                         @foreach ($roles as $role)
                                             <option value="{{ $role }}">{{ $role }}
                                             </option>
@@ -103,7 +103,6 @@
                             <!--end::Col-->
                             <div class="col-lg-12">
                                 <a href="{{ route('user.index') }}" class="btn btn-primary me-2">Back</a>
-                                <button class="btn btn-warning me-2" type="reset">Reset</button>
                                 <button wire:click="add" class="btn btn-success me-2" type="submit">Submit</button>
                             </div>
                         </div>

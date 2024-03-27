@@ -72,24 +72,39 @@
                                     <thead>
                                         <th>Items Id</th>
                                         <th>Product</th>
-                                        <th>Quantity</th>
                                         <th>Price</th>
+                                        <th>Quantity</th>
+                                        <th>Subtotal</th>
                                     </thead>
+                                    @php
+                                        $totalprice = 0;
+                                    @endphp
                                     <tbody>
                                         @foreach ($order->orderItems as $item)
                                             <tr>
                                                 <th width="10%">{{ $item->product->code }}</th>
                                                 <th width="10%">{{ $item->product_name }}</th>
+                                                <th width="10%">Rp.
+                                                    {{ number_format($item->product_price, 0, ',', '.') }}</th>
                                                 <th width="10%">{{ $item->product_quantity }}</th>
-                                                <th width="10%">Rp. {{ $item->product_price }}</th>
+                                                <th width="10%">Rp.
+                                                    {{ number_format($item->product_price * $item->product_quantity, 0, ',', '.') }}
+                                                </th>
+                                                @php
+                                                    $totalprice += $item->product_quantity * $item->product_price;
+                                                @endphp
                                             </tr>
                                         @endforeach
                                         <tr>
-                                            <td colspan="3" class="text-center">PPN 12% :</td>
-                                            <td>Rp. {{ number_format($order->total_price * 0.12, 0, ',', '.') }}</td>
+                                            <td colspan="4" class="text-center">Total :</td>
+                                            <td>Rp. {{ number_format($totalprice, 0, ',', '.') }}</td>
                                         </tr>
                                         <tr>
-                                            <td colspan="3" class="text-center">Total Amount (incl. PPN):</td>
+                                            <td colspan="4" class="text-center">PPN 12% :</td>
+                                            <td>Rp. {{ number_format($totalprice * 0.12, 0, ',', '.') }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="4" class="text-center">Total Amount (incl. PPN):</td>
                                             <td>Rp. {{ number_format($order->total_price, 0, ',', '.') }}</td>
                                         </tr>
                                     </tbody>

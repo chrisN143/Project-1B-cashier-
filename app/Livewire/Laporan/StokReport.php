@@ -44,7 +44,6 @@ class StokReport extends Component
 
         $this->dispatch('items', data: $orderItems);
 
-        return view('livewire.laporan.stok-report');
         $itemCounts = $orderItems->groupBy('product_name')->map(function ($items) {
             return [
                 'product_name' => $items->first()->product_name,

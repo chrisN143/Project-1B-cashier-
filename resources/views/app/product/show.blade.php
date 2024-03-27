@@ -4,7 +4,7 @@
     <div class="page-title d-flex flex-column justify-content-center flex-wrap me-3 ">
         <!--begin::Title-->
         <h1 class="page-heading d-flex text-gray-900 fw-bold fs-3 flex-column justify-content-center my-0">
-            {{ $id != null ? 'Product Edit' : 'Product Create' }}
+            Product Details
         </h1>
         <!--end::Title-->
 
@@ -35,7 +35,7 @@
 @section('content')
     <div class="card border border-dark border-1">
         <div class="card-body py-4">
-            @livewire('product.detail', ['objId' => $id])
+            @livewire('product.show', ['objId' => $id])
         </div>
     </div>
 @endsection
