@@ -13,8 +13,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
     <!--end::Fonts-->
     <!--begin::Global Stylesheets Bundle(mandatory for all pages)-->
-    <link href="{{ asset('assets/templates/metronic/dist/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet"
-        type="text/css" />
+
     <link href="{{ asset('assets/templates/metronic/dist/assets/css/style.bundle.css') }}" rel="stylesheet"
         type="text/css" />
     <!--end::Global Stylesheets Bundle-->
@@ -46,19 +45,7 @@
     <!--end::Theme mode setup on page load-->
     <!--begin::Root-->
     <div class="bg-primary bg-gradient d-flex flex-column flex-root" id="kt_app_root">
-        <!--begin::Page bg image-->
-        <style>
-            body {
-                background-image: url('{{ asset('assets/templates/metronic/dist/assets/media/auth/bg4.jpg') }}');
-            }
 
-
-
-            [data-bs-theme="dark"] body {
-                background-image: url('{{ asset('assets/templates/metronic/dist/assets/media/auth/bg4-dark.jpg') }}');
-            }
-        </style>
-        <!--end::Page bg image-->
         <!--begin::Authentication - Sign-up -->
         <div class="d-flex flex-column flex-column-fluid flex-lg-row mx-auto">
 
@@ -67,7 +54,7 @@
                 class="d-flex flex-column-fluid flex-lg-row-auto justify-content-center justify-content-lg-end p-12 p-lg-20">
                 <!--begin::Card-->
                 <div
-                    class="bg-body border border-dark border-1 d-flex flex-column align-items-stretch flex-center rounded-4 w-md-600px p-20">
+                    class="bg-light border border-dark border-1 d-flex flex-column align-items-stretch flex-center rounded-4 w-md-600px p-20">
                     <!--begin::Wrapper-->
                     <div class="d-flex flex-center flex-column flex-column-fluid px-lg-10 pb-15 pb-lg-20">
                         <!--begin::Form-->
@@ -128,16 +115,7 @@
                                     </div>
                                     <!--end::Input wrapper-->
                                     <!--begin::Meter-->
-                                    <div class="d-flex align-items-center mb-3"
-                                        data-kt-password-meter-control="highlight">
-                                        <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2">
-                                        </div>
-                                        <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2">
-                                        </div>
-                                        <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2">
-                                        </div>
-                                        <div class="flex-grow-1 bg-secondary bg-active-success rounded h-5px"></div>
-                                    </div>
+
                                     <!--end::Meter-->
                                 </div>
                                 <!--end::Wrapper-->
@@ -198,8 +176,7 @@
     <!--end::Root-->
     <!--begin::Javascript-->
     <!--begin::Global Javascript Bundle(mandatory for all pages)-->
-    <script src="{{ asset('assets/templates/metronic/dist/assets/plugins/global/plugins.bundle.js') }}"></script>
-    <script src="{{ asset('assets/templates/metronic/dist/assets/js/scripts.bundle.js') }}"></script>
+
     <!--end::Global Javascript Bundle-->
     <!--end::Javascript-->
 </body>

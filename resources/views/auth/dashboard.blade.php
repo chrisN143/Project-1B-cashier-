@@ -32,6 +32,6 @@
 @endsection
 
 @section('content')
-    @livewire('dashboard.dashboard')
+    @livewire('dashboard.dashboard', ['lazy' => true])
     <!--end::Col-->
 @endsection

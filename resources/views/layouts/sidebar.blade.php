@@ -1,11 +1,10 @@
-<div id="kt_app_sidebar" class="app-sidebar  flex-column " style="background: #031633" data-kt-drawer="true"
+<div id="kt_app_sidebar" class="app-sidebar  flex-column " style="background: #031633"data-kt-drawer="true"
     data-kt-drawer-name="app-sidebar" data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true"
     data-kt-drawer-width="225px" data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle">
 
     <!--begin::Logo-->
     <div class="app-sidebar-logo px-6" id="kt_app_sidebar_logo">
-        <!--begin::Logo image-->
-        <!--end::Logo image-->
+
         <div id="kt_app_sidebar_toggle"
             class="app-sidebar-toggle btn btn-icon btn-shadow btn-sm btn-color-muted btn-active-color-primary h-30px w-30px position-absolute top-50 start-100 translate-middle rotate"
             data-kt-toggle="true" data-kt-toggle-state="active" data-kt-toggle-target="body"
@@ -40,5 +39,4 @@
         <!--end::Menu wrapper-->
     </div>
     <!--end::sidebar menu-->
-
 </div>
