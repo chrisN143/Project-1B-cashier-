@@ -209,7 +209,7 @@
     </div>
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6" style="overflow-y: auto; max-height: 100vh;">
                 @livewire('menu.menu-index')
             </div>
             <div class="col-md-6">
@@ -223,7 +223,6 @@
             @media (max-width: 800px) {
                 .col-md-6 {
                     width: 100%;
-                   /* overflow-y: scroll; */
                 }
             }
         </style>
