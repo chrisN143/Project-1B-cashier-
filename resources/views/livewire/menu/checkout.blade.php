@@ -1,5 +1,15 @@
 <div class="border bg-light border-1 border-dark rounded  my-3">
 
+    @if (session('error'))
+        <div class="alert alert-danger" role="alert">
+            {{ session('error') }}
+        </div>
+    @endif
+    @if (session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
+        </div>
+    @endif
 
     <div class="p-2">
         <h5>Check Out : On Store {{ $cartStore ? $cartStore->store_name : '' }} </h5>
@@ -11,7 +21,7 @@
                 @endphp
                 @forelse ($carts as $cart)
                     <tr class="text-center">
-                        <td class="my-auto">
+                        <td>
                             <strong>{{ $cart->product->name }}</strong>
                         </td>
                         <td>
@@ -22,8 +32,8 @@
                                 class="text-center input-quantity" readonly disabled>
                                 <button class="btn btn1" wire:loading.attr="disabled"
                                 wire:click="incrementQuantity({{ $cart->id }})"><i class="fa fa-plus"></i></button> --}}
-                            {{-- <button class="btn btn1" wire:loading.attr="disabled"
-                                wire:click="decrementQuantity({{ $cart->id }})"><i class="fa fa-minus"></i></button> --}}
+                            <button class="btn btn1" wire:loading.attr="disabled"
+                                wire:click="decrementQuantity({{ $cart->id }})"><i class="fa fa-minus"></i></button>
 
                             <h6>{{ $cart->quantity }}</h6>
                             {{-- <button class="btn btn1" wire:loading.attr="disabled"
@@ -32,7 +42,6 @@
                         </td>
 
                         <td>
-
                             <strong>
                                 Rp.
                                 {{ number_format($cart->product->price * $cart->quantity, 0, ',', '.') }}

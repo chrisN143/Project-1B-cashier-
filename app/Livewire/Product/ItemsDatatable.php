@@ -30,13 +30,7 @@ class ItemsDatatable extends Component
                     return $item->store_name;
                 }
             ],
-            [
-                'key' => 'products.code',
-                'name' => 'Id',
-                'render' => function ($item) {
-                    return $item->product_code;
-                }
-            ],
+
             [
                 'key' => 'products.name',
                 'name' => 'Name',
@@ -48,7 +42,7 @@ class ItemsDatatable extends Component
                 'key' => 'products.price',
                 'name' => 'Price',
                 'render' => function ($item) {
-                    return 'Rp.' . number_format($item->product_price, 0, ',', '.');
+                    return 'Rp.' . $item->product_price;
                 }
             ],
             [
