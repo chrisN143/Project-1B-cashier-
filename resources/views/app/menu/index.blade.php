@@ -223,6 +223,7 @@
             @media (max-width: 800px) {
                 .col-md-6 {
                     width: 100%;
+                   /* overflow-y: scroll; */
                 }
             }
         </style>
