@@ -149,4 +149,5 @@
     @livewire('laporan.index')
     @livewire('laporan.itemsdatatable')
 </div>
+</div>
 @endsection

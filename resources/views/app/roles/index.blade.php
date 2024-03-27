@@ -38,7 +38,7 @@
 @endsection
 
 @section('content')
-    <div class="card">
+    <div class="card mx-3">
         <!--begin::Card header-->
         @if (auth()->user()->hasAnyPermission('role-create'))
             <div class="card-header border-0 pt-6">

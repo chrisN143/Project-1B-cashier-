@@ -43,4 +43,5 @@
     @livewire('order.order-filter')
     @livewire('order.itemsdatatable')
 </div>
+</div>
 @endsection

@@ -24,11 +24,12 @@
 @endsection
 
 @section('content')
+    <div>
         <div class="row">
-            <div class="col-sm-6" style="overflow-y: auto; max-height: 100vh;">
+            <div class="col-6">
                 @livewire('menu.menu-index')
             </div>
-            <div class="col-sm-6">
+            <div class="col-6">
                 @livewire('menu.checkout')
             </div>
         </div>

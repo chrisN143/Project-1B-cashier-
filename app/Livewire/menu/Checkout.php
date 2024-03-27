@@ -23,7 +23,7 @@ class Checkout extends Component
     public $customerName;
     #[Rule('required')]
     public $payment_id;
- 
+
     #[On('store-selected')]
     public function handledStore($data)
     {
@@ -49,7 +49,7 @@ class Checkout extends Component
             session()->flash('status', 'Cart Item Removed Succesfully!');
         } else {
             session()->flash('error', 'Something wrong!');
-        }
+        } 
     }
     public function incrementQuantity($id)
     {
