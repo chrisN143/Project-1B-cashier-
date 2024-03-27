@@ -21,7 +21,7 @@
                 @endphp
                 @forelse ($carts as $cart)
                     <tr class="text-center">
-                        <td class="my-auto">
+                        <td>
                             <strong>{{ $cart->product->name }}</strong>
                         </td>
                         <td>
@@ -35,9 +35,9 @@
                             <button class="btn btn1" wire:loading.attr="disabled"
                                 wire:click="decrementQuantity({{ $cart->id }})"><i class="fa fa-minus"></i></button>
 
-                            {{ $cart->quantity }}
-                            <button class="btn btn1" wire:loading.attr="disabled"
-                                wire:click="incrementQuantity({{ $cart->id }})"><i class="fa fa-plus"></i></button>
+                            <h6>{{ $cart->quantity }}</h6>
+                            {{-- <button class="btn btn1" wire:loading.attr="disabled"
+                                wire:click="incrementQuantity({{ $cart->id }})"><i class="fa fa-plus"></i></button> --}}
 
                         </td>
 
@@ -103,8 +103,5 @@
         @endif
 
     </div>
-
-
-
 
 </div>

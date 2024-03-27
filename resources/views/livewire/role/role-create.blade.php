@@ -1,4 +1,5 @@
 <div class="d-flex flex-column flex-lg-row">
+    {{-- @dd($this->permissions) --}}
     <!--begin::Content-->
     <div class="flex-lg-row-fluid mb-10 mb-lg-0">
         <!--begin::Card-->

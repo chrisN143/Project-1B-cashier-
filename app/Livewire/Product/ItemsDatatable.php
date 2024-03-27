@@ -42,7 +42,7 @@ class ItemsDatatable extends Component
                 'key' => 'products.price',
                 'name' => 'Price',
                 'render' => function ($item) {
-                    return 'Rp.' . number_format($item->product_price, 0, ',', '.');
+                    return 'Rp.' . $item->product_price;
                 }
             ],
             [

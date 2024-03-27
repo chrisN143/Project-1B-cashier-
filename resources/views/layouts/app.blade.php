@@ -51,6 +51,7 @@
                     themeMode = localStorage.getItem("data-bs-theme");
                 } else {
                     themeMode = defaultThemeMode;
+                    
                 }
             }
 
