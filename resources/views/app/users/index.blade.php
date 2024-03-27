@@ -40,7 +40,7 @@
 @section('content')
     <div class="card">
         <!--begin::Card header-->
-        @if (auth()->user()->hasAnyPermission('user-create|store'))
+        @if (auth()->user()->hasAnyPermission('user-create'))
             <div class="card-header border-0 pt-6">
                 <!--begin::Card title-->
                 <!--begin::Card toolbar-->

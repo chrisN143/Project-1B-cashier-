@@ -53,7 +53,7 @@
         @enderror
     </div>
 
-    <button class='btn btn-primary mt-3' wire:click='add'>
+    <button class='btn btn-primary mt-3' wire:loading.attr='disabled' wire:click='add'>
         {{ $objId ? 'Update' : 'Create' }}
         <div class="spinner-border text-light" style="width: 15px;  height:15px;" wire:loading>
             <span class="visually-hidden">Loading...</span>

@@ -85,7 +85,6 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/', 'index')->name('index');
             Route::get('/detail', 'detail')->name('detail');
             Route::get('/show', 'show')->name('show');
-
         });
     });
     Route::controller(TransactionController::class)->prefix('transaction')->name('transaction.')->group(function () {
@@ -94,7 +93,6 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/', 'index')->name('index');
             Route::get('/detail', 'detail')->name('detail');
             Route::get('/show', 'show')->name('show');
-
         });
     });
     Route::controller(MenuController::class)->prefix('menu')->name('menu.')->group(function () {
@@ -121,7 +119,7 @@ Route::group(['middleware' => 'auth'], function () {
                 Route::get('/{reportId}', 'detail')->name('detail');
             });
 
-            Route::middleware('permission:stokReport-list')->group(function () {
+            Route::middleware('permission:laporan-stokReport-list')->group(function () {
 
                 Route::get('/stok-report', 'stok')->name('stoks');
             });

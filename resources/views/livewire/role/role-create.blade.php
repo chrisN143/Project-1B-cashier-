@@ -35,20 +35,145 @@
                                     </span>
                                     <h3 class="fw-bold text-center m-5">Permissions</h3>
                                     <div class="card-body">
-                                        <div class="row d-flex justify-content-center">
-                                            @foreach ($permissions as $index => $permission)
-                                                <div class="col-lg-4 mb-5">
+                                        <div class="row">
+                                            <div class="col-lg-3">
+                                                <h6>Permission</h6>
+                                                @foreach ($permissions1 as $index => $permission)
                                                     <div class="form-check form-check-custom form-check-solid">
                                                         <input class="form-check-input"
-                                                            wire:model="permissions.{{ $index }}.is_checked"
+                                                            wire:model="permissions1.{{ $index }}.is_checked"
                                                             type="checkbox" value="{{ $permission['name'] }}"
                                                             id="{{ $permission['id'] }}" />
                                                         <label class="form-check-label" for="{{ $permission['id'] }}">
                                                             {{ $permission['name'] }}
                                                         </label>
                                                     </div>
-                                                </div>
-                                            @endforeach
+                                                @endforeach
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <h6>User</h6>
+                                                @foreach ($permissions2 as $index => $permission)
+                                                    <div class="form-check form-check-custom form-check-solid">
+                                                        <input class="form-check-input"
+                                                            wire:model="permissions2.{{ $index }}.is_checked"
+                                                            type="checkbox" value="{{ $permission['name'] }}"
+                                                            id="{{ $permission['id'] }}" />
+                                                        <label class="form-check-label" for="{{ $permission['id'] }}">
+                                                            {{ $permission['name'] }}
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <h6>Role</h6>
+                                                @foreach ($permissions3 as $index => $permission)
+                                                    <div class="form-check form-check-custom form-check-solid">
+                                                        <input class="form-check-input"
+                                                            wire:model="permissions3.{{ $index }}.is_checked"
+                                                            type="checkbox" value="{{ $permission['name'] }}"
+                                                            id="{{ $permission['id'] }}" />
+                                                        <label class="form-check-label" for="{{ $permission['id'] }}">
+                                                            {{ $permission['name'] }}
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <h6>Dashboard</h6>
+                                                @foreach ($permissions4 as $index => $permission)
+                                                    <div class="form-check form-check-custom form-check-solid">
+                                                        <input class="form-check-input"
+                                                            wire:model="permissions4.{{ $index }}.is_checked"
+                                                            type="checkbox" value="{{ $permission['name'] }}"
+                                                            id="{{ $permission['id'] }}" />
+                                                        <label class="form-check-label" for="{{ $permission['id'] }}">
+                                                            {{ $permission['name'] }}
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+                                                <h6>Menu</h6>
+                                                @foreach ($permissions9 as $index => $permission)
+                                                    <div class="form-check form-check-custom form-check-solid">
+                                                        <input class="form-check-input"
+                                                            wire:model="permissions9.{{ $index }}.is_checked"
+                                                            type="checkbox" value="{{ $permission['name'] }}"
+                                                            id="{{ $permission['id'] }}" />
+                                                        <label class="form-check-label" for="{{ $permission['id'] }}">
+                                                            {{ $permission['name'] }}
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <h6>Product</h6>
+                                                @foreach ($permissions5 as $index => $permission)
+                                                    <div class="form-check form-check-custom form-check-solid">
+                                                        <input class="form-check-input"
+                                                            wire:model="permissions5.{{ $index }}.is_checked"
+                                                            type="checkbox" value="{{ $permission['name'] }}"
+                                                            id="{{ $permission['id'] }}" />
+                                                        <label class="form-check-label" for="{{ $permission['id'] }}">
+                                                            {{ $permission['name'] }}
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+                                                @foreach ($permissions10 as $index => $permission)
+                                                    <div class="form-check form-check-custom form-check-solid">
+                                                        <input class="form-check-input"
+                                                            wire:model="permissions10.{{ $index }}.is_checked"
+                                                            type="checkbox" value="{{ $permission['name'] }}"
+                                                            id="{{ $permission['id'] }}" />
+                                                        <label class="form-check-label" for="{{ $permission['id'] }}">
+                                                            {{ $permission['name'] }}
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <h6>Store</h6>
+                                                @foreach ($permissions6 as $index => $permission)
+                                                    <div class="form-check form-check-custom form-check-solid">
+                                                        <input class="form-check-input"
+                                                            wire:model="permissions6.{{ $index }}.is_checked"
+                                                            type="checkbox" value="{{ $permission['name'] }}"
+                                                            id="{{ $permission['id'] }}" />
+                                                        <label class="form-check-label" for="{{ $permission['id'] }}">
+                                                            {{ $permission['name'] }}
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <h6>Transaction</h6>
+                                                @foreach ($permissions7 as $index => $permission)
+                                                    <div class="form-check form-check-custom form-check-solid">
+                                                        <input class="form-check-input"
+                                                            wire:model="permissions7.{{ $index }}.is_checked"
+                                                            type="checkbox" value="{{ $permission['name'] }}"
+                                                            id="{{ $permission['id'] }}" />
+                                                        <label class="form-check-label" for="{{ $permission['id'] }}">
+                                                            {{ $permission['name'] }}
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+                                            <div class="col-lg-3">
+                                                <h6>Laporan</h6>
+                                                @foreach ($permissions8 as $index => $permission)
+                                                    <div class="form-check form-check-custom form-check-solid">
+                                                        <input class="form-check-input"
+                                                            wire:model="permissions8.{{ $index }}.is_checked"
+                                                            type="checkbox" value="{{ $permission['name'] }}"
+                                                            id="{{ $permission['id'] }}" />
+                                                        <label class="form-check-label"
+                                                            for="{{ $permission['id'] }}">
+                                                            {{ $permission['name'] }}
+                                                        </label>
+                                                    </div>
+                                                @endforeach
+                                            </div>
+
+
                                         </div>
                                     </div>
                                 </div>
