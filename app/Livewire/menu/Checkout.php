@@ -49,7 +49,7 @@ class Checkout extends Component
             session()->flash('status', 'Cart Item Removed Succesfully!');
         } else {
             session()->flash('error', 'Something wrong!');
-        }
+        } 
     }
     public function incrementQuantity($id)
     {
