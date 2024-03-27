@@ -30,13 +30,7 @@ class ItemsDatatable extends Component
                     return $item->store_name;
                 }
             ],
-            [
-                'key' => 'products.code',
-                'name' => 'Id',
-                'render' => function ($item) {
-                    return $item->product_code;
-                }
-            ],
+
             [
                 'key' => 'products.name',
                 'name' => 'Name',

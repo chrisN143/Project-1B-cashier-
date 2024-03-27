@@ -18,20 +18,14 @@
         type="text/css" />
     <link href="{{ asset('assets/templates/metronic/dist/assets/css/style.bundle.css') }}" rel="stylesheet"
         type="text/css" />
-    <link href="{{ asset('assets/templates/metronic/dist/assets/css/style.css') }}" rel="stylesheet" type="text/css" />
     <!-- Link Boostrap-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous">
-    </script>
+
     <!--end::Global Stylesheets Bundle-->
     <!-- Link Fontawesome -->
     {{-- <script src="https://cdn.tailwindcss.com"></script> --}}
-    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css"  />
+    {{-- <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css"  /> --}}
     @yield('after_css')
     @livewireStyles
 
@@ -113,16 +107,11 @@
                     <!--begin::Footer-->
                     <div id="kt_app_footer" class="app-footer ">
                         <!--begin::Footer container-->
-                        <div
-                            class="app-container  container-fluid d-flex flex-column flex-md-row flex-center flex-md-stack py-3 ">
-                            <!--begin::Copyright-->
-                            <div class="text-gray-900 order-2 order-md-1">
-                                <span class="text-muted fw-semibold me-1">2024&copy;</span>
-                                <a href="https://smartintegratedsystem.com/" target="_blank"
-                                    class="text-gray-800 text-hover-primary">Smart Integrated System</a>
-                            </div>
-                            <!--end::Copyright-->
-                        </div>
+
+                        <span>2024&copy;</span>
+                        <a>Smart Integrated System</a>
+                        <!--end::Copyright-->
+
                         <!--end::Footer container-->
                     </div>
                     <!--end::Footer-->
@@ -141,7 +130,7 @@
     <!--end::Scrolltop-->
     <!--begin::Javascript-->
     <!--begin::Global Javascript Bundle(mandatory for all pages)-->
-    <script src="{{ asset('assets/templates/metronic/dist/assets/plugins/global/plugins.bundle.js') }}"></script>
+    {{-- <script src="{{ asset('assets/templates/metronic/dist/assets/plugins/global/plugins.bundle.js') }}"></script> --}}
     <script src="{{ asset('assets/templates/metronic/dist/assets/js/scripts.bundle.js') }}"></script>
     <!--end::Global Javascript Bundle-->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

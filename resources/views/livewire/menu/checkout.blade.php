@@ -1,5 +1,15 @@
 <div class="border bg-light border-1 border-dark rounded  my-3">
 
+    @if (session('error'))
+        <div class="alert alert-danger" role="alert">
+            {{ session('error') }}
+        </div>
+    @endif
+    @if (session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
+        </div>
+    @endif
 
     <div class="p-2">
         <h5>Check Out : On Store {{ $cartStore ? $cartStore->store_name : '' }} </h5>
@@ -32,7 +42,6 @@
                         </td>
 
                         <td>
-                            
                             <strong>
                                 Rp.
                                 {{ number_format($cart->product->price * $cart->quantity, 0, ',', '.') }}
