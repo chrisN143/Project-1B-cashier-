@@ -2,7 +2,7 @@
 
 return [
     /* Documentation Menu Item Dynamic Sidebar
-    
+
     Item Component:
     text,icon,url,header,submenu, role
 
@@ -93,7 +93,7 @@ return [
                     'permission' => 'laporan-list',
                 ],
                 [
-                    'text' => 'Stok Report',
+                    'text' => 'Stock Report',
                     'url'  => 'stok-report',
                     'permission' => 'laporan-stokReport-list',
                 ],
