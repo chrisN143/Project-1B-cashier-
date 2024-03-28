@@ -16,9 +16,10 @@
 
             color: #fff;
         }
-
-
     </style>
+@endsection
+@section('after_js')
+
 @endsection
 
 @section('content')
@@ -32,13 +33,14 @@
             </div>
         </div>
 
-    @push('styles')
-        <style>
-            @media (max-width: 800px) {
-                .col-6 {
-                    width: 100%;
+
+        @push('styles')
+            <style>
+                @media (max-width: 800px) {
+                    .col-6 {
+                        width: 100%;
+                    }
                 }
-            }
-        </style>
-    @endpush
-@endsection
+            </style>
+        @endpush
+    @endsection
