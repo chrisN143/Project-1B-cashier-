@@ -19,6 +19,8 @@ class Checkout extends Component
     public $store_id = '1';
     public $payment;
     public $totalStok;
+    public $total;
+    
     #[Rule('required')]
     public $customerName;
     #[Rule('required')]
@@ -49,7 +51,7 @@ class Checkout extends Component
             session()->flash('status', 'Cart Item Removed Succesfully!');
         } else {
             session()->flash('error', 'Something wrong!');
-        } 
+        }
     }
     public function incrementQuantity($id)
     {
